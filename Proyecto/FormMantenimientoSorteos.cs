@@ -13,16 +13,18 @@ namespace Proyecto
     public partial class FormMantenimientoSorteos : Form
     {
         private Point posicionPanelSorteos, posicionLbPremioAdicional, posicionNUDPremioAdicional;
-
+      
         public FormMantenimientoSorteos()
         {
             InitializeComponent();
             configurarComponentesPanelSorteos();
             establecerValoresTablaSorteos();
+           
         }
 
         private void establecerValoresTablaSorteos()
         {
+
             DataTable dtSorteos = new DataTable();
             dtSorteos.Columns.Add("Tipo",typeof(string));
             dtSorteos.Columns.Add("Número", typeof(string));
@@ -36,7 +38,16 @@ namespace Proyecto
                 dtSorteos.Rows.Add(new object[] { "Lotería", i.ToString(), "30/09/2019", 5, 2000, "Medio año", true });
             }
             dataGridViewSorteos.DataSource = dtSorteos;
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.UseColumnTextForButtonValue = true;
+            btn.HeaderText = "Eliminar";
+            btn.Name = "btn";
+            btn.Text = "Eliminar";
+            dataGridViewSorteos.Columns.Add(btn);
+
         }
+
+        
 
         private void configurarComponentesPanelSorteos()
         {
@@ -46,6 +57,24 @@ namespace Proyecto
             posicionPanelSorteos = panelSorteos.Location;
             panelSorteos.Location = panelCrearSorteo.Location;
             panelSorteos.Height += panelCrearSorteo.Height;
+        }
+
+
+       
+        private void dataGridViewSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            if (e.ColumnIndex == 0) {
+                DialogResult dr = MessageBox.Show("¿Desea eliminar este sorteo?", "Mensaje", MessageBoxButtons.YesNoCancel,MessageBoxIcon.Information);
+
+                if (dr == DialogResult.Yes)
+                {
+                    this.dataGridViewSorteos.Rows.RemoveAt(e.ColumnIndex);
+                    
+                }
+                
+
+            }
         }
 
         private void btCrearNuevoSorteo_Click(object sender, EventArgs e)
