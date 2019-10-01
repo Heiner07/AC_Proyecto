@@ -28,7 +28,7 @@ namespace Proyecto
         {
             if (formularioActivo != null)
             {
-                formularioActivo.Close();
+                formularioActivo.Dispose();
             }
             formularioActivo = formularioHijo;
             formularioHijo.TopLevel = false;
@@ -39,6 +39,21 @@ namespace Proyecto
             formularioHijo.BringToFront();
             formularioHijo.Show();
 
+        }
+
+        private void btSorteos_Click(object sender, EventArgs e)
+        {
+            abrirFormularioHijo(new FormMantenimientoSorteos());
+        }
+
+        private void btResultados_Click(object sender, EventArgs e)
+        {
+            abrirFormularioHijo(new FormResultados());
+        }
+
+        private void btEstadisticasReportes_Click(object sender, EventArgs e)
+        {
+            abrirFormularioHijo(new FormEstadisticasReportes());
         }
     }
 }

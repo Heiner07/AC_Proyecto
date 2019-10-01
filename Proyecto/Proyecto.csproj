@@ -51,10 +51,37 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEstadisticasReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEstadisticasReportes.Designer.cs">
+      <DependentUpon>FormEstadisticasReportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMantenimientoSorteos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMantenimientoSorteos.Designer.cs">
+      <DependentUpon>FormMantenimientoSorteos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormResultados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResultados.Designer.cs">
+      <DependentUpon>FormResultados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEstadisticasReportes.resx">
+      <DependentUpon>FormEstadisticasReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMantenimientoSorteos.resx">
+      <DependentUpon>FormMantenimientoSorteos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResultados.resx">
+      <DependentUpon>FormResultados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -105,6 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\estadisticas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoLoteria.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

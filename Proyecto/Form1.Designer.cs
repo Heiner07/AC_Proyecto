@@ -75,14 +75,14 @@
             this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPrincipal.Location = new System.Drawing.Point(300, 0);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(612, 653);
+            this.panelPrincipal.Size = new System.Drawing.Size(632, 653);
             this.panelPrincipal.TabIndex = 1;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = global::Proyecto.Properties.Resources.LogoJPS;
-            this.pictureBox2.Location = new System.Drawing.Point(167, 165);
+            this.pictureBox2.Location = new System.Drawing.Point(177, 165);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(300, 300);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -106,6 +106,7 @@
             this.btEstadisticasReportes.Text = "Estadísticas y Reportes";
             this.btEstadisticasReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btEstadisticasReportes.UseVisualStyleBackColor = false;
+            this.btEstadisticasReportes.Click += new System.EventHandler(this.btEstadisticasReportes_Click);
             // 
             // btResultados
             // 
@@ -124,6 +125,7 @@
             this.btResultados.Text = "Resultados";
             this.btResultados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btResultados.UseVisualStyleBackColor = false;
+            this.btResultados.Click += new System.EventHandler(this.btResultados_Click);
             // 
             // btJugar
             // 
@@ -160,6 +162,7 @@
             this.btSorteos.Text = "Mantenimiento Sorteos";
             this.btSorteos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btSorteos.UseVisualStyleBackColor = false;
+            this.btSorteos.Click += new System.EventHandler(this.btSorteos_Click);
             // 
             // pictureBox1
             // 
@@ -176,10 +179,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 653);
+            this.ClientSize = new System.Drawing.Size(932, 653);
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.panelMenu);
-            this.MinimumSize = new System.Drawing.Size(930, 700);
+            this.MinimumSize = new System.Drawing.Size(950, 700);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "JPS - Lotería y Chances";
