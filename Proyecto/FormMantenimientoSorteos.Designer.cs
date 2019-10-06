@@ -71,18 +71,18 @@
             this.panel4.Controls.Add(this.btCrearNuevoSorteo);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(474, 44);
+            this.panel4.Size = new System.Drawing.Size(642, 54);
             this.panel4.TabIndex = 1;
             // 
             // btCrearNuevoSorteo
             // 
             this.btCrearNuevoSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCrearNuevoSorteo.Location = new System.Drawing.Point(9, 10);
-            this.btCrearNuevoSorteo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btCrearNuevoSorteo.Location = new System.Drawing.Point(12, 12);
+            this.btCrearNuevoSorteo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btCrearNuevoSorteo.Name = "btCrearNuevoSorteo";
-            this.btCrearNuevoSorteo.Size = new System.Drawing.Size(140, 27);
+            this.btCrearNuevoSorteo.Size = new System.Drawing.Size(187, 33);
             this.btCrearNuevoSorteo.TabIndex = 1;
             this.btCrearNuevoSorteo.Text = "Crear nuevo sorteo";
             this.btCrearNuevoSorteo.UseVisualStyleBackColor = true;
@@ -95,13 +95,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSorteos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSorteos.Location = new System.Drawing.Point(7, 25);
-            this.dataGridViewSorteos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewSorteos.Location = new System.Drawing.Point(9, 31);
+            this.dataGridViewSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewSorteos.MultiSelect = false;
             this.dataGridViewSorteos.Name = "dataGridViewSorteos";
             this.dataGridViewSorteos.ReadOnly = true;
             this.dataGridViewSorteos.RowTemplate.Height = 24;
-            this.dataGridViewSorteos.Size = new System.Drawing.Size(458, 116);
+            this.dataGridViewSorteos.Size = new System.Drawing.Size(621, 143);
             this.dataGridViewSorteos.TabIndex = 2;
             this.dataGridViewSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSorteos_CellClick);
             // 
@@ -109,10 +109,9 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(2, 7);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(3, 9);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(124, 16);
+            this.label10.Size = new System.Drawing.Size(141, 19);
             this.label10.TabIndex = 3;
             this.label10.Text = "Sorteos existentes";
             // 
@@ -140,19 +139,19 @@
             this.panelCrearSorteo.Controls.Add(this.label2);
             this.panelCrearSorteo.Controls.Add(this.label1);
             this.panelCrearSorteo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelCrearSorteo.Location = new System.Drawing.Point(0, 44);
-            this.panelCrearSorteo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelCrearSorteo.Location = new System.Drawing.Point(0, 54);
+            this.panelCrearSorteo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelCrearSorteo.Name = "panelCrearSorteo";
-            this.panelCrearSorteo.Size = new System.Drawing.Size(474, 328);
+            this.panelCrearSorteo.Size = new System.Drawing.Size(642, 404);
             this.panelCrearSorteo.TabIndex = 0;
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(14, 261);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Location = new System.Drawing.Point(19, 321);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(56, 23);
+            this.button2.Size = new System.Drawing.Size(75, 28);
             this.button2.TabIndex = 41;
             this.button2.Text = "Crear";
             this.button2.UseVisualStyleBackColor = true;
@@ -160,10 +159,10 @@
             // btAgregarPremioAdicional
             // 
             this.btAgregarPremioAdicional.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAgregarPremioAdicional.Location = new System.Drawing.Point(285, 294);
-            this.btAgregarPremioAdicional.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btAgregarPremioAdicional.Location = new System.Drawing.Point(380, 362);
+            this.btAgregarPremioAdicional.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btAgregarPremioAdicional.Name = "btAgregarPremioAdicional";
-            this.btAgregarPremioAdicional.Size = new System.Drawing.Size(177, 24);
+            this.btAgregarPremioAdicional.Size = new System.Drawing.Size(236, 30);
             this.btAgregarPremioAdicional.TabIndex = 40;
             this.btAgregarPremioAdicional.Text = "Agregar premio adicional";
             this.btAgregarPremioAdicional.UseVisualStyleBackColor = true;
@@ -172,66 +171,63 @@
             // panelPremiosAdicionales
             // 
             this.panelPremiosAdicionales.AutoScroll = true;
-            this.panelPremiosAdicionales.Location = new System.Drawing.Point(285, 171);
-            this.panelPremiosAdicionales.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelPremiosAdicionales.Location = new System.Drawing.Point(380, 210);
+            this.panelPremiosAdicionales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelPremiosAdicionales.Name = "panelPremiosAdicionales";
-            this.panelPremiosAdicionales.Size = new System.Drawing.Size(187, 118);
+            this.panelPremiosAdicionales.Size = new System.Drawing.Size(249, 145);
             this.panelPremiosAdicionales.TabIndex = 39;
             // 
             // numericUpDown5
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(307, 149);
-            this.numericUpDown5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown5.Location = new System.Drawing.Point(409, 183);
+            this.numericUpDown5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(150, 20);
+            this.numericUpDown5.Size = new System.Drawing.Size(200, 22);
             this.numericUpDown5.TabIndex = 38;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(304, 130);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(405, 160);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 16);
+            this.label9.Size = new System.Drawing.Size(82, 19);
             this.label9.TabIndex = 37;
             this.label9.Text = "3° Premio";
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(307, 105);
-            this.numericUpDown4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown4.Location = new System.Drawing.Point(409, 129);
+            this.numericUpDown4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(150, 20);
+            this.numericUpDown4.Size = new System.Drawing.Size(200, 22);
             this.numericUpDown4.TabIndex = 36;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(304, 86);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(405, 106);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 16);
+            this.label8.Size = new System.Drawing.Size(82, 19);
             this.label8.TabIndex = 35;
             this.label8.Text = "2° Premio";
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(307, 56);
-            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown3.Location = new System.Drawing.Point(409, 69);
+            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(150, 20);
+            this.numericUpDown3.Size = new System.Drawing.Size(200, 22);
             this.numericUpDown3.TabIndex = 34;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(304, 37);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(405, 46);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 16);
+            this.label7.Size = new System.Drawing.Size(82, 19);
             this.label7.TabIndex = 33;
             this.label7.Text = "1° Premio";
             // 
@@ -239,52 +235,51 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(304, 12);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(405, 15);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 16);
+            this.label6.Size = new System.Drawing.Size(129, 19);
             this.label6.TabIndex = 32;
             this.label6.Text = "Plan de Premios";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(14, 228);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Location = new System.Drawing.Point(19, 281);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 20);
+            this.textBox1.Size = new System.Drawing.Size(200, 22);
             this.textBox1.TabIndex = 31;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(14, 179);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown2.Location = new System.Drawing.Point(19, 220);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(150, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(200, 22);
             this.numericUpDown2.TabIndex = 30;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(14, 126);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown1.Location = new System.Drawing.Point(19, 155);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(150, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(200, 22);
             this.numericUpDown1.TabIndex = 29;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(14, 76);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Location = new System.Drawing.Point(19, 94);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(151, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
             this.dateTimePicker1.TabIndex = 28;
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(80, 30);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton2.Location = new System.Drawing.Point(107, 37);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(67, 17);
+            this.radioButton2.Size = new System.Drawing.Size(84, 21);
             this.radioButton2.TabIndex = 27;
             this.radioButton2.Text = "Chances";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -293,10 +288,10 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(14, 30);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton1.Location = new System.Drawing.Point(19, 37);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(59, 17);
+            this.radioButton1.Size = new System.Drawing.Size(73, 21);
             this.radioButton1.TabIndex = 26;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Lotería";
@@ -306,10 +301,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(10, 210);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(13, 258);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 16);
+            this.label5.Size = new System.Drawing.Size(144, 19);
             this.label5.TabIndex = 25;
             this.label5.Text = "Leyenda del billete";
             // 
@@ -317,10 +311,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(10, 158);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(13, 194);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(134, 16);
+            this.label4.Size = new System.Drawing.Size(156, 19);
             this.label4.TabIndex = 24;
             this.label4.Text = "Costo de la fracción";
             // 
@@ -328,10 +321,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 107);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(13, 132);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 16);
+            this.label3.Size = new System.Drawing.Size(171, 19);
             this.label3.TabIndex = 23;
             this.label3.Text = "Número de fracciones";
             // 
@@ -339,10 +331,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(10, 58);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(13, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 16);
+            this.label2.Size = new System.Drawing.Size(128, 19);
             this.label2.TabIndex = 22;
             this.label2.Text = "Fecha de sorteo";
             // 
@@ -350,10 +341,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(13, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 16);
+            this.label1.Size = new System.Drawing.Size(112, 19);
             this.label1.TabIndex = 21;
             this.label1.Text = "Tipo de sorteo";
             // 
@@ -364,22 +354,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelSorteos.Controls.Add(this.label10);
             this.panelSorteos.Controls.Add(this.dataGridViewSorteos);
-            this.panelSorteos.Location = new System.Drawing.Point(2, 377);
-            this.panelSorteos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panelSorteos.MinimumSize = new System.Drawing.Size(474, 144);
+            this.panelSorteos.Location = new System.Drawing.Point(3, 464);
+            this.panelSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelSorteos.MinimumSize = new System.Drawing.Size(632, 177);
             this.panelSorteos.Name = "panelSorteos";
-            this.panelSorteos.Size = new System.Drawing.Size(474, 144);
+            this.panelSorteos.Size = new System.Drawing.Size(642, 177);
             this.panelSorteos.TabIndex = 2;
             // 
             // FormMantenimientoSorteos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 531);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(642, 650);
             this.Controls.Add(this.panelSorteos);
             this.Controls.Add(this.panelCrearSorteo);
             this.Controls.Add(this.panel4);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormMantenimientoSorteos";
             this.Text = "FormMantenimientoSorteos";
             this.panel4.ResumeLayout(false);

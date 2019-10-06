@@ -130,14 +130,15 @@
             this.dgvSorteos.Name = "dgvSorteos";
             this.dgvSorteos.ReadOnly = true;
             this.dgvSorteos.RowTemplate.Height = 24;
-            this.dgvSorteos.Size = new System.Drawing.Size(529, 220);
+            this.dgvSorteos.Size = new System.Drawing.Size(539, 217);
             this.dgvSorteos.TabIndex = 39;
             // 
             // FormEstadisticasReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 653);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(642, 650);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dgvSorteos);
             this.Controls.Add(this.dgvNumerosMasJugados);

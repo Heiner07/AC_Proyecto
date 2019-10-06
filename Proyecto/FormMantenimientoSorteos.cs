@@ -51,8 +51,8 @@ namespace Proyecto
 
         private void configurarComponentesPanelSorteos()
         {
-            posicionLbPremioAdicional = new Point(20, 3);
-            posicionNUDPremioAdicional = new Point(22, 26);
+            posicionLbPremioAdicional = new Point(25, 3);
+            posicionNUDPremioAdicional = new Point(29, 26);
             panelCrearSorteo.Visible = false;
             posicionPanelSorteos = panelSorteos.Location;
             panelSorteos.Location = panelCrearSorteo.Location;
@@ -104,7 +104,7 @@ namespace Proyecto
             {
                 Text = "Premio adicional",
                 Height = 19,
-                Width = 130,
+                Width = 150,
                 Font = new Font("Arial", 10),
                 Location = posicionLbPremioAdicional
             };
