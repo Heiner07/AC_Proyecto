@@ -38,6 +38,7 @@ namespace Proyecto
             inicializarTablaNumerosMasJugados();
             inicializarTablaNumerosMasGanadoresPrimer();
             inicializarTablaNumerosConMayorDineroRepartido();
+            inicializarTablaPorcentajeNumeros();
         }
 
         private void inicializarTablaNumerosMasJugados()
@@ -73,6 +74,18 @@ namespace Proyecto
                 dtNumerosConMayorDineroRepartido.Rows.Add(new object[] { i + 1, i * i + i });
             }
             dgvTopNumeroDineroRepartido.DataSource = dtNumerosConMayorDineroRepartido;
+        }
+
+        private void inicializarTablaPorcentajeNumeros()
+        {
+            DataTable dtProcentajeNumeros = new DataTable();
+            dtProcentajeNumeros.Columns.Add("Número", typeof(int));
+            dtProcentajeNumeros.Columns.Add("Porcentaje", typeof(float));
+            for (int i = 0; i < 100; i++)
+            {
+                dtProcentajeNumeros.Rows.Add(new object[] { i + 1, 1.0 });
+            }
+            dgvPorcentajeAparicion.DataSource = dtProcentajeNumeros;
         }
     }
 }

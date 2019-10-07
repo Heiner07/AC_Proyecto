@@ -30,7 +30,6 @@ namespace Proyecto
             dtSorteos.Columns.Add("Tipo", typeof(string));
             dtSorteos.Columns.Add("Número", typeof(string));
             dtSorteos.Columns.Add("Fecha", typeof(string));
-            dtSorteos.Columns.Add("Jugar", typeof(string));
             for (int i = 0; i < 5; i++)
             {
                 dtSorteos.Rows.Add(new object[] { "Lotería", i.ToString(), "30/09/2019" });
@@ -79,7 +78,8 @@ namespace Proyecto
 
             }
         }
-        public void escribirTextBox(String numero,String serie,String premio) {
+
+        private void escribirTextBox(String numero,String serie,String premio) {
             if (InvokeRequired)
             {
                 tbNumero.Invoke((MethodInvoker)(() => tbNumero.Text = numero));
@@ -89,7 +89,8 @@ namespace Proyecto
 
         }
 
-        public void cambiarEstadoGifs(Boolean estado) {
+        private void cambiarEstadoGifs(Boolean estado)
+        {
             
                 if (!estado)
                 {
@@ -109,8 +110,11 @@ namespace Proyecto
             
 
         }
-         void jugarSorteo() {
-            for (int i = 0;i<4;i++) {
+
+        private void jugarSorteo()
+        {
+            for (int i = 0; i<4; i++)
+            {
                 escribirTextBox("0" + i, "0" + i+1,"10000");
 
                 Thread.Sleep(3000);
