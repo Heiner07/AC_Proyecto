@@ -85,6 +85,8 @@
             // 
             this.dgvSorteos.AllowUserToAddRows = false;
             this.dgvSorteos.AllowUserToDeleteRows = false;
+            this.dgvSorteos.AllowUserToResizeColumns = false;
+            this.dgvSorteos.AllowUserToResizeRows = false;
             this.dgvSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -92,9 +94,11 @@
             this.dgvSorteos.Location = new System.Drawing.Point(12, 80);
             this.dgvSorteos.Name = "dgvSorteos";
             this.dgvSorteos.ReadOnly = true;
+            this.dgvSorteos.RowHeadersWidth = 51;
             this.dgvSorteos.RowTemplate.Height = 24;
-            this.dgvSorteos.Size = new System.Drawing.Size(529, 171);
+            this.dgvSorteos.Size = new System.Drawing.Size(591, 171);
             this.dgvSorteos.TabIndex = 41;
+            this.dgvSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSorteos_CellClick);
             // 
             // radioButton3
             // 
@@ -186,6 +190,8 @@
             // 
             this.dgvResultadosSorteo.AllowUserToAddRows = false;
             this.dgvResultadosSorteo.AllowUserToDeleteRows = false;
+            this.dgvResultadosSorteo.AllowUserToResizeColumns = false;
+            this.dgvResultadosSorteo.AllowUserToResizeRows = false;
             this.dgvResultadosSorteo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -193,8 +199,9 @@
             this.dgvResultadosSorteo.Location = new System.Drawing.Point(12, 174);
             this.dgvResultadosSorteo.Name = "dgvResultadosSorteo";
             this.dgvResultadosSorteo.ReadOnly = true;
+            this.dgvResultadosSorteo.RowHeadersWidth = 51;
             this.dgvResultadosSorteo.RowTemplate.Height = 24;
-            this.dgvResultadosSorteo.Size = new System.Drawing.Size(529, 155);
+            this.dgvResultadosSorteo.Size = new System.Drawing.Size(591, 155);
             this.dgvResultadosSorteo.TabIndex = 42;
             // 
             // label5
@@ -239,7 +246,8 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::Proyecto.Properties.Resources.BomboLoteria;
+            this.pictureBox3.Enabled = false;
+            this.pictureBox3.Image = global::Proyecto.Properties.Resources.bomboGif;
             this.pictureBox3.Location = new System.Drawing.Point(265, 15);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(64, 64);
@@ -249,7 +257,8 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Proyecto.Properties.Resources.BomboLoteria;
+            this.pictureBox2.Enabled = false;
+            this.pictureBox2.Image = global::Proyecto.Properties.Resources.bomboGif;
             this.pictureBox2.Location = new System.Drawing.Point(151, 15);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 64);
@@ -259,7 +268,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Proyecto.Properties.Resources.BomboLoteria;
+            this.pictureBox1.Enabled = false;
+            this.pictureBox1.Image = global::Proyecto.Properties.Resources.bomboGif;
             this.pictureBox1.Location = new System.Drawing.Point(37, 15);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);

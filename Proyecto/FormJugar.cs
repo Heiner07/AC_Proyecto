@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,11 +13,15 @@ namespace Proyecto
 {
     public partial class FormJugar : Form
     {
+        // Creando e inicializando el hilo
+       //Thread hiloSorteo = new Thread(jugarSorteo);
+         
         public FormJugar()
         {
             InitializeComponent();
             establecerValoresTablaSorteos();
             establecerValoresTablaResultadosSorteo();
+           
         }
 
         private void establecerValoresTablaSorteos()
@@ -31,6 +36,12 @@ namespace Proyecto
                 dtSorteos.Rows.Add(new object[] { "Lotería", i.ToString(), "30/09/2019" });
             }
             dgvSorteos.DataSource = dtSorteos;
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.UseColumnTextForButtonValue = true;
+            btn.HeaderText = "Jugar";
+            btn.Name = "btn";
+            btn.Text = "Jugar";
+            dgvSorteos.Columns.Add(btn);
         }
 
         private void establecerValoresTablaResultadosSorteo()
@@ -44,6 +55,59 @@ namespace Proyecto
                 dtResultados.Rows.Add(new object[] { "42", i.ToString(), "1000000" });
             }
             dgvResultadosSorteo.DataSource = dtResultados;
+           
+        }
+
+        private void dgvSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                DialogResult dr = MessageBox.Show("¿Desea jugar este sorteo?", "Mensaje", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+                if (dr == DialogResult.Yes)
+                {
+                    this.dgvSorteos.Rows.RemoveAt(e.ColumnIndex);
+                    cambiarEstadoGifs(true);
+                    new Thread(jugarSorteo).Start();
+                    //hiloSorteo.Start();
+                    
+
+                }
+
+
+            }
+        }
+        public void escribirTextBox(String numero,String serie,String premio) {
+            tbNumero.Invoke((MethodInvoker)(() => tbNumero.Text = numero));
+            tbSerie.Invoke((MethodInvoker)(() => tbSerie.Text = serie));
+            tbPremio.Invoke((MethodInvoker)(() => tbPremio.Text = premio));
+
+        }
+
+        public void cambiarEstadoGifs(Boolean estado) {
+            if (!estado)
+            {
+                pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = false));
+                pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = false));
+                pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
+            }
+            else
+            {
+                pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = true));
+                pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = true));
+                pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = true));
+            }
+
+        }
+         void jugarSorteo() {
+            for (int i = 0;i<4;i++) {
+                escribirTextBox("0" + i, "0" + i+1,"10000");
+               
+                Thread.Sleep(2000);
+            
+            }
+            cambiarEstadoGifs(false);
+            MessageBox.Show("Sorteo jugado");
         }
     }
 }

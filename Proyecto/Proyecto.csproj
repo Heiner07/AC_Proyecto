@@ -154,5 +154,8 @@
   <ItemGroup>
     <None Include="Resources\BomboLoteria.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\bomboGif.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
