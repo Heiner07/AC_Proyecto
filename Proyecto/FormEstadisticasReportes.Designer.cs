@@ -30,7 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvSorteos = new System.Windows.Forms.DataGridView();
             this.dgvNumerosMasJugados = new System.Windows.Forms.DataGridView();
@@ -39,15 +38,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dgvTop5GanadoresPrimer = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvPorcentajeAparicion = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNumerosMasJugados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopNumeroDineroRepartido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTop5GanadoresPrimer)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPorcentajeAparicion)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,18 +81,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Principal";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dgvPorcentajeAparicion);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(630, 616);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Porcentaje números";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -185,6 +173,18 @@
             this.label1.TabIndex = 41;
             this.label1.Text = "Números más ganadores del primer premio";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dgvPorcentajeAparicion);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(630, 616);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Porcentaje números";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // dgvPorcentajeAparicion
             // 
             this.dgvPorcentajeAparicion.AllowUserToAddRows = false;
@@ -196,7 +196,7 @@
             this.dgvPorcentajeAparicion.Name = "dgvPorcentajeAparicion";
             this.dgvPorcentajeAparicion.ReadOnly = true;
             this.dgvPorcentajeAparicion.RowTemplate.Height = 24;
-            this.dgvPorcentajeAparicion.Size = new System.Drawing.Size(258, 575);
+            this.dgvPorcentajeAparicion.Size = new System.Drawing.Size(267, 575);
             this.dgvPorcentajeAparicion.TabIndex = 48;
             // 
             // label4
@@ -221,12 +221,12 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNumerosMasJugados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopNumeroDineroRepartido)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTop5GanadoresPrimer)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPorcentajeAparicion)).EndInit();
             this.ResumeLayout(false);
 

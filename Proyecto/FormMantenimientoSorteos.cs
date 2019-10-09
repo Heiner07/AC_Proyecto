@@ -12,7 +12,8 @@ namespace Proyecto
 {
     public partial class FormMantenimientoSorteos : Form
     {
-        private Point posicionPanelSorteos, posicionLbPremioAdicional, posicionNUDPremioAdicional;
+        private Point posicionPanelSorteos, posicionLbPremioAdicional, posicionNUDPremioAdicional,
+            posicionLbCantidad, posicionNUDCantidad;
       
         public FormMantenimientoSorteos()
         {
@@ -45,6 +46,12 @@ namespace Proyecto
             btn.Text = "Eliminar";
             dataGridViewSorteos.Columns.Add(btn);
 
+            dataGridViewSorteos.Columns[0].Width = 70;
+            dataGridViewSorteos.Columns[1].Width = 65;
+            dataGridViewSorteos.Columns[2].Width = 85;
+            dataGridViewSorteos.Columns[3].Width = 80;
+            dataGridViewSorteos.Columns[4].Width = 70;
+            dataGridViewSorteos.Columns[6].Width = 60;
         }
 
         
@@ -53,6 +60,11 @@ namespace Proyecto
         {
             posicionLbPremioAdicional = new Point(25, 3);
             posicionNUDPremioAdicional = new Point(29, 26);
+            posicionLbCantidad = new Point(175, 3);
+            posicionNUDCantidad = new Point(179, 26);
+            lbEditarSorteo.Visible = false;
+            btGuardar.Visible = false;
+            btCancelar.Visible = false;
             panelCrearSorteo.Visible = false;
             posicionPanelSorteos = panelSorteos.Location;
             panelSorteos.Location = panelCrearSorteo.Location;
@@ -74,6 +86,19 @@ namespace Proyecto
                 }
                 
 
+            }
+        }
+
+        private void btBorrarPlanPremios_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("¿Realmente desea borrar el plan de premio?", "Borrando plan de premios", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                nudPremio1.Value = 0;
+                nudPremio2.Value = 0;
+                nudPremio3.Value = 0;
+                panelPremiosAdicionales.Controls.Clear();
             }
         }
 
@@ -108,15 +133,31 @@ namespace Proyecto
                 Font = new Font("Arial", 10),
                 Location = posicionLbPremioAdicional
             };
+            Label lbCantidad = new Label
+            {
+                Text = "Cantidad",
+                Height = 19,
+                Width = 80,
+                Font = new Font("Arial", 10),
+                Location = posicionLbCantidad
+            };
             NumericUpDown nUDPremioAdicional = new NumericUpDown
             {
                 Height = 22,
                 Width = 140,
                 Location = posicionNUDPremioAdicional
             };
+            NumericUpDown nUDCantidad = new NumericUpDown
+            {
+                Height = 22,
+                Width = 80,
+                Location = posicionNUDCantidad
+            };
 
             panel.Controls.Add(lbPremioAdicional);
             panel.Controls.Add(nUDPremioAdicional);
+            panel.Controls.Add(lbCantidad);
+            panel.Controls.Add(nUDCantidad);
 
             panelPremiosAdicionales.Controls.Add(panel);
         }

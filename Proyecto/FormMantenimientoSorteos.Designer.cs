@@ -36,11 +36,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btAgregarPremioAdicional = new System.Windows.Forms.Button();
             this.panelPremiosAdicionales = new System.Windows.Forms.Panel();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.nudPremio3 = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.nudPremio2 = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.nudPremio1 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -55,12 +55,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelSorteos = new System.Windows.Forms.Panel();
+            this.btBorrarPlanPremios = new System.Windows.Forms.Button();
+            this.btGuardar = new System.Windows.Forms.Button();
+            this.btCancelar = new System.Windows.Forms.Button();
+            this.lbEditarSorteo = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).BeginInit();
             this.panelCrearSorteo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPremio3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPremio2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPremio1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panelSorteos.SuspendLayout();
@@ -68,6 +72,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.lbEditarSorteo);
             this.panel4.Controls.Add(this.btCrearNuevoSorteo);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -117,14 +122,17 @@
             // 
             // panelCrearSorteo
             // 
+            this.panelCrearSorteo.Controls.Add(this.btCancelar);
+            this.panelCrearSorteo.Controls.Add(this.btGuardar);
+            this.panelCrearSorteo.Controls.Add(this.btBorrarPlanPremios);
             this.panelCrearSorteo.Controls.Add(this.button2);
             this.panelCrearSorteo.Controls.Add(this.btAgregarPremioAdicional);
             this.panelCrearSorteo.Controls.Add(this.panelPremiosAdicionales);
-            this.panelCrearSorteo.Controls.Add(this.numericUpDown5);
+            this.panelCrearSorteo.Controls.Add(this.nudPremio3);
             this.panelCrearSorteo.Controls.Add(this.label9);
-            this.panelCrearSorteo.Controls.Add(this.numericUpDown4);
+            this.panelCrearSorteo.Controls.Add(this.nudPremio2);
             this.panelCrearSorteo.Controls.Add(this.label8);
-            this.panelCrearSorteo.Controls.Add(this.numericUpDown3);
+            this.panelCrearSorteo.Controls.Add(this.nudPremio1);
             this.panelCrearSorteo.Controls.Add(this.label7);
             this.panelCrearSorteo.Controls.Add(this.label6);
             this.panelCrearSorteo.Controls.Add(this.textBox1);
@@ -159,7 +167,7 @@
             // btAgregarPremioAdicional
             // 
             this.btAgregarPremioAdicional.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAgregarPremioAdicional.Location = new System.Drawing.Point(380, 362);
+            this.btAgregarPremioAdicional.Location = new System.Drawing.Point(360, 362);
             this.btAgregarPremioAdicional.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btAgregarPremioAdicional.Name = "btAgregarPremioAdicional";
             this.btAgregarPremioAdicional.Size = new System.Drawing.Size(236, 30);
@@ -171,61 +179,61 @@
             // panelPremiosAdicionales
             // 
             this.panelPremiosAdicionales.AutoScroll = true;
-            this.panelPremiosAdicionales.Location = new System.Drawing.Point(380, 210);
+            this.panelPremiosAdicionales.Location = new System.Drawing.Point(360, 210);
             this.panelPremiosAdicionales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelPremiosAdicionales.Name = "panelPremiosAdicionales";
-            this.panelPremiosAdicionales.Size = new System.Drawing.Size(249, 145);
+            this.panelPremiosAdicionales.Size = new System.Drawing.Size(282, 145);
             this.panelPremiosAdicionales.TabIndex = 39;
             // 
-            // numericUpDown5
+            // nudPremio3
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(409, 183);
-            this.numericUpDown5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(200, 22);
-            this.numericUpDown5.TabIndex = 38;
+            this.nudPremio3.Location = new System.Drawing.Point(389, 183);
+            this.nudPremio3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudPremio3.Name = "nudPremio3";
+            this.nudPremio3.Size = new System.Drawing.Size(200, 22);
+            this.nudPremio3.TabIndex = 38;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(405, 160);
+            this.label9.Location = new System.Drawing.Point(385, 160);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 19);
             this.label9.TabIndex = 37;
             this.label9.Text = "3° Premio";
             // 
-            // numericUpDown4
+            // nudPremio2
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(409, 129);
-            this.numericUpDown4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(200, 22);
-            this.numericUpDown4.TabIndex = 36;
+            this.nudPremio2.Location = new System.Drawing.Point(389, 129);
+            this.nudPremio2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudPremio2.Name = "nudPremio2";
+            this.nudPremio2.Size = new System.Drawing.Size(200, 22);
+            this.nudPremio2.TabIndex = 36;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(405, 106);
+            this.label8.Location = new System.Drawing.Point(385, 106);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(82, 19);
             this.label8.TabIndex = 35;
             this.label8.Text = "2° Premio";
             // 
-            // numericUpDown3
+            // nudPremio1
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(409, 69);
-            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(200, 22);
-            this.numericUpDown3.TabIndex = 34;
+            this.nudPremio1.Location = new System.Drawing.Point(389, 69);
+            this.nudPremio1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudPremio1.Name = "nudPremio1";
+            this.nudPremio1.Size = new System.Drawing.Size(200, 22);
+            this.nudPremio1.TabIndex = 34;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(405, 46);
+            this.label7.Location = new System.Drawing.Point(385, 46);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(82, 19);
             this.label7.TabIndex = 33;
@@ -235,7 +243,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(405, 15);
+            this.label6.Location = new System.Drawing.Point(385, 15);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(129, 19);
             this.label6.TabIndex = 32;
@@ -361,6 +369,50 @@
             this.panelSorteos.Size = new System.Drawing.Size(642, 177);
             this.panelSorteos.TabIndex = 2;
             // 
+            // btBorrarPlanPremios
+            // 
+            this.btBorrarPlanPremios.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btBorrarPlanPremios.Location = new System.Drawing.Point(551, 10);
+            this.btBorrarPlanPremios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btBorrarPlanPremios.Name = "btBorrarPlanPremios";
+            this.btBorrarPlanPremios.Size = new System.Drawing.Size(75, 28);
+            this.btBorrarPlanPremios.TabIndex = 42;
+            this.btBorrarPlanPremios.Text = "Borrar";
+            this.btBorrarPlanPremios.UseVisualStyleBackColor = true;
+            this.btBorrarPlanPremios.Click += new System.EventHandler(this.btBorrarPlanPremios_Click);
+            // 
+            // btGuardar
+            // 
+            this.btGuardar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btGuardar.Location = new System.Drawing.Point(19, 353);
+            this.btGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btGuardar.Name = "btGuardar";
+            this.btGuardar.Size = new System.Drawing.Size(91, 28);
+            this.btGuardar.TabIndex = 43;
+            this.btGuardar.Text = "Guardar";
+            this.btGuardar.UseVisualStyleBackColor = true;
+            // 
+            // btCancelar
+            // 
+            this.btCancelar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCancelar.Location = new System.Drawing.Point(124, 353);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(95, 28);
+            this.btCancelar.TabIndex = 44;
+            this.btCancelar.Text = "Cancelar";
+            this.btCancelar.UseVisualStyleBackColor = true;
+            // 
+            // lbEditarSorteo
+            // 
+            this.lbEditarSorteo.AutoSize = true;
+            this.lbEditarSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEditarSorteo.Location = new System.Drawing.Point(257, 18);
+            this.lbEditarSorteo.Name = "lbEditarSorteo";
+            this.lbEditarSorteo.Size = new System.Drawing.Size(123, 19);
+            this.lbEditarSorteo.TabIndex = 33;
+            this.lbEditarSorteo.Text = "Editando sorteo";
+            // 
             // FormMantenimientoSorteos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -374,12 +426,13 @@
             this.Name = "FormMantenimientoSorteos";
             this.Text = "FormMantenimientoSorteos";
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).EndInit();
             this.panelCrearSorteo.ResumeLayout(false);
             this.panelCrearSorteo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPremio3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPremio2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPremio1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panelSorteos.ResumeLayout(false);
@@ -399,11 +452,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btAgregarPremioAdicional;
         private System.Windows.Forms.Panel panelPremiosAdicionales;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.NumericUpDown nudPremio3;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown nudPremio2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown nudPremio1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox1;
@@ -417,5 +470,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btBorrarPlanPremios;
+        private System.Windows.Forms.Label lbEditarSorteo;
+        private System.Windows.Forms.Button btCancelar;
+        private System.Windows.Forms.Button btGuardar;
     }
 }
