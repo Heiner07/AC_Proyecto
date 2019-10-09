@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,8 +15,8 @@ namespace Proyecto
     public partial class FormJugar : Form
     {
         // Creando e inicializando el hilo
-       //Thread hiloSorteo = new Thread(jugarSorteo);
-         
+        //Thread hiloSorteo = new Thread(jugarSorteo);
+        bool var = true;
         public FormJugar()
         {
             InitializeComponent();
@@ -66,10 +67,11 @@ namespace Proyecto
                 if (dr == DialogResult.Yes)
                 {
                     this.dgvSorteos.Rows.RemoveAt(e.ColumnIndex);
-                    cambiarEstadoGifs(true);
+                    cambiarEstadoGifs();
                     Thread hiloSorteo = new Thread(new ThreadStart(jugarSorteo));
                     hiloSorteo.IsBackground = true;
                     hiloSorteo.Start();
+                    
                     //hiloSorteo.Start();
 
 
@@ -79,49 +81,84 @@ namespace Proyecto
             }
         }
 
-        private void escribirTextBox(String numero,String serie,String premio) {
+        private void escribirTextBoxNumero(String numero) {
             if (InvokeRequired)
             {
                 tbNumero.Invoke((MethodInvoker)(() => tbNumero.Text = numero));
+               
+            }
+
+        }
+        private void escribirTextBoxSerie(String serie)
+        {
+            if (InvokeRequired)
+            {
+               
                 tbSerie.Invoke((MethodInvoker)(() => tbSerie.Text = serie));
+            }
+
+        }
+        private void escribirTextBoxPremio(String premio)
+        {
+            if (InvokeRequired)
+            {
+                
                 tbPremio.Invoke((MethodInvoker)(() => tbPremio.Text = premio));
             }
 
         }
 
-        private void cambiarEstadoGifs(Boolean estado)
+        private void cambiarEstadoGifs()
         {
             
-                if (!estado)
-                {
-                    if (InvokeRequired)
-                    {
-                        pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = false));
-                        pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = false));
-                        pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
-                    }
-                }
-                else
-                {
+                
                     pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = true));
                     pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = true));
                     pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = true));
-                }
+                
             
 
         }
+
 
         private void jugarSorteo()
         {
             for (int i = 0; i<4; i++)
             {
-                escribirTextBox("0" + i, "0" + i+1,"10000");
+                if (var)
+                {
+                    Thread.Sleep(2500);
+                    pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = false));
+                    escribirTextBoxNumero("0" + i);
+                    Thread.Sleep(2600);
 
-                Thread.Sleep(3000);
-            
+                    pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = false));
+                    escribirTextBoxSerie("0" + i + 1);
+                    Thread.Sleep(2600);
+
+                    pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
+                    escribirTextBoxPremio("100000");
+                    Thread.Sleep(2000);
+                    escribirTextBoxNumero("");
+                    escribirTextBoxSerie("");
+                    escribirTextBoxPremio("");
+                    cambiarEstadoGifs();
+                }
+
             }
-            cambiarEstadoGifs(false);
+            pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = false));
+            pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = false));
+            pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
+            var = true;
             MessageBox.Show("Sorteo jugado");
         }
+
+        private void sorteoRapido_Click(object sender, EventArgs e)
+        {
+
+            var = false;
+        }
+
+        
     }
 }

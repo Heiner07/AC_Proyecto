@@ -45,6 +45,12 @@ namespace Proyecto
             btn.Name = "btn";
             btn.Text = "Eliminar";
             dataGridViewSorteos.Columns.Add(btn);
+            DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
+            btn2.UseColumnTextForButtonValue = true;
+            btn2.HeaderText = "Editar";
+            btn2.Name = "btn2";
+            btn2.Text = "Editar";
+            dataGridViewSorteos.Columns.Add(btn2);
 
             dataGridViewSorteos.Columns[0].Width = 70;
             dataGridViewSorteos.Columns[1].Width = 65;
