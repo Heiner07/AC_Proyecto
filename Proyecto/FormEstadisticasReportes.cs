@@ -31,6 +31,18 @@ namespace Proyecto
                 dtSorteos.Rows.Add(new object[] { "Lotería", i.ToString(), "30/09/2019", true });
             }
             dgvSorteos.DataSource = dtSorteos;
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.UseColumnTextForButtonValue = true;
+            btn.HeaderText = "Reporte";
+            btn.Name = "btn";
+            btn.Text = "resultados";
+            dgvSorteos.Columns.Add(btn);
+            DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
+            btn2.UseColumnTextForButtonValue = true;
+            btn2.HeaderText = "Reporte";
+            btn2.Name = "btn2";
+            btn2.Text = "plan de premios";
+            dgvSorteos.Columns.Add(btn2);
         }
 
         private void inicializarTablas()
