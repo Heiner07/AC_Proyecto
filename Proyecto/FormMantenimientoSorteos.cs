@@ -77,21 +77,67 @@ namespace Proyecto
             panelSorteos.Height += panelCrearSorteo.Height;
         }
 
+        private void establecerInterfazEditando()
+        {
+            lbEditarSorteo.Visible = true;
+            btGuardar.Visible = true;
+            btCancelar.Visible = true;
+            btCrearNuevoSorteo.Visible = false;
+            btCrear.Visible = false;
+        }
 
-       
+        private void salirInterfazEditando()
+        {
+            lbEditarSorteo.Visible = false;
+            btGuardar.Visible = false;
+            btCancelar.Visible = false;
+            btCrearNuevoSorteo.Visible = true;
+            btCrear.Visible = true;
+        }
+
+        private void ajustarPanelSorteo()
+        {
+            if (panelCrearSorteo.Visible)
+            {
+                panelSorteos.Location = panelCrearSorteo.Location;
+                panelSorteos.Height += panelCrearSorteo.Height;
+            }
+            else
+            {
+                panelSorteos.Location = posicionPanelSorteos;
+                panelSorteos.Height -= panelCrearSorteo.Height;
+            }
+        }
+
+        private void btGuardar_Click(object sender, EventArgs e)
+        {
+            salirInterfazEditando();
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            salirInterfazEditando();
+        }
+
         private void dataGridViewSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            Console.WriteLine(e.ColumnIndex);
             if (e.ColumnIndex == 0) {
                 DialogResult dr = MessageBox.Show("¿Desea eliminar este sorteo?", "Mensaje", MessageBoxButtons.YesNoCancel,MessageBoxIcon.Information);
 
                 if (dr == DialogResult.Yes)
                 {
-                    this.dataGridViewSorteos.Rows.RemoveAt(e.ColumnIndex);
+                    this.dataGridViewSorteos.Rows.RemoveAt(e.RowIndex);
                     
                 }
                 
-
+            }else if (e.ColumnIndex == 1)
+            {
+                establecerInterfazEditando();
+                if (!panelCrearSorteo.Visible) {
+                    ajustarPanelSorteo();
+                }
+                panelCrearSorteo.Visible = true;
             }
         }
 
@@ -110,17 +156,8 @@ namespace Proyecto
 
         private void btCrearNuevoSorteo_Click(object sender, EventArgs e)
         {
-            if (panelCrearSorteo.Visible)
-            {
-                panelSorteos.Location = panelCrearSorteo.Location;
-                panelSorteos.Height += panelCrearSorteo.Height;
-            }
-            else
-            {
-                panelSorteos.Location = posicionPanelSorteos;
-                panelSorteos.Height -= panelCrearSorteo.Height;
-            }
-            
+            ajustarPanelSorteo();
+
             panelCrearSorteo.Visible = !panelCrearSorteo.Visible;
         }
 

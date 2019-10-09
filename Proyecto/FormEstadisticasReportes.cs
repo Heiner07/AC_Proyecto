@@ -43,6 +43,12 @@ namespace Proyecto
             btn2.Name = "btn2";
             btn2.Text = "plan de premios";
             dgvSorteos.Columns.Add(btn2);
+
+            dgvSorteos.Columns[0].Width = 70;
+            dgvSorteos.Columns[1].Width = 65;
+            dgvSorteos.Columns[2].Width = 85;
+            dgvSorteos.Columns[3].Width = 80;
+            dgvSorteos.Columns[5].Width = 120;
         }
 
         private void inicializarTablas()

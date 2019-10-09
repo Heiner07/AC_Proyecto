@@ -183,7 +183,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(642, 650);
+            this.ClientSize = new System.Drawing.Size(798, 655);
             this.Controls.Add(this.tbMontoGanado);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btConsultar);

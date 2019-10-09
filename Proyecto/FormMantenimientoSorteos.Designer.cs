@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lbEditarSorteo = new System.Windows.Forms.Label();
             this.btCrearNuevoSorteo = new System.Windows.Forms.Button();
             this.dataGridViewSorteos = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.panelCrearSorteo = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btCancelar = new System.Windows.Forms.Button();
+            this.btGuardar = new System.Windows.Forms.Button();
+            this.btBorrarPlanPremios = new System.Windows.Forms.Button();
+            this.btCrear = new System.Windows.Forms.Button();
             this.btAgregarPremioAdicional = new System.Windows.Forms.Button();
             this.panelPremiosAdicionales = new System.Windows.Forms.Panel();
             this.nudPremio3 = new System.Windows.Forms.NumericUpDown();
@@ -55,10 +59,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelSorteos = new System.Windows.Forms.Panel();
-            this.btBorrarPlanPremios = new System.Windows.Forms.Button();
-            this.btGuardar = new System.Windows.Forms.Button();
-            this.btCancelar = new System.Windows.Forms.Button();
-            this.lbEditarSorteo = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).BeginInit();
             this.panelCrearSorteo.SuspendLayout();
@@ -78,8 +78,18 @@
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(642, 54);
+            this.panel4.Size = new System.Drawing.Size(798, 54);
             this.panel4.TabIndex = 1;
+            // 
+            // lbEditarSorteo
+            // 
+            this.lbEditarSorteo.AutoSize = true;
+            this.lbEditarSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEditarSorteo.Location = new System.Drawing.Point(257, 18);
+            this.lbEditarSorteo.Name = "lbEditarSorteo";
+            this.lbEditarSorteo.Size = new System.Drawing.Size(123, 19);
+            this.lbEditarSorteo.TabIndex = 33;
+            this.lbEditarSorteo.Text = "Editando sorteo";
             // 
             // btCrearNuevoSorteo
             // 
@@ -106,7 +116,7 @@
             this.dataGridViewSorteos.Name = "dataGridViewSorteos";
             this.dataGridViewSorteos.ReadOnly = true;
             this.dataGridViewSorteos.RowTemplate.Height = 24;
-            this.dataGridViewSorteos.Size = new System.Drawing.Size(621, 143);
+            this.dataGridViewSorteos.Size = new System.Drawing.Size(777, 148);
             this.dataGridViewSorteos.TabIndex = 2;
             this.dataGridViewSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSorteos_CellClick);
             // 
@@ -125,7 +135,7 @@
             this.panelCrearSorteo.Controls.Add(this.btCancelar);
             this.panelCrearSorteo.Controls.Add(this.btGuardar);
             this.panelCrearSorteo.Controls.Add(this.btBorrarPlanPremios);
-            this.panelCrearSorteo.Controls.Add(this.button2);
+            this.panelCrearSorteo.Controls.Add(this.btCrear);
             this.panelCrearSorteo.Controls.Add(this.btAgregarPremioAdicional);
             this.panelCrearSorteo.Controls.Add(this.panelPremiosAdicionales);
             this.panelCrearSorteo.Controls.Add(this.nudPremio3);
@@ -150,24 +160,60 @@
             this.panelCrearSorteo.Location = new System.Drawing.Point(0, 54);
             this.panelCrearSorteo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelCrearSorteo.Name = "panelCrearSorteo";
-            this.panelCrearSorteo.Size = new System.Drawing.Size(642, 404);
+            this.panelCrearSorteo.Size = new System.Drawing.Size(798, 404);
             this.panelCrearSorteo.TabIndex = 0;
             // 
-            // button2
+            // btCancelar
             // 
-            this.button2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(19, 321);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 28);
-            this.button2.TabIndex = 41;
-            this.button2.Text = "Crear";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btCancelar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCancelar.Location = new System.Drawing.Point(124, 353);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(95, 28);
+            this.btCancelar.TabIndex = 44;
+            this.btCancelar.Text = "Cancelar";
+            this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
+            // 
+            // btGuardar
+            // 
+            this.btGuardar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btGuardar.Location = new System.Drawing.Point(19, 353);
+            this.btGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btGuardar.Name = "btGuardar";
+            this.btGuardar.Size = new System.Drawing.Size(91, 28);
+            this.btGuardar.TabIndex = 43;
+            this.btGuardar.Text = "Guardar";
+            this.btGuardar.UseVisualStyleBackColor = true;
+            this.btGuardar.Click += new System.EventHandler(this.btGuardar_Click);
+            // 
+            // btBorrarPlanPremios
+            // 
+            this.btBorrarPlanPremios.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btBorrarPlanPremios.Location = new System.Drawing.Point(551, 10);
+            this.btBorrarPlanPremios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btBorrarPlanPremios.Name = "btBorrarPlanPremios";
+            this.btBorrarPlanPremios.Size = new System.Drawing.Size(75, 28);
+            this.btBorrarPlanPremios.TabIndex = 42;
+            this.btBorrarPlanPremios.Text = "Borrar";
+            this.btBorrarPlanPremios.UseVisualStyleBackColor = true;
+            this.btBorrarPlanPremios.Click += new System.EventHandler(this.btBorrarPlanPremios_Click);
+            // 
+            // btCrear
+            // 
+            this.btCrear.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCrear.Location = new System.Drawing.Point(19, 321);
+            this.btCrear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btCrear.Name = "btCrear";
+            this.btCrear.Size = new System.Drawing.Size(75, 28);
+            this.btCrear.TabIndex = 41;
+            this.btCrear.Text = "Crear";
+            this.btCrear.UseVisualStyleBackColor = true;
             // 
             // btAgregarPremioAdicional
             // 
             this.btAgregarPremioAdicional.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAgregarPremioAdicional.Location = new System.Drawing.Point(360, 362);
+            this.btAgregarPremioAdicional.Location = new System.Drawing.Point(389, 364);
             this.btAgregarPremioAdicional.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btAgregarPremioAdicional.Name = "btAgregarPremioAdicional";
             this.btAgregarPremioAdicional.Size = new System.Drawing.Size(236, 30);
@@ -366,59 +412,15 @@
             this.panelSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSorteos.MinimumSize = new System.Drawing.Size(632, 177);
             this.panelSorteos.Name = "panelSorteos";
-            this.panelSorteos.Size = new System.Drawing.Size(642, 177);
+            this.panelSorteos.Size = new System.Drawing.Size(798, 182);
             this.panelSorteos.TabIndex = 2;
-            // 
-            // btBorrarPlanPremios
-            // 
-            this.btBorrarPlanPremios.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBorrarPlanPremios.Location = new System.Drawing.Point(551, 10);
-            this.btBorrarPlanPremios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btBorrarPlanPremios.Name = "btBorrarPlanPremios";
-            this.btBorrarPlanPremios.Size = new System.Drawing.Size(75, 28);
-            this.btBorrarPlanPremios.TabIndex = 42;
-            this.btBorrarPlanPremios.Text = "Borrar";
-            this.btBorrarPlanPremios.UseVisualStyleBackColor = true;
-            this.btBorrarPlanPremios.Click += new System.EventHandler(this.btBorrarPlanPremios_Click);
-            // 
-            // btGuardar
-            // 
-            this.btGuardar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btGuardar.Location = new System.Drawing.Point(19, 353);
-            this.btGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btGuardar.Name = "btGuardar";
-            this.btGuardar.Size = new System.Drawing.Size(91, 28);
-            this.btGuardar.TabIndex = 43;
-            this.btGuardar.Text = "Guardar";
-            this.btGuardar.UseVisualStyleBackColor = true;
-            // 
-            // btCancelar
-            // 
-            this.btCancelar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCancelar.Location = new System.Drawing.Point(124, 353);
-            this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(95, 28);
-            this.btCancelar.TabIndex = 44;
-            this.btCancelar.Text = "Cancelar";
-            this.btCancelar.UseVisualStyleBackColor = true;
-            // 
-            // lbEditarSorteo
-            // 
-            this.lbEditarSorteo.AutoSize = true;
-            this.lbEditarSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEditarSorteo.Location = new System.Drawing.Point(257, 18);
-            this.lbEditarSorteo.Name = "lbEditarSorteo";
-            this.lbEditarSorteo.Size = new System.Drawing.Size(123, 19);
-            this.lbEditarSorteo.TabIndex = 33;
-            this.lbEditarSorteo.Text = "Editando sorteo";
             // 
             // FormMantenimientoSorteos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(642, 650);
+            this.ClientSize = new System.Drawing.Size(798, 655);
             this.Controls.Add(this.panelSorteos);
             this.Controls.Add(this.panelCrearSorteo);
             this.Controls.Add(this.panel4);
@@ -449,7 +451,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panelCrearSorteo;
         private System.Windows.Forms.Panel panelSorteos;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btCrear;
         private System.Windows.Forms.Button btAgregarPremioAdicional;
         private System.Windows.Forms.Panel panelPremiosAdicionales;
         private System.Windows.Forms.NumericUpDown nudPremio3;
