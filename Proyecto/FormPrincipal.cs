@@ -13,12 +13,15 @@ namespace Proyecto
     public partial class FormPrincipal : Form
     {
         private Form formularioActivo = null;
+        SistemaLoteriaChances sistemaLC = new SistemaLoteriaChances();
 
         public FormPrincipal()
         {
             InitializeComponent();
-            establecerEstadoBotones(false);
+            establecerEstadoBotones(1,false);
             panelCerrarSesion.Visible = false;
+            tbContrasenia.PasswordChar = '*';
+            tbContrasenia.MaxLength = 10;
         }
 
         private void personalizarDiseno()
@@ -26,12 +29,20 @@ namespace Proyecto
             
         }
 
-        private void establecerEstadoBotones(Boolean estado)
+        private void establecerEstadoBotones(int rol,Boolean estado)
         {
-            btSorteos.Enabled = estado;
-            btJugar.Enabled = estado;
-            btResultados.Enabled = estado;
-            btEstadisticasReportes.Enabled = estado;
+            if (rol == 0)
+            {
+                btResultados.Enabled = estado;
+                btEstadisticasReportes.Enabled = estado;
+            }
+            else {
+                btSorteos.Enabled = estado;
+                btJugar.Enabled = estado;
+                btResultados.Enabled = estado;
+                btEstadisticasReportes.Enabled = estado;
+            }
+           
         }
 
         private void abrirFormularioHijo(Form formularioHijo)
@@ -73,20 +84,36 @@ namespace Proyecto
 
         private void btIniciarSesion_Click(object sender, EventArgs e)
         {
-            establecerEstadoBotones(true);
-            panelIniciarSesion.Visible = false;
-            panelCerrarSesion.Visible = true;
+            Usuario usuario = sistemaLC.iniciarSesion(tbUsuario.Text,tbContrasenia.Text);
+            int rol = usuario.obtenerRol();
+            if (rol != -1)
+            {
+                establecerEstadoBotones(rol, true);
+                panelIniciarSesion.Visible = false;
+                panelCerrarSesion.Visible = true;
+                lbModo.Text = usuario.obtenerNombre();
+            }
+            else {
+                MessageBox.Show("ERROR AL ENTRAR AL SISTEMA");
+               
+            }
+
         }
+       
 
         private void btCerrarSesion_Click(object sender, EventArgs e)
         {
-            establecerEstadoBotones(false);
+            establecerEstadoBotones(1,false);
             panelIniciarSesion.Visible = true;
             panelCerrarSesion.Visible = false;
+            tbContrasenia.Text = "";
+            tbUsuario.Text = "";
             if (formularioActivo != null)
             {
                 formularioActivo.Dispose();
             }
         }
+
+        
     }
 }

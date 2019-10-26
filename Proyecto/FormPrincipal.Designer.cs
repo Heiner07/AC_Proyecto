@@ -33,12 +33,12 @@
             this.panelCerrarSesion = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btCerrarSesion = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbModo = new System.Windows.Forms.Label();
             this.panelIniciarSesion = new System.Windows.Forms.Panel();
             this.btIniciarSesion = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbContrasenia = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btEstadisticasReportes = new System.Windows.Forms.Button();
             this.btResultados = new System.Windows.Forms.Button();
@@ -95,7 +95,7 @@
             this.panelCerrarSesion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelCerrarSesion.Controls.Add(this.pictureBox3);
             this.panelCerrarSesion.Controls.Add(this.btCerrarSesion);
-            this.panelCerrarSesion.Controls.Add(this.label3);
+            this.panelCerrarSesion.Controls.Add(this.lbModo);
             this.panelCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelCerrarSesion.Location = new System.Drawing.Point(0, 317);
             this.panelCerrarSesion.Name = "panelCerrarSesion";
@@ -128,23 +128,23 @@
             this.btCerrarSesion.UseVisualStyleBackColor = false;
             this.btCerrarSesion.Click += new System.EventHandler(this.btCerrarSesion_Click);
             // 
-            // label3
+            // lbModo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(102, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 19);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Usuario";
+            this.lbModo.AutoSize = true;
+            this.lbModo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbModo.Location = new System.Drawing.Point(102, 24);
+            this.lbModo.Name = "lbModo";
+            this.lbModo.Size = new System.Drawing.Size(65, 19);
+            this.lbModo.TabIndex = 1;
+            this.lbModo.Text = "Usuario";
             // 
             // panelIniciarSesion
             // 
             this.panelIniciarSesion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelIniciarSesion.Controls.Add(this.btIniciarSesion);
-            this.panelIniciarSesion.Controls.Add(this.textBox2);
+            this.panelIniciarSesion.Controls.Add(this.tbContrasenia);
             this.panelIniciarSesion.Controls.Add(this.label2);
-            this.panelIniciarSesion.Controls.Add(this.textBox1);
+            this.panelIniciarSesion.Controls.Add(this.tbUsuario);
             this.panelIniciarSesion.Controls.Add(this.label1);
             this.panelIniciarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelIniciarSesion.Location = new System.Drawing.Point(0, 483);
@@ -168,12 +168,12 @@
             this.btIniciarSesion.UseVisualStyleBackColor = false;
             this.btIniciarSesion.Click += new System.EventHandler(this.btIniciarSesion_Click);
             // 
-            // textBox2
+            // tbContrasenia
             // 
-            this.textBox2.Location = new System.Drawing.Point(7, 92);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(258, 22);
-            this.textBox2.TabIndex = 3;
+            this.tbContrasenia.Location = new System.Drawing.Point(7, 92);
+            this.tbContrasenia.Name = "tbContrasenia";
+            this.tbContrasenia.Size = new System.Drawing.Size(258, 22);
+            this.tbContrasenia.TabIndex = 3;
             // 
             // label2
             // 
@@ -185,12 +185,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Contraseña";
             // 
-            // textBox1
+            // tbUsuario
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(258, 22);
-            this.textBox1.TabIndex = 1;
+            this.tbUsuario.Location = new System.Drawing.Point(7, 35);
+            this.tbUsuario.Name = "tbUsuario";
+            this.tbUsuario.Size = new System.Drawing.Size(258, 22);
+            this.tbUsuario.TabIndex = 1;
             // 
             // label1
             // 
@@ -373,13 +373,13 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panelIniciarSesion;
         private System.Windows.Forms.Button btIniciarSesion;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbContrasenia;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbUsuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelCerrarSesion;
         private System.Windows.Forms.Button btCerrarSesion;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbModo;
         private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

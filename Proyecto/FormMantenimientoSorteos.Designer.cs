@@ -33,7 +33,7 @@
             this.dataGridViewSorteos = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.panelCrearSorteo = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btCrearSorteo = new System.Windows.Forms.Button();
             this.btAgregarPremioAdicional = new System.Windows.Forms.Button();
             this.panelPremiosAdicionales = new System.Windows.Forms.Panel();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
@@ -100,6 +100,7 @@
             this.dataGridViewSorteos.MultiSelect = false;
             this.dataGridViewSorteos.Name = "dataGridViewSorteos";
             this.dataGridViewSorteos.ReadOnly = true;
+            this.dataGridViewSorteos.RowHeadersWidth = 51;
             this.dataGridViewSorteos.RowTemplate.Height = 24;
             this.dataGridViewSorteos.Size = new System.Drawing.Size(621, 143);
             this.dataGridViewSorteos.TabIndex = 2;
@@ -117,7 +118,7 @@
             // 
             // panelCrearSorteo
             // 
-            this.panelCrearSorteo.Controls.Add(this.button2);
+            this.panelCrearSorteo.Controls.Add(this.btCrearSorteo);
             this.panelCrearSorteo.Controls.Add(this.btAgregarPremioAdicional);
             this.panelCrearSorteo.Controls.Add(this.panelPremiosAdicionales);
             this.panelCrearSorteo.Controls.Add(this.numericUpDown5);
@@ -145,16 +146,17 @@
             this.panelCrearSorteo.Size = new System.Drawing.Size(642, 404);
             this.panelCrearSorteo.TabIndex = 0;
             // 
-            // button2
+            // btCrearSorteo
             // 
-            this.button2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(19, 321);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 28);
-            this.button2.TabIndex = 41;
-            this.button2.Text = "Crear";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btCrearSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCrearSorteo.Location = new System.Drawing.Point(19, 321);
+            this.btCrearSorteo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btCrearSorteo.Name = "btCrearSorteo";
+            this.btCrearSorteo.Size = new System.Drawing.Size(75, 28);
+            this.btCrearSorteo.TabIndex = 41;
+            this.btCrearSorteo.Text = "Crear";
+            this.btCrearSorteo.UseVisualStyleBackColor = true;
+            this.btCrearSorteo.Click += new System.EventHandler(this.btCrearSorteo_Click);
             // 
             // btAgregarPremioAdicional
             // 
@@ -396,7 +398,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panelCrearSorteo;
         private System.Windows.Forms.Panel panelSorteos;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btCrearSorteo;
         private System.Windows.Forms.Button btAgregarPremioAdicional;
         private System.Windows.Forms.Panel panelPremiosAdicionales;
         private System.Windows.Forms.NumericUpDown numericUpDown5;

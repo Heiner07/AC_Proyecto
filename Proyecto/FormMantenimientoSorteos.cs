@@ -83,6 +83,12 @@ namespace Proyecto
             }
         }
 
+        private void btCrearSorteo_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
         private void btCrearNuevoSorteo_Click(object sender, EventArgs e)
         {
             if (panelCrearSorteo.Visible)
