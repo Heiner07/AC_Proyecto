@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelCerrarSesion = new System.Windows.Forms.Panel();
@@ -69,7 +70,7 @@
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.MinimumSize = new System.Drawing.Size(300, 653);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(300, 673);
+            this.panelMenu.Size = new System.Drawing.Size(300, 678);
             this.panelMenu.TabIndex = 0;
             // 
             // panel1
@@ -87,7 +88,7 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(282, 649);
+            this.panel1.Size = new System.Drawing.Size(282, 654);
             this.panel1.TabIndex = 0;
             // 
             // panelCerrarSesion
@@ -97,7 +98,7 @@
             this.panelCerrarSesion.Controls.Add(this.btCerrarSesion);
             this.panelCerrarSesion.Controls.Add(this.lbModo);
             this.panelCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelCerrarSesion.Location = new System.Drawing.Point(0, 317);
+            this.panelCerrarSesion.Location = new System.Drawing.Point(0, 322);
             this.panelCerrarSesion.Name = "panelCerrarSesion";
             this.panelCerrarSesion.Size = new System.Drawing.Size(282, 166);
             this.panelCerrarSesion.TabIndex = 11;
@@ -147,7 +148,7 @@
             this.panelIniciarSesion.Controls.Add(this.tbUsuario);
             this.panelIniciarSesion.Controls.Add(this.label1);
             this.panelIniciarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelIniciarSesion.Location = new System.Drawing.Point(0, 483);
+            this.panelIniciarSesion.Location = new System.Drawing.Point(0, 488);
             this.panelIniciarSesion.Name = "panelIniciarSesion";
             this.panelIniciarSesion.Size = new System.Drawing.Size(282, 166);
             this.panelIniciarSesion.TabIndex = 10;
@@ -307,14 +308,14 @@
             this.panelPrincipal.Controls.Add(this.pictureBox2);
             this.panelPrincipal.Location = new System.Drawing.Point(6, 12);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(642, 650);
+            this.panelPrincipal.Size = new System.Drawing.Size(798, 655);
             this.panelPrincipal.TabIndex = 1;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = global::Proyecto.Properties.Resources.LogoJPS;
-            this.pictureBox2.Location = new System.Drawing.Point(182, 164);
+            this.pictureBox2.Location = new System.Drawing.Point(260, 166);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(300, 300);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -328,16 +329,17 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(300, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(661, 673);
+            this.panel3.Size = new System.Drawing.Size(817, 678);
             this.panel3.TabIndex = 2;
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(961, 673);
+            this.ClientSize = new System.Drawing.Size(1117, 678);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(950, 700);
             this.Name = "FormPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
