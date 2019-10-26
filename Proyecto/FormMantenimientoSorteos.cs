@@ -99,13 +99,13 @@ namespace Proyecto
         {
             if (panelCrearSorteo.Visible)
             {
-                panelSorteos.Location = panelCrearSorteo.Location;
                 panelSorteos.Height += panelCrearSorteo.Height;
+                panelSorteos.Location = new Point(panelSorteos.Location.X, panelCrearSorteo.Location.Y);
             }
             else
             {
-                panelSorteos.Location = posicionPanelSorteos;
                 panelSorteos.Height -= panelCrearSorteo.Height;
+                panelSorteos.Location = new Point(panelSorteos.Location.X, posicionPanelSorteos.Y);
             }
         }
 

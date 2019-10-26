@@ -72,9 +72,9 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel4.Controls.Add(this.lbEditarSorteo);
             this.panel4.Controls.Add(this.btCrearNuevoSorteo);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
@@ -106,9 +106,8 @@
             // dataGridViewSorteos
             // 
             this.dataGridViewSorteos.AllowUserToAddRows = false;
-            this.dataGridViewSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dataGridViewSorteos.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewSorteos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSorteos.Location = new System.Drawing.Point(9, 31);
             this.dataGridViewSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -132,6 +131,7 @@
             // 
             // panelCrearSorteo
             // 
+            this.panelCrearSorteo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelCrearSorteo.Controls.Add(this.btCancelar);
             this.panelCrearSorteo.Controls.Add(this.btGuardar);
             this.panelCrearSorteo.Controls.Add(this.btBorrarPlanPremios);
@@ -156,7 +156,6 @@
             this.panelCrearSorteo.Controls.Add(this.label3);
             this.panelCrearSorteo.Controls.Add(this.label2);
             this.panelCrearSorteo.Controls.Add(this.label1);
-            this.panelCrearSorteo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCrearSorteo.Location = new System.Drawing.Point(0, 54);
             this.panelCrearSorteo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelCrearSorteo.Name = "panelCrearSorteo";
@@ -403,9 +402,7 @@
             // 
             // panelSorteos
             // 
-            this.panelSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panelSorteos.Controls.Add(this.label10);
             this.panelSorteos.Controls.Add(this.dataGridViewSorteos);
             this.panelSorteos.Location = new System.Drawing.Point(3, 464);

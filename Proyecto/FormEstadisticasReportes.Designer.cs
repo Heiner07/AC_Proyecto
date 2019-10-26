@@ -53,9 +53,7 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(1, 2);
@@ -88,7 +86,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(11, 372);
+            this.label10.Location = new System.Drawing.Point(88, 373);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(141, 19);
             this.label10.TabIndex = 48;
@@ -101,21 +99,23 @@
             this.dgvSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSorteos.BackgroundColor = System.Drawing.Color.White;
             this.dgvSorteos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSorteos.Location = new System.Drawing.Point(15, 394);
+            this.dgvSorteos.Location = new System.Drawing.Point(92, 395);
             this.dgvSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvSorteos.Name = "dgvSorteos";
             this.dgvSorteos.ReadOnly = true;
             this.dgvSorteos.RowTemplate.Height = 24;
-            this.dgvSorteos.Size = new System.Drawing.Size(754, 222);
+            this.dgvSorteos.Size = new System.Drawing.Size(604, 222);
             this.dgvSorteos.TabIndex = 47;
             // 
             // dgvNumerosMasJugados
             // 
             this.dgvNumerosMasJugados.AllowUserToAddRows = false;
             this.dgvNumerosMasJugados.AllowUserToDeleteRows = false;
+            this.dgvNumerosMasJugados.BackgroundColor = System.Drawing.Color.White;
             this.dgvNumerosMasJugados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNumerosMasJugados.Location = new System.Drawing.Point(15, 25);
+            this.dgvNumerosMasJugados.Location = new System.Drawing.Point(92, 26);
             this.dgvNumerosMasJugados.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvNumerosMasJugados.Name = "dgvNumerosMasJugados";
             this.dgvNumerosMasJugados.ReadOnly = true;
@@ -127,7 +127,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 2);
+            this.label3.Location = new System.Drawing.Point(88, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(170, 19);
             this.label3.TabIndex = 45;
@@ -137,8 +137,9 @@
             // 
             this.dgvTopNumeroDineroRepartido.AllowUserToAddRows = false;
             this.dgvTopNumeroDineroRepartido.AllowUserToDeleteRows = false;
+            this.dgvTopNumeroDineroRepartido.BackgroundColor = System.Drawing.Color.White;
             this.dgvTopNumeroDineroRepartido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTopNumeroDineroRepartido.Location = new System.Drawing.Point(299, 210);
+            this.dgvTopNumeroDineroRepartido.Location = new System.Drawing.Point(376, 211);
             this.dgvTopNumeroDineroRepartido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTopNumeroDineroRepartido.Name = "dgvTopNumeroDineroRepartido";
             this.dgvTopNumeroDineroRepartido.ReadOnly = true;
@@ -150,7 +151,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(295, 190);
+            this.label2.Location = new System.Drawing.Point(372, 191);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(278, 19);
             this.label2.TabIndex = 43;
@@ -160,8 +161,9 @@
             // 
             this.dgvTop5GanadoresPrimer.AllowUserToAddRows = false;
             this.dgvTop5GanadoresPrimer.AllowUserToDeleteRows = false;
+            this.dgvTop5GanadoresPrimer.BackgroundColor = System.Drawing.Color.White;
             this.dgvTop5GanadoresPrimer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTop5GanadoresPrimer.Location = new System.Drawing.Point(299, 25);
+            this.dgvTop5GanadoresPrimer.Location = new System.Drawing.Point(376, 26);
             this.dgvTop5GanadoresPrimer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTop5GanadoresPrimer.Name = "dgvTop5GanadoresPrimer";
             this.dgvTop5GanadoresPrimer.ReadOnly = true;
@@ -173,7 +175,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(295, 2);
+            this.label1.Location = new System.Drawing.Point(372, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(324, 19);
             this.label1.TabIndex = 41;
@@ -187,7 +189,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(629, 616);
+            this.tabPage2.Size = new System.Drawing.Size(784, 621);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Porcentaje números";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -198,8 +200,9 @@
             this.dgvPorcentajeAparicion.AllowUserToDeleteRows = false;
             this.dgvPorcentajeAparicion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvPorcentajeAparicion.BackgroundColor = System.Drawing.Color.White;
             this.dgvPorcentajeAparicion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPorcentajeAparicion.Location = new System.Drawing.Point(11, 34);
+            this.dgvPorcentajeAparicion.Location = new System.Drawing.Point(272, 35);
             this.dgvPorcentajeAparicion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvPorcentajeAparicion.Name = "dgvPorcentajeAparicion";
             this.dgvPorcentajeAparicion.ReadOnly = true;
@@ -211,7 +214,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(7, 14);
+            this.label4.Location = new System.Drawing.Point(268, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(183, 19);
             this.label4.TabIndex = 47;

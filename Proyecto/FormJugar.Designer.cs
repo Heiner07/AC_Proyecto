@@ -59,25 +59,24 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.dgvSorteos);
             this.panel1.Controls.Add(this.radioButton3);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(4, 2);
+            this.panel1.Location = new System.Drawing.Point(155, 3);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(625, 279);
+            this.panel1.Size = new System.Drawing.Size(518, 284);
             this.panel1.TabIndex = 0;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(8, 58);
+            this.label10.Location = new System.Drawing.Point(8, 64);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(230, 19);
             this.label10.TabIndex = 42;
@@ -89,17 +88,16 @@
             this.dgvSorteos.AllowUserToDeleteRows = false;
             this.dgvSorteos.AllowUserToResizeColumns = false;
             this.dgvSorteos.AllowUserToResizeRows = false;
-            this.dgvSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dgvSorteos.BackgroundColor = System.Drawing.Color.White;
             this.dgvSorteos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSorteos.Location = new System.Drawing.Point(12, 80);
+            this.dgvSorteos.Location = new System.Drawing.Point(12, 85);
             this.dgvSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvSorteos.Name = "dgvSorteos";
             this.dgvSorteos.ReadOnly = true;
             this.dgvSorteos.RowHeadersWidth = 51;
             this.dgvSorteos.RowTemplate.Height = 24;
-            this.dgvSorteos.Size = new System.Drawing.Size(591, 176);
+            this.dgvSorteos.Size = new System.Drawing.Size(479, 181);
             this.dgvSorteos.TabIndex = 41;
             this.dgvSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSorteos_CellClick);
             // 
@@ -107,7 +105,7 @@
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(12, 28);
+            this.radioButton3.Location = new System.Drawing.Point(12, 34);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(69, 21);
@@ -119,7 +117,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(205, 28);
+            this.radioButton2.Location = new System.Drawing.Point(205, 34);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(84, 21);
@@ -130,7 +128,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(107, 28);
+            this.radioButton1.Location = new System.Drawing.Point(107, 34);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(73, 21);
@@ -142,7 +140,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 6);
+            this.label1.Location = new System.Drawing.Point(8, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 19);
             this.label1.TabIndex = 36;
@@ -150,8 +148,7 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel2.Controls.Add(this.sorteoRapido);
             this.panel2.Controls.Add(this.tbPremio);
             this.panel2.Controls.Add(this.tbSerie);
@@ -164,16 +161,16 @@
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(4, 286);
+            this.panel2.Location = new System.Drawing.Point(155, 300);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(625, 357);
+            this.panel2.Size = new System.Drawing.Size(518, 344);
             this.panel2.TabIndex = 1;
             // 
             // sorteoRapido
             // 
-            this.sorteoRapido.Location = new System.Drawing.Point(364, 113);
-            this.sorteoRapido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sorteoRapido.Location = new System.Drawing.Point(364, 116);
+            this.sorteoRapido.Margin = new System.Windows.Forms.Padding(4);
             this.sorteoRapido.Name = "sorteoRapido";
             this.sorteoRapido.Size = new System.Drawing.Size(127, 25);
             this.sorteoRapido.TabIndex = 46;
@@ -183,7 +180,7 @@
             // 
             // tbPremio
             // 
-            this.tbPremio.Location = new System.Drawing.Point(265, 114);
+            this.tbPremio.Location = new System.Drawing.Point(265, 117);
             this.tbPremio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPremio.Name = "tbPremio";
             this.tbPremio.ReadOnly = true;
@@ -192,7 +189,7 @@
             // 
             // tbSerie
             // 
-            this.tbSerie.Location = new System.Drawing.Point(151, 114);
+            this.tbSerie.Location = new System.Drawing.Point(151, 117);
             this.tbSerie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSerie.Name = "tbSerie";
             this.tbSerie.ReadOnly = true;
@@ -201,7 +198,7 @@
             // 
             // tbNumero
             // 
-            this.tbNumero.Location = new System.Drawing.Point(37, 114);
+            this.tbNumero.Location = new System.Drawing.Point(37, 117);
             this.tbNumero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbNumero.Name = "tbNumero";
             this.tbNumero.ReadOnly = true;
@@ -214,24 +211,23 @@
             this.dgvResultadosSorteo.AllowUserToDeleteRows = false;
             this.dgvResultadosSorteo.AllowUserToResizeColumns = false;
             this.dgvResultadosSorteo.AllowUserToResizeRows = false;
-            this.dgvResultadosSorteo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvResultadosSorteo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dgvResultadosSorteo.BackgroundColor = System.Drawing.Color.White;
             this.dgvResultadosSorteo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResultadosSorteo.Location = new System.Drawing.Point(12, 174);
+            this.dgvResultadosSorteo.Location = new System.Drawing.Point(12, 177);
             this.dgvResultadosSorteo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvResultadosSorteo.Name = "dgvResultadosSorteo";
             this.dgvResultadosSorteo.ReadOnly = true;
             this.dgvResultadosSorteo.RowHeadersWidth = 51;
             this.dgvResultadosSorteo.RowTemplate.Height = 24;
-            this.dgvResultadosSorteo.Size = new System.Drawing.Size(591, 160);
+            this.dgvResultadosSorteo.Size = new System.Drawing.Size(479, 156);
             this.dgvResultadosSorteo.TabIndex = 42;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 153);
+            this.label5.Location = new System.Drawing.Point(8, 156);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(164, 19);
             this.label5.TabIndex = 40;
@@ -241,7 +237,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(267, 91);
+            this.label4.Location = new System.Drawing.Point(267, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 19);
             this.label4.TabIndex = 39;
@@ -251,7 +247,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(159, 91);
+            this.label3.Location = new System.Drawing.Point(159, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 19);
             this.label3.TabIndex = 38;
@@ -261,7 +257,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(36, 91);
+            this.label2.Location = new System.Drawing.Point(36, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 19);
             this.label2.TabIndex = 37;
@@ -271,7 +267,7 @@
             // 
             this.pictureBox3.Enabled = false;
             this.pictureBox3.Image = global::Proyecto.Properties.Resources.bomboGif;
-            this.pictureBox3.Location = new System.Drawing.Point(265, 15);
+            this.pictureBox3.Location = new System.Drawing.Point(265, 18);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(64, 64);
@@ -283,7 +279,7 @@
             // 
             this.pictureBox2.Enabled = false;
             this.pictureBox2.Image = global::Proyecto.Properties.Resources.bomboGif;
-            this.pictureBox2.Location = new System.Drawing.Point(151, 15);
+            this.pictureBox2.Location = new System.Drawing.Point(151, 18);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 64);
@@ -295,7 +291,7 @@
             // 
             this.pictureBox1.Enabled = false;
             this.pictureBox1.Image = global::Proyecto.Properties.Resources.bomboGif;
-            this.pictureBox1.Location = new System.Drawing.Point(37, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(37, 18);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
