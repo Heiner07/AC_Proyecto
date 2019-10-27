@@ -11,7 +11,7 @@ namespace Proyecto
 {
     class ConexionBD
     {
-        String cadenaConexion = "server=LUISARAYA-ENVY1\\SQLEXPRESS; database=JPS_Loteria_Chances;Trusted_Connection=True;";
+        private String cadenaConexion = "server=.\\SQLEXPRESS; database=JPS_Loteria_Chances;Trusted_Connection=True;";
 
         /*
          * E: El nombre y la contrasenia del usuario/admin
@@ -76,7 +76,45 @@ namespace Proyecto
             
         }
 
+        public List<Sorteo> ObtenerSorteos()
+        {
+            List<Sorteo> sorteos = new List<Sorteo>();
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM ObtenerSorteos", conexion);
+            cmd.CommandType = CommandType.Text;
+            try
+            {
+                conexion.Open();
+                SqlDataReader lectorDatos = cmd.ExecuteReader();
+                Sorteo sorteo;
+                while (lectorDatos.Read())
+                {
+                    sorteo = new Sorteo()
+                    {
+                        idSorteo = (int)lectorDatos[0],
+                        numeroSorteo = (int)lectorDatos[1],
+                        tipoSorteo = (String)lectorDatos[2],
+                        fecha = (DateTime)lectorDatos[3],
+                        cantidadFracciones = (int)lectorDatos[4],
+                        precioFraccion = (int)lectorDatos[5],
+                        leyendaBillete = (String)lectorDatos[6],
+                        estado = (Boolean)lectorDatos[7]
+                    };
+                    sorteos.Add(sorteo);
+                }
 
+            }
+            catch (Exception)
+            {
+                // Representa error de conexión
+                sorteos = null;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return sorteos;
+        }
 
     }
 }

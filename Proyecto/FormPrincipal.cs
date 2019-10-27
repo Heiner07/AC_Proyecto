@@ -65,7 +65,7 @@ namespace Proyecto
 
         private void btSorteos_Click(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new FormMantenimientoSorteos());
+            abrirFormularioHijo(new FormMantenimientoSorteos(sistemaLC));
         }
 
         private void btJugar_Click(object sender, EventArgs e)
