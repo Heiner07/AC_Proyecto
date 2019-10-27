@@ -39,7 +39,6 @@
             this.btBorrarPlanPremios = new System.Windows.Forms.Button();
             this.btCrear = new System.Windows.Forms.Button();
             this.btAgregarPremioAdicional = new System.Windows.Forms.Button();
-            this.panelPremiosAdicionales = new System.Windows.Forms.Panel();
             this.nudPremio3 = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.nudPremio2 = new System.Windows.Forms.NumericUpDown();
@@ -59,8 +58,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelSorteos = new System.Windows.Forms.Panel();
-            this.tbBusqueda = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.tbBusqueda = new System.Windows.Forms.TextBox();
+            this.dataGridViewPremiosAdicionales = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.nudMonto = new System.Windows.Forms.NumericUpDown();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).BeginInit();
             this.panelCrearSorteo.SuspendLayout();
@@ -70,6 +73,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudCostoFraccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFracciones)).BeginInit();
             this.panelSorteos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPremiosAdicionales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -136,12 +141,15 @@
             // 
             this.panelCrearSorteo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelCrearSorteo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCrearSorteo.Controls.Add(this.nudMonto);
+            this.panelCrearSorteo.Controls.Add(this.label13);
+            this.panelCrearSorteo.Controls.Add(this.label12);
+            this.panelCrearSorteo.Controls.Add(this.dataGridViewPremiosAdicionales);
             this.panelCrearSorteo.Controls.Add(this.btCancelar);
             this.panelCrearSorteo.Controls.Add(this.btGuardar);
             this.panelCrearSorteo.Controls.Add(this.btBorrarPlanPremios);
             this.panelCrearSorteo.Controls.Add(this.btCrear);
             this.panelCrearSorteo.Controls.Add(this.btAgregarPremioAdicional);
-            this.panelCrearSorteo.Controls.Add(this.panelPremiosAdicionales);
             this.panelCrearSorteo.Controls.Add(this.nudPremio3);
             this.panelCrearSorteo.Controls.Add(this.label9);
             this.panelCrearSorteo.Controls.Add(this.nudPremio2);
@@ -217,23 +225,14 @@
             // btAgregarPremioAdicional
             // 
             this.btAgregarPremioAdicional.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAgregarPremioAdicional.Location = new System.Drawing.Point(389, 364);
+            this.btAgregarPremioAdicional.Location = new System.Drawing.Point(564, 353);
             this.btAgregarPremioAdicional.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btAgregarPremioAdicional.Name = "btAgregarPremioAdicional";
-            this.btAgregarPremioAdicional.Size = new System.Drawing.Size(236, 30);
+            this.btAgregarPremioAdicional.Size = new System.Drawing.Size(80, 30);
             this.btAgregarPremioAdicional.TabIndex = 40;
-            this.btAgregarPremioAdicional.Text = "Agregar premio adicional";
+            this.btAgregarPremioAdicional.Text = "Agregar";
             this.btAgregarPremioAdicional.UseVisualStyleBackColor = true;
             this.btAgregarPremioAdicional.Click += new System.EventHandler(this.btAgregarPremioAdicional_Click);
-            // 
-            // panelPremiosAdicionales
-            // 
-            this.panelPremiosAdicionales.AutoScroll = true;
-            this.panelPremiosAdicionales.Location = new System.Drawing.Point(360, 210);
-            this.panelPremiosAdicionales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelPremiosAdicionales.Name = "panelPremiosAdicionales";
-            this.panelPremiosAdicionales.Size = new System.Drawing.Size(282, 145);
-            this.panelPremiosAdicionales.TabIndex = 39;
             // 
             // nudPremio3
             // 
@@ -471,13 +470,6 @@
             this.panelSorteos.Size = new System.Drawing.Size(782, 182);
             this.panelSorteos.TabIndex = 2;
             // 
-            // tbBusqueda
-            // 
-            this.tbBusqueda.Location = new System.Drawing.Point(639, 6);
-            this.tbBusqueda.Name = "tbBusqueda";
-            this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
-            this.tbBusqueda.TabIndex = 4;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -487,6 +479,63 @@
             this.label11.Size = new System.Drawing.Size(126, 19);
             this.label11.TabIndex = 5;
             this.label11.Text = "Buscar número:";
+            // 
+            // tbBusqueda
+            // 
+            this.tbBusqueda.Location = new System.Drawing.Point(639, 6);
+            this.tbBusqueda.Name = "tbBusqueda";
+            this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
+            this.tbBusqueda.TabIndex = 4;
+            // 
+            // dataGridViewPremiosAdicionales
+            // 
+            this.dataGridViewPremiosAdicionales.AllowUserToAddRows = false;
+            this.dataGridViewPremiosAdicionales.AllowUserToDeleteRows = false;
+            this.dataGridViewPremiosAdicionales.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewPremiosAdicionales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPremiosAdicionales.Location = new System.Drawing.Point(389, 242);
+            this.dataGridViewPremiosAdicionales.Name = "dataGridViewPremiosAdicionales";
+            this.dataGridViewPremiosAdicionales.RowHeadersVisible = false;
+            this.dataGridViewPremiosAdicionales.RowTemplate.Height = 24;
+            this.dataGridViewPremiosAdicionales.Size = new System.Drawing.Size(255, 107);
+            this.dataGridViewPremiosAdicionales.TabIndex = 45;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(385, 220);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(156, 19);
+            this.label12.TabIndex = 46;
+            this.label12.Text = "Premios adicionales";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(385, 362);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 19);
+            this.label13.TabIndex = 47;
+            this.label13.Text = "Monto:";
+            // 
+            // nudMonto
+            // 
+            this.nudMonto.Location = new System.Drawing.Point(449, 359);
+            this.nudMonto.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudMonto.Name = "nudMonto";
+            this.nudMonto.Size = new System.Drawing.Size(92, 22);
+            this.nudMonto.TabIndex = 48;
+            this.nudMonto.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // FormMantenimientoSorteos
             // 
@@ -512,6 +561,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudFracciones)).EndInit();
             this.panelSorteos.ResumeLayout(false);
             this.panelSorteos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPremiosAdicionales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -526,7 +577,6 @@
         private System.Windows.Forms.Panel panelSorteos;
         private System.Windows.Forms.Button btCrear;
         private System.Windows.Forms.Button btAgregarPremioAdicional;
-        private System.Windows.Forms.Panel panelPremiosAdicionales;
         private System.Windows.Forms.NumericUpDown nudPremio3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown nudPremio2;
@@ -551,5 +601,9 @@
         private System.Windows.Forms.Button btGuardar;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tbBusqueda;
+        private System.Windows.Forms.DataGridView dataGridViewPremiosAdicionales;
+        private System.Windows.Forms.NumericUpDown nudMonto;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }

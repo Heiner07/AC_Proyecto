@@ -16,11 +16,27 @@ namespace Proyecto
             posicionLbCantidad, posicionNUDCantidad;
 
         SistemaLoteriaChances sistemaLoteriaChances;
+        DataTable dtPremiosAdicionales;
 
         public FormMantenimientoSorteos(SistemaLoteriaChances sistemaLoteriaChances)
         {
             InitializeComponent();
             this.sistemaLoteriaChances = sistemaLoteriaChances;
+            this.dtPremiosAdicionales = new DataTable();
+            this.dtPremiosAdicionales.Columns.Add("Monto", typeof(int));
+            this.dtPremiosAdicionales.Columns.Add("Cantidad", typeof(int));
+            dataGridViewPremiosAdicionales.DataSource = dtPremiosAdicionales;
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn
+            {
+                UseColumnTextForButtonValue = true,
+                HeaderText = "Eliminar",
+                Name = "btn",
+                Text = "Eliminar"
+            };
+            dataGridViewPremiosAdicionales.Columns.Add(btn);
+            dataGridViewPremiosAdicionales.Columns[0].Width = 80;
+            dataGridViewPremiosAdicionales.Columns[1].Width = 80;
+            dataGridViewPremiosAdicionales.Columns[2].Width = 70;
             ConfigurarComponentesPanelSorteos();
             EstablecerValoresTablaSorteos();
            
@@ -155,51 +171,6 @@ namespace Proyecto
             return false;
 
         }
-        private void btCrear_Click(object sender, EventArgs e)
-        {
-            DateTime fecha = dtFecha.Value;
-            Sorteo sorteo;
-            string tipoSorteo; 
-            
-            if (rbChances.Checked)
-            {
-                tipoSorteo = "Chances";
-            }
-            else
-            {
-                tipoSorteo = "Loteria";
-
-            }
-            Boolean fechaValida = ValidarFecha(tipoSorteo,fecha);
-            if (fechaValida)
-            {
-                if (nudFracciones.Value > 0 && nudCostoFraccion.Value > 0)
-                {
-                    
-                    sorteo.EstablecerCantidadFracciones(Convert.ToInt32(nudFracciones.Value));
-                    sorteo.EstablecerFecha(fecha);
-                    sorteo.EstablecerLeyenda(tbLeyenda.Text);
-                    sorteo.EstablecerPrecioFraccion(Convert.ToInt32(nudCostoFraccion.Value));
-                    sorteo.EstablecerTipoSorteo(tipoSorteo);
-                    
-                }
-                else
-                {
-                    MessageBox.Show("La cantidad de fracciones y el costo deben ser mayor a 0");
-                }
-
-
-            }
-            else {
-                MessageBox.Show("La fecha seleccionada no es válida");
-
-            }
-            
-            
-                   
-            
-
-        }
 
         private void btCrear_Click(object sender, EventArgs e)
         {
@@ -237,7 +208,7 @@ namespace Proyecto
                 nudPremio1.Value = 1;
                 nudPremio2.Value = 1;
                 nudPremio3.Value = 1;
-                panelPremiosAdicionales.Controls.Clear();
+                dtPremiosAdicionales.Clear();
             }
         }
 
@@ -250,46 +221,7 @@ namespace Proyecto
 
         private void btAgregarPremioAdicional_Click(object sender, EventArgs e)
         {
-            Panel panel = new Panel
-            {
-                Dock = DockStyle.Top,
-                Height = 55
-            };
-            Label lbPremioAdicional = new Label
-            {
-                Text = "Premio adicional",
-                Height = 19,
-                Width = 150,
-                Font = new Font("Arial", 10),
-                Location = posicionLbPremioAdicional
-            };
-            Label lbCantidad = new Label
-            {
-                Text = "Cantidad",
-                Height = 19,
-                Width = 80,
-                Font = new Font("Arial", 10),
-                Location = posicionLbCantidad
-            };
-            NumericUpDown nUDPremioAdicional = new NumericUpDown
-            {
-                Height = 22,
-                Width = 140,
-                Location = posicionNUDPremioAdicional
-            };
-            NumericUpDown nUDCantidad = new NumericUpDown
-            {
-                Height = 22,
-                Width = 80,
-                Location = posicionNUDCantidad
-            };
-
-            panel.Controls.Add(lbPremioAdicional);
-            panel.Controls.Add(nUDPremioAdicional);
-            panel.Controls.Add(lbCantidad);
-            panel.Controls.Add(nUDCantidad);
-
-            panelPremiosAdicionales.Controls.Add(panel);
+            dtPremiosAdicionales.Rows.Add(new object[] { nudMonto.Value, 1 });
         }
     }
 }
