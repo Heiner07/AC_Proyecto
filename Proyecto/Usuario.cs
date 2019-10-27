@@ -11,9 +11,15 @@ namespace Proyecto
         String nombreUsuario;
         int rol;
 
-        public Usuario(String nombre, int rolUsuario) {
+        
+
+        public void establecerNombreUsuario(String nombre) {
             nombreUsuario = nombre;
-            rol = rolUsuario;
+        
+        }
+
+        public void establecerRol(int rolEntrante) {
+            rol = rolEntrante;        
         
         }
         public String obtenerNombre() {

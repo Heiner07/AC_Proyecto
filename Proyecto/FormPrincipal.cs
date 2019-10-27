@@ -22,6 +22,7 @@ namespace Proyecto
             panelCerrarSesion.Visible = false;
             tbContrasenia.PasswordChar = '*';
             tbContrasenia.MaxLength = 10;
+            
         }
 
         private void personalizarDiseno()
@@ -84,8 +85,8 @@ namespace Proyecto
 
         private void btIniciarSesion_Click(object sender, EventArgs e)
         {
-            Usuario usuario = sistemaLC.iniciarSesion(tbUsuario.Text,tbContrasenia.Text);
-            int rol = usuario.obtenerRol();
+            Usuario usuario = sistemaLC.IniciarSesion(tbUsuario.Text,tbContrasenia.Text);
+            int rol = 1;//usuario.obtenerRol();
             if (rol != -1)
             {
                 establecerEstadoBotones(rol, true);

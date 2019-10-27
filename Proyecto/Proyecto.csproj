@@ -52,6 +52,12 @@
     <Compile Include="FormJugar.Designer.cs">
       <DependentUpon>FormJugar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMantenimientoSorteos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMantenimientoSorteos.Designer.cs">
+      <DependentUpon>FormMantenimientoSorteos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,12 +69,6 @@
     </Compile>
     <Compile Include="FormEstadisticasReportes.Designer.cs">
       <DependentUpon>FormEstadisticasReportes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormMantenimientoSorteos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMantenimientoSorteos.Designer.cs">
-      <DependentUpon>FormMantenimientoSorteos.cs</DependentUpon>
     </Compile>
     <Compile Include="FormResultados.cs">
       <SubType>Form</SubType>
@@ -84,14 +84,14 @@
     <EmbeddedResource Include="FormJugar.resx">
       <DependentUpon>FormJugar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMantenimientoSorteos.resx">
+      <DependentUpon>FormMantenimientoSorteos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEstadisticasReportes.resx">
       <DependentUpon>FormEstadisticasReportes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMantenimientoSorteos.resx">
-      <DependentUpon>FormMantenimientoSorteos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormResultados.resx">
       <DependentUpon>FormResultados.cs</DependentUpon>

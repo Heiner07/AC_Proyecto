@@ -38,16 +38,34 @@ namespace Proyecto
         /**
          * Se encarga de efectuar el sorteo correspondiente.
          */
-        public void jugarSorteo() { 
+        public void JugarSorteo() { 
         
         }
 
-       
-        
+
+        /*
+        *Establece el tipo del sorteo correspondiente.
+        */
+        public void EstablecerNumeroSorteo(int numero)
+        {
+            numeroSorteo = numero;
+
+        }
+
+
+        /*
+        *Establece el tipo del sorteo correspondiente.
+        */
+        public void EstablecerTipoSorteo(String tipo)
+        {
+            tipoSorteo = tipo;
+
+        }
+
         /*
          *Establece la fecha del sorteo correspondiente.
         */
-        public void establecerFecha(DateTime fecha) {
+        public void EstablecerFecha(DateTime fecha) {
             this.fecha = fecha;
         
         }
@@ -55,7 +73,7 @@ namespace Proyecto
         /*
          *Establece la cantidad de fracciones del sorteo correspondiente.
         */
-        public void establecerCantidadFracciones(int n)
+        public void EstablecerCantidadFracciones(int n)
         {
             cantidadFracciones = n;
         }
@@ -63,7 +81,7 @@ namespace Proyecto
         /*
          *Establece el precio de la fracción del sorteo correspondiente.
         */
-        public void establecerPrecioFraccion(int n)
+        public void EstablecerPrecioFraccion(int n)
         {
             precioFraccion = n;
         }
@@ -71,7 +89,7 @@ namespace Proyecto
         /*
          *Establece la leyenda del sorteo correspondiente.
         */
-        public void establecerLeyenda(String leyenda)
+        public void EstablecerLeyenda(String leyenda)
         {
             leyendaBillete = leyenda;
         }
@@ -82,58 +100,37 @@ namespace Proyecto
         /*
          *Retorna el precio por fracción del sorteo correspondiente.
         */
-        public int obtenerPrecioFraccion()
-        {
-            return precioFraccion;
-        }
+        public int ObtenerPrecioFraccion => precioFraccion;
 
         /*
         *Retorna la leyenda del sorteo correspondiente.
        */
-        public String obtenerLeyenda() {
-            return leyendaBillete;
-        }
+        public String ObtenerLeyenda => leyendaBillete;
 
         /*
          *Retorna la fecha del sorteo correspondiente.
         */
-        public DateTime obtenerFecha()
-        {
-            return fecha;
-        }
+        public DateTime ObtenerFecha => fecha;
 
         /*
          *Retorna la cantidad de fracciones del sorteo correspondiente.
         */
-        public int obtenerCantidadFracciones()
-        {
-            return cantidadFracciones;
-        }
+        public int ObtenerCantidadFracciones => cantidadFracciones;
 
         /*
         *Retorna el numero de sorteo correspondiente.
        */
-        public int obtenerNumeroSorteo()
-        {
-            return numeroSorteo;
-
-        }
+        public int ObtenerNumeroSorteo => numeroSorteo;
 
         /*
          *Retorna el tipo de sorteo correspondiente.
         */
-        public String obtenerTipoSorteo()
-        {
-            return tipoSorteo;
-        }
+        public String ObtenerTipoSorteo => tipoSorteo;
 
         /*
          *Retorna el estado del sorteo correspondiente.
         */
-        public Boolean obtenerEstado()
-        {
-            return estado;
-        }
+        public Boolean ObtenerEstado => estado;
 
 
     }
