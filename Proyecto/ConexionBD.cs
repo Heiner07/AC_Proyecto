@@ -21,7 +21,6 @@ namespace Proyecto
         public Usuario IniciarSesion(String nombre, String contrasenia) {
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             SqlDataReader obtenerDatos;
-            Usuario usuario = new Usuario();
             int rol = -1;
             String consultaUsuario= "select Rol from Usuarios where NombreUsuario=@nombre and Contrasenia=@contrasenia";
             conexion.Open();
@@ -39,10 +38,8 @@ namespace Proyecto
             }
             obtenerDatos.Close();
             cmd.Dispose();
-            conexion.Close();
-            usuario.establecerNombreUsuario(nombre);
-            usuario.establecerRol(rol);
-            return usuario;
+            conexion.Close();          
+            return new Usuario(nombre,rol);
         }
 
         /*
@@ -116,5 +113,26 @@ namespace Proyecto
             return sorteos;
         }
 
+        public Boolean EliminarSorteo(Sorteo sorteo) {
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand("EliminarSorteo", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = sorteo.ObtenerIdSorteo;       
+            try
+            {
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+
+        }
+
     }
+
+
 }

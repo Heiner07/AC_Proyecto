@@ -59,6 +59,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelSorteos = new System.Windows.Forms.Panel();
+            this.lbRestriccionSorteo = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).BeginInit();
             this.panelCrearSorteo.SuspendLayout();
@@ -109,14 +110,14 @@
             this.dataGridViewSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dataGridViewSorteos.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewSorteos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSorteos.Location = new System.Drawing.Point(9, 31);
+            this.dataGridViewSorteos.Location = new System.Drawing.Point(9, 21);
             this.dataGridViewSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewSorteos.MultiSelect = false;
             this.dataGridViewSorteos.Name = "dataGridViewSorteos";
             this.dataGridViewSorteos.ReadOnly = true;
             this.dataGridViewSorteos.RowHeadersWidth = 51;
             this.dataGridViewSorteos.RowTemplate.Height = 24;
-            this.dataGridViewSorteos.Size = new System.Drawing.Size(777, 148);
+            this.dataGridViewSorteos.Size = new System.Drawing.Size(777, 158);
             this.dataGridViewSorteos.TabIndex = 2;
             this.dataGridViewSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSorteos_CellClick);
             // 
@@ -124,7 +125,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 9);
+            this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(141, 19);
             this.label10.TabIndex = 3;
@@ -133,6 +134,7 @@
             // panelCrearSorteo
             // 
             this.panelCrearSorteo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelCrearSorteo.Controls.Add(this.lbRestriccionSorteo);
             this.panelCrearSorteo.Controls.Add(this.btCancelar);
             this.panelCrearSorteo.Controls.Add(this.btGuardar);
             this.panelCrearSorteo.Controls.Add(this.btBorrarPlanPremios);
@@ -390,6 +392,7 @@
             this.rbChances.TabIndex = 27;
             this.rbChances.Text = "Chances";
             this.rbChances.UseVisualStyleBackColor = true;
+            this.rbChances.CheckedChanged += new System.EventHandler(this.rbChances_CheckedChanged);
             // 
             // rbLoteria
             // 
@@ -403,6 +406,7 @@
             this.rbLoteria.TabStop = true;
             this.rbLoteria.Text = "Lotería";
             this.rbLoteria.UseVisualStyleBackColor = true;
+            this.rbLoteria.CheckedChanged += new System.EventHandler(this.rbLoteria_CheckedChanged);
             // 
             // label5
             // 
@@ -466,6 +470,15 @@
             this.panelSorteos.Size = new System.Drawing.Size(798, 182);
             this.panelSorteos.TabIndex = 2;
             // 
+            // lbRestriccionSorteo
+            // 
+            this.lbRestriccionSorteo.AutoSize = true;
+            this.lbRestriccionSorteo.Location = new System.Drawing.Point(225, 99);
+            this.lbRestriccionSorteo.Name = "lbRestriccionSorteo";
+            this.lbRestriccionSorteo.Size = new System.Drawing.Size(123, 17);
+            this.lbRestriccionSorteo.TabIndex = 45;
+            this.lbRestriccionSorteo.Text = "Sólo los domingos";
+            // 
             // FormMantenimientoSorteos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -527,5 +540,6 @@
         private System.Windows.Forms.Label lbEditarSorteo;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.Button btGuardar;
+        private System.Windows.Forms.Label lbRestriccionSorteo;
     }
 }

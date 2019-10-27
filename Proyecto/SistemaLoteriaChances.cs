@@ -8,16 +8,27 @@ namespace Proyecto
 {
     public class SistemaLoteriaChances
     {
-        public Usuario iniciarSesion(String nombre, String contrasenia) {
-            ConexionBD verificarUsuario = new ConexionBD();
-            return verificarUsuario.iniciarSesion(nombre, contrasenia);    
+        ConexionBD conexionBD = new ConexionBD();
+        Usuario usuario;
+
+        public Usuario IniciarSesion(String nombre, String contrasenia) {
+            this.usuario = conexionBD.IniciarSesion(nombre, contrasenia);
+            return usuario;
         }
 
         public List<Sorteo> ObtenerSorteos()
-        {
-            ConexionBD bd = new ConexionBD(); // Lo puse por el momento aquí (mientras se mueve a global)
-            List<Sorteo> sorteos = bd.ObtenerSorteos();
+        {       
+            List<Sorteo> sorteos = conexionBD.ObtenerSorteos();
             return sorteos;
+        }
+
+        public Boolean CrearSorteo(Sorteo nuevoSorteo)
+        {
+            return conexionBD.InsertarSorteo(nuevoSorteo);
+        }
+
+        public Boolean EliminarSorteo(Sorteo sorteo) {
+            return conexionBD.EliminarSorteo(sorteo);
         }
     }
 }

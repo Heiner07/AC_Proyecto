@@ -92,7 +92,7 @@ namespace Proyecto
                 establecerEstadoBotones(rol, true);
                 panelIniciarSesion.Visible = false;
                 panelCerrarSesion.Visible = true;
-                lbModo.Text = usuario.obtenerNombre();
+                lbModo.Text = usuario.ObtenerNombre;
             }
             else {
                 MessageBox.Show("ERROR AL ENTRAR AL SISTEMA");

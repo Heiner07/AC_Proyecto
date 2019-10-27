@@ -136,25 +136,57 @@ namespace Proyecto
 
 
         private Boolean ValidarFecha(String tipoSorteo, DateTime fecha) {
+            List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
+            foreach (Sorteo sorteo in sorteos)
+            {
+               // if (sorteo.ObtenerTipoSorteo.Equals(tipoSorteo))
+                //{
+                    if (sorteo.ObtenerFecha.Date >= fecha.Date)
+                    {
+                        return false;
+                    }
+
+                //}
+                
+            }
+            
             if ((fecha.DayOfWeek == DayOfWeek.Tuesday || fecha.DayOfWeek == DayOfWeek.Friday) && tipoSorteo.Equals("Chances"))
             {
-                
-                MessageBox.Show("Chances valida");
                 return true;
             }
             else if (fecha.DayOfWeek == DayOfWeek.Sunday && tipoSorteo.Equals("Loteria"))
             {
-                MessageBox.Show("loteria valida");
+                
                 return true;
 
             }
             return false;
 
         }
+
+        private int ObtenerNumeroSorteo(String tipoSorteo) {
+            List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
+            int numeroRetornado = 0;
+            foreach(Sorteo sorteo in sorteos)
+            {
+                if (sorteo.ObtenerTipoSorteo.Equals(tipoSorteo)) {
+                    numeroRetornado = sorteo.ObtenerNumeroSorteo;
+                    
+                }
+            }
+            numeroRetornado++;
+            return numeroRetornado;
+
+        }
+        private void ObtenerPlanPremios() {
+            
+
+        
+        }
         private void btCrear_Click(object sender, EventArgs e)
         {
             DateTime fecha = dtFecha.Value;
-            Sorteo sorteo;
+            PlanPremios planPremios = new PlanPremios();
             string tipoSorteo; 
             
             if (rbChances.Checked)
@@ -171,12 +203,28 @@ namespace Proyecto
             {
                 if (nudFracciones.Value > 0 && nudCostoFraccion.Value > 0)
                 {
+
+                    //Preguntar si quiere guardar el plan de premios
+                     Premio premio = new Premio(Convert.ToInt32(nudPremio1.Value),1);
+                    ObtenerPlanPremios();
+                    planPremios.premios.Add(new Premio(Convert.ToInt32(nudPremio1.Value), 1));
+                    planPremios.premios.Add(new Premio(Convert.ToInt32(nudPremio2.Value), 1));
+                    planPremios.premios.Add(new Premio(Convert.ToInt32(nudPremio3.Value), 1));
                     
-                    sorteo.EstablecerCantidadFracciones(Convert.ToInt32(nudFracciones.Value));
-                    sorteo.EstablecerFecha(fecha);
-                    sorteo.EstablecerLeyenda(tbLeyenda.Text);
-                    sorteo.EstablecerPrecioFraccion(Convert.ToInt32(nudCostoFraccion.Value));
-                    sorteo.EstablecerTipoSorteo(tipoSorteo);
+
+
+                    int numeroSorteo = ObtenerNumeroSorteo(tipoSorteo);
+                    Sorteo sorteo = new Sorteo(1, numeroSorteo, tipoSorteo,fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
+                    tbLeyenda.Text.Equals("") ? "Sin leyenda": tbLeyenda.Text,false, planPremios);
+                    if (sistemaLoteriaChances.CrearSorteo(sorteo))
+                    {
+                        MessageBox.Show("¡¡¡Se insertó con éxito!!!");
+                        dataGridViewSorteos.Columns.Clear();
+                        EstablecerValoresTablaSorteos();
+                    }
+                    else { MessageBox.Show("Error al guardar el sorteo"); }
+                   
+                    
                     
                 }
                 else
@@ -197,9 +245,17 @@ namespace Proyecto
 
         }
 
-        private void btCrear_Click(object sender, EventArgs e)
+        
+        private void rbLoteria_CheckedChanged(object sender, EventArgs e)
         {
+            lbRestriccionSorteo.Text = "Sólo los domingos";
+            btAgregarPremioAdicional.Visible = true;
+        }
 
+        private void rbChances_CheckedChanged(object sender, EventArgs e)
+        {
+            lbRestriccionSorteo.Text = "Sólo martes y viernes";
+            btAgregarPremioAdicional.Visible = false;
         }
 
         private void dataGridViewSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -207,11 +263,32 @@ namespace Proyecto
             Console.WriteLine(e.ColumnIndex);
             if (e.ColumnIndex == 0) {
                 DialogResult dr = MessageBox.Show("¿Desea eliminar este sorteo?", "Mensaje", MessageBoxButtons.YesNoCancel,MessageBoxIcon.Information);
-
+                
                 if (dr == DialogResult.Yes)
                 {
-                    this.dataGridViewSorteos.Rows.RemoveAt(e.RowIndex);
                     
+                    DataTable dt = this.dataGridViewSorteos.DataSource as DataTable;
+                    String tipoSorteo = dt.Rows[e.RowIndex]["Tipo"].ToString();
+                    int numeroSorteo = Convert.ToInt32(dt.Rows[e.RowIndex]["Número"].ToString());
+                    List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
+                    foreach(Sorteo sorteo in sorteos) {
+                        if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo)) {
+                            if (!sorteo.ObtenerEstado)
+                            {
+                                if (sistemaLoteriaChances.EliminarSorteo(sorteo)) {
+                                    dataGridViewSorteos.Columns.Clear();
+                                    EstablecerValoresTablaSorteos();
+                                    MessageBox.Show("El sorteo se eliminó con éxito");
+
+                                }
+                                else { MessageBox.Show("El sorteo no se puede eliminar"); }
+
+                            }
+                            else {
+                                MessageBox.Show("El sorteo no se puede eliminar, ya se jugó");
+                            }
+                        }
+                    }
                 }
                 
             }else if (e.ColumnIndex == 1)

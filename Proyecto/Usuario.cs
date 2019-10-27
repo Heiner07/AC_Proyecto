@@ -8,27 +8,27 @@ namespace Proyecto
 {
     public class Usuario
     {
-        String nombreUsuario;
-        int rol;
+        public String nombreUsuario { get; set; }
+        public int rol { get; set; }
 
         
+        public Usuario(String nombreUsuario, int rol) {
+            this.nombreUsuario = nombreUsuario;
+            this.rol = rol;
+        
+        }
 
-        public void establecerNombreUsuario(String nombre) {
+        public void EstablecerNombreUsuario(String nombre) {
             nombreUsuario = nombre;
         
         }
 
-        public void establecerRol(int rolEntrante) {
+        public void EstablecerRol(int rolEntrante) {
             rol = rolEntrante;        
         
         }
-        public String obtenerNombre() {
-            return nombreUsuario;
-        }
+        public String ObtenerNombre => nombreUsuario;
 
-        public int obtenerRol() {
-            return rol;
-        
-        }
+        public int ObtenerRol => rol;
     }
 }

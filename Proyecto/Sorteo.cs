@@ -16,6 +16,7 @@ namespace Proyecto
         public String leyendaBillete { get; set; }
         public Boolean estado { get; set; }
         public DateTime fecha { get; set; }
+        public PlanPremios planPremios {get;set;}
 
         public Sorteo()
         {
@@ -23,7 +24,7 @@ namespace Proyecto
         }
 
         public Sorteo(int idSorteo, int numeroSorteo, String tipoSorteo, DateTime fecha, int cantidadFracciones,
-            int precioFraccion, String leyendaBillete, Boolean estado)
+            int precioFraccion, String leyendaBillete, Boolean estado,PlanPremios planPremios)
         {
             this.idSorteo = idSorteo;
             this.numeroSorteo = numeroSorteo;
@@ -33,6 +34,7 @@ namespace Proyecto
             this.precioFraccion = precioFraccion;
             this.leyendaBillete = leyendaBillete;
             this.estado = estado;
+            this.planPremios = planPremios;
         }
 
         /**
@@ -131,7 +133,8 @@ namespace Proyecto
          *Retorna el estado del sorteo correspondiente.
         */
         public Boolean ObtenerEstado => estado;
-
+        public int ObtenerIdSorteo => idSorteo;
+        public PlanPremios ObenerPlanPremios => planPremios;
 
     }
 }
