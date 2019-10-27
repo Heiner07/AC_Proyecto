@@ -16,11 +16,27 @@ namespace Proyecto
             posicionLbCantidad, posicionNUDCantidad;
 
         SistemaLoteriaChances sistemaLoteriaChances;
+        DataTable dtPremiosAdicionales;
 
         public FormMantenimientoSorteos(SistemaLoteriaChances sistemaLoteriaChances)
         {
             InitializeComponent();
             this.sistemaLoteriaChances = sistemaLoteriaChances;
+            this.dtPremiosAdicionales = new DataTable();
+            this.dtPremiosAdicionales.Columns.Add("Monto", typeof(int));
+            this.dtPremiosAdicionales.Columns.Add("Cantidad", typeof(int));
+            dataGridViewPremiosAdicionales.DataSource = dtPremiosAdicionales;
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn
+            {
+                UseColumnTextForButtonValue = true,
+                HeaderText = "Eliminar",
+                Name = "btn",
+                Text = "Eliminar"
+            };
+            dataGridViewPremiosAdicionales.Columns.Add(btn);
+            dataGridViewPremiosAdicionales.Columns[0].Width = 80;
+            dataGridViewPremiosAdicionales.Columns[1].Width = 80;
+            dataGridViewPremiosAdicionales.Columns[2].Width = 70;
             ConfigurarComponentesPanelSorteos();
             EstablecerValoresTablaSorteos();
            
@@ -49,17 +65,21 @@ namespace Proyecto
                         sorteo.leyendaBillete, sorteo.estado });
                 }
                 dataGridViewSorteos.DataSource = dtSorteos;
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                btn.UseColumnTextForButtonValue = true;
-                btn.HeaderText = "Eliminar";
-                btn.Name = "btn";
-                btn.Text = "Eliminar";
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn
+                {
+                    UseColumnTextForButtonValue = true,
+                    HeaderText = "Eliminar",
+                    Name = "btn",
+                    Text = "Eliminar"
+                };
                 dataGridViewSorteos.Columns.Add(btn);
-                DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
-                btn2.UseColumnTextForButtonValue = true;
-                btn2.HeaderText = "Editar";
-                btn2.Name = "btn2";
-                btn2.Text = "Editar";
+                DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn
+                {
+                    UseColumnTextForButtonValue = true,
+                    HeaderText = "Editar",
+                    Name = "btn2",
+                    Text = "Editar"
+                };
                 dataGridViewSorteos.Columns.Add(btn2);
 
                 dataGridViewSorteos.Columns[0].Width = 70;
@@ -310,7 +330,7 @@ namespace Proyecto
                 nudPremio1.Value = 1;
                 nudPremio2.Value = 1;
                 nudPremio3.Value = 1;
-                panelPremiosAdicionales.Controls.Clear();
+                dtPremiosAdicionales.Clear();
             }
         }
 
@@ -323,46 +343,7 @@ namespace Proyecto
 
         private void btAgregarPremioAdicional_Click(object sender, EventArgs e)
         {
-            Panel panel = new Panel
-            {
-                Dock = DockStyle.Top,
-                Height = 55
-            };
-            Label lbPremioAdicional = new Label
-            {
-                Text = "Premio adicional",
-                Height = 19,
-                Width = 150,
-                Font = new Font("Arial", 10),
-                Location = posicionLbPremioAdicional
-            };
-            Label lbCantidad = new Label
-            {
-                Text = "Cantidad",
-                Height = 19,
-                Width = 80,
-                Font = new Font("Arial", 10),
-                Location = posicionLbCantidad
-            };
-            NumericUpDown nUDPremioAdicional = new NumericUpDown
-            {
-                Height = 22,
-                Width = 140,
-                Location = posicionNUDPremioAdicional
-            };
-            NumericUpDown nUDCantidad = new NumericUpDown
-            {
-                Height = 22,
-                Width = 80,
-                Location = posicionNUDCantidad
-            };
-
-            panel.Controls.Add(lbPremioAdicional);
-            panel.Controls.Add(nUDPremioAdicional);
-            panel.Controls.Add(lbCantidad);
-            panel.Controls.Add(nUDCantidad);
-
-            panelPremiosAdicionales.Controls.Add(panel);
+            dtPremiosAdicionales.Rows.Add(new object[] { nudMonto.Value, 1 });
         }
     }
 }

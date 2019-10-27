@@ -12,43 +12,62 @@ namespace Proyecto
 {
     public partial class FormEstadisticasReportes : Form
     {
-        public FormEstadisticasReportes()
+        SistemaLoteriaChances sistemaLoteriaChances;
+
+        public FormEstadisticasReportes(SistemaLoteriaChances sistemaLoteriaChances)
         {
             InitializeComponent();
+            this.sistemaLoteriaChances = sistemaLoteriaChances;
             inicializarTablas();
-            establecerValoresTablaSorteos();
+            EstablecerValoresTablaSorteos();
         }
 
-        private void establecerValoresTablaSorteos()
+        private void EstablecerValoresTablaSorteos()
         {
-            DataTable dtSorteos = new DataTable();
-            dtSorteos.Columns.Add("Tipo", typeof(string));
-            dtSorteos.Columns.Add("Número", typeof(string));
-            dtSorteos.Columns.Add("Fecha", typeof(string));
-            dtSorteos.Columns.Add("Jugado", typeof(bool));
-            for (int i = 0; i < 5; i++)
+            List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
+            if (sorteos != null)
             {
-                dtSorteos.Rows.Add(new object[] { "Lotería", i.ToString(), "30/09/2019", true });
-            }
-            dgvSorteos.DataSource = dtSorteos;
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            btn.UseColumnTextForButtonValue = true;
-            btn.HeaderText = "Reporte";
-            btn.Name = "btn";
-            btn.Text = "resultados";
-            dgvSorteos.Columns.Add(btn);
-            DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
-            btn2.UseColumnTextForButtonValue = true;
-            btn2.HeaderText = "Reporte";
-            btn2.Name = "btn2";
-            btn2.Text = "plan de premios";
-            dgvSorteos.Columns.Add(btn2);
+                int cantidadSorteos = sorteos.Count;
+                Sorteo sorteo;
+                DataTable dtSorteos = new DataTable();
+                dtSorteos.Columns.Add("Tipo", typeof(string));
+                dtSorteos.Columns.Add("Número", typeof(string));
+                dtSorteos.Columns.Add("Fecha", typeof(string));
+                dtSorteos.Columns.Add("Jugado", typeof(bool));
+                for (int i = 0; i < cantidadSorteos; i++)
+                {
+                    sorteo = sorteos[i];
+                    dtSorteos.Rows.Add(new object[] { sorteo.tipoSorteo, sorteo.numeroSorteo,
+                        sorteo.fecha.ToShortDateString(), sorteo.estado });
+                }
+                dgvSorteos.DataSource = dtSorteos;
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn
+                {
+                    UseColumnTextForButtonValue = true,
+                    HeaderText = "Reporte",
+                    Name = "btn",
+                    Text = "resultados"
+                };
+                dgvSorteos.Columns.Add(btn);
+                DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn
+                {
+                    UseColumnTextForButtonValue = true,
+                    HeaderText = "Reporte",
+                    Name = "btn2",
+                    Text = "plan de premios"
+                };
+                dgvSorteos.Columns.Add(btn2);
 
-            dgvSorteos.Columns[0].Width = 70;
-            dgvSorteos.Columns[1].Width = 65;
-            dgvSorteos.Columns[2].Width = 85;
-            dgvSorteos.Columns[3].Width = 80;
-            dgvSorteos.Columns[5].Width = 120;
+                dgvSorteos.Columns[0].Width = 70;
+                dgvSorteos.Columns[1].Width = 65;
+                dgvSorteos.Columns[2].Width = 85;
+                dgvSorteos.Columns[3].Width = 80;
+                dgvSorteos.Columns[5].Width = 120;
+            }
+            else
+            {
+                MessageBox.Show("Ocurrió un error recuperando los datos de la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void inicializarTablas()
