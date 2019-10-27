@@ -134,6 +134,69 @@ namespace Proyecto
             salirInterfazEditando();
         }
 
+
+        private Boolean ValidarFecha(String tipoSorteo, DateTime fecha) {
+            if ((fecha.DayOfWeek == DayOfWeek.Tuesday || fecha.DayOfWeek == DayOfWeek.Friday) && tipoSorteo.Equals("Chances"))
+            {
+                
+                MessageBox.Show("Chances valida");
+                return true;
+            }
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday && tipoSorteo.Equals("Loteria"))
+            {
+                MessageBox.Show("loteria valida");
+                return true;
+
+            }
+            return false;
+
+        }
+        private void btCrear_Click(object sender, EventArgs e)
+        {
+            DateTime fecha = dtFecha.Value;
+            Sorteo sorteo;
+            string tipoSorteo; 
+            
+            if (rbChances.Checked)
+            {
+                tipoSorteo = "Chances";
+            }
+            else
+            {
+                tipoSorteo = "Loteria";
+
+            }
+            Boolean fechaValida = ValidarFecha(tipoSorteo,fecha);
+            if (fechaValida)
+            {
+                if (nudFracciones.Value > 0 && nudCostoFraccion.Value > 0)
+                {
+                    
+                    sorteo.EstablecerCantidadFracciones(Convert.ToInt32(nudFracciones.Value));
+                    sorteo.EstablecerFecha(fecha);
+                    sorteo.EstablecerLeyenda(tbLeyenda.Text);
+                    sorteo.EstablecerPrecioFraccion(Convert.ToInt32(nudCostoFraccion.Value));
+                    sorteo.EstablecerTipoSorteo(tipoSorteo);
+                    
+                }
+                else
+                {
+                    MessageBox.Show("La cantidad de fracciones y el costo deben ser mayor a 0");
+                }
+
+
+            }
+            else {
+                MessageBox.Show("La fecha seleccionada no es válida");
+
+            }
+            
+            
+                   
+            
+
+        }
+
         private void btCrear_Click(object sender, EventArgs e)
         {
 
@@ -167,9 +230,9 @@ namespace Proyecto
 
             if (dr == DialogResult.Yes)
             {
-                nudPremio1.Value = 0;
-                nudPremio2.Value = 0;
-                nudPremio3.Value = 0;
+                nudPremio1.Value = 1;
+                nudPremio2.Value = 1;
+                nudPremio3.Value = 1;
                 panelPremiosAdicionales.Controls.Clear();
             }
         }
@@ -177,7 +240,7 @@ namespace Proyecto
         private void btCrearNuevoSorteo_Click(object sender, EventArgs e)
         {
             ajustarPanelSorteo();
-
+            dtFecha.MinDate = DateTime.Now;
             panelCrearSorteo.Visible = !panelCrearSorteo.Visible;
         }
 
