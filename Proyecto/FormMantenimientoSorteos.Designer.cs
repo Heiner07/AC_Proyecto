@@ -208,6 +208,7 @@
             this.btCrear.TabIndex = 41;
             this.btCrear.Text = "Crear";
             this.btCrear.UseVisualStyleBackColor = true;
+            this.btCrear.Click += new System.EventHandler(this.btCrear_Click);
             // 
             // btAgregarPremioAdicional
             // 

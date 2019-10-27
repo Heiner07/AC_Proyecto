@@ -6,12 +6,34 @@ using System.Threading.Tasks;
 
 namespace Proyecto
 {
-    class Sorteo
+    public class Sorteo
     {
-        int idSorteo,numeroSorteo,cantidadFracciones,precioFraccion;
-        String tipoSorteo, leyendaBillete;
-        Boolean estado;
-        DateTime fecha;
+        public int idSorteo { get; set; }
+        public int numeroSorteo { get; set; }
+        public int cantidadFracciones { get; set; }
+        public int precioFraccion { get; set; }
+        public String tipoSorteo { get; set; }
+        public String leyendaBillete { get; set; }
+        public Boolean estado { get; set; }
+        public DateTime fecha { get; set; }
+
+        public Sorteo()
+        {
+
+        }
+
+        public Sorteo(int idSorteo, int numeroSorteo, String tipoSorteo, DateTime fecha, int cantidadFracciones,
+            int precioFraccion, String leyendaBillete, Boolean estado)
+        {
+            this.idSorteo = idSorteo;
+            this.numeroSorteo = numeroSorteo;
+            this.tipoSorteo = tipoSorteo;
+            this.fecha = fecha;
+            this.cantidadFracciones = cantidadFracciones;
+            this.precioFraccion = precioFraccion;
+            this.leyendaBillete = leyendaBillete;
+            this.estado = estado;
+        }
 
         /**
          * Se encarga de efectuar el sorteo correspondiente.
