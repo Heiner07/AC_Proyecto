@@ -59,6 +59,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelSorteos = new System.Windows.Forms.Panel();
+            this.tbBusqueda = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).BeginInit();
             this.panelCrearSorteo.SuspendLayout();
@@ -109,13 +111,13 @@
             this.dataGridViewSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dataGridViewSorteos.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewSorteos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSorteos.Location = new System.Drawing.Point(9, 31);
+            this.dataGridViewSorteos.Location = new System.Drawing.Point(0, 31);
             this.dataGridViewSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewSorteos.MultiSelect = false;
             this.dataGridViewSorteos.Name = "dataGridViewSorteos";
             this.dataGridViewSorteos.ReadOnly = true;
             this.dataGridViewSorteos.RowTemplate.Height = 24;
-            this.dataGridViewSorteos.Size = new System.Drawing.Size(777, 148);
+            this.dataGridViewSorteos.Size = new System.Drawing.Size(782, 148);
             this.dataGridViewSorteos.TabIndex = 2;
             this.dataGridViewSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSorteos_CellClick);
             // 
@@ -132,6 +134,7 @@
             // panelCrearSorteo
             // 
             this.panelCrearSorteo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelCrearSorteo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelCrearSorteo.Controls.Add(this.btCancelar);
             this.panelCrearSorteo.Controls.Add(this.btGuardar);
             this.panelCrearSorteo.Controls.Add(this.btBorrarPlanPremios);
@@ -156,10 +159,10 @@
             this.panelCrearSorteo.Controls.Add(this.label3);
             this.panelCrearSorteo.Controls.Add(this.label2);
             this.panelCrearSorteo.Controls.Add(this.label1);
-            this.panelCrearSorteo.Location = new System.Drawing.Point(0, 54);
+            this.panelCrearSorteo.Location = new System.Drawing.Point(7, 54);
             this.panelCrearSorteo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelCrearSorteo.Name = "panelCrearSorteo";
-            this.panelCrearSorteo.Size = new System.Drawing.Size(798, 404);
+            this.panelCrearSorteo.Size = new System.Drawing.Size(782, 404);
             this.panelCrearSorteo.TabIndex = 0;
             // 
             // btCancelar
@@ -404,14 +407,33 @@
             // panelSorteos
             // 
             this.panelSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panelSorteos.Controls.Add(this.label11);
+            this.panelSorteos.Controls.Add(this.tbBusqueda);
             this.panelSorteos.Controls.Add(this.label10);
             this.panelSorteos.Controls.Add(this.dataGridViewSorteos);
-            this.panelSorteos.Location = new System.Drawing.Point(3, 464);
+            this.panelSorteos.Location = new System.Drawing.Point(7, 464);
             this.panelSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSorteos.MinimumSize = new System.Drawing.Size(632, 177);
             this.panelSorteos.Name = "panelSorteos";
-            this.panelSorteos.Size = new System.Drawing.Size(798, 182);
+            this.panelSorteos.Size = new System.Drawing.Size(782, 182);
             this.panelSorteos.TabIndex = 2;
+            // 
+            // tbBusqueda
+            // 
+            this.tbBusqueda.Location = new System.Drawing.Point(639, 6);
+            this.tbBusqueda.Name = "tbBusqueda";
+            this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
+            this.tbBusqueda.TabIndex = 4;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(507, 10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(126, 19);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Buscar número:";
             // 
             // FormMantenimientoSorteos
             // 
@@ -474,5 +496,7 @@
         private System.Windows.Forms.Label lbEditarSorteo;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.Button btGuardar;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tbBusqueda;
     }
 }

@@ -17,31 +17,49 @@ namespace Proyecto
         // Creando e inicializando el hilo
         //Thread hiloSorteo = new Thread(jugarSorteo);
         bool var = true;
-        public FormJugar()
+        SistemaLoteriaChances sistemaLoteriaChances;
+
+        public FormJugar(SistemaLoteriaChances sistemaLoteriaChances)
         {
             InitializeComponent();
-            establecerValoresTablaSorteos();
+            this.sistemaLoteriaChances = sistemaLoteriaChances;
+            EstablecerValoresTablaSorteos();
             establecerValoresTablaResultadosSorteo();
            
         }
 
-        private void establecerValoresTablaSorteos()
+        private void EstablecerValoresTablaSorteos()
         {
-            DataTable dtSorteos = new DataTable();
-            dtSorteos.Columns.Add("Tipo", typeof(string));
-            dtSorteos.Columns.Add("Número", typeof(string));
-            dtSorteos.Columns.Add("Fecha", typeof(string));
-            for (int i = 0; i < 5; i++)
+            List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
+            if (sorteos != null)
             {
-                dtSorteos.Rows.Add(new object[] { "Lotería", i.ToString(), "30/09/2019" });
+                int cantidadSorteos = sorteos.Count;
+                Sorteo sorteo;
+                DataTable dtSorteos = new DataTable();
+                dtSorteos.Columns.Add("Tipo", typeof(string));
+                dtSorteos.Columns.Add("Número", typeof(string));
+                dtSorteos.Columns.Add("Fecha", typeof(string));
+                for (int i = 0; i < cantidadSorteos; i++)
+                {
+                    sorteo = sorteos[i];
+                    if (!sorteo.estado)
+                    {
+                        dtSorteos.Rows.Add(new object[] { sorteo.tipoSorteo, sorteo.numeroSorteo,
+                        sorteo.fecha.ToShortDateString() });
+                    }
+                }
+                dgvSorteos.DataSource = dtSorteos;
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                btn.UseColumnTextForButtonValue = true;
+                btn.HeaderText = "Jugar";
+                btn.Name = "btn";
+                btn.Text = "Jugar";
+                dgvSorteos.Columns.Add(btn);
             }
-            dgvSorteos.DataSource = dtSorteos;
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            btn.UseColumnTextForButtonValue = true;
-            btn.HeaderText = "Jugar";
-            btn.Name = "btn";
-            btn.Text = "Jugar";
-            dgvSorteos.Columns.Add(btn);
+            else
+            {
+                MessageBox.Show("Ocurrió un error recuperando los datos de la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void establecerValoresTablaResultadosSorteo()
@@ -60,6 +78,7 @@ namespace Proyecto
 
         private void dgvSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            Console.WriteLine(e.ColumnIndex);
             if (e.ColumnIndex == 0)
             {
                 DialogResult dr = MessageBox.Show("¿Desea jugar este sorteo?", "Mensaje", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);

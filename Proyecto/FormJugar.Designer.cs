@@ -28,13 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dgvSorteos = new System.Windows.Forms.DataGridView();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.sorteoRapido = new System.Windows.Forms.Button();
             this.tbPremio = new System.Windows.Forms.TextBox();
@@ -48,103 +42,35 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dgvSorteos = new System.Windows.Forms.DataGridView();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbBusqueda = new System.Windows.Forms.TextBox();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadosSorteo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // panel3
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.dgvSorteos);
-            this.panel1.Controls.Add(this.radioButton3);
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(155, 3);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(518, 284);
-            this.panel1.TabIndex = 0;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(8, 64);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(230, 19);
-            this.label10.TabIndex = 42;
-            this.label10.Text = "Sorteos disponibles para jugar";
-            // 
-            // dgvSorteos
-            // 
-            this.dgvSorteos.AllowUserToAddRows = false;
-            this.dgvSorteos.AllowUserToDeleteRows = false;
-            this.dgvSorteos.AllowUserToResizeColumns = false;
-            this.dgvSorteos.AllowUserToResizeRows = false;
-            this.dgvSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.dgvSorteos.BackgroundColor = System.Drawing.Color.White;
-            this.dgvSorteos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSorteos.Location = new System.Drawing.Point(12, 85);
-            this.dgvSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvSorteos.Name = "dgvSorteos";
-            this.dgvSorteos.ReadOnly = true;
-            this.dgvSorteos.RowHeadersWidth = 51;
-            this.dgvSorteos.RowTemplate.Height = 24;
-            this.dgvSorteos.Size = new System.Drawing.Size(479, 181);
-            this.dgvSorteos.TabIndex = 41;
-            this.dgvSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSorteos_CellClick);
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(12, 34);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(69, 21);
-            this.radioButton3.TabIndex = 39;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Todos";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(205, 34);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(84, 21);
-            this.radioButton2.TabIndex = 38;
-            this.radioButton2.Text = "Chances";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(107, 34);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(73, 21);
-            this.radioButton1.TabIndex = 37;
-            this.radioButton1.Text = "Lotería";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 19);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "Tipo de sorteo";
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Location = new System.Drawing.Point(148, 10);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(531, 633);
+            this.panel3.TabIndex = 2;
             // 
             // panel2
             // 
@@ -161,11 +87,11 @@
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(155, 300);
+            this.panel2.Location = new System.Drawing.Point(5, 289);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(518, 344);
-            this.panel2.TabIndex = 1;
+            this.panel2.Size = new System.Drawing.Size(518, 342);
+            this.panel2.TabIndex = 3;
             // 
             // sorteoRapido
             // 
@@ -176,7 +102,6 @@
             this.sorteoRapido.TabIndex = 46;
             this.sorteoRapido.Text = "Sorteo rápido";
             this.sorteoRapido.UseVisualStyleBackColor = true;
-            this.sorteoRapido.Click += new System.EventHandler(this.sorteoRapido_Click);
             // 
             // tbPremio
             // 
@@ -220,7 +145,7 @@
             this.dgvResultadosSorteo.ReadOnly = true;
             this.dgvResultadosSorteo.RowHeadersWidth = 51;
             this.dgvResultadosSorteo.RowTemplate.Height = 24;
-            this.dgvResultadosSorteo.Size = new System.Drawing.Size(479, 156);
+            this.dgvResultadosSorteo.Size = new System.Drawing.Size(479, 154);
             this.dgvResultadosSorteo.TabIndex = 42;
             // 
             // label5
@@ -299,40 +224,146 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.tbBusqueda);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.dgvSorteos);
+            this.panel1.Controls.Add(this.radioButton3);
+            this.panel1.Controls.Add(this.radioButton2);
+            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(5, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(518, 282);
+            this.panel1.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(8, 64);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(151, 19);
+            this.label10.TabIndex = 42;
+            this.label10.Text = "Sorteos disponibles";
+            // 
+            // dgvSorteos
+            // 
+            this.dgvSorteos.AllowUserToAddRows = false;
+            this.dgvSorteos.AllowUserToDeleteRows = false;
+            this.dgvSorteos.AllowUserToResizeColumns = false;
+            this.dgvSorteos.AllowUserToResizeRows = false;
+            this.dgvSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dgvSorteos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSorteos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSorteos.Location = new System.Drawing.Point(12, 85);
+            this.dgvSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvSorteos.Name = "dgvSorteos";
+            this.dgvSorteos.ReadOnly = true;
+            this.dgvSorteos.RowHeadersWidth = 51;
+            this.dgvSorteos.RowTemplate.Height = 24;
+            this.dgvSorteos.Size = new System.Drawing.Size(479, 179);
+            this.dgvSorteos.TabIndex = 41;
+            this.dgvSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSorteos_CellClick);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Checked = true;
+            this.radioButton3.Location = new System.Drawing.Point(12, 34);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(69, 21);
+            this.radioButton3.TabIndex = 39;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Todos";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(205, 34);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(84, 21);
+            this.radioButton2.TabIndex = 38;
+            this.radioButton2.Text = "Chances";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(107, 34);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(73, 21);
+            this.radioButton1.TabIndex = 37;
+            this.radioButton1.Text = "Lotería";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 19);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "Tipo de sorteo";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(219, 62);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(126, 19);
+            this.label11.TabIndex = 44;
+            this.label11.Text = "Buscar número:";
+            // 
+            // tbBusqueda
+            // 
+            this.tbBusqueda.Location = new System.Drawing.Point(351, 58);
+            this.tbBusqueda.Name = "tbBusqueda";
+            this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
+            this.tbBusqueda.TabIndex = 43;
+            // 
             // FormJugar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(798, 655);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormJugar";
             this.Text = "FormJugar";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadosSorteo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridView dgvSorteos;
+        private System.Windows.Forms.Button sorteoRapido;
+        private System.Windows.Forms.TextBox tbPremio;
+        private System.Windows.Forms.TextBox tbSerie;
+        private System.Windows.Forms.TextBox tbNumero;
         private System.Windows.Forms.DataGridView dgvResultadosSorteo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -341,9 +372,14 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox tbPremio;
-        private System.Windows.Forms.TextBox tbSerie;
-        private System.Windows.Forms.TextBox tbNumero;
-        private System.Windows.Forms.Button sorteoRapido;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView dgvSorteos;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tbBusqueda;
     }
 }

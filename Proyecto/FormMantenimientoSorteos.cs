@@ -49,17 +49,21 @@ namespace Proyecto
                         sorteo.leyendaBillete, sorteo.estado });
                 }
                 dataGridViewSorteos.DataSource = dtSorteos;
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                btn.UseColumnTextForButtonValue = true;
-                btn.HeaderText = "Eliminar";
-                btn.Name = "btn";
-                btn.Text = "Eliminar";
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn
+                {
+                    UseColumnTextForButtonValue = true,
+                    HeaderText = "Eliminar",
+                    Name = "btn",
+                    Text = "Eliminar"
+                };
                 dataGridViewSorteos.Columns.Add(btn);
-                DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
-                btn2.UseColumnTextForButtonValue = true;
-                btn2.HeaderText = "Editar";
-                btn2.Name = "btn2";
-                btn2.Text = "Editar";
+                DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn
+                {
+                    UseColumnTextForButtonValue = true,
+                    HeaderText = "Editar",
+                    Name = "btn2",
+                    Text = "Editar"
+                };
                 dataGridViewSorteos.Columns.Add(btn2);
 
                 dataGridViewSorteos.Columns[0].Width = 70;

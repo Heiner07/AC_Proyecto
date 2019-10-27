@@ -41,6 +41,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvPorcentajeAparicion = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbBusqueda = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).BeginInit();
@@ -65,6 +67,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.tbBusqueda);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.dgvSorteos);
             this.tabPage1.Controls.Add(this.dgvNumerosMasJugados);
@@ -220,6 +224,23 @@
             this.label4.TabIndex = 47;
             this.label4.Text = "Porcentaje de aparición";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(424, 373);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(126, 19);
+            this.label11.TabIndex = 50;
+            this.label11.Text = "Buscar número:";
+            // 
+            // tbBusqueda
+            // 
+            this.tbBusqueda.Location = new System.Drawing.Point(556, 369);
+            this.tbBusqueda.Name = "tbBusqueda";
+            this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
+            this.tbBusqueda.TabIndex = 49;
+            // 
             // FormEstadisticasReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -259,5 +280,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dgvPorcentajeAparicion;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tbBusqueda;
     }
 }

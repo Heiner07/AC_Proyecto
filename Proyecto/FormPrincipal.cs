@@ -69,7 +69,7 @@ namespace Proyecto
 
         private void btJugar_Click(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new FormJugar());
+            abrirFormularioHijo(new FormJugar(sistemaLC));
         }
 
         private void btResultados_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace Proyecto
 
         private void btEstadisticasReportes_Click(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new FormEstadisticasReportes());
+            abrirFormularioHijo(new FormEstadisticasReportes(sistemaLC));
         }
 
         private void btIniciarSesion_Click(object sender, EventArgs e)
