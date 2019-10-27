@@ -18,10 +18,11 @@ namespace Proyecto
          * S: El objeto usuario con los datos correspondientes.
          * R: Debe recibir solo dos parámetros
          */
-        public Usuario iniciarSesion(String nombre, String contrasenia) {
+        public Usuario IniciarSesion(String nombre, String contrasenia) {
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             SqlDataReader obtenerDatos;
-            int rol = -1; ;
+            Usuario usuario = new Usuario();
+            int rol = -1;
             String consultaUsuario= "select Rol from Usuarios where NombreUsuario=@nombre and Contrasenia=@contrasenia";
             conexion.Open();
             SqlCommand cmd = new SqlCommand(consultaUsuario, conexion);
@@ -39,8 +40,9 @@ namespace Proyecto
             obtenerDatos.Close();
             cmd.Dispose();
             conexion.Close();
-           
-            return new Usuario(nombre,rol);
+            usuario.establecerNombreUsuario(nombre);
+            usuario.establecerRol(rol);
+            return usuario;
         }
 
         /*
@@ -49,18 +51,18 @@ namespace Proyecto
          * R: Debe recibir solo dos parámetros
          */
 
-        public Boolean insertarSorteo(Sorteo nuevoSorteo) {
+        public Boolean InsertarSorteo(Sorteo nuevoSorteo) {
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             conexion.Open();
             SqlCommand cmd = new SqlCommand("InsertarSorteo", conexion);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@Numero", SqlDbType.Int).Value = nuevoSorteo.obtenerNumeroSorteo();
-            cmd.Parameters.Add("@Tipo", SqlDbType.NVarChar).Value = nuevoSorteo.obtenerTipoSorteo();
-            cmd.Parameters.Add("@Fecha", SqlDbType.DateTime).Value = nuevoSorteo.obtenerFecha();
-            cmd.Parameters.Add("@CantidadFracciones", SqlDbType.Int).Value = nuevoSorteo.obtenerCantidadFracciones();
-            cmd.Parameters.Add("@PrecioFraccion", SqlDbType.Int).Value = nuevoSorteo.obtenerPrecioFraccion();
-            cmd.Parameters.Add("@Leyenda", SqlDbType.NVarChar).Value = nuevoSorteo.obtenerLeyenda();
-            cmd.Parameters.Add("@Estado", SqlDbType.Bit).Value = nuevoSorteo.obtenerEstado();
+            cmd.Parameters.Add("@Numero", SqlDbType.Int).Value = nuevoSorteo.ObtenerNumeroSorteo;
+            cmd.Parameters.Add("@Tipo", SqlDbType.NVarChar).Value = nuevoSorteo.ObtenerTipoSorteo;
+            cmd.Parameters.Add("@Fecha", SqlDbType.DateTime).Value = nuevoSorteo.ObtenerFecha;
+            cmd.Parameters.Add("@CantidadFracciones", SqlDbType.Int).Value = nuevoSorteo.ObtenerCantidadFracciones;
+            cmd.Parameters.Add("@PrecioFraccion", SqlDbType.Int).Value = nuevoSorteo.ObtenerPrecioFraccion;
+            cmd.Parameters.Add("@Leyenda", SqlDbType.NVarChar).Value = nuevoSorteo.ObtenerLeyenda;
+            cmd.Parameters.Add("@Estado", SqlDbType.Bit).Value = nuevoSorteo.ObtenerEstado;
             try
             {
                 cmd.ExecuteNonQuery();

@@ -47,12 +47,12 @@
             this.nudPremio1 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.tbLeyenda = new System.Windows.Forms.TextBox();
+            this.nudCostoFraccion = new System.Windows.Forms.NumericUpDown();
+            this.nudFracciones = new System.Windows.Forms.NumericUpDown();
+            this.dtFecha = new System.Windows.Forms.DateTimePicker();
+            this.rbChances = new System.Windows.Forms.RadioButton();
+            this.rbLoteria = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -65,8 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCostoFraccion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFracciones)).BeginInit();
             this.panelSorteos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,6 +114,7 @@
             this.dataGridViewSorteos.MultiSelect = false;
             this.dataGridViewSorteos.Name = "dataGridViewSorteos";
             this.dataGridViewSorteos.ReadOnly = true;
+            this.dataGridViewSorteos.RowHeadersWidth = 51;
             this.dataGridViewSorteos.RowTemplate.Height = 24;
             this.dataGridViewSorteos.Size = new System.Drawing.Size(777, 148);
             this.dataGridViewSorteos.TabIndex = 2;
@@ -145,12 +146,12 @@
             this.panelCrearSorteo.Controls.Add(this.nudPremio1);
             this.panelCrearSorteo.Controls.Add(this.label7);
             this.panelCrearSorteo.Controls.Add(this.label6);
-            this.panelCrearSorteo.Controls.Add(this.textBox1);
-            this.panelCrearSorteo.Controls.Add(this.numericUpDown2);
-            this.panelCrearSorteo.Controls.Add(this.numericUpDown1);
-            this.panelCrearSorteo.Controls.Add(this.dateTimePicker1);
-            this.panelCrearSorteo.Controls.Add(this.radioButton2);
-            this.panelCrearSorteo.Controls.Add(this.radioButton1);
+            this.panelCrearSorteo.Controls.Add(this.tbLeyenda);
+            this.panelCrearSorteo.Controls.Add(this.nudCostoFraccion);
+            this.panelCrearSorteo.Controls.Add(this.nudFracciones);
+            this.panelCrearSorteo.Controls.Add(this.dtFecha);
+            this.panelCrearSorteo.Controls.Add(this.rbChances);
+            this.panelCrearSorteo.Controls.Add(this.rbLoteria);
             this.panelCrearSorteo.Controls.Add(this.label5);
             this.panelCrearSorteo.Controls.Add(this.label4);
             this.panelCrearSorteo.Controls.Add(this.label3);
@@ -208,6 +209,7 @@
             this.btCrear.TabIndex = 41;
             this.btCrear.Text = "Crear";
             this.btCrear.UseVisualStyleBackColor = true;
+            this.btCrear.Click += new System.EventHandler(this.btCrear_Click);
             // 
             // btAgregarPremioAdicional
             // 
@@ -234,9 +236,19 @@
             // 
             this.nudPremio3.Location = new System.Drawing.Point(389, 183);
             this.nudPremio3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudPremio3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudPremio3.Name = "nudPremio3";
             this.nudPremio3.Size = new System.Drawing.Size(200, 22);
             this.nudPremio3.TabIndex = 38;
+            this.nudPremio3.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label9
             // 
@@ -252,9 +264,19 @@
             // 
             this.nudPremio2.Location = new System.Drawing.Point(389, 129);
             this.nudPremio2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudPremio2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudPremio2.Name = "nudPremio2";
             this.nudPremio2.Size = new System.Drawing.Size(200, 22);
             this.nudPremio2.TabIndex = 36;
+            this.nudPremio2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label8
             // 
@@ -270,9 +292,19 @@
             // 
             this.nudPremio1.Location = new System.Drawing.Point(389, 69);
             this.nudPremio1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudPremio1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudPremio1.Name = "nudPremio1";
             this.nudPremio1.Size = new System.Drawing.Size(200, 22);
             this.nudPremio1.TabIndex = 34;
+            this.nudPremio1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label7
             // 
@@ -294,61 +326,83 @@
             this.label6.TabIndex = 32;
             this.label6.Text = "Plan de Premios";
             // 
-            // textBox1
+            // tbLeyenda
             // 
-            this.textBox1.Location = new System.Drawing.Point(19, 281);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 22);
-            this.textBox1.TabIndex = 31;
+            this.tbLeyenda.Location = new System.Drawing.Point(19, 281);
+            this.tbLeyenda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbLeyenda.Name = "tbLeyenda";
+            this.tbLeyenda.Size = new System.Drawing.Size(200, 22);
+            this.tbLeyenda.TabIndex = 31;
             // 
-            // numericUpDown2
+            // nudCostoFraccion
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(19, 220);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(200, 22);
-            this.numericUpDown2.TabIndex = 30;
+            this.nudCostoFraccion.Location = new System.Drawing.Point(19, 220);
+            this.nudCostoFraccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudCostoFraccion.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudCostoFraccion.Name = "nudCostoFraccion";
+            this.nudCostoFraccion.Size = new System.Drawing.Size(200, 22);
+            this.nudCostoFraccion.TabIndex = 30;
+            this.nudCostoFraccion.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // numericUpDown1
+            // nudFracciones
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(19, 155);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(200, 22);
-            this.numericUpDown1.TabIndex = 29;
+            this.nudFracciones.Location = new System.Drawing.Point(19, 155);
+            this.nudFracciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudFracciones.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudFracciones.Name = "nudFracciones";
+            this.nudFracciones.Size = new System.Drawing.Size(200, 22);
+            this.nudFracciones.TabIndex = 29;
+            this.nudFracciones.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // dateTimePicker1
+            // dtFecha
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(19, 94);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 28;
+            this.dtFecha.Location = new System.Drawing.Point(19, 94);
+            this.dtFecha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtFecha.MinDate = new System.DateTime(2019, 10, 26, 16, 17, 3, 0);
+            this.dtFecha.Name = "dtFecha";
+            this.dtFecha.Size = new System.Drawing.Size(200, 22);
+            this.dtFecha.TabIndex = 28;
+            this.dtFecha.Value = new System.DateTime(2019, 10, 26, 16, 17, 12, 0);
             // 
-            // radioButton2
+            // rbChances
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(107, 37);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(84, 21);
-            this.radioButton2.TabIndex = 27;
-            this.radioButton2.Text = "Chances";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbChances.AutoSize = true;
+            this.rbChances.Location = new System.Drawing.Point(107, 37);
+            this.rbChances.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbChances.Name = "rbChances";
+            this.rbChances.Size = new System.Drawing.Size(84, 21);
+            this.rbChances.TabIndex = 27;
+            this.rbChances.Text = "Chances";
+            this.rbChances.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbLoteria
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(19, 37);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(73, 21);
-            this.radioButton1.TabIndex = 26;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Lotería";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbLoteria.AutoSize = true;
+            this.rbLoteria.Checked = true;
+            this.rbLoteria.Location = new System.Drawing.Point(19, 37);
+            this.rbLoteria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbLoteria.Name = "rbLoteria";
+            this.rbLoteria.Size = new System.Drawing.Size(73, 21);
+            this.rbLoteria.TabIndex = 26;
+            this.rbLoteria.TabStop = true;
+            this.rbLoteria.Text = "Lotería";
+            this.rbLoteria.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -432,8 +486,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCostoFraccion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFracciones)).EndInit();
             this.panelSorteos.ResumeLayout(false);
             this.panelSorteos.PerformLayout();
             this.ResumeLayout(false);
@@ -458,12 +512,12 @@
         private System.Windows.Forms.NumericUpDown nudPremio1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox tbLeyenda;
+        private System.Windows.Forms.NumericUpDown nudCostoFraccion;
+        private System.Windows.Forms.NumericUpDown nudFracciones;
+        private System.Windows.Forms.DateTimePicker dtFecha;
+        private System.Windows.Forms.RadioButton rbChances;
+        private System.Windows.Forms.RadioButton rbLoteria;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

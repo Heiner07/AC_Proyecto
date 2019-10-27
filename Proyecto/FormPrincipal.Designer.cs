@@ -334,6 +334,7 @@
             // 
             // FormPrincipal
             // 
+            this.AcceptButton = this.btIniciarSesion;
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1117, 678);

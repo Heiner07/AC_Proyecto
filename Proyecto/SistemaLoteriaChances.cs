@@ -8,10 +8,15 @@ namespace Proyecto
 {
     class SistemaLoteriaChances
     {
-        public Usuario iniciarSesion(String nombre, String contrasenia) {
-            ConexionBD verificarUsuario = new ConexionBD();
-            return verificarUsuario.iniciarSesion(nombre, contrasenia);    
+        ConexionBD conexion = new ConexionBD();
+        Usuario usuario = new Usuario();
+
+        public Usuario IniciarSesion(String nombre, String contrasenia) {
+            
+            return usuario = conexion.IniciarSesion(nombre, contrasenia);    
         }
+
+        
 
     }
 }
