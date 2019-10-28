@@ -50,19 +50,47 @@ namespace Proyecto
 
         public Boolean InsertarSorteo(Sorteo nuevoSorteo) {
             SqlConnection conexion = new SqlConnection(cadenaConexion);
-            conexion.Open();
-            SqlCommand cmd = new SqlCommand("InsertarSorteo", conexion);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@Numero", SqlDbType.Int).Value = nuevoSorteo.ObtenerNumeroSorteo;
-            cmd.Parameters.Add("@Tipo", SqlDbType.NVarChar).Value = nuevoSorteo.ObtenerTipoSorteo;
-            cmd.Parameters.Add("@Fecha", SqlDbType.DateTime).Value = nuevoSorteo.ObtenerFecha;
-            cmd.Parameters.Add("@CantidadFracciones", SqlDbType.Int).Value = nuevoSorteo.ObtenerCantidadFracciones;
-            cmd.Parameters.Add("@PrecioFraccion", SqlDbType.Int).Value = nuevoSorteo.ObtenerPrecioFraccion;
-            cmd.Parameters.Add("@Leyenda", SqlDbType.NVarChar).Value = nuevoSorteo.ObtenerLeyenda;
-            cmd.Parameters.Add("@Estado", SqlDbType.Bit).Value = nuevoSorteo.ObtenerEstado;
+            List <Premio> premios = new List<Premio>();
+            premios = nuevoSorteo.ObenerPlanPremios.ObtenerPremios;
             try
             {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("InsertarSorteo", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Numero", SqlDbType.Int).Value = nuevoSorteo.ObtenerNumeroSorteo;
+                cmd.Parameters.Add("@Tipo", SqlDbType.NVarChar).Value = nuevoSorteo.ObtenerTipoSorteo;
+                cmd.Parameters.Add("@Fecha", SqlDbType.DateTime).Value = nuevoSorteo.ObtenerFecha;
+                cmd.Parameters.Add("@CantidadFracciones", SqlDbType.Int).Value = nuevoSorteo.ObtenerCantidadFracciones;
+                cmd.Parameters.Add("@PrecioFraccion", SqlDbType.Int).Value = nuevoSorteo.ObtenerPrecioFraccion;
+                cmd.Parameters.Add("@Leyenda", SqlDbType.NVarChar).Value = nuevoSorteo.ObtenerLeyenda;
+                cmd.Parameters.Add("@Estado", SqlDbType.Bit).Value = nuevoSorteo.ObtenerEstado;
                 cmd.ExecuteNonQuery();
+                if (premios != null)
+                {
+                    cmd = new SqlCommand("SELECT MAX(Id) FROM ObtenerSorteos", conexion);
+                    cmd.CommandType = CommandType.Text;
+                    SqlDataReader lectorDatos = cmd.ExecuteReader();
+                    int idSorteo = 0;
+                    while (lectorDatos.Read())
+                    {
+                        idSorteo = (int)lectorDatos[0];
+                    }
+                    conexion.Close();
+                    conexion.Open();
+                    cmd = new SqlCommand("InsertarPlanDePremios", conexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Clear();
+                    foreach (Premio premio in premios) {
+                        cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = idSorteo;
+                        cmd.Parameters.Add("@Monto", SqlDbType.Int).Value = premio.ObtenerMonto;
+                        cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = premio.ObtenerCantidad;
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+                    }
+                    conexion.Close();
+                    
+
+                }
                 return true;
             }
             catch

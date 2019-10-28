@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -26,12 +27,14 @@ namespace Proyecto
             this.dtPremiosAdicionales.Columns.Add("Monto", typeof(int));
             this.dtPremiosAdicionales.Columns.Add("Cantidad", typeof(int));
             dataGridViewPremiosAdicionales.DataSource = dtPremiosAdicionales;
+            
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn
             {
                 UseColumnTextForButtonValue = true,
                 HeaderText = "Eliminar",
                 Name = "btn",
-                Text = "Eliminar"
+                Text = "Eliminar",
+                
             };
             dataGridViewPremiosAdicionales.Columns.Add(btn);
             dataGridViewPremiosAdicionales.Columns[0].Width = 80;
@@ -95,8 +98,11 @@ namespace Proyecto
             }
         }
 
-        
 
+        private void EliminarPremio_Click(object sender, EventArgs e) { 
+        
+        
+        }
         private void ConfigurarComponentesPanelSorteos()
         {
             posicionLbPremioAdicional = new Point(25, 3);
@@ -198,10 +204,82 @@ namespace Proyecto
             return numeroRetornado;
 
         }
-        private void ObtenerPlanPremios() {
-            
 
-        
+        //POR MIENTRAS LO DEJE CON TRY CATCH
+        private List<Premio> ObtenerPlanPremios(String tipoSorteo) {
+            List<Premio> premios = new List<Premio>();
+            try
+            {
+               
+                int primerPremio = Convert.ToInt32(nudPremio1.Value);
+                int segundoPremio = Convert.ToInt32(nudPremio2.Value);
+                int tercerPremio = Convert.ToInt32(nudPremio3.Value);
+                if (primerPremio > 0 && segundoPremio > 0 && tercerPremio > 0 && (primerPremio > segundoPremio) && (segundoPremio > tercerPremio)) {
+                    premios.Add(new Premio(primerPremio, 1));
+                    premios.Add(new Premio(segundoPremio, 1));
+                    premios.Add(new Premio(tercerPremio, 1));
+                }
+                else {
+                    MessageBox.Show("Error en los 3 premios principales");
+                    return null;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Números y cantidades deben ser numéricos");
+                return null;
+            }
+            if (tipoSorteo.Equals("Loteria"))
+            {
+                DataTable dt = this.dataGridViewPremiosAdicionales.DataSource as DataTable;
+                int largoPremiosAdicionales = this.dataGridViewPremiosAdicionales.Rows.Count;
+                for (int i = 0; i < largoPremiosAdicionales; i++)
+                {
+                    try
+                    {
+                        int montoPremio = Convert.ToInt32(dt.Rows[i]["Monto"].ToString());
+                        int cantidad = Convert.ToInt32(dt.Rows[i]["Cantidad"].ToString());
+                        if (montoPremio > 0 && cantidad > 0)
+                        {
+                            //Buscamos si existe uno igual
+                            Boolean noAgregado = true;
+                            foreach (Premio premio in premios)
+                            {
+                                if (premio.ObtenerCantidad == cantidad && premio.ObtenerMonto == montoPremio)
+                                    noAgregado = false;
+                            }
+                            //Si no está agregado, los agregamos a la lista
+                            if (noAgregado)
+                            {
+                                premios.Add(new Premio(montoPremio, cantidad));
+                            }
+
+                        }
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Números y cantidades deben ser numéricos");
+                        return null;
+                    }
+
+
+
+                }
+            }
+            return premios;
+
+        }
+        private void CrearSorteo(Sorteo sorteo) {
+            if (sistemaLoteriaChances.CrearSorteo(sorteo))
+            {
+                MessageBox.Show("¡¡¡Se insertó con éxito!!!");
+                dataGridViewSorteos.Columns.Clear();
+                EstablecerValoresTablaSorteos();
+            }
+            else { MessageBox.Show("Error al guardar el sorteo"); }
+
+
         }
         private void btCrear_Click(object sender, EventArgs e)
         {
@@ -224,28 +302,24 @@ namespace Proyecto
                 if (nudFracciones.Value > 0 && nudCostoFraccion.Value > 0)
                 {
 
-                    //Preguntar si quiere guardar el plan de premios
-                     Premio premio = new Premio(Convert.ToInt32(nudPremio1.Value),1);
-                    ObtenerPlanPremios();
-                    planPremios.premios.Add(new Premio(Convert.ToInt32(nudPremio1.Value), 1));
-                    planPremios.premios.Add(new Premio(Convert.ToInt32(nudPremio2.Value), 1));
-                    planPremios.premios.Add(new Premio(Convert.ToInt32(nudPremio3.Value), 1));
-                    
-
-
+                    //  Premio premio = new Premio(Convert.ToInt32(nudPremio1.Value),1);
                     int numeroSorteo = ObtenerNumeroSorteo(tipoSorteo);
-                    Sorteo sorteo = new Sorteo(1, numeroSorteo, tipoSorteo,fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
-                    tbLeyenda.Text.Equals("") ? "Sin leyenda": tbLeyenda.Text,false, planPremios);
-                    if (sistemaLoteriaChances.CrearSorteo(sorteo))
+                    if (cbConPlan.Checked)
                     {
-                        MessageBox.Show("¡¡¡Se insertó con éxito!!!");
-                        dataGridViewSorteos.Columns.Clear();
-                        EstablecerValoresTablaSorteos();
+                        planPremios.premios = ObtenerPlanPremios(tipoSorteo);
+                        if (planPremios.premios != null)
+                        {
+                            Sorteo sorteo = new Sorteo(1, numeroSorteo, tipoSorteo, fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
+                            tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
+                            CrearSorteo(sorteo);
+                        }
+                        else { MessageBox.Show("Error al guardar el sorteo"); }
                     }
-                    else { MessageBox.Show("Error al guardar el sorteo"); }
-                   
-                    
-                    
+                    else {
+                        Sorteo sorteo = new Sorteo(1, numeroSorteo, tipoSorteo, fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
+                        tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
+                        CrearSorteo(sorteo);
+                    }
                 }
                 else
                 {
@@ -278,10 +352,25 @@ namespace Proyecto
             btAgregarPremioAdicional.Visible = false;
         }
 
+        private void dataGridViewPremiosAdicionales_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Eliminamos el premioAdicional
+            if (e.ColumnIndex >= 0) { 
+                if (e.ColumnIndex == 0)
+                {
+                    DataTable dt = this.dataGridViewPremiosAdicionales.DataSource as DataTable;
+                    //int montoPremio = Convert.ToInt32(dt.Rows[e.RowIndex]["Monto"].ToString());
+                    //Console.WriteLine(this.dataGridViewPremiosAdicionales.RowCount);
+                    this.dataGridViewPremiosAdicionales.Rows.RemoveAt(e.RowIndex);
+                    //Console.WriteLine(this.dataGridViewPremiosAdicionales.RowCount);
+                }
+            }
+        }
+
         private void dataGridViewSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Console.WriteLine(e.ColumnIndex);
-            if (e.ColumnIndex == 0) {
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 7) {
                 DialogResult dr = MessageBox.Show("¿Desea eliminar este sorteo?", "Mensaje", MessageBoxButtons.YesNoCancel,MessageBoxIcon.Information);
                 
                 if (dr == DialogResult.Yes)
@@ -343,6 +432,7 @@ namespace Proyecto
 
         private void btAgregarPremioAdicional_Click(object sender, EventArgs e)
         {
+
             dtPremiosAdicionales.Rows.Add(new object[] { nudMonto.Value, 1 });
         }
     }

@@ -34,6 +34,12 @@
             this.dataGridViewSorteos = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.panelCrearSorteo = new System.Windows.Forms.Panel();
+            this.cbConPlan = new System.Windows.Forms.CheckBox();
+            this.lbRestriccionSorteo = new System.Windows.Forms.Label();
+            this.nudMonto = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dataGridViewPremiosAdicionales = new System.Windows.Forms.DataGridView();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btGuardar = new System.Windows.Forms.Button();
             this.btBorrarPlanPremios = new System.Windows.Forms.Button();
@@ -60,22 +66,17 @@
             this.panelSorteos = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.tbBusqueda = new System.Windows.Forms.TextBox();
-            this.dataGridViewPremiosAdicionales = new System.Windows.Forms.DataGridView();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.nudMonto = new System.Windows.Forms.NumericUpDown();
-            this.lbRestriccionSorteo = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).BeginInit();
             this.panelCrearSorteo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPremiosAdicionales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCostoFraccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFracciones)).BeginInit();
             this.panelSorteos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPremiosAdicionales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -126,7 +127,7 @@
             this.dataGridViewSorteos.RowTemplate.Height = 24;
             this.dataGridViewSorteos.Size = new System.Drawing.Size(782, 148);
             this.dataGridViewSorteos.TabIndex = 2;
-            this.dataGridViewSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSorteos_CellClick);
+            this.dataGridViewSorteos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSorteos_CellClick);
             // 
             // label10
             // 
@@ -141,8 +142,9 @@
             // panelCrearSorteo
             // 
             this.panelCrearSorteo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panelCrearSorteo.Controls.Add(this.lbRestriccionSorteo);
             this.panelCrearSorteo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCrearSorteo.Controls.Add(this.cbConPlan);
+            this.panelCrearSorteo.Controls.Add(this.lbRestriccionSorteo);
             this.panelCrearSorteo.Controls.Add(this.nudMonto);
             this.panelCrearSorteo.Controls.Add(this.label13);
             this.panelCrearSorteo.Controls.Add(this.label12);
@@ -175,6 +177,82 @@
             this.panelCrearSorteo.Name = "panelCrearSorteo";
             this.panelCrearSorteo.Size = new System.Drawing.Size(782, 404);
             this.panelCrearSorteo.TabIndex = 0;
+            // 
+            // cbConPlan
+            // 
+            this.cbConPlan.AutoSize = true;
+            this.cbConPlan.Location = new System.Drawing.Point(101, 327);
+            this.cbConPlan.Name = "cbConPlan";
+            this.cbConPlan.Size = new System.Drawing.Size(160, 21);
+            this.cbConPlan.TabIndex = 49;
+            this.cbConPlan.Text = "Con plan de premios";
+            this.cbConPlan.UseVisualStyleBackColor = true;
+            // 
+            // lbRestriccionSorteo
+            // 
+            this.lbRestriccionSorteo.AutoSize = true;
+            this.lbRestriccionSorteo.Location = new System.Drawing.Point(225, 99);
+            this.lbRestriccionSorteo.Name = "lbRestriccionSorteo";
+            this.lbRestriccionSorteo.Size = new System.Drawing.Size(123, 17);
+            this.lbRestriccionSorteo.TabIndex = 45;
+            this.lbRestriccionSorteo.Text = "Sólo los domingos";
+            // 
+            // nudMonto
+            // 
+            this.nudMonto.Location = new System.Drawing.Point(449, 359);
+            this.nudMonto.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudMonto.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudMonto.Name = "nudMonto";
+            this.nudMonto.Size = new System.Drawing.Size(92, 22);
+            this.nudMonto.TabIndex = 48;
+            this.nudMonto.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(385, 362);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 19);
+            this.label13.TabIndex = 47;
+            this.label13.Text = "Monto:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(385, 220);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(156, 19);
+            this.label12.TabIndex = 46;
+            this.label12.Text = "Premios adicionales";
+            // 
+            // dataGridViewPremiosAdicionales
+            // 
+            this.dataGridViewPremiosAdicionales.AllowUserToAddRows = false;
+            this.dataGridViewPremiosAdicionales.AllowUserToDeleteRows = false;
+            this.dataGridViewPremiosAdicionales.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewPremiosAdicionales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPremiosAdicionales.Location = new System.Drawing.Point(389, 242);
+            this.dataGridViewPremiosAdicionales.Name = "dataGridViewPremiosAdicionales";
+            this.dataGridViewPremiosAdicionales.RowHeadersVisible = false;
+            this.dataGridViewPremiosAdicionales.RowHeadersWidth = 51;
+            this.dataGridViewPremiosAdicionales.RowTemplate.Height = 24;
+            this.dataGridViewPremiosAdicionales.Size = new System.Drawing.Size(255, 107);
+            this.dataGridViewPremiosAdicionales.TabIndex = 45;
+            this.dataGridViewPremiosAdicionales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPremiosAdicionales_CellContentClick);
             // 
             // btCancelar
             // 
@@ -240,6 +318,11 @@
             // 
             this.nudPremio3.Location = new System.Drawing.Point(389, 183);
             this.nudPremio3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudPremio3.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.nudPremio3.Minimum = new decimal(new int[] {
             1,
             0,
@@ -268,6 +351,11 @@
             // 
             this.nudPremio2.Location = new System.Drawing.Point(389, 129);
             this.nudPremio2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudPremio2.Maximum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
             this.nudPremio2.Minimum = new decimal(new int[] {
             1,
             0,
@@ -296,6 +384,11 @@
             // 
             this.nudPremio1.Location = new System.Drawing.Point(389, 69);
             this.nudPremio1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudPremio1.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
             this.nudPremio1.Minimum = new decimal(new int[] {
             1,
             0,
@@ -342,6 +435,11 @@
             // 
             this.nudCostoFraccion.Location = new System.Drawing.Point(19, 220);
             this.nudCostoFraccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudCostoFraccion.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
             this.nudCostoFraccion.Minimum = new decimal(new int[] {
             1,
             0,
@@ -360,6 +458,11 @@
             // 
             this.nudFracciones.Location = new System.Drawing.Point(19, 155);
             this.nudFracciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nudFracciones.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.nudFracciones.Minimum = new decimal(new int[] {
             1,
             0,
@@ -491,65 +594,6 @@
             this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
             this.tbBusqueda.TabIndex = 4;
             // 
-            // dataGridViewPremiosAdicionales
-            // 
-            this.dataGridViewPremiosAdicionales.AllowUserToAddRows = false;
-            this.dataGridViewPremiosAdicionales.AllowUserToDeleteRows = false;
-            this.dataGridViewPremiosAdicionales.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewPremiosAdicionales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPremiosAdicionales.Location = new System.Drawing.Point(389, 242);
-            this.dataGridViewPremiosAdicionales.Name = "dataGridViewPremiosAdicionales";
-            this.dataGridViewPremiosAdicionales.RowHeadersVisible = false;
-            this.dataGridViewPremiosAdicionales.RowTemplate.Height = 24;
-            this.dataGridViewPremiosAdicionales.Size = new System.Drawing.Size(255, 107);
-            this.dataGridViewPremiosAdicionales.TabIndex = 45;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(385, 220);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(156, 19);
-            this.label12.TabIndex = 46;
-            this.label12.Text = "Premios adicionales";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(385, 362);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(58, 19);
-            this.label13.TabIndex = 47;
-            this.label13.Text = "Monto:";
-            // 
-            // nudMonto
-            // 
-            this.nudMonto.Location = new System.Drawing.Point(449, 359);
-            this.nudMonto.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudMonto.Name = "nudMonto";
-            this.nudMonto.Size = new System.Drawing.Size(92, 22);
-            this.nudMonto.TabIndex = 48;
-            this.nudMonto.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // lbRestriccionSorteo
-            // 
-            this.lbRestriccionSorteo.AutoSize = true;
-            this.lbRestriccionSorteo.Location = new System.Drawing.Point(225, 99);
-            this.lbRestriccionSorteo.Name = "lbRestriccionSorteo";
-            this.lbRestriccionSorteo.Size = new System.Drawing.Size(123, 17);
-            this.lbRestriccionSorteo.TabIndex = 45;
-            this.lbRestriccionSorteo.Text = "Sólo los domingos";
-            // 
             // FormMantenimientoSorteos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -567,6 +611,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).EndInit();
             this.panelCrearSorteo.ResumeLayout(false);
             this.panelCrearSorteo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPremiosAdicionales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio1)).EndInit();
@@ -574,8 +620,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudFracciones)).EndInit();
             this.panelSorteos.ResumeLayout(false);
             this.panelSorteos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPremiosAdicionales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -619,5 +663,6 @@
         private System.Windows.Forms.NumericUpDown nudMonto;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox cbConPlan;
     }
 }

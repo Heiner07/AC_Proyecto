@@ -13,18 +13,19 @@ namespace Proyecto
         public List<Premio> premios = new List<Premio>();
 
 
-        
-       /* public List<Resultado> GenerarResultados() { 
-            
-        
-        
-        }*/
 
-        public List<Resultado> ObtenerResultados()
-        {
+        /* public List<Resultado> GenerarResultados() { 
 
-            return resultados;
 
+
+         }*/
+        public void EstablecerIdSorteo(int id) {
+            idSorteo = id;
+        
         }
+        public int ObtenerIdSorteo => idSorteo;
+        public List<Resultado> ObtenerResultados => resultados;
+
+        public List<Premio> ObtenerPremios => premios;
     }
 }
