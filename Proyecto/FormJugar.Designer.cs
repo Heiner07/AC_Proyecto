@@ -43,14 +43,14 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dgvSorteos = new System.Windows.Forms.DataGridView();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tbBusqueda = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dgvSorteos = new System.Windows.Forms.DataGridView();
+            this.rbFiltroTodos = new System.Windows.Forms.RadioButton();
+            this.rbFiltroChances = new System.Windows.Forms.RadioButton();
+            this.rbFiltroLoteria = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadosSorteo)).BeginInit();
@@ -231,15 +231,33 @@
             this.panel1.Controls.Add(this.tbBusqueda);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.dgvSorteos);
-            this.panel1.Controls.Add(this.radioButton3);
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Controls.Add(this.rbFiltroTodos);
+            this.panel1.Controls.Add(this.rbFiltroChances);
+            this.panel1.Controls.Add(this.rbFiltroLoteria);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(5, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(518, 282);
             this.panel1.TabIndex = 2;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(219, 62);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(126, 19);
+            this.label11.TabIndex = 44;
+            this.label11.Text = "Buscar número:";
+            // 
+            // tbBusqueda
+            // 
+            this.tbBusqueda.Location = new System.Drawing.Point(351, 58);
+            this.tbBusqueda.Name = "tbBusqueda";
+            this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
+            this.tbBusqueda.TabIndex = 43;
+            this.tbBusqueda.TextChanged += new System.EventHandler(this.tbBusqueda_TextChanged);
             // 
             // label10
             // 
@@ -270,40 +288,43 @@
             this.dgvSorteos.TabIndex = 41;
             this.dgvSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSorteos_CellClick);
             // 
-            // radioButton3
+            // rbFiltroTodos
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(12, 34);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(69, 21);
-            this.radioButton3.TabIndex = 39;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Todos";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbFiltroTodos.AutoSize = true;
+            this.rbFiltroTodos.Checked = true;
+            this.rbFiltroTodos.Location = new System.Drawing.Point(12, 34);
+            this.rbFiltroTodos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbFiltroTodos.Name = "rbFiltroTodos";
+            this.rbFiltroTodos.Size = new System.Drawing.Size(69, 21);
+            this.rbFiltroTodos.TabIndex = 39;
+            this.rbFiltroTodos.TabStop = true;
+            this.rbFiltroTodos.Text = "Todos";
+            this.rbFiltroTodos.UseVisualStyleBackColor = true;
+            this.rbFiltroTodos.CheckedChanged += new System.EventHandler(this.rbFiltroTodos_CheckedChanged);
             // 
-            // radioButton2
+            // rbFiltroChances
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(205, 34);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(84, 21);
-            this.radioButton2.TabIndex = 38;
-            this.radioButton2.Text = "Chances";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbFiltroChances.AutoSize = true;
+            this.rbFiltroChances.Location = new System.Drawing.Point(205, 34);
+            this.rbFiltroChances.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbFiltroChances.Name = "rbFiltroChances";
+            this.rbFiltroChances.Size = new System.Drawing.Size(84, 21);
+            this.rbFiltroChances.TabIndex = 38;
+            this.rbFiltroChances.Text = "Chances";
+            this.rbFiltroChances.UseVisualStyleBackColor = true;
+            this.rbFiltroChances.CheckedChanged += new System.EventHandler(this.rbFiltroChances_CheckedChanged);
             // 
-            // radioButton1
+            // rbFiltroLoteria
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(107, 34);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(73, 21);
-            this.radioButton1.TabIndex = 37;
-            this.radioButton1.Text = "Lotería";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbFiltroLoteria.AutoSize = true;
+            this.rbFiltroLoteria.Location = new System.Drawing.Point(107, 34);
+            this.rbFiltroLoteria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbFiltroLoteria.Name = "rbFiltroLoteria";
+            this.rbFiltroLoteria.Size = new System.Drawing.Size(73, 21);
+            this.rbFiltroLoteria.TabIndex = 37;
+            this.rbFiltroLoteria.Text = "Lotería";
+            this.rbFiltroLoteria.UseVisualStyleBackColor = true;
+            this.rbFiltroLoteria.CheckedChanged += new System.EventHandler(this.rbFiltroLoteria_CheckedChanged);
             // 
             // label1
             // 
@@ -314,23 +335,6 @@
             this.label1.Size = new System.Drawing.Size(112, 19);
             this.label1.TabIndex = 36;
             this.label1.Text = "Tipo de sorteo";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(219, 62);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(126, 19);
-            this.label11.TabIndex = 44;
-            this.label11.Text = "Buscar número:";
-            // 
-            // tbBusqueda
-            // 
-            this.tbBusqueda.Location = new System.Drawing.Point(351, 58);
-            this.tbBusqueda.Name = "tbBusqueda";
-            this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
-            this.tbBusqueda.TabIndex = 43;
             // 
             // FormJugar
             // 
@@ -375,9 +379,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvSorteos;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbFiltroTodos;
+        private System.Windows.Forms.RadioButton rbFiltroChances;
+        private System.Windows.Forms.RadioButton rbFiltroLoteria;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tbBusqueda;

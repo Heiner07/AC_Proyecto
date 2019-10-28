@@ -18,11 +18,15 @@ namespace Proyecto
         //Thread hiloSorteo = new Thread(jugarSorteo);
         bool var = true;
         SistemaLoteriaChances sistemaLoteriaChances;
+        DataTable dtSorteos;
+        List<Sorteo> sorteos;
+        String filtroTipoSorteos;
 
         public FormJugar(SistemaLoteriaChances sistemaLoteriaChances)
         {
             InitializeComponent();
             this.sistemaLoteriaChances = sistemaLoteriaChances;
+            this.filtroTipoSorteos = "";
             EstablecerValoresTablaSorteos();
             establecerValoresTablaResultadosSorteo();
            
@@ -30,15 +34,31 @@ namespace Proyecto
 
         private void EstablecerValoresTablaSorteos()
         {
-            List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
+            dtSorteos = new DataTable();
+            dtSorteos.Columns.Add("Tipo", typeof(string));
+            dtSorteos.Columns.Add("Número", typeof(string));
+            dtSorteos.Columns.Add("Fecha", typeof(string));
+            dgvSorteos.DataSource = dtSorteos;
+            DataGridViewButtonColumn btnJugar = new DataGridViewButtonColumn
+            {
+                UseColumnTextForButtonValue = true,
+                HeaderText = "Jugar",
+                Name = "btn",
+                Text = "Jugar"
+            };
+            dgvSorteos.Columns.Add(btnJugar);
+            CargarSorteos();
+        }
+
+        private void CargarSorteos()
+        {
+            sorteos = sistemaLoteriaChances.ObtenerSorteos();
+            dtSorteos.Clear();
             if (sorteos != null)
             {
                 int cantidadSorteos = sorteos.Count;
                 Sorteo sorteo;
-                DataTable dtSorteos = new DataTable();
-                dtSorteos.Columns.Add("Tipo", typeof(string));
-                dtSorteos.Columns.Add("Número", typeof(string));
-                dtSorteos.Columns.Add("Fecha", typeof(string));
+
                 for (int i = 0; i < cantidadSorteos; i++)
                 {
                     sorteo = sorteos[i];
@@ -48,13 +68,6 @@ namespace Proyecto
                         sorteo.fecha.ToShortDateString() });
                     }
                 }
-                dgvSorteos.DataSource = dtSorteos;
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                btn.UseColumnTextForButtonValue = true;
-                btn.HeaderText = "Jugar";
-                btn.Name = "btn";
-                btn.Text = "Jugar";
-                dgvSorteos.Columns.Add(btn);
             }
             else
             {
@@ -81,11 +94,15 @@ namespace Proyecto
             Console.WriteLine(e.ColumnIndex);
             if (e.ColumnIndex == 0)
             {
-                DialogResult dr = MessageBox.Show("¿Desea jugar este sorteo?", "Mensaje", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
+                int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
+
+                DialogResult dr = MessageBox.Show($"¿Desea jugar el sorteo {numeroSorteo} de {tipoSorteo}?",
+                    "Jugar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                 if (dr == DialogResult.Yes)
                 {
-                    this.dgvSorteos.Rows.RemoveAt(e.ColumnIndex);
+                    //this.dgvSorteos.Rows.RemoveAt(e.ColumnIndex);
                     cambiarEstadoGifs();
                     Thread hiloSorteo = new Thread(new ThreadStart(jugarSorteo));
                     hiloSorteo.IsBackground = true;
@@ -169,7 +186,8 @@ namespace Proyecto
             pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = false));
             pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
             var = true;
-            MessageBox.Show("Sorteo jugado");
+            MessageBox.Show("¡Sorteo jugado!",
+                    "Jugar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void sorteoRapido_Click(object sender, EventArgs e)
@@ -178,6 +196,27 @@ namespace Proyecto
             var = false;
         }
 
-        
+        private void tbBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            dtSorteos.DefaultView.RowFilter = $"{filtroTipoSorteos}Número LIKE '{tbBusqueda.Text}%'";
+        }
+
+        private void rbFiltroTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            filtroTipoSorteos = "";
+            tbBusqueda_TextChanged(sender, e);
+        }
+
+        private void rbFiltroLoteria_CheckedChanged(object sender, EventArgs e)
+        {
+            filtroTipoSorteos = "Tipo = 'Lotería' AND ";
+            tbBusqueda_TextChanged(sender, e);
+        }
+
+        private void rbFiltroChances_CheckedChanged(object sender, EventArgs e)
+        {
+            filtroTipoSorteos = "Tipo = 'Chances' AND ";
+            tbBusqueda_TextChanged(sender, e);
+        }
     }
 }

@@ -34,6 +34,11 @@
             this.dataGridViewSorteos = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.panelCrearSorteo = new System.Windows.Forms.Panel();
+            this.lbRestriccionSorteo = new System.Windows.Forms.Label();
+            this.nudMonto = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dataGridViewPremiosAdicionales = new System.Windows.Forms.DataGridView();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btGuardar = new System.Windows.Forms.Button();
             this.btBorrarPlanPremios = new System.Windows.Forms.Button();
@@ -60,22 +65,20 @@
             this.panelSorteos = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.tbBusqueda = new System.Windows.Forms.TextBox();
-            this.dataGridViewPremiosAdicionales = new System.Windows.Forms.DataGridView();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.nudMonto = new System.Windows.Forms.NumericUpDown();
-            this.lbRestriccionSorteo = new System.Windows.Forms.Label();
+            this.rbFiltroTodos = new System.Windows.Forms.RadioButton();
+            this.rbFiltroChances = new System.Windows.Forms.RadioButton();
+            this.rbFiltroLoteria = new System.Windows.Forms.RadioButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).BeginInit();
             this.panelCrearSorteo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPremiosAdicionales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCostoFraccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFracciones)).BeginInit();
             this.panelSorteos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPremiosAdicionales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -122,6 +125,7 @@
             this.dataGridViewSorteos.MultiSelect = false;
             this.dataGridViewSorteos.Name = "dataGridViewSorteos";
             this.dataGridViewSorteos.ReadOnly = true;
+            this.dataGridViewSorteos.RowHeadersVisible = false;
             this.dataGridViewSorteos.RowHeadersWidth = 51;
             this.dataGridViewSorteos.RowTemplate.Height = 24;
             this.dataGridViewSorteos.Size = new System.Drawing.Size(782, 148);
@@ -132,7 +136,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 0);
+            this.label10.Location = new System.Drawing.Point(3, 7);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(141, 19);
             this.label10.TabIndex = 3;
@@ -141,8 +145,8 @@
             // panelCrearSorteo
             // 
             this.panelCrearSorteo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panelCrearSorteo.Controls.Add(this.lbRestriccionSorteo);
             this.panelCrearSorteo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCrearSorteo.Controls.Add(this.lbRestriccionSorteo);
             this.panelCrearSorteo.Controls.Add(this.nudMonto);
             this.panelCrearSorteo.Controls.Add(this.label13);
             this.panelCrearSorteo.Controls.Add(this.label12);
@@ -175,6 +179,65 @@
             this.panelCrearSorteo.Name = "panelCrearSorteo";
             this.panelCrearSorteo.Size = new System.Drawing.Size(782, 404);
             this.panelCrearSorteo.TabIndex = 0;
+            // 
+            // lbRestriccionSorteo
+            // 
+            this.lbRestriccionSorteo.AutoSize = true;
+            this.lbRestriccionSorteo.Location = new System.Drawing.Point(225, 99);
+            this.lbRestriccionSorteo.Name = "lbRestriccionSorteo";
+            this.lbRestriccionSorteo.Size = new System.Drawing.Size(123, 17);
+            this.lbRestriccionSorteo.TabIndex = 45;
+            this.lbRestriccionSorteo.Text = "Sólo los domingos";
+            // 
+            // nudMonto
+            // 
+            this.nudMonto.Location = new System.Drawing.Point(449, 359);
+            this.nudMonto.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudMonto.Name = "nudMonto";
+            this.nudMonto.Size = new System.Drawing.Size(92, 22);
+            this.nudMonto.TabIndex = 48;
+            this.nudMonto.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(385, 362);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 19);
+            this.label13.TabIndex = 47;
+            this.label13.Text = "Monto:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(385, 220);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(156, 19);
+            this.label12.TabIndex = 46;
+            this.label12.Text = "Premios adicionales";
+            // 
+            // dataGridViewPremiosAdicionales
+            // 
+            this.dataGridViewPremiosAdicionales.AllowUserToAddRows = false;
+            this.dataGridViewPremiosAdicionales.AllowUserToDeleteRows = false;
+            this.dataGridViewPremiosAdicionales.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewPremiosAdicionales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPremiosAdicionales.Location = new System.Drawing.Point(389, 242);
+            this.dataGridViewPremiosAdicionales.Name = "dataGridViewPremiosAdicionales";
+            this.dataGridViewPremiosAdicionales.RowHeadersVisible = false;
+            this.dataGridViewPremiosAdicionales.RowTemplate.Height = 24;
+            this.dataGridViewPremiosAdicionales.Size = new System.Drawing.Size(255, 107);
+            this.dataGridViewPremiosAdicionales.TabIndex = 45;
             // 
             // btCancelar
             // 
@@ -463,6 +526,9 @@
             // panelSorteos
             // 
             this.panelSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panelSorteos.Controls.Add(this.rbFiltroTodos);
+            this.panelSorteos.Controls.Add(this.rbFiltroChances);
+            this.panelSorteos.Controls.Add(this.rbFiltroLoteria);
             this.panelSorteos.Controls.Add(this.label11);
             this.panelSorteos.Controls.Add(this.tbBusqueda);
             this.panelSorteos.Controls.Add(this.label10);
@@ -490,65 +556,45 @@
             this.tbBusqueda.Name = "tbBusqueda";
             this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
             this.tbBusqueda.TabIndex = 4;
+            this.tbBusqueda.TextChanged += new System.EventHandler(this.tbBusqueda_TextChanged);
             // 
-            // dataGridViewPremiosAdicionales
+            // rbFiltroTodos
             // 
-            this.dataGridViewPremiosAdicionales.AllowUserToAddRows = false;
-            this.dataGridViewPremiosAdicionales.AllowUserToDeleteRows = false;
-            this.dataGridViewPremiosAdicionales.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewPremiosAdicionales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPremiosAdicionales.Location = new System.Drawing.Point(389, 242);
-            this.dataGridViewPremiosAdicionales.Name = "dataGridViewPremiosAdicionales";
-            this.dataGridViewPremiosAdicionales.RowHeadersVisible = false;
-            this.dataGridViewPremiosAdicionales.RowTemplate.Height = 24;
-            this.dataGridViewPremiosAdicionales.Size = new System.Drawing.Size(255, 107);
-            this.dataGridViewPremiosAdicionales.TabIndex = 45;
+            this.rbFiltroTodos.AutoSize = true;
+            this.rbFiltroTodos.Checked = true;
+            this.rbFiltroTodos.Location = new System.Drawing.Point(195, 7);
+            this.rbFiltroTodos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbFiltroTodos.Name = "rbFiltroTodos";
+            this.rbFiltroTodos.Size = new System.Drawing.Size(69, 21);
+            this.rbFiltroTodos.TabIndex = 42;
+            this.rbFiltroTodos.TabStop = true;
+            this.rbFiltroTodos.Text = "Todos";
+            this.rbFiltroTodos.UseVisualStyleBackColor = true;
+            this.rbFiltroTodos.CheckedChanged += new System.EventHandler(this.rbFiltroTodos_CheckedChanged);
             // 
-            // label12
+            // rbFiltroChances
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(385, 220);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(156, 19);
-            this.label12.TabIndex = 46;
-            this.label12.Text = "Premios adicionales";
+            this.rbFiltroChances.AutoSize = true;
+            this.rbFiltroChances.Location = new System.Drawing.Point(388, 7);
+            this.rbFiltroChances.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbFiltroChances.Name = "rbFiltroChances";
+            this.rbFiltroChances.Size = new System.Drawing.Size(84, 21);
+            this.rbFiltroChances.TabIndex = 41;
+            this.rbFiltroChances.Text = "Chances";
+            this.rbFiltroChances.UseVisualStyleBackColor = true;
+            this.rbFiltroChances.CheckedChanged += new System.EventHandler(this.rbFiltroChances_CheckedChanged);
             // 
-            // label13
+            // rbFiltroLoteria
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(385, 362);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(58, 19);
-            this.label13.TabIndex = 47;
-            this.label13.Text = "Monto:";
-            // 
-            // nudMonto
-            // 
-            this.nudMonto.Location = new System.Drawing.Point(449, 359);
-            this.nudMonto.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudMonto.Name = "nudMonto";
-            this.nudMonto.Size = new System.Drawing.Size(92, 22);
-            this.nudMonto.TabIndex = 48;
-            this.nudMonto.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // lbRestriccionSorteo
-            // 
-            this.lbRestriccionSorteo.AutoSize = true;
-            this.lbRestriccionSorteo.Location = new System.Drawing.Point(225, 99);
-            this.lbRestriccionSorteo.Name = "lbRestriccionSorteo";
-            this.lbRestriccionSorteo.Size = new System.Drawing.Size(123, 17);
-            this.lbRestriccionSorteo.TabIndex = 45;
-            this.lbRestriccionSorteo.Text = "Sólo los domingos";
+            this.rbFiltroLoteria.AutoSize = true;
+            this.rbFiltroLoteria.Location = new System.Drawing.Point(290, 7);
+            this.rbFiltroLoteria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbFiltroLoteria.Name = "rbFiltroLoteria";
+            this.rbFiltroLoteria.Size = new System.Drawing.Size(73, 21);
+            this.rbFiltroLoteria.TabIndex = 40;
+            this.rbFiltroLoteria.Text = "Lotería";
+            this.rbFiltroLoteria.UseVisualStyleBackColor = true;
+            this.rbFiltroLoteria.CheckedChanged += new System.EventHandler(this.rbFiltroLoteria_CheckedChanged);
             // 
             // FormMantenimientoSorteos
             // 
@@ -567,6 +613,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).EndInit();
             this.panelCrearSorteo.ResumeLayout(false);
             this.panelCrearSorteo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPremiosAdicionales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPremio1)).EndInit();
@@ -574,8 +622,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudFracciones)).EndInit();
             this.panelSorteos.ResumeLayout(false);
             this.panelSorteos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPremiosAdicionales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -619,5 +665,8 @@
         private System.Windows.Forms.NumericUpDown nudMonto;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.RadioButton rbFiltroTodos;
+        private System.Windows.Forms.RadioButton rbFiltroChances;
+        private System.Windows.Forms.RadioButton rbFiltroLoteria;
     }
 }

@@ -16,12 +16,23 @@ namespace Proyecto
             posicionLbCantidad, posicionNUDCantidad;
 
         SistemaLoteriaChances sistemaLoteriaChances;
-        DataTable dtPremiosAdicionales;
+        DataTable dtPremiosAdicionales, dtSorteos;
+        List<Sorteo> sorteos;
+        String filtroTipoSorteos;
 
         public FormMantenimientoSorteos(SistemaLoteriaChances sistemaLoteriaChances)
         {
             InitializeComponent();
             this.sistemaLoteriaChances = sistemaLoteriaChances;
+            this.filtroTipoSorteos = "";
+            ConfigurarTablaPremiosAdicionales();
+            ConfigurarComponentesPanelSorteos();
+            EstablecerValoresTablaSorteos();
+           
+        }
+
+        private void ConfigurarTablaPremiosAdicionales()
+        {
             this.dtPremiosAdicionales = new DataTable();
             this.dtPremiosAdicionales.Columns.Add("Monto", typeof(int));
             this.dtPremiosAdicionales.Columns.Add("Cantidad", typeof(int));
@@ -37,26 +48,54 @@ namespace Proyecto
             dataGridViewPremiosAdicionales.Columns[0].Width = 80;
             dataGridViewPremiosAdicionales.Columns[1].Width = 80;
             dataGridViewPremiosAdicionales.Columns[2].Width = 70;
-            ConfigurarComponentesPanelSorteos();
-            EstablecerValoresTablaSorteos();
-           
         }
 
         private void EstablecerValoresTablaSorteos()
         {
-            List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
-            if(sorteos != null)
+            dtSorteos = new DataTable();
+            dtSorteos.Columns.Add("Tipo", typeof(string));
+            dtSorteos.Columns.Add("Número", typeof(string));
+            dtSorteos.Columns.Add("Fecha", typeof(string));
+            dtSorteos.Columns.Add("Número fracciones", typeof(int));
+            dtSorteos.Columns.Add("Costo fracción", typeof(int));
+            dtSorteos.Columns.Add("Leyenda", typeof(string));
+            dtSorteos.Columns.Add("Jugado", typeof(bool));
+            dataGridViewSorteos.DataSource = dtSorteos;
+            DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn
+            {
+                UseColumnTextForButtonValue = true,
+                HeaderText = "Eliminar",
+                Name = "btn",
+                Text = "Eliminar"
+            };
+            dataGridViewSorteos.Columns.Add(btnEliminar);
+            DataGridViewButtonColumn btnEditar = new DataGridViewButtonColumn
+            {
+                UseColumnTextForButtonValue = true,
+                HeaderText = "Editar",
+                Name = "btn2",
+                Text = "Editar"
+            };
+            dataGridViewSorteos.Columns.Add(btnEditar);
+
+            dataGridViewSorteos.Columns[0].Width = 70;
+            dataGridViewSorteos.Columns[1].Width = 65;
+            dataGridViewSorteos.Columns[2].Width = 85;
+            dataGridViewSorteos.Columns[3].Width = 80;
+            dataGridViewSorteos.Columns[4].Width = 70;
+            dataGridViewSorteos.Columns[6].Width = 60;
+            CargarSorteos();
+        }
+
+        private void CargarSorteos()
+        {
+            sorteos = sistemaLoteriaChances.ObtenerSorteos();
+            dtSorteos.Clear();
+            if (sorteos != null)
             {
                 int cantidadSorteos = sorteos.Count;
                 Sorteo sorteo;
-                DataTable dtSorteos = new DataTable();
-                dtSorteos.Columns.Add("Tipo", typeof(string));
-                dtSorteos.Columns.Add("Número", typeof(string));
-                dtSorteos.Columns.Add("Fecha", typeof(string));
-                dtSorteos.Columns.Add("Número fracciones", typeof(int));
-                dtSorteos.Columns.Add("Costo fracción", typeof(int));
-                dtSorteos.Columns.Add("Leyenda", typeof(string));
-                dtSorteos.Columns.Add("Jugado", typeof(bool));
+
                 for (int i = 0; i < cantidadSorteos; i++)
                 {
                     sorteo = sorteos[i];
@@ -64,38 +103,12 @@ namespace Proyecto
                         sorteo.fecha.ToShortDateString(), sorteo.cantidadFracciones, sorteo.precioFraccion,
                         sorteo.leyendaBillete, sorteo.estado });
                 }
-                dataGridViewSorteos.DataSource = dtSorteos;
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn
-                {
-                    UseColumnTextForButtonValue = true,
-                    HeaderText = "Eliminar",
-                    Name = "btn",
-                    Text = "Eliminar"
-                };
-                dataGridViewSorteos.Columns.Add(btn);
-                DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn
-                {
-                    UseColumnTextForButtonValue = true,
-                    HeaderText = "Editar",
-                    Name = "btn2",
-                    Text = "Editar"
-                };
-                dataGridViewSorteos.Columns.Add(btn2);
-
-                dataGridViewSorteos.Columns[0].Width = 70;
-                dataGridViewSorteos.Columns[1].Width = 65;
-                dataGridViewSorteos.Columns[2].Width = 85;
-                dataGridViewSorteos.Columns[3].Width = 80;
-                dataGridViewSorteos.Columns[4].Width = 70;
-                dataGridViewSorteos.Columns[6].Width = 60;
             }
             else
             {
                 MessageBox.Show("Ocurrió un error recuperando los datos de la base de datos", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        
 
         private void ConfigurarComponentesPanelSorteos()
         {
@@ -174,7 +187,7 @@ namespace Proyecto
             {
                 return true;
             }
-            else if (fecha.DayOfWeek == DayOfWeek.Sunday && tipoSorteo.Equals("Loteria"))
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday && tipoSorteo.Equals("Lotería"))
             {
                 
                 return true;
@@ -198,11 +211,13 @@ namespace Proyecto
             return numeroRetornado;
 
         }
+
         private void ObtenerPlanPremios() {
             
 
         
         }
+
         private void btCrear_Click(object sender, EventArgs e)
         {
             DateTime fecha = dtFecha.Value;
@@ -215,7 +230,7 @@ namespace Proyecto
             }
             else
             {
-                tipoSorteo = "Loteria";
+                tipoSorteo = "Lotería";
 
             }
             Boolean fechaValida = ValidarFecha(tipoSorteo,fecha);
@@ -225,44 +240,38 @@ namespace Proyecto
                 {
 
                     //Preguntar si quiere guardar el plan de premios
-                     Premio premio = new Premio(Convert.ToInt32(nudPremio1.Value),1);
+                    Premio premio = new Premio(Convert.ToInt32(nudPremio1.Value), 1);
                     ObtenerPlanPremios();
                     planPremios.premios.Add(new Premio(Convert.ToInt32(nudPremio1.Value), 1));
                     planPremios.premios.Add(new Premio(Convert.ToInt32(nudPremio2.Value), 1));
                     planPremios.premios.Add(new Premio(Convert.ToInt32(nudPremio3.Value), 1));
-                    
-
 
                     int numeroSorteo = ObtenerNumeroSorteo(tipoSorteo);
-                    Sorteo sorteo = new Sorteo(1, numeroSorteo, tipoSorteo,fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
-                    tbLeyenda.Text.Equals("") ? "Sin leyenda": tbLeyenda.Text,false, planPremios);
+                    Sorteo sorteo = new Sorteo(1, numeroSorteo, tipoSorteo, fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
+                    tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
                     if (sistemaLoteriaChances.CrearSorteo(sorteo))
                     {
-                        MessageBox.Show("¡¡¡Se insertó con éxito!!!");
-                        dataGridViewSorteos.Columns.Clear();
-                        EstablecerValoresTablaSorteos();
+                        MessageBox.Show("¡¡¡Se insertó con éxito!!!", "Crear sorteo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarSorteos();
                     }
-                    else { MessageBox.Show("Error al guardar el sorteo"); }
-                   
-                    
-                    
+                    else
+                    {
+                        MessageBox.Show("Error al guardar el sorteo", "Crear sorteo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("La cantidad de fracciones y el costo deben ser mayor a 0");
+                    MessageBox.Show("La cantidad de fracciones y el costo deben ser mayor a 0", "Crear sorteo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-
             }
-            else {
-                MessageBox.Show("La fecha seleccionada no es válida");
-
+            else
+            {
+                MessageBox.Show("La fecha seleccionada no es válida", "Crear sorteo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
-            
-                   
-            
-
         }
 
         
@@ -278,40 +287,67 @@ namespace Proyecto
             btAgregarPremioAdicional.Visible = false;
         }
 
+        private void rbFiltroTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            filtroTipoSorteos = "";
+            tbBusqueda_TextChanged(sender, e);
+        }
+
+        private void rbFiltroLoteria_CheckedChanged(object sender, EventArgs e)
+        {
+            filtroTipoSorteos = "Tipo = 'Lotería' AND ";
+            tbBusqueda_TextChanged(sender, e);
+        }
+
+        private void rbFiltroChances_CheckedChanged(object sender, EventArgs e)
+        {
+            filtroTipoSorteos = "Tipo = 'Chances' AND ";
+            tbBusqueda_TextChanged(sender, e);
+        }
+
+        private void tbBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            dtSorteos.DefaultView.RowFilter = $"{filtroTipoSorteos}Número LIKE '{tbBusqueda.Text}%'";
+        }
+
         private void dataGridViewSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine(e.ColumnIndex);
             if (e.ColumnIndex == 0) {
-                DialogResult dr = MessageBox.Show("¿Desea eliminar este sorteo?", "Mensaje", MessageBoxButtons.YesNoCancel,MessageBoxIcon.Information);
+                String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
+                int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
+
+                DialogResult dr = MessageBox.Show($"¿Desea eliminar el sorteo {numeroSorteo} de {tipoSorteo}?",
+                    "Eliminar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 
                 if (dr == DialogResult.Yes)
                 {
-                    
-                    DataTable dt = this.dataGridViewSorteos.DataSource as DataTable;
-                    String tipoSorteo = dt.Rows[e.RowIndex]["Tipo"].ToString();
-                    int numeroSorteo = Convert.ToInt32(dt.Rows[e.RowIndex]["Número"].ToString());
-                    List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
                     foreach(Sorteo sorteo in sorteos) {
                         if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo)) {
                             if (!sorteo.ObtenerEstado)
                             {
                                 if (sistemaLoteriaChances.EliminarSorteo(sorteo)) {
-                                    dataGridViewSorteos.Columns.Clear();
-                                    EstablecerValoresTablaSorteos();
-                                    MessageBox.Show("El sorteo se eliminó con éxito");
-
+                                    CargarSorteos();
+                                    MessageBox.Show("El sorteo se eliminó con éxito",
+                                        "Eliminar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
-                                else { MessageBox.Show("El sorteo no se puede eliminar"); }
+                                else
+                                {
+                                    MessageBox.Show("El sorteo no se pudo eliminar",
+                                        "Eliminar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
 
                             }
-                            else {
-                                MessageBox.Show("El sorteo no se puede eliminar, ya se jugó");
+                            else
+                            {
+                                MessageBox.Show("El sorteo no se puede eliminar, ya se jugó",
+                                    "Eliminar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                     }
                 }
                 
-            }else if (e.ColumnIndex == 1)
+            }
+            else if (e.ColumnIndex == 1)
             {
                 establecerInterfazEditando();
                 if (!panelCrearSorteo.Visible) {
