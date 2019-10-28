@@ -239,7 +239,7 @@ namespace Proyecto
                 MessageBox.Show("Números y cantidades deben ser numéricos");
                 return null;
             }
-            if (tipoSorteo.Equals("Loteria"))
+            if (tipoSorteo.Equals("Lotería"))
             {
                 DataTable dt = this.dataGridViewPremiosAdicionales.DataSource as DataTable;
                 int largoPremiosAdicionales = this.dataGridViewPremiosAdicionales.Rows.Count;
@@ -398,7 +398,7 @@ namespace Proyecto
 
         private void dataGridViewSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0 e.ColumnIndex==7) {
+            if (e.ColumnIndex == 0 || e.ColumnIndex==7) {
                 String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
                 int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
 
