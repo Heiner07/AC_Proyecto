@@ -64,11 +64,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelSorteos = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tbBusqueda = new System.Windows.Forms.TextBox();
             this.rbFiltroTodos = new System.Windows.Forms.RadioButton();
             this.rbFiltroChances = new System.Windows.Forms.RadioButton();
             this.rbFiltroLoteria = new System.Windows.Forms.RadioButton();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbBusqueda = new System.Windows.Forms.TextBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).BeginInit();
             this.panelCrearSorteo.SuspendLayout();
@@ -205,7 +205,7 @@
             // 
             this.nudMonto.Location = new System.Drawing.Point(449, 359);
             this.nudMonto.Maximum = new decimal(new int[] {
-            1000000,
+            2147483647,
             0,
             0,
             0});
@@ -257,6 +257,7 @@
             this.dataGridViewPremiosAdicionales.Size = new System.Drawing.Size(255, 107);
             this.dataGridViewPremiosAdicionales.TabIndex = 45;
             this.dataGridViewPremiosAdicionales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPremiosAdicionales_CellContentClick);
+            this.dataGridViewPremiosAdicionales.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dataGridViewPremiosAdicionales_CellParsing);
             // 
             // btCancelar
             // 
@@ -323,7 +324,7 @@
             this.nudPremio3.Location = new System.Drawing.Point(389, 183);
             this.nudPremio3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudPremio3.Maximum = new decimal(new int[] {
-            10000000,
+            2147483647,
             0,
             0,
             0});
@@ -356,8 +357,8 @@
             this.nudPremio2.Location = new System.Drawing.Point(389, 129);
             this.nudPremio2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudPremio2.Maximum = new decimal(new int[] {
-            -727379968,
-            232,
+            2147483647,
+            0,
             0,
             0});
             this.nudPremio2.Minimum = new decimal(new int[] {
@@ -389,7 +390,7 @@
             this.nudPremio1.Location = new System.Drawing.Point(389, 69);
             this.nudPremio1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudPremio1.Maximum = new decimal(new int[] {
-            1000000000,
+            2147483647,
             0,
             0,
             0});
@@ -584,24 +585,6 @@
             this.panelSorteos.Size = new System.Drawing.Size(782, 182);
             this.panelSorteos.TabIndex = 2;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(507, 10);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(126, 19);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Buscar número:";
-            // 
-            // tbBusqueda
-            // 
-            this.tbBusqueda.Location = new System.Drawing.Point(639, 6);
-            this.tbBusqueda.Name = "tbBusqueda";
-            this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
-            this.tbBusqueda.TabIndex = 4;
-            this.tbBusqueda.TextChanged += new System.EventHandler(this.tbBusqueda_TextChanged);
-            // 
             // rbFiltroTodos
             // 
             this.rbFiltroTodos.AutoSize = true;
@@ -639,6 +622,24 @@
             this.rbFiltroLoteria.Text = "Lotería";
             this.rbFiltroLoteria.UseVisualStyleBackColor = true;
             this.rbFiltroLoteria.CheckedChanged += new System.EventHandler(this.rbFiltroLoteria_CheckedChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(507, 10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(126, 19);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Buscar número:";
+            // 
+            // tbBusqueda
+            // 
+            this.tbBusqueda.Location = new System.Drawing.Point(639, 6);
+            this.tbBusqueda.Name = "tbBusqueda";
+            this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
+            this.tbBusqueda.TabIndex = 4;
+            this.tbBusqueda.TextChanged += new System.EventHandler(this.tbBusqueda_TextChanged);
             // 
             // FormMantenimientoSorteos
             // 
