@@ -66,6 +66,9 @@
             this.panelSorteos = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.tbBusqueda = new System.Windows.Forms.TextBox();
+            this.rbFiltroTodos = new System.Windows.Forms.RadioButton();
+            this.rbFiltroChances = new System.Windows.Forms.RadioButton();
+            this.rbFiltroLoteria = new System.Windows.Forms.RadioButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).BeginInit();
             this.panelCrearSorteo.SuspendLayout();
@@ -123,6 +126,7 @@
             this.dataGridViewSorteos.MultiSelect = false;
             this.dataGridViewSorteos.Name = "dataGridViewSorteos";
             this.dataGridViewSorteos.ReadOnly = true;
+            this.dataGridViewSorteos.RowHeadersVisible = false;
             this.dataGridViewSorteos.RowHeadersWidth = 51;
             this.dataGridViewSorteos.RowTemplate.Height = 24;
             this.dataGridViewSorteos.Size = new System.Drawing.Size(782, 148);
@@ -133,7 +137,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 0);
+            this.label10.Location = new System.Drawing.Point(3, 7);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(141, 19);
             this.label10.TabIndex = 3;
@@ -566,6 +570,9 @@
             // panelSorteos
             // 
             this.panelSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panelSorteos.Controls.Add(this.rbFiltroTodos);
+            this.panelSorteos.Controls.Add(this.rbFiltroChances);
+            this.panelSorteos.Controls.Add(this.rbFiltroLoteria);
             this.panelSorteos.Controls.Add(this.label11);
             this.panelSorteos.Controls.Add(this.tbBusqueda);
             this.panelSorteos.Controls.Add(this.label10);
@@ -593,6 +600,45 @@
             this.tbBusqueda.Name = "tbBusqueda";
             this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
             this.tbBusqueda.TabIndex = 4;
+            this.tbBusqueda.TextChanged += new System.EventHandler(this.tbBusqueda_TextChanged);
+            // 
+            // rbFiltroTodos
+            // 
+            this.rbFiltroTodos.AutoSize = true;
+            this.rbFiltroTodos.Checked = true;
+            this.rbFiltroTodos.Location = new System.Drawing.Point(195, 7);
+            this.rbFiltroTodos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbFiltroTodos.Name = "rbFiltroTodos";
+            this.rbFiltroTodos.Size = new System.Drawing.Size(69, 21);
+            this.rbFiltroTodos.TabIndex = 42;
+            this.rbFiltroTodos.TabStop = true;
+            this.rbFiltroTodos.Text = "Todos";
+            this.rbFiltroTodos.UseVisualStyleBackColor = true;
+            this.rbFiltroTodos.CheckedChanged += new System.EventHandler(this.rbFiltroTodos_CheckedChanged);
+            // 
+            // rbFiltroChances
+            // 
+            this.rbFiltroChances.AutoSize = true;
+            this.rbFiltroChances.Location = new System.Drawing.Point(388, 7);
+            this.rbFiltroChances.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbFiltroChances.Name = "rbFiltroChances";
+            this.rbFiltroChances.Size = new System.Drawing.Size(84, 21);
+            this.rbFiltroChances.TabIndex = 41;
+            this.rbFiltroChances.Text = "Chances";
+            this.rbFiltroChances.UseVisualStyleBackColor = true;
+            this.rbFiltroChances.CheckedChanged += new System.EventHandler(this.rbFiltroChances_CheckedChanged);
+            // 
+            // rbFiltroLoteria
+            // 
+            this.rbFiltroLoteria.AutoSize = true;
+            this.rbFiltroLoteria.Location = new System.Drawing.Point(290, 7);
+            this.rbFiltroLoteria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rbFiltroLoteria.Name = "rbFiltroLoteria";
+            this.rbFiltroLoteria.Size = new System.Drawing.Size(73, 21);
+            this.rbFiltroLoteria.TabIndex = 40;
+            this.rbFiltroLoteria.Text = "Lotería";
+            this.rbFiltroLoteria.UseVisualStyleBackColor = true;
+            this.rbFiltroLoteria.CheckedChanged += new System.EventHandler(this.rbFiltroLoteria_CheckedChanged);
             // 
             // FormMantenimientoSorteos
             // 
@@ -663,6 +709,9 @@
         private System.Windows.Forms.NumericUpDown nudMonto;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.RadioButton rbFiltroTodos;
+        private System.Windows.Forms.RadioButton rbFiltroChances;
+        private System.Windows.Forms.RadioButton rbFiltroLoteria;
         private System.Windows.Forms.CheckBox cbConPlan;
     }
 }

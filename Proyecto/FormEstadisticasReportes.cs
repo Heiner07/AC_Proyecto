@@ -13,56 +13,67 @@ namespace Proyecto
     public partial class FormEstadisticasReportes : Form
     {
         SistemaLoteriaChances sistemaLoteriaChances;
+        DataTable dtSorteos;
+        List<Sorteo> sorteos;
+        String filtroTipoSorteos;
 
         public FormEstadisticasReportes(SistemaLoteriaChances sistemaLoteriaChances)
         {
             InitializeComponent();
             this.sistemaLoteriaChances = sistemaLoteriaChances;
+            this.filtroTipoSorteos = "";
             inicializarTablas();
             EstablecerValoresTablaSorteos();
         }
 
         private void EstablecerValoresTablaSorteos()
         {
-            List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
+            dtSorteos = new DataTable();
+            dtSorteos.Columns.Add("Tipo", typeof(string));
+            dtSorteos.Columns.Add("Número", typeof(string));
+            dtSorteos.Columns.Add("Fecha", typeof(string));
+            dtSorteos.Columns.Add("Jugado", typeof(bool));
+            dgvSorteos.DataSource = dtSorteos;
+            DataGridViewButtonColumn btnResultado = new DataGridViewButtonColumn
+            {
+                UseColumnTextForButtonValue = true,
+                HeaderText = "Reporte",
+                Name = "btn",
+                Text = "resultados"
+            };
+            dgvSorteos.Columns.Add(btnResultado);
+            DataGridViewButtonColumn btnPlanPremios = new DataGridViewButtonColumn
+            {
+                UseColumnTextForButtonValue = true,
+                HeaderText = "Reporte",
+                Name = "btn2",
+                Text = "plan de premios"
+            };
+            dgvSorteos.Columns.Add(btnPlanPremios);
+
+            dgvSorteos.Columns[0].Width = 70;
+            dgvSorteos.Columns[1].Width = 65;
+            dgvSorteos.Columns[2].Width = 85;
+            dgvSorteos.Columns[3].Width = 80;
+            dgvSorteos.Columns[5].Width = 120;
+            CargarSorteos();
+        }
+
+        private void CargarSorteos()
+        {
+            sorteos = sistemaLoteriaChances.ObtenerSorteos();
+            dtSorteos.Clear();
             if (sorteos != null)
             {
                 int cantidadSorteos = sorteos.Count;
                 Sorteo sorteo;
-                DataTable dtSorteos = new DataTable();
-                dtSorteos.Columns.Add("Tipo", typeof(string));
-                dtSorteos.Columns.Add("Número", typeof(string));
-                dtSorteos.Columns.Add("Fecha", typeof(string));
-                dtSorteos.Columns.Add("Jugado", typeof(bool));
+
                 for (int i = 0; i < cantidadSorteos; i++)
                 {
                     sorteo = sorteos[i];
                     dtSorteos.Rows.Add(new object[] { sorteo.tipoSorteo, sorteo.numeroSorteo,
                         sorteo.fecha.ToShortDateString(), sorteo.estado });
                 }
-                dgvSorteos.DataSource = dtSorteos;
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn
-                {
-                    UseColumnTextForButtonValue = true,
-                    HeaderText = "Reporte",
-                    Name = "btn",
-                    Text = "resultados"
-                };
-                dgvSorteos.Columns.Add(btn);
-                DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn
-                {
-                    UseColumnTextForButtonValue = true,
-                    HeaderText = "Reporte",
-                    Name = "btn2",
-                    Text = "plan de premios"
-                };
-                dgvSorteos.Columns.Add(btn2);
-
-                dgvSorteos.Columns[0].Width = 70;
-                dgvSorteos.Columns[1].Width = 65;
-                dgvSorteos.Columns[2].Width = 85;
-                dgvSorteos.Columns[3].Width = 80;
-                dgvSorteos.Columns[5].Width = 120;
             }
             else
             {
@@ -123,6 +134,29 @@ namespace Proyecto
                 dtProcentajeNumeros.Rows.Add(new object[] { i + 1, 1.0 });
             }
             dgvPorcentajeAparicion.DataSource = dtProcentajeNumeros;
+        }
+
+        private void tbBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            dtSorteos.DefaultView.RowFilter = $"{filtroTipoSorteos}Número LIKE '{tbBusqueda.Text}%'";
+        }
+
+        private void rbFiltroTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            filtroTipoSorteos = "";
+            tbBusqueda_TextChanged(sender, e);
+        }
+
+        private void rbFiltroLoteria_CheckedChanged(object sender, EventArgs e)
+        {
+            filtroTipoSorteos = "Tipo = 'Lotería' AND ";
+            tbBusqueda_TextChanged(sender, e);
+        }
+
+        private void rbFiltroChances_CheckedChanged(object sender, EventArgs e)
+        {
+            filtroTipoSorteos = "Tipo = 'Chances' AND ";
+            tbBusqueda_TextChanged(sender, e);
         }
     }
 }
