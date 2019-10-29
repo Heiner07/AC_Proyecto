@@ -104,16 +104,41 @@ namespace Proyecto
         public List<Sorteo> ObtenerSorteos()
         {
             List<Sorteo> sorteos = new List<Sorteo>();
+            List<Premio> premiosDelPlan;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM ObtenerSorteos", conexion);
-            cmd.CommandType = CommandType.Text;
+            SqlConnection conexion2 = new SqlConnection(cadenaConexion);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM ObtenerSorteos", conexion)
+            {
+                CommandType = CommandType.Text
+            };
             try
             {
                 conexion.Open();
+                conexion2.Open();
                 SqlDataReader lectorDatos = cmd.ExecuteReader();
                 Sorteo sorteo;
+                SqlCommand cmdPremios;
+                SqlDataReader lectorPremios = null;
                 while (lectorDatos.Read())
                 {
+                    // Preparo las variables para obtener los premios del sorteo
+                    premiosDelPlan = new List<Premio>();
+                    cmdPremios = new SqlCommand("ObtenerPlanDePremios", conexion2)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    // Agrego el id del sorteo como parámetro para el procedimiento
+                    cmdPremios.Parameters.Clear();
+                    cmdPremios.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = (int)lectorDatos[0];// IdSorteo
+                    // Ejecuto y obtengo los premios
+                    lectorPremios = cmdPremios.ExecuteReader();
+                    while (lectorPremios.Read())
+                    {
+                        premiosDelPlan.Add(new Premio((int)lectorPremios[2], (int)lectorPremios[3]));
+                    }
+                    lectorPremios.Close();
+
                     sorteo = new Sorteo()
                     {
                         idSorteo = (int)lectorDatos[0],
@@ -123,11 +148,15 @@ namespace Proyecto
                         cantidadFracciones = (int)lectorDatos[4],
                         precioFraccion = (int)lectorDatos[5],
                         leyendaBillete = (String)lectorDatos[6],
-                        estado = (Boolean)lectorDatos[7]
+                        estado = (Boolean)lectorDatos[7],
+                        planPremios = new PlanPremios()
+                        {
+                            idSorteo = (int)lectorDatos[0],
+                            premios = premiosDelPlan
+                        }
                     };
                     sorteos.Add(sorteo);
                 }
-
             }
             catch (Exception)
             {
@@ -137,6 +166,7 @@ namespace Proyecto
             finally
             {
                 conexion.Close();
+                conexion2.Close();
             }
             return sorteos;
         }

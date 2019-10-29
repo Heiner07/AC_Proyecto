@@ -12,13 +12,21 @@ namespace Proyecto
         public List<Resultado> resultados = new List<Resultado>();
         public List<Premio> premios = new List<Premio>();
 
+        public void GenerarResultados()
+        {
+            List<int> montos = GenerarListaMontos();
+            foreach (Premio premio in premios)
+            {
+                Console.WriteLine("Monto:" + premio.montoPremio + ", Cantidad: " + premio.cantidadPremio);
+            }
+        }
 
+        private List<int> GenerarListaMontos()
+        {
+            List<int> montos = new List<int>();
+            return montos;
+        }
 
-        /* public List<Resultado> GenerarResultados() { 
-
-
-
-         }*/
         public void EstablecerIdSorteo(int id) {
             idSorteo = id;
         

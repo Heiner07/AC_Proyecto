@@ -107,9 +107,15 @@ namespace Proyecto
                     Thread hiloSorteo = new Thread(new ThreadStart(jugarSorteo));
                     hiloSorteo.IsBackground = true;
                     hiloSorteo.Start();
-                    
-                    //hiloSorteo.Start();
 
+                    //hiloSorteo.Start();
+                    foreach (Sorteo sorteo in sorteos)
+                    {
+                        if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
+                        {
+                            sorteo.planPremios.GenerarResultados();
+                        }
+                    }
 
                 }
 
