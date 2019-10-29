@@ -15,15 +15,34 @@ namespace Proyecto
         public void GenerarResultados()
         {
             List<int> montos = GenerarListaMontos();
-            foreach (Premio premio in premios)
+            int numero = 0;
+            int serie = 0;
+            int monto = 0;
+            int indice = 0;
+            Random random = new Random();
+            while (montos.Count > 0)
             {
-                Console.WriteLine("Monto:" + premio.montoPremio + ", Cantidad: " + premio.cantidadPremio);
+                indice = random.Next(0, montos.Count);
+                numero = random.Next(0, 99);
+                serie = random.Next(0, 999);
+                monto = montos[indice];
+                montos.RemoveAt(indice);
+                resultados.Add(new Resultado(numero, serie, monto));
             }
         }
 
         private List<int> GenerarListaMontos()
         {
             List<int> montos = new List<int>();
+            int cantidad = 0;
+            foreach(Premio premio in premios){
+                cantidad = premio.cantidadPremio;
+                while (cantidad > 0)
+                {
+                    montos.Add(premio.montoPremio);
+                    cantidad--;
+                }
+            }
             return montos;
         }
 

@@ -30,7 +30,7 @@
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.sorteoRapido = new System.Windows.Forms.Button();
+            this.btOmitirAnimacion = new System.Windows.Forms.Button();
             this.tbPremio = new System.Windows.Forms.TextBox();
             this.tbSerie = new System.Windows.Forms.TextBox();
             this.tbNumero = new System.Windows.Forms.TextBox();
@@ -75,7 +75,7 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel2.Controls.Add(this.sorteoRapido);
+            this.panel2.Controls.Add(this.btOmitirAnimacion);
             this.panel2.Controls.Add(this.tbPremio);
             this.panel2.Controls.Add(this.tbSerie);
             this.panel2.Controls.Add(this.tbNumero);
@@ -93,15 +93,17 @@
             this.panel2.Size = new System.Drawing.Size(518, 342);
             this.panel2.TabIndex = 3;
             // 
-            // sorteoRapido
+            // btOmitirAnimacion
             // 
-            this.sorteoRapido.Location = new System.Drawing.Point(364, 116);
-            this.sorteoRapido.Margin = new System.Windows.Forms.Padding(4);
-            this.sorteoRapido.Name = "sorteoRapido";
-            this.sorteoRapido.Size = new System.Drawing.Size(127, 25);
-            this.sorteoRapido.TabIndex = 46;
-            this.sorteoRapido.Text = "Sorteo rápido";
-            this.sorteoRapido.UseVisualStyleBackColor = true;
+            this.btOmitirAnimacion.Enabled = false;
+            this.btOmitirAnimacion.Location = new System.Drawing.Point(364, 116);
+            this.btOmitirAnimacion.Margin = new System.Windows.Forms.Padding(4);
+            this.btOmitirAnimacion.Name = "btOmitirAnimacion";
+            this.btOmitirAnimacion.Size = new System.Drawing.Size(127, 25);
+            this.btOmitirAnimacion.TabIndex = 46;
+            this.btOmitirAnimacion.Text = "Omitir animación";
+            this.btOmitirAnimacion.UseVisualStyleBackColor = true;
+            this.btOmitirAnimacion.Click += new System.EventHandler(this.btOmitirAnimacion_Click);
             // 
             // tbPremio
             // 
@@ -114,7 +116,7 @@
             // 
             // tbSerie
             // 
-            this.tbSerie.Location = new System.Drawing.Point(151, 117);
+            this.tbSerie.Location = new System.Drawing.Point(38, 117);
             this.tbSerie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSerie.Name = "tbSerie";
             this.tbSerie.ReadOnly = true;
@@ -123,7 +125,7 @@
             // 
             // tbNumero
             // 
-            this.tbNumero.Location = new System.Drawing.Point(37, 117);
+            this.tbNumero.Location = new System.Drawing.Point(154, 117);
             this.tbNumero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbNumero.Name = "tbNumero";
             this.tbNumero.ReadOnly = true;
@@ -172,7 +174,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(159, 94);
+            this.label3.Location = new System.Drawing.Point(46, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 19);
             this.label3.TabIndex = 38;
@@ -182,7 +184,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(36, 94);
+            this.label2.Location = new System.Drawing.Point(153, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 19);
             this.label2.TabIndex = 37;
@@ -204,7 +206,7 @@
             // 
             this.pictureBox2.Enabled = false;
             this.pictureBox2.Image = global::Proyecto.Properties.Resources.bomboGif;
-            this.pictureBox2.Location = new System.Drawing.Point(151, 18);
+            this.pictureBox2.Location = new System.Drawing.Point(38, 18);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 64);
@@ -216,7 +218,7 @@
             // 
             this.pictureBox1.Enabled = false;
             this.pictureBox1.Image = global::Proyecto.Properties.Resources.bomboGif;
-            this.pictureBox1.Location = new System.Drawing.Point(37, 18);
+            this.pictureBox1.Location = new System.Drawing.Point(154, 18);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
@@ -364,7 +366,7 @@
 
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button sorteoRapido;
+        private System.Windows.Forms.Button btOmitirAnimacion;
         private System.Windows.Forms.TextBox tbPremio;
         private System.Windows.Forms.TextBox tbSerie;
         private System.Windows.Forms.TextBox tbNumero;

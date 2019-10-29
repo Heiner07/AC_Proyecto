@@ -13,7 +13,9 @@ namespace Proyecto
     public partial class FormPrincipal : Form
     {
         private Form formularioActivo = null;
+        private int formularioAbierto = -1; //0:Sorteos, 1:Jugar, 2:Resultados, 3:Estadísticas
         SistemaLoteriaChances sistemaLC = new SistemaLoteriaChances();
+
 
         public FormPrincipal()
         {
@@ -46,41 +48,52 @@ namespace Proyecto
            
         }
 
-        private void abrirFormularioHijo(Form formularioHijo)
+        private void abrirFormularioHijo(Form formularioHijo, int numeroForm)
         {
-            if (formularioActivo != null)
+            if((formularioAbierto == 1 && !((FormJugar)formularioActivo).RealizandoSorteo()) ||
+                formularioAbierto != 1)
             {
-                formularioActivo.Dispose();
+                if (formularioActivo != null)
+                {
+                    formularioActivo.Close();
+                }
+                formularioActivo = formularioHijo;
+                formularioHijo.TopLevel = false;
+                formularioHijo.FormBorderStyle = FormBorderStyle.None;
+                formularioHijo.Dock = DockStyle.Fill;
+                panelPrincipal.Controls.Add(formularioHijo);
+                panelPrincipal.Tag = formularioHijo;
+                formularioHijo.BringToFront();
+                formularioHijo.Show();
+                formularioAbierto = numeroForm;
             }
-            formularioActivo = formularioHijo;
-            formularioHijo.TopLevel = false;
-            formularioHijo.FormBorderStyle = FormBorderStyle.None;
-            formularioHijo.Dock = DockStyle.Fill;
-            panelPrincipal.Controls.Add(formularioHijo);
-            panelPrincipal.Tag = formularioHijo;
-            formularioHijo.BringToFront();
-            formularioHijo.Show();
-
+            else
+            {
+                MessageBox.Show("No se puede salir, un sorteo se está realizando.\n"+
+                    "Puede terminarlo de forma rápida presionando el botón \"Omitir " +
+                    "animación\" o espere a que termine.",
+                    "Realizando sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btSorteos_Click(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new FormMantenimientoSorteos(sistemaLC));
+            abrirFormularioHijo(new FormMantenimientoSorteos(sistemaLC), 0);
         }
 
         private void btJugar_Click(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new FormJugar(sistemaLC));
+            abrirFormularioHijo(new FormJugar(sistemaLC), 1);
         }
 
         private void btResultados_Click(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new FormResultados());
+            abrirFormularioHijo(new FormResultados(), 2);
         }
 
         private void btEstadisticasReportes_Click(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new FormEstadisticasReportes(sistemaLC));
+            abrirFormularioHijo(new FormEstadisticasReportes(sistemaLC), 3);
         }
 
         private void btIniciarSesion_Click(object sender, EventArgs e)
@@ -115,6 +128,16 @@ namespace Proyecto
             }
         }
 
-        
+        private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (formularioAbierto == 1 && ((FormJugar)formularioActivo).RealizandoSorteo())
+            {
+                MessageBox.Show("No se puede salir, un sorteo se está realizando.\n" +
+                    "Puede terminarlo de forma rápida presionando el botón \"Omitir " +
+                    "animación\" o espere a que termine.",
+                    "Realizando sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
+            }
+        }
     }
 }

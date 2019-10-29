@@ -14,22 +14,23 @@ namespace Proyecto
 {
     public partial class FormJugar : Form
     {
-        // Creando e inicializando el hilo
-        //Thread hiloSorteo = new Thread(jugarSorteo);
-        bool var = true;
+        Thread hiloJugar; // Se encarga de realizar la ejecución de jugar el sorteo
+        Boolean omitirAnimacion;
         SistemaLoteriaChances sistemaLoteriaChances;
-        DataTable dtSorteos;
+        DataTable dtSorteos, dtResultados;
         List<Sorteo> sorteos;
         String filtroTipoSorteos;
+        Sorteo sorteoSeleccionado;
 
         public FormJugar(SistemaLoteriaChances sistemaLoteriaChances)
         {
             InitializeComponent();
             this.sistemaLoteriaChances = sistemaLoteriaChances;
             this.filtroTipoSorteos = "";
+            this.hiloJugar = null;
+            this.omitirAnimacion = false;
             EstablecerValoresTablaSorteos();
             establecerValoresTablaResultadosSorteo();
-           
         }
 
         private void EstablecerValoresTablaSorteos()
@@ -77,22 +78,28 @@ namespace Proyecto
 
         private void establecerValoresTablaResultadosSorteo()
         {
-            DataTable dtResultados = new DataTable();
-            dtResultados.Columns.Add("Número", typeof(string));
+            dtResultados = new DataTable();
             dtResultados.Columns.Add("Serie", typeof(string));
+            dtResultados.Columns.Add("Número", typeof(string));
             dtResultados.Columns.Add("Premio", typeof(string));
-            for (int i = 0; i < 5; i++)
-            {
-                dtResultados.Rows.Add(new object[] { "42", i.ToString(), "1000000" });
-            }
             dgvResultadosSorteo.DataSource = dtResultados;
-           
+        }
+
+        private Sorteo ObtenerSorteoSeleccionado(String tipoSorteo, int numeroSorteo)
+        {
+            foreach (Sorteo sorteo in sorteos)
+            {
+                if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
+                {
+                    return sorteo;
+                }
+            }return null;
         }
 
         private void dgvSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Console.WriteLine(e.ColumnIndex);
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
                 String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
                 int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
@@ -102,24 +109,15 @@ namespace Proyecto
 
                 if (dr == DialogResult.Yes)
                 {
-                    //this.dgvSorteos.Rows.RemoveAt(e.ColumnIndex);
+                    sorteoSeleccionado = ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
                     cambiarEstadoGifs();
-                    Thread hiloSorteo = new Thread(new ThreadStart(jugarSorteo));
-                    hiloSorteo.IsBackground = true;
-                    hiloSorteo.Start();
-
-                    //hiloSorteo.Start();
-                    foreach (Sorteo sorteo in sorteos)
+                    hiloJugar = new Thread(new ThreadStart(jugarSorteo))
                     {
-                        if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
-                        {
-                            sorteo.planPremios.GenerarResultados();
-                        }
-                    }
-
+                        IsBackground = false
+                    };
+                    hiloJugar.Start();
+                    btOmitirAnimacion.Enabled = true;
                 }
-
-
             }
         }
 
@@ -152,54 +150,55 @@ namespace Proyecto
 
         private void cambiarEstadoGifs()
         {
-            
-                
-                    pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = true));
-                    pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = true));
-                    pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = true));
-                
-            
-
+            pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = true));
+            pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = true));
+            pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = true));
         }
 
 
         private void jugarSorteo()
         {
-            for (int i = 0; i<4; i++)
+            sorteoSeleccionado.planPremios.GenerarResultados();
+            Invoke((MethodInvoker)(() => dtResultados.Clear()));
+            foreach (Resultado resultado in sorteoSeleccionado.planPremios.resultados)
             {
-                if (var)
+                if(!omitirAnimacion) Thread.Sleep(2500);
+
+                pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = false));
+                if (!omitirAnimacion)
                 {
-                    Thread.Sleep(2500);
-                    pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = false));
-                    escribirTextBoxNumero("0" + i);
+                    escribirTextBoxSerie(Convert.ToString(resultado.serieGanadora));
                     Thread.Sleep(2600);
-
-                    pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = false));
-                    escribirTextBoxSerie("0" + i + 1);
-                    Thread.Sleep(2600);
-
-                    pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
-                    escribirTextBoxPremio("100000");
-                    Thread.Sleep(2000);
-                    escribirTextBoxNumero("");
-                    escribirTextBoxSerie("");
-                    escribirTextBoxPremio("");
-                    cambiarEstadoGifs();
                 }
 
+                pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = false));
+                if (!omitirAnimacion)
+                {
+                    escribirTextBoxNumero(Convert.ToString(resultado.numeroGanador));
+                    Thread.Sleep(2600);
+                }
+
+                pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
+                if (!omitirAnimacion)
+                {
+                    escribirTextBoxPremio(Convert.ToString(resultado.montoGanado));
+                    Thread.Sleep(2000);
+                }
+
+                escribirTextBoxNumero("");
+                escribirTextBoxSerie("");
+                escribirTextBoxPremio("");
+
+                if (!omitirAnimacion) cambiarEstadoGifs();
+
+                Invoke((MethodInvoker)(() => dtResultados.Rows.Add(new object[] { resultado.serieGanadora,
+                    resultado.numeroGanador, resultado.montoGanado })));
             }
             pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = false));
             pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = false));
             pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
-            var = true;
-            MessageBox.Show("¡Sorteo jugado!",
-                    "Jugar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void sorteoRapido_Click(object sender, EventArgs e)
-        {
-
-            var = false;
+            Invoke((MethodInvoker)(() => MessageBox.Show("¡Sorteo jugado!",
+                    "Jugar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Information)));
         }
 
         private void tbBusqueda_TextChanged(object sender, EventArgs e)
@@ -223,6 +222,21 @@ namespace Proyecto
         {
             filtroTipoSorteos = "Tipo = 'Chances' AND ";
             tbBusqueda_TextChanged(sender, e);
+        }
+
+        private void btOmitirAnimacion_Click(object sender, EventArgs e)
+        {
+            omitirAnimacion = true;
+            btOmitirAnimacion.Enabled = false;
+        }
+
+        public Boolean RealizandoSorteo()
+        {
+            if(hiloJugar != null)
+            {
+                return hiloJugar.IsAlive;
+            }
+            return false;
         }
     }
 }
