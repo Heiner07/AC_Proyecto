@@ -234,44 +234,34 @@ namespace Proyecto
 
         }
 
-        //POR MIENTRAS LO DEJE CON TRY CATCH
         private List<Premio> ObtenerPlanPremios(String tipoSorteo) {
             List<Premio> premios = new List<Premio>();
-            try
-            {
-               
-                int primerPremio = Convert.ToInt32(nudPremio1.Value);
-                int segundoPremio = Convert.ToInt32(nudPremio2.Value);
-                int tercerPremio = Convert.ToInt32(nudPremio3.Value);
-                if (primerPremio > 0 && segundoPremio > 0 && tercerPremio > 0 && (primerPremio > segundoPremio) && (segundoPremio > tercerPremio)) {
-                    premios.Add(new Premio(primerPremio, 1));
-                    premios.Add(new Premio(segundoPremio, 1));
-                    premios.Add(new Premio(tercerPremio, 1));
-                }
-                else {
-                    MessageBox.Show("Error en los 3 premios principales", "Crear sorteo",
-                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    return null;
-                }
+            int primerPremio = Convert.ToInt32(nudPremio1.Value);
+            int segundoPremio = Convert.ToInt32(nudPremio2.Value);
+            int tercerPremio = Convert.ToInt32(nudPremio3.Value);
+            if (primerPremio > 0 && segundoPremio > 0 && tercerPremio > 0 && (primerPremio > segundoPremio) && (segundoPremio > tercerPremio)) {
+                premios.Add(new Premio(primerPremio, 1));
+                premios.Add(new Premio(segundoPremio, 1));
+                premios.Add(new Premio(tercerPremio, 1));
             }
-            catch
-            {
-                MessageBox.Show("Números y cantidades deben ser numéricos", "Crear sorteo",
-                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else {
+                MessageBox.Show("Error en los 3 premios principales", "Crear sorteo",
+                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 return null;
             }
+           
             if (tipoSorteo.Equals("Lotería"))
             {
                 DataTable dt = this.dataGridViewPremiosAdicionales.DataSource as DataTable;
                 int largoPremiosAdicionales = this.dataGridViewPremiosAdicionales.Rows.Count;
                 for (int i = 0; i < largoPremiosAdicionales; i++)
                 {
-                    try
+                    int montoPremio = Convert.ToInt32(dt.Rows[i]["Monto"].ToString());
+                    int cantidad = Convert.ToInt32(dt.Rows[i]["Cantidad"].ToString());
+                    if (montoPremio > 0 && cantidad > 0 )
                     {
-                        int montoPremio = Convert.ToInt32(dt.Rows[i]["Monto"].ToString());
-                        int cantidad = Convert.ToInt32(dt.Rows[i]["Cantidad"].ToString());
-                        if (montoPremio > 0 && cantidad > 0)
+                        if (montoPremio < tercerPremio)
                         {
                             //Buscamos si existe uno igual
                             Boolean noAgregado = true;
@@ -285,19 +275,14 @@ namespace Proyecto
                             {
                                 premios.Add(new Premio(montoPremio, cantidad));
                             }
-
+                        }
+                        else {
+                            MessageBox.Show("El premio adicional debe ser mayor al tercer premio", "Sorteo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return null;
                         }
 
                     }
-                    catch
-                    {
-                        MessageBox.Show("Números y cantidades deben ser numéricos", "Crear sorteo",
-                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return null;
-                    }
-
-
-
                 }
             }
             return premios;
@@ -350,10 +335,7 @@ namespace Proyecto
                             tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
                             CrearSorteo(sorteo);
                         }
-                        else {
-                            MessageBox.Show("Error al guardar el sorteo", "Crear sorteo",
-                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        
                     }
                     else {
                         Sorteo sorteo = new Sorteo(1, numeroSorteo, tipoSorteo, fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
