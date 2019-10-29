@@ -20,13 +20,16 @@ namespace Proyecto
         DataTable dtPremiosAdicionales, dtSorteos;
         List<Sorteo> sorteos;
         String filtroTipoSorteos;
-        Boolean enEdicion = false; 
+        Boolean enEdicion;
+        Sorteo sorteoEditando;
 
         public FormMantenimientoSorteos(SistemaLoteriaChances sistemaLoteriaChances)
         {
             InitializeComponent();
             this.sistemaLoteriaChances = sistemaLoteriaChances;
             this.filtroTipoSorteos = "";
+            this.enEdicion = false;
+            this.sorteoEditando = new Sorteo();
             ConfigurarTablaPremiosAdicionales();
             ConfigurarComponentesPanelSorteos();
             EstablecerValoresTablaSorteos();
@@ -182,12 +185,44 @@ namespace Proyecto
 
         private void btGuardar_Click(object sender, EventArgs e)
         {
-            salirInterfazEditando();
+            PlanPremios planPremios = new PlanPremios();
+            if (nudFracciones.Value > 0 && nudCostoFraccion.Value > 0)
+            {
+                if (cbConPlan.Checked)
+                {
+                    planPremios.premios = ObtenerPlanPremios(sorteoEditando.ObtenerTipoSorteo);
+                    if (planPremios.premios != null)
+                    {
+                        Sorteo sorteo = new Sorteo(sorteoEditando.ObtenerIdSorteo, sorteoEditando.ObtenerNumeroSorteo, sorteoEditando.ObtenerTipoSorteo, sorteoEditando.ObtenerFecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
+                        tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
+                        sorteoEditando = sorteo;
+                        ModificarSorteo(sorteoEditando);
+                    }
+
+                }
+                else
+                {
+                    Sorteo sorteo = new Sorteo(sorteoEditando.ObtenerIdSorteo, sorteoEditando.ObtenerNumeroSorteo, sorteoEditando.ObtenerTipoSorteo, sorteoEditando.ObtenerFecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
+                    tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
+                    sorteoEditando = sorteo;
+                    ModificarSorteo(sorteoEditando);
+                }
+            }
+            else
+            {
+                MessageBox.Show("La cantidad de fracciones y el costo deben ser mayor a 0", "Modificar sorteo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            //salirInterfazEditando();
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            salirInterfazEditando();
+            //  salirInterfazEditando();
+            enEdicion = false;
+            ajustarPanelSorteo();
+            panelCrearSorteo.Visible = !panelCrearSorteo.Visible;
         }
 
 
@@ -295,9 +330,30 @@ namespace Proyecto
                 MessageBox.Show("¡¡¡Se insertó con éxito!!!", "Crear sorteo",
                          MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarSorteos();
+                //ajustarPanelSorteo();
+                //panelCrearSorteo.Visible = !panelCrearSorteo.Visible;
             }
             else {
                 MessageBox.Show("Error al guardar el sorteo", "Crear sorteo",
+                      MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void ModificarSorteo(Sorteo sorteo)
+        {
+            if (sistemaLoteriaChances.ModificarSorteo(sorteo))
+            {
+                MessageBox.Show("¡¡¡Se Modificó con éxito!!!", "Modificar sorteo",
+                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarSorteos();
+                ajustarPanelSorteo();
+                panelCrearSorteo.Visible = !panelCrearSorteo.Visible;
+            }
+            else
+            {
+                MessageBox.Show("Error al modificar el sorteo", "Modificar sorteo",
                       MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -420,6 +476,7 @@ namespace Proyecto
         private void CargarDatosEdicion(Sorteo sorteo)
         {
             String tipoSorteo = sorteo.ObtenerTipoSorteo;
+            List<Premio> premios = sorteo.ObtenerPlanPremios.ObtenerPremios;
             rbChances.Enabled = false;
             rbLoteria.Enabled = false;
             dtFecha.Enabled = false;
@@ -428,8 +485,33 @@ namespace Proyecto
             {
                 rbLoteria.Checked = true;
             }
-            else { rbChances.Checked = true;}
-            //im here
+            else { rbChances.Checked = true; btAgregarPremioAdicional.Enabled = false; }
+            nudCostoFraccion.Value = sorteo.ObtenerPrecioFraccion;
+            nudFracciones.Value = sorteo.ObtenerCantidadFracciones;
+            tbLeyenda.Text = sorteo.ObtenerLeyenda;
+            int largoPremios = premios.Count;
+            //Por si es null,no va a tener plan de premios
+            if (largoPremios != 0)
+            {
+                
+                nudPremio1.Value = premios[0].ObtenerMonto;
+                nudPremio2.Value = premios[1].ObtenerMonto;
+                nudPremio3.Value = premios[2].ObtenerMonto;
+                //obtengo el resto de los premios adicionales y limpio los dt y datagridview
+                cbConPlan.Checked = true;
+                dtPremiosAdicionales.Clear();
+              
+                for (int i=3;i<largoPremios;i++)
+                {              
+                    int montoPremio = premios[i].ObtenerMonto;
+                    int cantidadPremio = premios[i].ObtenerCantidad;
+                    dtPremiosAdicionales.Rows.Add(new object[] { montoPremio, cantidadPremio });
+
+                }
+
+
+            }
+            
 
         }
         private void dataGridViewSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -494,6 +576,7 @@ namespace Proyecto
                             {
                                 if (!sorteo.ObtenerEstado)
                                 {
+                                    sorteoEditando = sorteo;
                                     CargarDatosEdicion(sorteo);
 
                                 }

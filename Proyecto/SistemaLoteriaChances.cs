@@ -30,5 +30,11 @@ namespace Proyecto
         public Boolean EliminarSorteo(Sorteo sorteo) {
             return conexionBD.EliminarSorteo(sorteo);
         }
+
+        public Boolean ModificarSorteo(Sorteo sorteo)
+        {
+            return conexionBD.ModificarSorteo(sorteo);
+
+        }
     }
 }

@@ -134,7 +134,7 @@ namespace Proyecto
         */
         public Boolean ObtenerEstado => estado;
         public int ObtenerIdSorteo => idSorteo;
-        public PlanPremios ObenerPlanPremios => planPremios;
+        public PlanPremios ObtenerPlanPremios => planPremios;
 
     }
 }

@@ -51,7 +51,7 @@ namespace Proyecto
         public Boolean InsertarSorteo(Sorteo nuevoSorteo) {
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             List <Premio> premios = new List<Premio>();
-            premios = nuevoSorteo.ObenerPlanPremios.ObtenerPremios;
+            premios = nuevoSorteo.ObtenerPlanPremios.ObtenerPremios;
             try
             {
                 conexion.Open();
@@ -180,6 +180,57 @@ namespace Proyecto
             try
             {
                 cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+
+        }
+
+        public Boolean ModificarSorteo(Sorteo sorteo)
+        {
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            List<Premio> premios = new List<Premio>();
+            premios = sorteo.ObtenerPlanPremios.ObtenerPremios;
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("ActualizarSorteo", conexion);               
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Tipo", SqlDbType.NVarChar).Value = sorteo.ObtenerTipoSorteo;
+                cmd.Parameters.Add("@Fecha", SqlDbType.DateTime).Value = sorteo.ObtenerFecha;
+                cmd.Parameters.Add("@Numero", SqlDbType.Int).Value = sorteo.ObtenerNumeroSorteo;
+                cmd.Parameters.Add("@CantidadFracciones", SqlDbType.Int).Value = sorteo.ObtenerCantidadFracciones;
+                cmd.Parameters.Add("@PrecioFraccion", SqlDbType.Int).Value = sorteo.ObtenerPrecioFraccion;
+                cmd.Parameters.Add("@Leyenda", SqlDbType.NVarChar).Value = sorteo.ObtenerLeyenda;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = sorteo.ObtenerIdSorteo;          
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+                conexion.Open();
+                cmd = new SqlCommand("EliminarPlanDePremios", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = sorteo.ObtenerIdSorteo;
+                cmd.ExecuteNonQuery();
+                if (premios != null)
+                {                  
+                    conexion.Close();
+                    conexion.Open();
+                    cmd = new SqlCommand("InsertarPlanDePremios", conexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Clear();
+                    foreach (Premio premio in premios)
+                    {
+                        cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = sorteo.ObtenerIdSorteo;
+                        cmd.Parameters.Add("@Monto", SqlDbType.Int).Value = premio.ObtenerMonto;
+                        cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = premio.ObtenerCantidad;
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+                    }
+                    conexion.Close();
+                }
                 return true;
             }
             catch
