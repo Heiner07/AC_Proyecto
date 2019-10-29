@@ -20,6 +20,7 @@ namespace Proyecto
         DataTable dtPremiosAdicionales, dtSorteos;
         List<Sorteo> sorteos;
         String filtroTipoSorteos;
+        Boolean enEdicion = false; 
 
         public FormMantenimientoSorteos(SistemaLoteriaChances sistemaLoteriaChances)
         {
@@ -52,7 +53,7 @@ namespace Proyecto
             dataGridViewPremiosAdicionales.Columns[1].Width = 80;
             dataGridViewPremiosAdicionales.Columns[2].Width = 70;
 
-            dataGridViewPremiosAdicionales.Columns[0].ReadOnly = true;
+           // dataGridViewPremiosAdicionales.Columns[0].ReadOnly = true;
         }
 
         private void EstablecerValoresTablaSorteos()
@@ -405,21 +406,37 @@ namespace Proyecto
         private void dataGridViewPremiosAdicionales_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //Eliminamos el premioAdicional
-            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
-            {
-                DataTable dt = this.dataGridViewPremiosAdicionales.DataSource as DataTable;
-                //int montoPremio = Convert.ToInt32(dt.Rows[e.RowIndex]["Monto"].ToString());
-                //Console.WriteLine(this.dataGridViewPremiosAdicionales.RowCount);
-                this.dataGridViewPremiosAdicionales.Rows.RemoveAt(e.RowIndex);
-                //Console.WriteLine(this.dataGridViewPremiosAdicionales.RowCount);
+            if (e.ColumnIndex >= 0) { 
+                if (e.ColumnIndex == 0)
+                {
+                    DataTable dt = this.dataGridViewPremiosAdicionales.DataSource as DataTable;
+                    //int montoPremio = Convert.ToInt32(dt.Rows[e.RowIndex]["Monto"].ToString());
+                    //Console.WriteLine(this.dataGridViewPremiosAdicionales.RowCount);
+                    this.dataGridViewPremiosAdicionales.Rows.RemoveAt(e.RowIndex);
+                    //Console.WriteLine(this.dataGridViewPremiosAdicionales.RowCount);
+                }
             }
         }
+        private void CargarDatosEdicion(Sorteo sorteo)
+        {
+            String tipoSorteo = sorteo.ObtenerTipoSorteo;
+            rbChances.Enabled = false;
+            rbLoteria.Enabled = false;
+            dtFecha.Enabled = false;
+            dtFecha.Value = sorteo.ObtenerFecha;
+            if (tipoSorteo.Equals("Lotería"))
+            {
+                rbLoteria.Checked = true;
+            }
+            else { rbChances.Checked = true;}
+            //im here
 
+        }
         private void dataGridViewSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (e.ColumnIndex >= 0)
             {
-                if (e.ColumnIndex == 0)
+                if (e.ColumnIndex == 0 || e.ColumnIndex == 7)
                 {
                     String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
                     int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
@@ -458,14 +475,43 @@ namespace Proyecto
                     }
 
                 }
-                else if (e.ColumnIndex == 1)
+                else if (e.ColumnIndex == 1 || e.ColumnIndex == 8)
                 {
-                    establecerInterfazEditando();
-                    if (!panelCrearSorteo.Visible)
+                    if (!enEdicion)
                     {
-                        ajustarPanelSorteo();
+                        enEdicion = true;
+                        String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
+                        int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
+                        establecerInterfazEditando();
+                        if (!panelCrearSorteo.Visible)
+                        {
+                            ajustarPanelSorteo();
+                        }
+                        panelCrearSorteo.Visible = true;
+                        foreach (Sorteo sorteo in sorteos)
+                        {
+                            if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
+                            {
+                                if (!sorteo.ObtenerEstado)
+                                {
+                                    CargarDatosEdicion(sorteo);
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El sorteo no se puede editar, ya se jugó",
+                                        "Editar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                        }
+
                     }
-                    panelCrearSorteo.Visible = true;
+                    else
+                    {
+                        //Está editando uno, aqui pregunto si desea guardarlo antes de editar otro
+
+                    }
+
                 }
             }
         }
