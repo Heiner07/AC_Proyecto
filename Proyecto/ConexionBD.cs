@@ -241,6 +241,62 @@ namespace Proyecto
 
         }
 
+        public Boolean InsertarResultadosSorteos(Sorteo sorteo)
+        {
+            List<Resultado> resultados = sorteo.planPremios.resultados;
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            SqlCommand cmd = new SqlCommand("InsertarResultado", conexion)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            try
+            {
+                conexion.Open();
+                foreach (Resultado resultado in resultados)
+                {
+                    cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = sorteo.idSorteo;
+                    cmd.Parameters.Add("@MontoGanado", SqlDbType.Int).Value = resultado.montoGanado;
+                    cmd.Parameters.Add("@NumeroGanador", SqlDbType.Int).Value = resultado.numeroGanador;
+                    cmd.Parameters.Add("@SerieGanadora", SqlDbType.Int).Value = resultado.serieGanadora;
+                    cmd.ExecuteNonQuery();
+
+                    cmd.Parameters.Clear();
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+        }
+
+        public Boolean EstablecerSorteoJugado(Sorteo sorteo)
+        {
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            SqlCommand cmd = new SqlCommand("EstablecerSorteoJugado", conexion)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            try
+            {
+                conexion.Open();
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = sorteo.idSorteo;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return true;
+        }
     }
 
 

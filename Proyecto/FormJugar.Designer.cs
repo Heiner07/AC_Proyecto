@@ -228,7 +228,7 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.tbBusqueda);
             this.panel1.Controls.Add(this.label10);
@@ -277,7 +277,7 @@
             this.dgvSorteos.AllowUserToDeleteRows = false;
             this.dgvSorteos.AllowUserToResizeColumns = false;
             this.dgvSorteos.AllowUserToResizeRows = false;
-            this.dgvSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dgvSorteos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvSorteos.BackgroundColor = System.Drawing.Color.White;
             this.dgvSorteos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSorteos.Location = new System.Drawing.Point(12, 85);

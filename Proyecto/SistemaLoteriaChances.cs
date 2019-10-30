@@ -36,5 +36,11 @@ namespace Proyecto
             return conexionBD.ModificarSorteo(sorteo);
 
         }
+
+        public Boolean JugarSorteo(Sorteo sorteo)
+        {
+            return conexionBD.InsertarResultadosSorteos(sorteo) &&
+                conexionBD.EstablecerSorteoJugado(sorteo);
+        }
     }
 }

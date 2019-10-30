@@ -110,13 +110,14 @@ namespace Proyecto
                 if (dr == DialogResult.Yes)
                 {
                     sorteoSeleccionado = ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
-                    cambiarEstadoGifs();
+                    CambiarEstadoGifs(true);
                     hiloJugar = new Thread(new ThreadStart(jugarSorteo))
                     {
                         IsBackground = false
                     };
                     hiloJugar.Start();
                     btOmitirAnimacion.Enabled = true;
+                    dgvSorteos.Enabled = false;
                 }
             }
         }
@@ -148,11 +149,11 @@ namespace Proyecto
 
         }
 
-        private void cambiarEstadoGifs()
+        private void CambiarEstadoGifs(Boolean estado)
         {
-            pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = true));
-            pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = true));
-            pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = true));
+            pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = estado));
+            pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = estado));
+            pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = estado));
         }
 
 
@@ -189,16 +190,25 @@ namespace Proyecto
                 escribirTextBoxSerie("");
                 escribirTextBoxPremio("");
 
-                if (!omitirAnimacion) cambiarEstadoGifs();
+                if (!omitirAnimacion) CambiarEstadoGifs(true);
 
                 Invoke((MethodInvoker)(() => dtResultados.Rows.Add(new object[] { resultado.serieGanadora,
                     resultado.numeroGanador, resultado.montoGanado })));
             }
-            pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = false));
-            pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = false));
-            pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
-            Invoke((MethodInvoker)(() => MessageBox.Show("¡Sorteo jugado!",
+            CambiarEstadoGifs(false);
+            if (sistemaLoteriaChances.JugarSorteo(sorteoSeleccionado))
+            {
+                Invoke((MethodInvoker)(() => MessageBox.Show("¡Sorteo jugado! Los resultados se han almacenado correctamente",
                     "Jugar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Information)));
+            }
+            else
+            {
+                Invoke((MethodInvoker)(() => MessageBox.Show("Ocurrió un error guardando los resultados del sorteo.",
+                    "Jugar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Error)));
+            }
+            btOmitirAnimacion.Invoke((MethodInvoker)(() => btOmitirAnimacion.Enabled = false));
+            dgvSorteos.Invoke((MethodInvoker)(() => dgvSorteos.Enabled = true));
+            Invoke((MethodInvoker)(() => CargarSorteos()));
         }
 
         private void tbBusqueda_TextChanged(object sender, EventArgs e)
