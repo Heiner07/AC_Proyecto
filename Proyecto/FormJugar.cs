@@ -63,7 +63,7 @@ namespace Proyecto
                 for (int i = 0; i < cantidadSorteos; i++)
                 {
                     sorteo = sorteos[i];
-                    if (!sorteo.estado)
+                    if (!sorteo.estado && sorteo.planPremios.premios.Count > 0)
                     {
                         dtSorteos.Rows.Add(new object[] { sorteo.tipoSorteo, sorteo.numeroSorteo,
                         sorteo.fecha.ToShortDateString() });
@@ -159,7 +159,7 @@ namespace Proyecto
 
         private void jugarSorteo()
         {
-            sorteoSeleccionado.planPremios.GenerarResultados();
+            sorteoSeleccionado.planPremios.GenerarResultados(sorteoSeleccionado.tipoSorteo);
             Invoke((MethodInvoker)(() => dtResultados.Clear()));
             foreach (Resultado resultado in sorteoSeleccionado.planPremios.resultados)
             {

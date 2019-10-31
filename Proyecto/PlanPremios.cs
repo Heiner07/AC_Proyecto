@@ -12,7 +12,7 @@ namespace Proyecto
         public List<Resultado> resultados = new List<Resultado>();
         public List<Premio> premios = new List<Premio>();
 
-        public void GenerarResultados()
+        public void GenerarResultados(String tipo)
         {
             List<int> montos = GenerarListaMontos();
             int numero = 0;
@@ -22,7 +22,7 @@ namespace Proyecto
             Random random = new Random();
             while (montos.Count > 0)
             {
-                indice = random.Next(0, montos.Count);
+                indice = (tipo.Equals("Chances"))? 0 : random.Next(0, montos.Count);
                 numero = random.Next(0, 99);
                 serie = random.Next(0, 999);
                 monto = montos[indice];
