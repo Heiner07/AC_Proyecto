@@ -219,8 +219,13 @@ namespace Proyecto
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            //  salirInterfazEditando();
-            enEdicion = false;
+            btAgregarPremioAdicional.Visible = true;
+            salirInterfazEditando();
+            rbChances.Enabled = true;
+            rbLoteria.Enabled = true;
+            dtFecha.Enabled = true;
+            enEdicion = false;           
+            dtPremiosAdicionales.Clear();
             ajustarPanelSorteo();
             panelCrearSorteo.Visible = !panelCrearSorteo.Visible;
         }
@@ -347,6 +352,13 @@ namespace Proyecto
             {
                 MessageBox.Show("¡¡¡Se Modificó con éxito!!!", "Modificar sorteo",
                          MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btAgregarPremioAdicional.Visible = true;
+                salirInterfazEditando();
+                dtPremiosAdicionales.Clear();
+                rbChances.Enabled = true;
+                rbLoteria.Enabled = true;
+                dtFecha.Enabled = true;
+                enEdicion = false;
                 CargarSorteos();
                 ajustarPanelSorteo();
                 panelCrearSorteo.Visible = !panelCrearSorteo.Visible;
@@ -462,7 +474,7 @@ namespace Proyecto
         private void dataGridViewPremiosAdicionales_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //Eliminamos el premioAdicional
-            if (e.ColumnIndex >= 0) { 
+            if (e.ColumnIndex >= 0 && e.RowIndex>=0) { 
                 if (e.ColumnIndex == 0)
                 {
                     DataTable dt = this.dataGridViewPremiosAdicionales.DataSource as DataTable;
@@ -473,6 +485,20 @@ namespace Proyecto
                 }
             }
         }
+
+        private void btBorrarPlanPremios_Click_1(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("¿Realmente desea borrar el plan de premio?", "Borrando plan de premios", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                nudPremio1.Value = 1;
+                nudPremio2.Value = 1;
+                nudPremio3.Value = 1;
+                dtPremiosAdicionales.Clear();
+            }
+        }
+
         private void CargarDatosEdicion(Sorteo sorteo)
         {
             String tipoSorteo = sorteo.ObtenerTipoSorteo;
@@ -480,12 +506,13 @@ namespace Proyecto
             rbChances.Enabled = false;
             rbLoteria.Enabled = false;
             dtFecha.Enabled = false;
+//            btAgregarPremioAdicional.Visible = true;
             dtFecha.Value = sorteo.ObtenerFecha;
             if (tipoSorteo.Equals("Lotería"))
             {
                 rbLoteria.Checked = true;
             }
-            else { rbChances.Checked = true; btAgregarPremioAdicional.Enabled = false; }
+            else { rbChances.Checked = true; btAgregarPremioAdicional.Visible = false; }
             nudCostoFraccion.Value = sorteo.ObtenerPrecioFraccion;
             nudFracciones.Value = sorteo.ObtenerCantidadFracciones;
             tbLeyenda.Text = sorteo.ObtenerLeyenda;
@@ -514,15 +541,42 @@ namespace Proyecto
             
 
         }
+
+        private void EliminarSorteo(Sorteo sorteo)
+        {
+            if (sistemaLoteriaChances.EliminarSorteo(sorteo))
+            {
+                if (enEdicion && sorteo.ObtenerIdSorteo.Equals(sorteoEditando.ObtenerIdSorteo))
+                {
+
+                    rbChances.Enabled = true;
+                    rbLoteria.Enabled = true;
+                    dtFecha.Enabled = true;
+                    enEdicion = false;
+                    salirInterfazEditando();
+                    ajustarPanelSorteo();
+                    panelCrearSorteo.Visible = !panelCrearSorteo.Visible;
+                }
+                CargarSorteos();
+                MessageBox.Show("El sorteo se eliminó con éxito",
+                    "Eliminar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("El sorteo no se pudo eliminar",
+                    "Eliminar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
         private void dataGridViewSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex >= 0)
+            if (e.ColumnIndex >= 0 && e.RowIndex>=0)
             {
                 if (e.ColumnIndex == 0 || e.ColumnIndex == 7)
                 {
                     String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
                     int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
-
                     DialogResult dr = MessageBox.Show($"¿Desea eliminar el sorteo {numeroSorteo} de {tipoSorteo}?",
                         "Eliminar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
@@ -534,16 +588,19 @@ namespace Proyecto
                             {
                                 if (!sorteo.ObtenerEstado)
                                 {
-                                    if (sistemaLoteriaChances.EliminarSorteo(sorteo))
+                                    if (enEdicion && sorteoEditando.idSorteo.Equals(sorteo.ObtenerIdSorteo))
                                     {
-                                        CargarSorteos();
-                                        MessageBox.Show("El sorteo se eliminó con éxito",
-                                            "Eliminar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        DialogResult drEliminar = MessageBox.Show("Es el mismo sorteo que está editando, ¿desea eliminarlo?", "Eliminar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                                        if (drEliminar == DialogResult.Yes)
+                                        {
+                                            EliminarSorteo(sorteo);
+                                        }
+                                        
+
                                     }
                                     else
                                     {
-                                        MessageBox.Show("El sorteo no se pudo eliminar",
-                                            "Eliminar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        EliminarSorteo(sorteo);
                                     }
 
                                 }
@@ -561,21 +618,23 @@ namespace Proyecto
                 {
                     if (!enEdicion)
                     {
-                        enEdicion = true;
+                        
                         String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
                         int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
-                        establecerInterfazEditando();
-                        if (!panelCrearSorteo.Visible)
-                        {
-                            ajustarPanelSorteo();
-                        }
-                        panelCrearSorteo.Visible = true;
+                        
                         foreach (Sorteo sorteo in sorteos)
                         {
                             if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
                             {
                                 if (!sorteo.ObtenerEstado)
                                 {
+                                    enEdicion = true;
+                                    establecerInterfazEditando();
+                                    if (!panelCrearSorteo.Visible)
+                                    {
+                                        ajustarPanelSorteo();
+                                    }
+                                    panelCrearSorteo.Visible = true;
                                     sorteoEditando = sorteo;
                                     CargarDatosEdicion(sorteo);
 
@@ -591,6 +650,22 @@ namespace Proyecto
                     }
                     else
                     {
+                        DialogResult dr = MessageBox.Show("¿Desea guardar el sorteo que está editando?", "Editar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        if (dr == DialogResult.Yes)
+                        {
+                            btGuardar_Click(sender, e);
+                            enEdicion = false;
+                            dataGridViewSorteos_CellClick(sender, e);
+                        }
+                        else if(dr == DialogResult.No)
+                        {
+                            enEdicion = false;
+                            dataGridViewSorteos_CellClick(sender, e);
+                        }
+
+
+
+
                         //Está editando uno, aqui pregunto si desea guardarlo antes de editar otro
 
                     }
@@ -601,22 +676,39 @@ namespace Proyecto
 
         private void btBorrarPlanPremios_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("¿Realmente desea borrar el plan de premio?", "Borrando plan de premios", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-
-            if (dr == DialogResult.Yes)
+            if (dtPremiosAdicionales.Rows.Count > 0)
             {
-                nudPremio1.Value = 1;
-                nudPremio2.Value = 1;
-                nudPremio3.Value = 1;
-                dtPremiosAdicionales.Clear();
+                DialogResult dr = MessageBox.Show("¿Realmente desea borrar los premios adicionales?", "Borrando premios adicionales", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                if (dr == DialogResult.Yes)
+                {
+                    dtPremiosAdicionales.Clear();
+                }
             }
+            else {
+                MessageBox.Show("No tiene premios adicionales",
+                                     "Borrando premios adicionales", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
         private void btCrearNuevoSorteo_Click(object sender, EventArgs e)
         {
             ajustarPanelSorteo();
             dtFecha.MinDate = DateTime.Now;
+            dtFecha.Value = DateTime.Now;
+            nudCostoFraccion.Value = 1;
+            nudFracciones.Value = 1;
+            nudMonto.Value = 1;
+            nudPremio1.Value = 1;
+            nudPremio2.Value = 1;
+            nudPremio3.Value = 1;
+            //btAgregarPremioAdicional.Enabled = true;
+          //  btAgregarPremioAdicional. = true;
+            tbLeyenda.Text = "";
+            cbConPlan.Checked = false;
             panelCrearSorteo.Visible = !panelCrearSorteo.Visible;
+            //btAgregarPremioAdicional.Visible = true;
         }
 
         private void btAgregarPremioAdicional_Click(object sender, EventArgs e)
