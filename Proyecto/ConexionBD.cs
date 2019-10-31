@@ -105,8 +105,10 @@ namespace Proyecto
         {
             List<Sorteo> sorteos = new List<Sorteo>();
             List<Premio> premiosDelPlan;
+            List<Resultado> resultadosSorteo;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             SqlConnection conexion2 = new SqlConnection(cadenaConexion);
+            SqlConnection conexion3 = new SqlConnection(cadenaConexion);
             SqlCommand cmd = new SqlCommand("SELECT * FROM ObtenerSorteos", conexion)
             {
                 CommandType = CommandType.Text
@@ -115,10 +117,11 @@ namespace Proyecto
             {
                 conexion.Open();
                 conexion2.Open();
+                conexion3.Open();
                 SqlDataReader lectorDatos = cmd.ExecuteReader();
                 Sorteo sorteo;
-                SqlCommand cmdPremios;
-                SqlDataReader lectorPremios = null;
+                SqlCommand cmdPremios, cmdResultados;
+                SqlDataReader lectorPremios = null, lectorResultados = null;
                 while (lectorDatos.Read())
                 {
                     // Preparo las variables para obtener los premios del sorteo
@@ -139,6 +142,25 @@ namespace Proyecto
                     }
                     lectorPremios.Close();
 
+                    // Preparo las variables para obtener los resultados del sorteo
+                    resultadosSorteo = new List<Resultado>();
+                    cmdResultados = new SqlCommand("ObtenerResultados", conexion3)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    // Agrego el id del sorteo como parámetro para el procedimiento
+                    cmdResultados.Parameters.Clear();
+                    cmdResultados.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = (int)lectorDatos[0];// IdSorteo
+                    // Ejecuto y obtengo los resultados
+                    lectorResultados = cmdResultados.ExecuteReader();
+                    while (lectorResultados.Read())
+                    {
+                        resultadosSorteo.Add(new Resultado((int)lectorResultados[1],
+                            (int)lectorResultados[2], (int)lectorResultados[0]));
+                    }
+                    lectorResultados.Close();
+
                     sorteo = new Sorteo()
                     {
                         idSorteo = (int)lectorDatos[0],
@@ -152,7 +174,8 @@ namespace Proyecto
                         planPremios = new PlanPremios()
                         {
                             idSorteo = (int)lectorDatos[0],
-                            premios = premiosDelPlan
+                            premios = premiosDelPlan,
+                            resultados = resultadosSorteo
                         }
                     };
                     sorteos.Add(sorteo);
@@ -167,6 +190,7 @@ namespace Proyecto
             {
                 conexion.Close();
                 conexion2.Close();
+                conexion3.Close();
             }
             return sorteos;
         }

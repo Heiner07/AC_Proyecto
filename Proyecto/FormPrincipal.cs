@@ -88,7 +88,7 @@ namespace Proyecto
 
         private void btResultados_Click(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new FormResultados(), 2);
+            abrirFormularioHijo(new FormResultados(sistemaLC), 2);
         }
 
         private void btEstadisticasReportes_Click(object sender, EventArgs e)

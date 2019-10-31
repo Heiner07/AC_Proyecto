@@ -30,8 +30,8 @@
         {
             this.nudSerieFraccion = new System.Windows.Forms.NumericUpDown();
             this.nudNumeroFraccion = new System.Windows.Forms.NumericUpDown();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbChances = new System.Windows.Forms.RadioButton();
+            this.rbLoteria = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,27 +64,27 @@
             this.nudNumeroFraccion.Size = new System.Drawing.Size(200, 22);
             this.nudNumeroFraccion.TabIndex = 36;
             // 
-            // radioButton2
+            // rbChances
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(114, 34);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(84, 21);
-            this.radioButton2.TabIndex = 35;
-            this.radioButton2.Text = "Chances";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbChances.AutoSize = true;
+            this.rbChances.Location = new System.Drawing.Point(114, 34);
+            this.rbChances.Name = "rbChances";
+            this.rbChances.Size = new System.Drawing.Size(84, 21);
+            this.rbChances.TabIndex = 35;
+            this.rbChances.Text = "Chances";
+            this.rbChances.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbLoteria
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(26, 34);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(73, 21);
-            this.radioButton1.TabIndex = 34;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Lotería";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbLoteria.AutoSize = true;
+            this.rbLoteria.Checked = true;
+            this.rbLoteria.Location = new System.Drawing.Point(26, 34);
+            this.rbLoteria.Name = "rbLoteria";
+            this.rbLoteria.Size = new System.Drawing.Size(73, 21);
+            this.rbLoteria.TabIndex = 34;
+            this.rbLoteria.TabStop = true;
+            this.rbLoteria.Text = "Lotería";
+            this.rbLoteria.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -119,9 +119,24 @@
             // nudNumeroSorteo
             // 
             this.nudNumeroSorteo.Location = new System.Drawing.Point(26, 94);
+            this.nudNumeroSorteo.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.nudNumeroSorteo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudNumeroSorteo.Name = "nudNumeroSorteo";
             this.nudNumeroSorteo.Size = new System.Drawing.Size(200, 22);
             this.nudNumeroSorteo.TabIndex = 39;
+            this.nudNumeroSorteo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label2
             // 
@@ -136,9 +151,24 @@
             // nudCantidadFracciones
             // 
             this.nudCantidadFracciones.Location = new System.Drawing.Point(26, 279);
+            this.nudCantidadFracciones.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.nudCantidadFracciones.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudCantidadFracciones.Name = "nudCantidadFracciones";
             this.nudCantidadFracciones.Size = new System.Drawing.Size(200, 22);
             this.nudCantidadFracciones.TabIndex = 41;
+            this.nudCantidadFracciones.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
@@ -181,9 +211,9 @@
             this.panelResultados.Controls.Add(this.label6);
             this.panelResultados.Controls.Add(this.label4);
             this.panelResultados.Controls.Add(this.btConsultar);
-            this.panelResultados.Controls.Add(this.radioButton1);
+            this.panelResultados.Controls.Add(this.rbLoteria);
             this.panelResultados.Controls.Add(this.nudCantidadFracciones);
-            this.panelResultados.Controls.Add(this.radioButton2);
+            this.panelResultados.Controls.Add(this.rbChances);
             this.panelResultados.Controls.Add(this.label5);
             this.panelResultados.Controls.Add(this.nudNumeroFraccion);
             this.panelResultados.Controls.Add(this.nudNumeroSorteo);
@@ -226,8 +256,8 @@
 
         private System.Windows.Forms.NumericUpDown nudSerieFraccion;
         private System.Windows.Forms.NumericUpDown nudNumeroFraccion;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbChances;
+        private System.Windows.Forms.RadioButton rbLoteria;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
