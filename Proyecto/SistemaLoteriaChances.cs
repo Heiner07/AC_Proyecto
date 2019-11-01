@@ -10,6 +10,7 @@ namespace Proyecto
     {
         ConexionBD conexionBD = new ConexionBD();
         Usuario usuario;
+        List<Sorteo> sorteos = null;
 
         public Usuario IniciarSesion(String nombre, String contrasenia) {
             this.usuario = conexionBD.IniciarSesion(nombre, contrasenia);
@@ -18,8 +19,23 @@ namespace Proyecto
 
         public List<Sorteo> ObtenerSorteos()
         {       
-            List<Sorteo> sorteos = conexionBD.ObtenerSorteos();
+            sorteos = conexionBD.ObtenerSorteos();
             return sorteos;
+        }
+
+        public Sorteo ObtenerSorteoSeleccionado(String tipoSorteo, int numeroSorteo)
+        {
+            if (sorteos != null)
+            {
+                foreach (Sorteo sorteo in sorteos)
+                {
+                    if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
+                    {
+                        return sorteo;
+                    }
+                }
+            }
+            return null;
         }
 
         public Boolean CrearSorteo(Sorteo nuevoSorteo)

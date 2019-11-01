@@ -53,6 +53,11 @@
             // nudSerieFraccion
             // 
             this.nudSerieFraccion.Location = new System.Drawing.Point(26, 217);
+            this.nudSerieFraccion.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.nudSerieFraccion.Name = "nudSerieFraccion";
             this.nudSerieFraccion.Size = new System.Drawing.Size(200, 22);
             this.nudSerieFraccion.TabIndex = 37;
@@ -60,6 +65,11 @@
             // nudNumeroFraccion
             // 
             this.nudNumeroFraccion.Location = new System.Drawing.Point(26, 152);
+            this.nudNumeroFraccion.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
             this.nudNumeroFraccion.Name = "nudNumeroFraccion";
             this.nudNumeroFraccion.Size = new System.Drawing.Size(200, 22);
             this.nudNumeroFraccion.TabIndex = 36;
@@ -152,7 +162,7 @@
             // 
             this.nudCantidadFracciones.Location = new System.Drawing.Point(26, 279);
             this.nudCantidadFracciones.Maximum = new decimal(new int[] {
-            2147483647,
+            10000,
             0,
             0,
             0});

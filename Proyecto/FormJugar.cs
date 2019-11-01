@@ -85,17 +85,6 @@ namespace Proyecto
             dgvResultadosSorteo.DataSource = dtResultados;
         }
 
-        private Sorteo ObtenerSorteoSeleccionado(String tipoSorteo, int numeroSorteo)
-        {
-            foreach (Sorteo sorteo in sorteos)
-            {
-                if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
-                {
-                    return sorteo;
-                }
-            }return null;
-        }
-
         private void dgvSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Console.WriteLine(e.ColumnIndex);
@@ -109,15 +98,13 @@ namespace Proyecto
 
                 if (dr == DialogResult.Yes)
                 {
-                    sorteoSeleccionado = ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
+                    sorteoSeleccionado = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
                     CambiarEstadoGifs(true);
                     hiloJugar = new Thread(new ThreadStart(jugarSorteo))
                     {
                         IsBackground = false
                     };
                     hiloJugar.Start();
-                    btOmitirAnimacion.Enabled = true;
-                    dgvSorteos.Enabled = false;
                 }
             }
         }
@@ -159,7 +146,16 @@ namespace Proyecto
 
         private void jugarSorteo()
         {
+            // Se establecen los valores de los componentes de la interfaz para la acción de jugar
+            btOmitirAnimacion.Invoke((MethodInvoker)(() => btOmitirAnimacion.Enabled = true));
+            dgvSorteos.Invoke((MethodInvoker)(() => dgvSorteos.Enabled = false));
+            lbJugandoSorteo.Invoke((MethodInvoker)(() => lbJugandoSorteo.Text =
+            $"Jugando sorteo {sorteoSeleccionado.numeroSorteo} de {sorteoSeleccionado.tipoSorteo}"));
+
+            // Se le indica al sorteo que genere los resultados
             sorteoSeleccionado.planPremios.GenerarResultados(sorteoSeleccionado.tipoSorteo);
+
+            // Se realiza la ejecución (animación) en la ventana, mostrando los resultados.
             Invoke((MethodInvoker)(() => dtResultados.Clear()));
             foreach (Resultado resultado in sorteoSeleccionado.planPremios.resultados)
             {
@@ -191,13 +187,15 @@ namespace Proyecto
                 escribirTextBoxPremio("");
 
                 if (!omitirAnimacion) CambiarEstadoGifs(true);
-
+                // Se agregan los resultados al data table del gridview
                 Invoke((MethodInvoker)(() => dtResultados.Rows.Add(new object[] { resultado.serieGanadora,
                     resultado.numeroGanador, resultado.montoGanado })));
             }
             CambiarEstadoGifs(false);
             if (sistemaLoteriaChances.JugarSorteo(sorteoSeleccionado))
             {
+                lbJugandoSorteo.Invoke((MethodInvoker)(() => lbJugandoSorteo.Text =
+                $"Sorteo {sorteoSeleccionado.numeroSorteo} de {sorteoSeleccionado.tipoSorteo} jugado."));
                 Invoke((MethodInvoker)(() => MessageBox.Show("¡Sorteo jugado! Los resultados se han almacenado correctamente",
                     "Jugar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Information)));
             }
@@ -206,6 +204,8 @@ namespace Proyecto
                 Invoke((MethodInvoker)(() => MessageBox.Show("Ocurrió un error guardando los resultados del sorteo.",
                     "Jugar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Error)));
             }
+
+            // Se actualizan los estados e información de los componentes una vez finalizado el sorteo
             btOmitirAnimacion.Invoke((MethodInvoker)(() => btOmitirAnimacion.Enabled = false));
             dgvSorteos.Invoke((MethodInvoker)(() => dgvSorteos.Enabled = true));
             Invoke((MethodInvoker)(() => CargarSorteos()));

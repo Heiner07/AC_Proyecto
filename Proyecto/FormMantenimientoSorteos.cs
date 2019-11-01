@@ -137,6 +137,7 @@ namespace Proyecto
         private void establecerInterfazEditando()
         {
             lbEditarSorteo.Visible = true;
+            lbEditarSorteo.Text = $"Editando sorteo {sorteoEditando.numeroSorteo} de {sorteoEditando.tipoSorteo}";
             btGuardar.Visible = true;
             btCancelar.Visible = true;
             btCrearNuevoSorteo.Visible = false;
@@ -430,12 +431,22 @@ namespace Proyecto
         {
             lbRestriccionSorteo.Text = "Sólo los domingos";
             btAgregarPremioAdicional.Visible = true;
+            dataGridViewPremiosAdicionales.Visible = true;
+            btBorrarAdicionales.Visible = true;
+            lbPremiosAdicionales.Visible = true;
+            lbMonto.Visible = true;
+            nudMonto.Visible = true;
         }
 
         private void rbChances_CheckedChanged(object sender, EventArgs e)
         {
             lbRestriccionSorteo.Text = "Sólo martes y viernes";
             btAgregarPremioAdicional.Visible = false;
+            dataGridViewPremiosAdicionales.Visible = false;
+            btBorrarAdicionales.Visible = false;
+            lbPremiosAdicionales.Visible = false;
+            lbMonto.Visible = false;
+            nudMonto.Visible = false;
         }
 
         private void rbFiltroTodos_CheckedChanged(object sender, EventArgs e)
@@ -582,34 +593,29 @@ namespace Proyecto
 
                     if (dr == DialogResult.Yes)
                     {
-                        foreach (Sorteo sorteo in sorteos)
+                        Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
+                        if (!sorteo.ObtenerEstado)
                         {
-                            if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
+                            if (enEdicion && sorteoEditando.idSorteo.Equals(sorteo.ObtenerIdSorteo))
                             {
-                                if (!sorteo.ObtenerEstado)
+                                DialogResult drEliminar = MessageBox.Show("Es el mismo sorteo que está editando, ¿desea eliminarlo?", "Eliminar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                                if (drEliminar == DialogResult.Yes)
                                 {
-                                    if (enEdicion && sorteoEditando.idSorteo.Equals(sorteo.ObtenerIdSorteo))
-                                    {
-                                        DialogResult drEliminar = MessageBox.Show("Es el mismo sorteo que está editando, ¿desea eliminarlo?", "Eliminar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                                        if (drEliminar == DialogResult.Yes)
-                                        {
-                                            EliminarSorteo(sorteo);
-                                        }
+                                    EliminarSorteo(sorteo);
+                                }
                                         
 
-                                    }
-                                    else
-                                    {
-                                        EliminarSorteo(sorteo);
-                                    }
-
-                                }
-                                else
-                                {
-                                    MessageBox.Show("El sorteo no se puede eliminar, ya se jugó",
-                                        "Eliminar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
                             }
+                            else
+                            {
+                                EliminarSorteo(sorteo);
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("El sorteo no se puede eliminar, ya se jugó",
+                                "Eliminar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
 
@@ -621,32 +627,25 @@ namespace Proyecto
                         
                         String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
                         int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
-                        
-                        foreach (Sorteo sorteo in sorteos)
+                        Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
+                        if (!sorteo.ObtenerEstado)
                         {
-                            if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
+                            enEdicion = true;
+                            sorteoEditando = sorteo;
+                            establecerInterfazEditando();
+                            if (!panelCrearSorteo.Visible)
                             {
-                                if (!sorteo.ObtenerEstado)
-                                {
-                                    enEdicion = true;
-                                    establecerInterfazEditando();
-                                    if (!panelCrearSorteo.Visible)
-                                    {
-                                        ajustarPanelSorteo();
-                                    }
-                                    panelCrearSorteo.Visible = true;
-                                    sorteoEditando = sorteo;
-                                    CargarDatosEdicion(sorteo);
-
-                                }
-                                else
-                                {
-                                    MessageBox.Show("El sorteo no se puede editar, ya se jugó",
-                                        "Editar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
+                                ajustarPanelSorteo();
                             }
-                        }
+                            panelCrearSorteo.Visible = true;
+                            CargarDatosEdicion(sorteo);
 
+                        }
+                        else
+                        {
+                            MessageBox.Show("El sorteo no se puede editar, ya se jugó",
+                                "Editar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     else
                     {

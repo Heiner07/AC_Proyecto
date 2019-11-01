@@ -51,7 +51,7 @@ namespace Proyecto
             int numeroFraccion = (int)nudNumeroFraccion.Value;
             int serieFraccion = (int)nudSerieFraccion.Value;
             int cantidadFracciones = (int)nudCantidadFracciones.Value;
-            float montoGanado = 0;
+            double montoGanado = 0;
             Sorteo sorteo = ObtenerSorteoSeleccionado(tipo, numeroSorteo);
             Boolean gano = false;
             if (sorteo != null)
@@ -66,7 +66,7 @@ namespace Proyecto
                         {
                             if(cantidadFracciones <= sorteo.cantidadFracciones)
                             {
-                                montoGanado = resultado.montoGanado * ((float)cantidadFracciones / sorteo.cantidadFracciones);
+                                montoGanado = resultado.montoGanado * ((double)cantidadFracciones / sorteo.cantidadFracciones);
                             }
                             else
                             {

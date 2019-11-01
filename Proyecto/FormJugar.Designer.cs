@@ -51,6 +51,7 @@
             this.rbFiltroChances = new System.Windows.Forms.RadioButton();
             this.rbFiltroLoteria = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbJugandoSorteo = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadosSorteo)).BeginInit();
@@ -75,6 +76,7 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel2.Controls.Add(this.lbJugandoSorteo);
             this.panel2.Controls.Add(this.btOmitirAnimacion);
             this.panel2.Controls.Add(this.tbPremio);
             this.panel2.Controls.Add(this.tbSerie);
@@ -96,7 +98,7 @@
             // btOmitirAnimacion
             // 
             this.btOmitirAnimacion.Enabled = false;
-            this.btOmitirAnimacion.Location = new System.Drawing.Point(364, 116);
+            this.btOmitirAnimacion.Location = new System.Drawing.Point(364, 119);
             this.btOmitirAnimacion.Margin = new System.Windows.Forms.Padding(4);
             this.btOmitirAnimacion.Name = "btOmitirAnimacion";
             this.btOmitirAnimacion.Size = new System.Drawing.Size(127, 25);
@@ -107,7 +109,7 @@
             // 
             // tbPremio
             // 
-            this.tbPremio.Location = new System.Drawing.Point(265, 117);
+            this.tbPremio.Location = new System.Drawing.Point(265, 120);
             this.tbPremio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPremio.Name = "tbPremio";
             this.tbPremio.ReadOnly = true;
@@ -116,7 +118,7 @@
             // 
             // tbSerie
             // 
-            this.tbSerie.Location = new System.Drawing.Point(38, 117);
+            this.tbSerie.Location = new System.Drawing.Point(38, 120);
             this.tbSerie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSerie.Name = "tbSerie";
             this.tbSerie.ReadOnly = true;
@@ -125,7 +127,7 @@
             // 
             // tbNumero
             // 
-            this.tbNumero.Location = new System.Drawing.Point(154, 117);
+            this.tbNumero.Location = new System.Drawing.Point(154, 120);
             this.tbNumero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbNumero.Name = "tbNumero";
             this.tbNumero.ReadOnly = true;
@@ -164,7 +166,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(267, 94);
+            this.label4.Location = new System.Drawing.Point(267, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 19);
             this.label4.TabIndex = 39;
@@ -174,7 +176,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(46, 94);
+            this.label3.Location = new System.Drawing.Point(46, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 19);
             this.label3.TabIndex = 38;
@@ -184,7 +186,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(153, 94);
+            this.label2.Location = new System.Drawing.Point(153, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 19);
             this.label2.TabIndex = 37;
@@ -194,7 +196,7 @@
             // 
             this.pictureBox3.Enabled = false;
             this.pictureBox3.Image = global::Proyecto.Properties.Resources.bomboGif;
-            this.pictureBox3.Location = new System.Drawing.Point(265, 18);
+            this.pictureBox3.Location = new System.Drawing.Point(265, 24);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(64, 64);
@@ -206,7 +208,7 @@
             // 
             this.pictureBox2.Enabled = false;
             this.pictureBox2.Image = global::Proyecto.Properties.Resources.bomboGif;
-            this.pictureBox2.Location = new System.Drawing.Point(38, 18);
+            this.pictureBox2.Location = new System.Drawing.Point(38, 24);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 64);
@@ -218,7 +220,7 @@
             // 
             this.pictureBox1.Enabled = false;
             this.pictureBox1.Image = global::Proyecto.Properties.Resources.bomboGif;
-            this.pictureBox1.Location = new System.Drawing.Point(154, 18);
+            this.pictureBox1.Location = new System.Drawing.Point(154, 24);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
@@ -338,6 +340,16 @@
             this.label1.TabIndex = 36;
             this.label1.Text = "Tipo de sorteo";
             // 
+            // lbJugandoSorteo
+            // 
+            this.lbJugandoSorteo.AutoSize = true;
+            this.lbJugandoSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbJugandoSorteo.Location = new System.Drawing.Point(8, 0);
+            this.lbJugandoSorteo.Name = "lbJugandoSorteo";
+            this.lbJugandoSorteo.Size = new System.Drawing.Size(14, 19);
+            this.lbJugandoSorteo.TabIndex = 47;
+            this.lbJugandoSorteo.Text = " ";
+            // 
             // FormJugar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -387,5 +399,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tbBusqueda;
+        private System.Windows.Forms.Label lbJugandoSorteo;
     }
 }
