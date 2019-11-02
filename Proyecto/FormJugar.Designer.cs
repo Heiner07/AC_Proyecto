@@ -30,6 +30,7 @@
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbJugandoSorteo = new System.Windows.Forms.Label();
             this.btOmitirAnimacion = new System.Windows.Forms.Button();
             this.tbPremio = new System.Windows.Forms.TextBox();
             this.tbSerie = new System.Windows.Forms.TextBox();
@@ -51,7 +52,6 @@
             this.rbFiltroChances = new System.Windows.Forms.RadioButton();
             this.rbFiltroLoteria = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbJugandoSorteo = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadosSorteo)).BeginInit();
@@ -95,9 +95,20 @@
             this.panel2.Size = new System.Drawing.Size(518, 342);
             this.panel2.TabIndex = 3;
             // 
+            // lbJugandoSorteo
+            // 
+            this.lbJugandoSorteo.AutoSize = true;
+            this.lbJugandoSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbJugandoSorteo.Location = new System.Drawing.Point(8, 0);
+            this.lbJugandoSorteo.Name = "lbJugandoSorteo";
+            this.lbJugandoSorteo.Size = new System.Drawing.Size(14, 19);
+            this.lbJugandoSorteo.TabIndex = 47;
+            this.lbJugandoSorteo.Text = " ";
+            // 
             // btOmitirAnimacion
             // 
             this.btOmitirAnimacion.Enabled = false;
+            this.btOmitirAnimacion.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btOmitirAnimacion.Location = new System.Drawing.Point(364, 119);
             this.btOmitirAnimacion.Margin = new System.Windows.Forms.Padding(4);
             this.btOmitirAnimacion.Name = "btOmitirAnimacion";
@@ -339,16 +350,6 @@
             this.label1.Size = new System.Drawing.Size(112, 19);
             this.label1.TabIndex = 36;
             this.label1.Text = "Tipo de sorteo";
-            // 
-            // lbJugandoSorteo
-            // 
-            this.lbJugandoSorteo.AutoSize = true;
-            this.lbJugandoSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbJugandoSorteo.Location = new System.Drawing.Point(8, 0);
-            this.lbJugandoSorteo.Name = "lbJugandoSorteo";
-            this.lbJugandoSorteo.Size = new System.Drawing.Size(14, 19);
-            this.lbJugandoSorteo.TabIndex = 47;
-            this.lbJugandoSorteo.Text = " ";
             // 
             // FormJugar
             // 

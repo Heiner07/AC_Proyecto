@@ -186,6 +186,7 @@
             this.dgvSorteos.RowTemplate.Height = 24;
             this.dgvSorteos.Size = new System.Drawing.Size(604, 196);
             this.dgvSorteos.TabIndex = 47;
+            this.dgvSorteos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSorteos_CellContentClick);
             // 
             // dgvNumerosMasJugados
             // 

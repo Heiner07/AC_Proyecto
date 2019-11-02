@@ -158,5 +158,45 @@ namespace Proyecto
             filtroTipoSorteos = "Tipo = 'Chances' AND ";
             tbBusqueda_TextChanged(sender, e);
         }
+
+        private void dgvSorteos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine(e.ColumnIndex);
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == 0)
+                {
+                    String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
+                    int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
+                    Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
+                    if (sorteo.estado)
+                    {
+                        FormReporteResultados reporteResultados = new FormReporteResultados(sistemaLoteriaChances, sorteo);
+                        reporteResultados.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El sorteo no ha sido jugado. No hay resultados para mostrar",
+                            "Reporte resultados", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else if (e.ColumnIndex == 1)
+                {
+                    String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
+                    int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
+                    Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
+                    if (sorteo.planPremios.premios.Count > 0)
+                    {
+                        FormReportePlanPremios reportePlanPremios = new FormReportePlanPremios(sistemaLoteriaChances, sorteo);
+                        reportePlanPremios.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El sorteo no tiene plan de premios. No hay premios para mostrar",
+                            "Reporte plan de premios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+        }
     }
 }
