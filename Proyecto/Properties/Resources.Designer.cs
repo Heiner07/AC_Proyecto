@@ -93,6 +93,16 @@ namespace Proyecto.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logoChances {
+            get {
+                object obj = ResourceManager.GetObject("logoChances", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LogoHorizontalJPS {
             get {
                 object obj = ResourceManager.GetObject("LogoHorizontalJPS", resourceCulture);

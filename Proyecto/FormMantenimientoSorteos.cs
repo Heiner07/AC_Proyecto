@@ -220,7 +220,6 @@ namespace Proyecto
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            btAgregarPremioAdicional.Visible = true;
             salirInterfazEditando();
             rbChances.Enabled = true;
             rbLoteria.Enabled = true;
@@ -353,7 +352,6 @@ namespace Proyecto
             {
                 MessageBox.Show("¡¡¡Se Modificó con éxito!!!", "Modificar sorteo",
                          MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btAgregarPremioAdicional.Visible = true;
                 salirInterfazEditando();
                 dtPremiosAdicionales.Clear();
                 rbChances.Enabled = true;
@@ -584,7 +582,7 @@ namespace Proyecto
         {
             if (e.ColumnIndex >= 0 && e.RowIndex>=0)
             {
-                if (e.ColumnIndex == 0 || e.ColumnIndex == 7)
+                if (e.ColumnIndex == 0)
                 {
                     String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
                     int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
@@ -620,7 +618,7 @@ namespace Proyecto
                     }
 
                 }
-                else if (e.ColumnIndex == 1 || e.ColumnIndex == 8)
+                else if (e.ColumnIndex == 1)
                 {
                     if (!enEdicion)
                     {

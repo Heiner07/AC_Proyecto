@@ -19,27 +19,47 @@ namespace Proyecto
          * R: Debe recibir solo dos parámetros
          */
         public Usuario IniciarSesion(String nombre, String contrasenia) {
+            Usuario usuario = null;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
-            SqlDataReader obtenerDatos;
+            SqlDataReader obtenerDatos = null;
+            SqlCommand cmd = null;
             int rol = -1;
             String consultaUsuario= "select Rol from Usuarios where NombreUsuario=@nombre and Contrasenia=@contrasenia";
-            conexion.Open();
-            SqlCommand cmd = new SqlCommand(consultaUsuario, conexion);
-            cmd.Parameters.AddWithValue("@nombre", nombre);
-            cmd.Parameters.AddWithValue("@contrasenia", contrasenia);
-            obtenerDatos = cmd.ExecuteReader();
-            while (obtenerDatos.Read())
+            try
             {
-                rol = Convert.ToInt32(obtenerDatos.GetValue(0));
+                conexion.Open();
+                cmd = new SqlCommand(consultaUsuario, conexion);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@contrasenia", contrasenia);
+                obtenerDatos = cmd.ExecuteReader();
+                while (obtenerDatos.Read())
+                {
+                    rol = Convert.ToInt32(obtenerDatos.GetValue(0));
+                }
+                if (!obtenerDatos.HasRows)
+                {
+                    rol = -1;
+                }
+                usuario = new Usuario(nombre, rol);
             }
-            if (!obtenerDatos.HasRows)
+            catch (Exception)
             {
-                rol = -1;
+                // Representa error de conexión
+                usuario = null;
             }
-            obtenerDatos.Close();
-            cmd.Dispose();
-            conexion.Close();          
-            return new Usuario(nombre,rol);
+            finally
+            {
+                if (obtenerDatos != null)
+                {
+                    obtenerDatos.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+                conexion.Close();
+            }
+            return usuario;
         }
 
         /*
@@ -47,8 +67,8 @@ namespace Proyecto
          * S: El objeto usuario con los datos correspondientes.
          * R: Debe recibir solo dos parámetros
          */
-
         public Boolean InsertarSorteo(Sorteo nuevoSorteo) {
+            Boolean retorno = true;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             List <Premio> premios = new List<Premio>();
             premios = nuevoSorteo.ObtenerPlanPremios.ObtenerPremios;
@@ -87,18 +107,17 @@ namespace Proyecto
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
                     }
-                    conexion.Close();
-                    
-
                 }
-                return true;
             }
-            catch
+            catch(Exception)
             {
-                return false;
+                retorno = false;
             }
-
-            
+            finally
+            {
+                conexion.Close();
+            }
+            return retorno;
         }
 
         public List<Sorteo> ObtenerSorteos()
@@ -196,26 +215,31 @@ namespace Proyecto
         }
 
         public Boolean EliminarSorteo(Sorteo sorteo) {
+            Boolean retorno = true;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
-            conexion.Open();
-            SqlCommand cmd = new SqlCommand("EliminarSorteo", conexion);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = sorteo.ObtenerIdSorteo;       
+            SqlCommand cmd;   
             try
             {
+                conexion.Open();
+                cmd = new SqlCommand("EliminarSorteo", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = sorteo.ObtenerIdSorteo;
                 cmd.ExecuteNonQuery();
-                return true;
             }
-            catch
+            catch(Exception)
             {
-                return false;
+                retorno = false;
             }
-
-
+            finally
+            {
+                conexion.Close();
+            }
+            return retorno;
         }
 
         public Boolean ModificarSorteo(Sorteo sorteo)
         {
+            Boolean retorno = true;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             List<Premio> premios = new List<Premio>();
             premios = sorteo.ObtenerPlanPremios.ObtenerPremios;
@@ -253,20 +277,22 @@ namespace Proyecto
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
                     }
-                    conexion.Close();
                 }
-                return true;
             }
-            catch
+            catch (Exception)
             {
-                return false;
+                retorno = false;
             }
-
-
+            finally
+            {
+                conexion.Close();
+            }
+            return retorno;
         }
 
         public Boolean InsertarResultadosSorteos(Sorteo sorteo)
         {
+            Boolean retorno = true;
             List<Resultado> resultados = sorteo.planPremios.resultados;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             SqlCommand cmd = new SqlCommand("InsertarResultado", conexion)
@@ -289,17 +315,18 @@ namespace Proyecto
             }
             catch (Exception)
             {
-                return false;
+                retorno = false;
             }
             finally
             {
                 conexion.Close();
             }
-            return true;
+            return retorno;
         }
 
         public Boolean EstablecerSorteoJugado(Sorteo sorteo)
         {
+            Boolean retorno = true;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             SqlCommand cmd = new SqlCommand("EstablecerSorteoJugado", conexion)
             {
@@ -313,13 +340,13 @@ namespace Proyecto
             }
             catch (Exception)
             {
-                return false;
+                retorno = false;
             }
             finally
             {
                 conexion.Close();
             }
-            return true;
+            return retorno;
         }
     }
 

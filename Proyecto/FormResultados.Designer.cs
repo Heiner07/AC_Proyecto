@@ -43,11 +43,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panelResultados = new System.Windows.Forms.Panel();
             this.lbMontoGanado = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudSerieFraccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumeroFraccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumeroSorteo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadFracciones)).BeginInit();
             this.panelResultados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // nudSerieFraccion
@@ -229,7 +235,7 @@
             this.panelResultados.Controls.Add(this.nudNumeroSorteo);
             this.panelResultados.Controls.Add(this.nudSerieFraccion);
             this.panelResultados.Controls.Add(this.label2);
-            this.panelResultados.Location = new System.Drawing.Point(248, 100);
+            this.panelResultados.Location = new System.Drawing.Point(233, 100);
             this.panelResultados.Name = "panelResultados";
             this.panelResultados.Size = new System.Drawing.Size(332, 474);
             this.panelResultados.TabIndex = 45;
@@ -243,13 +249,57 @@
             this.lbMontoGanado.TabIndex = 44;
             this.lbMontoGanado.Text = "0";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Brown;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 549);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(798, 106);
+            this.panel1.TabIndex = 46;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Brown;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(798, 115);
+            this.panel2.TabIndex = 47;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::Proyecto.Properties.Resources.logoLoteria;
+            this.pictureBox1.Location = new System.Drawing.Point(5, 220);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(216, 154);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 48;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox2.Image = global::Proyecto.Properties.Resources.logoChances;
+            this.pictureBox2.Location = new System.Drawing.Point(577, 220);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(216, 154);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 49;
+            this.pictureBox2.TabStop = false;
+            // 
             // FormResultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(798, 655);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelResultados);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Name = "FormResultados";
             this.Text = "FormResultados";
             ((System.ComponentModel.ISupportInitialize)(this.nudSerieFraccion)).EndInit();
@@ -258,6 +308,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadFracciones)).EndInit();
             this.panelResultados.ResumeLayout(false);
             this.panelResultados.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -279,5 +331,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panelResultados;
         private System.Windows.Forms.Label lbMontoGanado;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

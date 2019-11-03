@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,18 +33,6 @@ namespace Proyecto
             }
         }
 
-        private Sorteo ObtenerSorteoSeleccionado(String tipoSorteo, int numeroSorteo)
-        {
-            foreach (Sorteo sorteo in sorteos)
-            {
-                if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
-                {
-                    return sorteo;
-                }
-            }
-            return null;
-        }
-
         private void btConsultar_Click(object sender, EventArgs e)
         {
             String tipo = (rbLoteria.Checked) ? "Lotería" : "Chances";
@@ -52,7 +41,7 @@ namespace Proyecto
             int serieFraccion = (int)nudSerieFraccion.Value;
             int cantidadFracciones = (int)nudCantidadFracciones.Value;
             double montoGanado = 0;
-            Sorteo sorteo = ObtenerSorteoSeleccionado(tipo, numeroSorteo);
+            Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipo, numeroSorteo);
             Boolean gano = false;
             if (sorteo != null)
             {

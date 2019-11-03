@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,6 +31,28 @@ namespace Proyecto
         {       
             sorteos = conexionBD.ObtenerSorteos();
             return sorteos;
+        }
+
+        public Sorteo ObtenerUltimoSorteoTipo(String tipo)
+        {
+            if (sorteos == null)
+            {
+                ObtenerSorteos();
+            }
+            if (sorteos != null)
+            {
+                Sorteo sorteo;
+                int cantidadSorteos = sorteos.Count;
+                for (int i = cantidadSorteos-1; i > -1; i--)
+                {
+                    sorteo = sorteos[i];
+                    if (sorteo.estado && sorteo.tipoSorteo.Equals(tipo))
+                    {
+                        return sorteo;
+                    }
+                }
+            }
+            return null;
         }
 
         public Sorteo ObtenerSorteoSeleccionado(String tipoSorteo, int numeroSorteo)
@@ -130,12 +153,12 @@ namespace Proyecto
                 }
 
                 // Se agregan todos los componentes del archivo pdf
+                document.Add(logo);
                 document.Add(new Paragraph(tituloDocumento).SetFont(font).SetFontSize(14));
                 document.Add(new Paragraph(datosSorteo));
                 document.Add(new Paragraph(tituloTabla).SetFont(font));
                 document.Add(table);
                 document.Add(new Paragraph(finalDocumento).SetFontSize(10).SetTextAlignment(TextAlignment.CENTER));
-                document.Add(logo);
             }
             catch (Exception)
             {
@@ -210,12 +233,12 @@ namespace Proyecto
                 }
 
                 // Se agregan todos los componentes del archivo pdf
+                document.Add(logo);
                 document.Add(new Paragraph(tituloDocumento).SetFont(font).SetFontSize(14));
                 document.Add(new Paragraph(datosSorteo));
                 document.Add(new Paragraph(tituloTabla).SetFont(font));
                 document.Add(table);
                 document.Add(new Paragraph(finalDocumento).SetFontSize(10).SetTextAlignment(TextAlignment.CENTER));
-                document.Add(logo);
             }
             catch (Exception)
             {

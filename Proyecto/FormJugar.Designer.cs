@@ -40,9 +40,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.tbBusqueda = new System.Windows.Forms.TextBox();
@@ -52,14 +49,19 @@
             this.rbFiltroChances = new System.Windows.Forms.RadioButton();
             this.rbFiltroLoteria = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadosSorteo)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -109,7 +111,7 @@
             // 
             this.btOmitirAnimacion.Enabled = false;
             this.btOmitirAnimacion.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btOmitirAnimacion.Location = new System.Drawing.Point(364, 119);
+            this.btOmitirAnimacion.Location = new System.Drawing.Point(372, 119);
             this.btOmitirAnimacion.Margin = new System.Windows.Forms.Padding(4);
             this.btOmitirAnimacion.Name = "btOmitirAnimacion";
             this.btOmitirAnimacion.Size = new System.Drawing.Size(127, 25);
@@ -120,7 +122,7 @@
             // 
             // tbPremio
             // 
-            this.tbPremio.Location = new System.Drawing.Point(265, 120);
+            this.tbPremio.Location = new System.Drawing.Point(273, 120);
             this.tbPremio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPremio.Name = "tbPremio";
             this.tbPremio.ReadOnly = true;
@@ -129,7 +131,7 @@
             // 
             // tbSerie
             // 
-            this.tbSerie.Location = new System.Drawing.Point(38, 120);
+            this.tbSerie.Location = new System.Drawing.Point(46, 120);
             this.tbSerie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSerie.Name = "tbSerie";
             this.tbSerie.ReadOnly = true;
@@ -138,7 +140,7 @@
             // 
             // tbNumero
             // 
-            this.tbNumero.Location = new System.Drawing.Point(154, 120);
+            this.tbNumero.Location = new System.Drawing.Point(162, 120);
             this.tbNumero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbNumero.Name = "tbNumero";
             this.tbNumero.ReadOnly = true;
@@ -154,7 +156,7 @@
             this.dgvResultadosSorteo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dgvResultadosSorteo.BackgroundColor = System.Drawing.Color.White;
             this.dgvResultadosSorteo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResultadosSorteo.Location = new System.Drawing.Point(12, 177);
+            this.dgvResultadosSorteo.Location = new System.Drawing.Point(20, 177);
             this.dgvResultadosSorteo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvResultadosSorteo.Name = "dgvResultadosSorteo";
             this.dgvResultadosSorteo.ReadOnly = true;
@@ -167,7 +169,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 156);
+            this.label5.Location = new System.Drawing.Point(16, 156);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(164, 19);
             this.label5.TabIndex = 40;
@@ -177,7 +179,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(267, 97);
+            this.label4.Location = new System.Drawing.Point(275, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 19);
             this.label4.TabIndex = 39;
@@ -187,7 +189,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(46, 97);
+            this.label3.Location = new System.Drawing.Point(54, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 19);
             this.label3.TabIndex = 38;
@@ -197,47 +199,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(153, 97);
+            this.label2.Location = new System.Drawing.Point(161, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 19);
             this.label2.TabIndex = 37;
             this.label2.Text = "Número";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Enabled = false;
-            this.pictureBox3.Image = global::Proyecto.Properties.Resources.bomboGif;
-            this.pictureBox3.Location = new System.Drawing.Point(265, 24);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Enabled = false;
-            this.pictureBox2.Image = global::Proyecto.Properties.Resources.bomboGif;
-            this.pictureBox2.Location = new System.Drawing.Point(38, 24);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Enabled = false;
-            this.pictureBox1.Image = global::Proyecto.Properties.Resources.bomboGif;
-            this.pictureBox1.Location = new System.Drawing.Point(154, 24);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // panel1
             // 
@@ -260,7 +226,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(219, 62);
+            this.label11.Location = new System.Drawing.Point(227, 62);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(126, 19);
             this.label11.TabIndex = 44;
@@ -268,7 +234,7 @@
             // 
             // tbBusqueda
             // 
-            this.tbBusqueda.Location = new System.Drawing.Point(351, 58);
+            this.tbBusqueda.Location = new System.Drawing.Point(359, 58);
             this.tbBusqueda.Name = "tbBusqueda";
             this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
             this.tbBusqueda.TabIndex = 43;
@@ -278,7 +244,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(8, 64);
+            this.label10.Location = new System.Drawing.Point(16, 64);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(151, 19);
             this.label10.TabIndex = 42;
@@ -293,8 +259,9 @@
             this.dgvSorteos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvSorteos.BackgroundColor = System.Drawing.Color.White;
             this.dgvSorteos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSorteos.Location = new System.Drawing.Point(12, 85);
+            this.dgvSorteos.Location = new System.Drawing.Point(20, 85);
             this.dgvSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvSorteos.MultiSelect = false;
             this.dgvSorteos.Name = "dgvSorteos";
             this.dgvSorteos.ReadOnly = true;
             this.dgvSorteos.RowHeadersWidth = 51;
@@ -307,7 +274,7 @@
             // 
             this.rbFiltroTodos.AutoSize = true;
             this.rbFiltroTodos.Checked = true;
-            this.rbFiltroTodos.Location = new System.Drawing.Point(12, 34);
+            this.rbFiltroTodos.Location = new System.Drawing.Point(20, 34);
             this.rbFiltroTodos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbFiltroTodos.Name = "rbFiltroTodos";
             this.rbFiltroTodos.Size = new System.Drawing.Size(69, 21);
@@ -320,7 +287,7 @@
             // rbFiltroChances
             // 
             this.rbFiltroChances.AutoSize = true;
-            this.rbFiltroChances.Location = new System.Drawing.Point(205, 34);
+            this.rbFiltroChances.Location = new System.Drawing.Point(213, 34);
             this.rbFiltroChances.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbFiltroChances.Name = "rbFiltroChances";
             this.rbFiltroChances.Size = new System.Drawing.Size(84, 21);
@@ -332,7 +299,7 @@
             // rbFiltroLoteria
             // 
             this.rbFiltroLoteria.AutoSize = true;
-            this.rbFiltroLoteria.Location = new System.Drawing.Point(107, 34);
+            this.rbFiltroLoteria.Location = new System.Drawing.Point(115, 34);
             this.rbFiltroLoteria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rbFiltroLoteria.Name = "rbFiltroLoteria";
             this.rbFiltroLoteria.Size = new System.Drawing.Size(73, 21);
@@ -345,11 +312,65 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 12);
+            this.label1.Location = new System.Drawing.Point(16, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 19);
             this.label1.TabIndex = 36;
             this.label1.Text = "Tipo de sorteo";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Brown;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 549);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(798, 106);
+            this.panel4.TabIndex = 4;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Enabled = false;
+            this.pictureBox3.Image = global::Proyecto.Properties.Resources.bomboGif;
+            this.pictureBox3.Location = new System.Drawing.Point(273, 24);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Enabled = false;
+            this.pictureBox2.Image = global::Proyecto.Properties.Resources.bomboGif;
+            this.pictureBox2.Location = new System.Drawing.Point(46, 24);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Enabled = false;
+            this.pictureBox1.Image = global::Proyecto.Properties.Resources.bomboGif;
+            this.pictureBox1.Location = new System.Drawing.Point(162, 24);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Brown;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(798, 115);
+            this.panel5.TabIndex = 48;
             // 
             // FormJugar
             // 
@@ -358,6 +379,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(798, 655);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel5);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormJugar";
             this.Text = "FormJugar";
@@ -365,12 +388,12 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadosSorteo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -401,5 +424,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tbBusqueda;
         private System.Windows.Forms.Label lbJugandoSorteo;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
     }
 }

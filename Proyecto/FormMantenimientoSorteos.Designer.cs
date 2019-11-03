@@ -70,6 +70,8 @@
             this.rbFiltroLoteria = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
             this.tbBusqueda = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSorteos)).BeginInit();
             this.panelCrearSorteo.SuspendLayout();
@@ -86,19 +88,20 @@
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.lbEditarSorteo);
             this.panel4.Controls.Add(this.btCrearNuevoSorteo);
-            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Location = new System.Drawing.Point(7, 11);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(797, 54);
+            this.panel4.Size = new System.Drawing.Size(781, 44);
             this.panel4.TabIndex = 1;
             // 
             // lbEditarSorteo
             // 
             this.lbEditarSorteo.AutoSize = true;
             this.lbEditarSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEditarSorteo.Location = new System.Drawing.Point(257, 18);
+            this.lbEditarSorteo.Location = new System.Drawing.Point(257, 11);
             this.lbEditarSorteo.Name = "lbEditarSorteo";
             this.lbEditarSorteo.Size = new System.Drawing.Size(123, 19);
             this.lbEditarSorteo.TabIndex = 33;
@@ -107,7 +110,7 @@
             // btCrearNuevoSorteo
             // 
             this.btCrearNuevoSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCrearNuevoSorteo.Location = new System.Drawing.Point(12, 12);
+            this.btCrearNuevoSorteo.Location = new System.Drawing.Point(12, 5);
             this.btCrearNuevoSorteo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btCrearNuevoSorteo.Name = "btCrearNuevoSorteo";
             this.btCrearNuevoSorteo.Size = new System.Drawing.Size(187, 33);
@@ -119,10 +122,14 @@
             // dataGridViewSorteos
             // 
             this.dataGridViewSorteos.AllowUserToAddRows = false;
+            this.dataGridViewSorteos.AllowUserToDeleteRows = false;
+            this.dataGridViewSorteos.AllowUserToResizeColumns = false;
+            this.dataGridViewSorteos.AllowUserToResizeRows = false;
             this.dataGridViewSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dataGridViewSorteos.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewSorteos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewSorteos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSorteos.Location = new System.Drawing.Point(0, 31);
+            this.dataGridViewSorteos.Location = new System.Drawing.Point(7, 31);
             this.dataGridViewSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewSorteos.MultiSelect = false;
             this.dataGridViewSorteos.Name = "dataGridViewSorteos";
@@ -130,7 +137,7 @@
             this.dataGridViewSorteos.RowHeadersVisible = false;
             this.dataGridViewSorteos.RowHeadersWidth = 51;
             this.dataGridViewSorteos.RowTemplate.Height = 24;
-            this.dataGridViewSorteos.Size = new System.Drawing.Size(781, 148);
+            this.dataGridViewSorteos.Size = new System.Drawing.Size(773, 150);
             this.dataGridViewSorteos.TabIndex = 2;
             this.dataGridViewSorteos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSorteos_CellClick);
             // 
@@ -178,17 +185,17 @@
             this.panelCrearSorteo.Controls.Add(this.label3);
             this.panelCrearSorteo.Controls.Add(this.label2);
             this.panelCrearSorteo.Controls.Add(this.label1);
-            this.panelCrearSorteo.Location = new System.Drawing.Point(7, 54);
+            this.panelCrearSorteo.Location = new System.Drawing.Point(7, 52);
             this.panelCrearSorteo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelCrearSorteo.Name = "panelCrearSorteo";
-            this.panelCrearSorteo.Size = new System.Drawing.Size(782, 404);
+            this.panelCrearSorteo.Size = new System.Drawing.Size(781, 407);
             this.panelCrearSorteo.TabIndex = 0;
             // 
             // btBorrarPlanPremios
             // 
             this.btBorrarPlanPremios.Font = new System.Drawing.Font("Arial", 10.2F);
             this.btBorrarPlanPremios.Location = new System.Drawing.Point(552, 10);
-            this.btBorrarPlanPremios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btBorrarPlanPremios.Margin = new System.Windows.Forms.Padding(4);
             this.btBorrarPlanPremios.Name = "btBorrarPlanPremios";
             this.btBorrarPlanPremios.Size = new System.Drawing.Size(92, 28);
             this.btBorrarPlanPremios.TabIndex = 50;
@@ -588,6 +595,7 @@
             // panelSorteos
             // 
             this.panelSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panelSorteos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelSorteos.Controls.Add(this.rbFiltroTodos);
             this.panelSorteos.Controls.Add(this.rbFiltroChances);
             this.panelSorteos.Controls.Add(this.rbFiltroLoteria);
@@ -652,12 +660,30 @@
             // 
             // tbBusqueda
             // 
-            this.tbBusqueda.Location = new System.Drawing.Point(639, 6);
+            this.tbBusqueda.Location = new System.Drawing.Point(636, 6);
             this.tbBusqueda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbBusqueda.Name = "tbBusqueda";
-            this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
+            this.tbBusqueda.Size = new System.Drawing.Size(103, 22);
             this.tbBusqueda.TabIndex = 4;
             this.tbBusqueda.TextChanged += new System.EventHandler(this.tbBusqueda_TextChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Brown;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 549);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(797, 106);
+            this.panel1.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Brown;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(797, 115);
+            this.panel2.TabIndex = 48;
             // 
             // FormMantenimientoSorteos
             // 
@@ -668,6 +694,8 @@
             this.Controls.Add(this.panelSorteos);
             this.Controls.Add(this.panelCrearSorteo);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormMantenimientoSorteos";
             this.Text = "FormMantenimientoSorteos";
@@ -733,5 +761,7 @@
         private System.Windows.Forms.RadioButton rbFiltroLoteria;
         private System.Windows.Forms.CheckBox cbConPlan;
         private System.Windows.Forms.Button btBorrarPlanPremios;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

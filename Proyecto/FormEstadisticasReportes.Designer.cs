@@ -47,6 +47,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvPorcentajeAparicion = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).BeginInit();
@@ -62,11 +64,11 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(1, 2);
+            this.tabControl1.Location = new System.Drawing.Point(3, 2);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(792, 650);
+            this.tabControl1.Size = new System.Drawing.Size(790, 650);
             this.tabControl1.TabIndex = 41;
             // 
             // tabPage1
@@ -89,7 +91,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(784, 621);
+            this.tabPage1.Size = new System.Drawing.Size(782, 621);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Principal";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -174,6 +176,8 @@
             // 
             this.dgvSorteos.AllowUserToAddRows = false;
             this.dgvSorteos.AllowUserToDeleteRows = false;
+            this.dgvSorteos.AllowUserToResizeColumns = false;
+            this.dgvSorteos.AllowUserToResizeRows = false;
             this.dgvSorteos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -192,6 +196,8 @@
             // 
             this.dgvNumerosMasJugados.AllowUserToAddRows = false;
             this.dgvNumerosMasJugados.AllowUserToDeleteRows = false;
+            this.dgvNumerosMasJugados.AllowUserToResizeColumns = false;
+            this.dgvNumerosMasJugados.AllowUserToResizeRows = false;
             this.dgvNumerosMasJugados.BackgroundColor = System.Drawing.Color.White;
             this.dgvNumerosMasJugados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNumerosMasJugados.Location = new System.Drawing.Point(92, 50);
@@ -216,6 +222,8 @@
             // 
             this.dgvTopNumeroDineroRepartido.AllowUserToAddRows = false;
             this.dgvTopNumeroDineroRepartido.AllowUserToDeleteRows = false;
+            this.dgvTopNumeroDineroRepartido.AllowUserToResizeColumns = false;
+            this.dgvTopNumeroDineroRepartido.AllowUserToResizeRows = false;
             this.dgvTopNumeroDineroRepartido.BackgroundColor = System.Drawing.Color.White;
             this.dgvTopNumeroDineroRepartido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTopNumeroDineroRepartido.Location = new System.Drawing.Point(376, 226);
@@ -240,6 +248,8 @@
             // 
             this.dgvTop5GanadoresPrimer.AllowUserToAddRows = false;
             this.dgvTop5GanadoresPrimer.AllowUserToDeleteRows = false;
+            this.dgvTop5GanadoresPrimer.AllowUserToResizeColumns = false;
+            this.dgvTop5GanadoresPrimer.AllowUserToResizeRows = false;
             this.dgvTop5GanadoresPrimer.BackgroundColor = System.Drawing.Color.White;
             this.dgvTop5GanadoresPrimer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTop5GanadoresPrimer.Location = new System.Drawing.Point(376, 50);
@@ -268,7 +278,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(784, 621);
+            this.tabPage2.Size = new System.Drawing.Size(782, 621);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Porcentaje números";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -277,6 +287,8 @@
             // 
             this.dgvPorcentajeAparicion.AllowUserToAddRows = false;
             this.dgvPorcentajeAparicion.AllowUserToDeleteRows = false;
+            this.dgvPorcentajeAparicion.AllowUserToResizeColumns = false;
+            this.dgvPorcentajeAparicion.AllowUserToResizeRows = false;
             this.dgvPorcentajeAparicion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvPorcentajeAparicion.BackgroundColor = System.Drawing.Color.White;
@@ -299,6 +311,24 @@
             this.label4.TabIndex = 47;
             this.label4.Text = "Porcentaje de aparición";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Brown;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 549);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(798, 106);
+            this.panel1.TabIndex = 42;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Brown;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(798, 115);
+            this.panel2.TabIndex = 48;
+            // 
             // FormEstadisticasReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -306,6 +336,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(798, 655);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormEstadisticasReportes";
             this.Text = "FormEstadisticasReportes";
@@ -344,5 +377,7 @@
         private System.Windows.Forms.RadioButton rbFiltroTodos;
         private System.Windows.Forms.RadioButton rbFiltroChances;
         private System.Windows.Forms.RadioButton rbFiltroLoteria;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
