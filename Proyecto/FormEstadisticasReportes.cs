@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Proyecto
@@ -25,7 +21,7 @@ namespace Proyecto
             this.filtroTipoSorteos = "";
             this.filtroEstadisticas = "";
            
-            inicializarTablas();
+            InicializarTablas();
             EstablecerValoresTablaSorteos();
         }
 
@@ -74,8 +70,8 @@ namespace Proyecto
                 for (int i = 0; i < cantidadSorteos; i++)
                 {
                     sorteo = sorteos[i];
-                    dtSorteos.Rows.Add(new object[] { sorteo.tipoSorteo, sorteo.numeroSorteo,
-                        sorteo.fecha.ToShortDateString(), sorteo.estado });
+                    dtSorteos.Rows.Add(new object[] { sorteo.TipoSorteo, sorteo.NumeroSorteo,
+                        sorteo.Fecha.ToShortDateString(), sorteo.Estado });
                 }
             }
             else
@@ -84,88 +80,94 @@ namespace Proyecto
             }
         }
 
-        private void inicializarTablas()
+        private void InicializarTablas()
         {
             
-            inicializarTablaNumerosMasJugados();
-            inicializarTablaNumerosMasGanadoresPrimer();
-            inicializarTablaNumerosConMayorDineroRepartido();
-            inicializarTablaPorcentajeNumeros();
+            InicializarTablaNumerosMasJugados();
+            InicializarTablaNumerosMasGanadoresPrimer();
+            InicializarTablaNumerosConMayorDineroRepartido();
+            InicializarTablaPorcentajeNumeros();
         }
 
-        private void inicializarTablaNumerosMasJugados()
+        private void InicializarTablaNumerosMasJugados()
         {
             DataTable dtNumerosMasJugados = new DataTable();
-            dtNumerosMasJugados.Columns.Add("Número", typeof(int));
-            dtNumerosMasJugados.Columns.Add("Cantidad", typeof(int));
+            dtNumerosMasJugados.Columns.Add("Número", typeof(string));
+            dtNumerosMasJugados.Columns.Add("Cantidad", typeof(string));
             List<Resultado> numerosMasJugados = sistemaLoteriaChances.ObtenerTopNumerosMasJugados(filtroEstadisticas);
             if (numerosMasJugados != null)
             {
                 int largoNumerosMasJugados = numerosMasJugados.Count;
                 for (int i = 0; i < largoNumerosMasJugados; i++)
                 {
-                    dtNumerosMasJugados.Rows.Add(new object[] { numerosMasJugados[i].numeroGanador, numerosMasJugados[i].montoGanado });
+                    dtNumerosMasJugados.Rows.Add(new object[] {
+                        numerosMasJugados[i].NumeroGanador.ToString("00"),
+                        numerosMasJugados[i].MontoGanado.ToString("#,#", CultureInfo.InvariantCulture) });
                 }
                 dgvNumerosMasJugados.DataSource = dtNumerosMasJugados;
             }
         }
 
-        private void inicializarTablaNumerosMasGanadoresPrimer()
+        private void InicializarTablaNumerosMasGanadoresPrimer()
         {
             DataTable dtNumerosMasGanadores = new DataTable();
-            dtNumerosMasGanadores.Columns.Add("Número", typeof(int));
-            dtNumerosMasGanadores.Columns.Add("Cantidad", typeof(int));
+            dtNumerosMasGanadores.Columns.Add("Número", typeof(string));
+            dtNumerosMasGanadores.Columns.Add("Cantidad", typeof(string));
             List<Resultado> numerosGanadores = sistemaLoteriaChances.ObtenerTopNumerosPrimerPremio(filtroEstadisticas);
             if (numerosGanadores != null)
             {
                 int largoNumerosGanadores = numerosGanadores.Count;
                 for (int i = 0; i < largoNumerosGanadores; i++)
                 {
-                    dtNumerosMasGanadores.Rows.Add(new object[] { numerosGanadores[i].numeroGanador, numerosGanadores[i].montoGanado});
+                    dtNumerosMasGanadores.Rows.Add(new object[] {
+                        numerosGanadores[i].NumeroGanador.ToString("00"),
+                        numerosGanadores[i].MontoGanado.ToString("#,#", CultureInfo.InvariantCulture)});
                 }
                 dgvTop5GanadoresPrimer.DataSource = dtNumerosMasGanadores;
             }
         }
 
-        private void inicializarTablaNumerosConMayorDineroRepartido()
+        private void InicializarTablaNumerosConMayorDineroRepartido()
         {
             DataTable dtNumerosConMayorDineroRepartido = new DataTable();
-            dtNumerosConMayorDineroRepartido.Columns.Add("Número", typeof(int));
-            dtNumerosConMayorDineroRepartido.Columns.Add("Monto repartido", typeof(int));
+            dtNumerosConMayorDineroRepartido.Columns.Add("Número", typeof(string));
+            dtNumerosConMayorDineroRepartido.Columns.Add("Monto repartido", typeof(string));
             List<Resultado> numerosMayorDinero = sistemaLoteriaChances.ObtenerTopNumerosMasDineroRepartido(filtroEstadisticas);
             if (numerosMayorDinero != null)
             {
                 int largoNumerosMayorDinero = numerosMayorDinero.Count;
                 for (int i = 0; i < largoNumerosMayorDinero; i++)
                 {
-                    dtNumerosConMayorDineroRepartido.Rows.Add(new object[] { numerosMayorDinero[i].numeroGanador, numerosMayorDinero[i].montoGanado });
+                    dtNumerosConMayorDineroRepartido.Rows.Add(new object[] {
+                        numerosMayorDinero[i].NumeroGanador.ToString("00"),
+                        numerosMayorDinero[i].MontoGanado.ToString("#,#", CultureInfo.InvariantCulture) });
                 }
                 dgvTopNumeroDineroRepartido.DataSource = dtNumerosConMayorDineroRepartido;
             }
+            dgvTopNumeroDineroRepartido.Columns[1].Width = 150;
         }
 
-        private void inicializarTablaPorcentajeNumeros()
+        private void InicializarTablaPorcentajeNumeros()
         {
             DataTable dtProcentajeNumeros = new DataTable();
-            dtProcentajeNumeros.Columns.Add("Número", typeof(int));
+            dtProcentajeNumeros.Columns.Add("Número", typeof(string));
             dtProcentajeNumeros.Columns.Add("Porcentaje", typeof(Double));
             List<PorcentajeNumeros> porcentajeNumeros = sistemaLoteriaChances.ObtenerPorcentajeAparicionNumeros();
             if (porcentajeNumeros != null)
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    Console.WriteLine(porcentajeNumeros.Count);
                     PorcentajeNumeros resultado = porcentajeNumeros.Find(
                     delegate (PorcentajeNumeros pn)
                     {
-                        return pn.numero == i;
+                        return pn.Numero == i;
                     }
                     );
                     if (resultado != null)
                     {
-                        dtProcentajeNumeros.Rows.Add(new object[] { i, resultado.porcentaje });
+                        dtProcentajeNumeros.Rows.Add(new object[] { i.ToString("00"), resultado.Porcentaje });
                     }
-                    else { dtProcentajeNumeros.Rows.Add(new object[] { i, 0}); }
+                    else { dtProcentajeNumeros.Rows.Add(new object[] { i.ToString("00"), 0}); }
 
                 }
                 
@@ -174,7 +176,7 @@ namespace Proyecto
             {
                 for (int i = 0; i < 100; i++)
                 {
-                     dtProcentajeNumeros.Rows.Add(new object[] { i, 0 }); 
+                     dtProcentajeNumeros.Rows.Add(new object[] { i.ToString("00"), 0 }); 
 
                 }
 
@@ -182,39 +184,37 @@ namespace Proyecto
             dgvPorcentajeAparicion.DataSource = dtProcentajeNumeros;
         }
 
-        private void tbBusqueda_TextChanged(object sender, EventArgs e)
+        private void TbBusqueda_TextChanged(object sender, EventArgs e)
         {
             dtSorteos.DefaultView.RowFilter = $"{filtroTipoSorteos}Número LIKE '{tbBusqueda.Text}%'";
-            inicializarTablas();
         }
 
-
-
-     
-        private void rbFiltroTodos_CheckedChanged(object sender, EventArgs e)
+        private void RbFiltroTodos_CheckedChanged(object sender, EventArgs e)
         {
             filtroTipoSorteos = "";
             filtroEstadisticas = "";
-            tbBusqueda_TextChanged(sender, e);
+            InicializarTablas();
+            TbBusqueda_TextChanged(sender, e);
         }
 
-        private void rbFiltroLoteria_CheckedChanged(object sender, EventArgs e)
+        private void RbFiltroLoteria_CheckedChanged(object sender, EventArgs e)
         {
             filtroTipoSorteos = "Tipo = 'Lotería' AND ";
             filtroEstadisticas = "Lotería";
-            tbBusqueda_TextChanged(sender, e);
+            InicializarTablas();
+            TbBusqueda_TextChanged(sender, e);
         }
 
-        private void rbFiltroChances_CheckedChanged(object sender, EventArgs e)
+        private void RbFiltroChances_CheckedChanged(object sender, EventArgs e)
         {
             filtroTipoSorteos = "Tipo = 'Chances' AND ";
             filtroEstadisticas = "Chances";
-            tbBusqueda_TextChanged(sender, e);
+            InicializarTablas();
+            TbBusqueda_TextChanged(sender, e);
         }
 
-        private void dgvSorteos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvSorteos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine(e.ColumnIndex);
             if (e.RowIndex >= 0)
             {
                 if (e.ColumnIndex == 0)
@@ -222,7 +222,7 @@ namespace Proyecto
                     String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
                     int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
                     Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
-                    if (sorteo.estado)
+                    if (sorteo.Estado)
                     {
                         FormReporteResultados reporteResultados = new FormReporteResultados(sistemaLoteriaChances, sorteo);
                         reporteResultados.ShowDialog();
@@ -238,7 +238,7 @@ namespace Proyecto
                     String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
                     int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
                     Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
-                    if (sorteo.planPremios.premios.Count > 0)
+                    if (sorteo.PlanPremios.premios.Count > 0)
                     {
                         FormReportePlanPremios reportePlanPremios = new FormReportePlanPremios(sistemaLoteriaChances, sorteo);
                         reportePlanPremios.ShowDialog();

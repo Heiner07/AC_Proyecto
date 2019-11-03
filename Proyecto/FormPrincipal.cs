@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proyecto
@@ -22,19 +16,14 @@ namespace Proyecto
         {
             InitializeComponent();
             botones = new Button[] { btSorteos, btJugar, btResultados, btEstadisticasReportes };
-            establecerEstadoBotones(1,false);
+            EstablecerEstadoBotones(1,false);
             panelCerrarSesion.Visible = false;
             tbContrasenia.PasswordChar = '*';
             tbContrasenia.MaxLength = 10;
             
         }
 
-        private void personalizarDiseno()
-        {
-            
-        }
-
-        private void establecerEstadoBotones(int rol,Boolean estado)
+        private void EstablecerEstadoBotones(int rol,Boolean estado)
         {
             if (rol == 0)
             {
@@ -49,7 +38,7 @@ namespace Proyecto
             }
         }
 
-        private void abrirFormularioHijo(Form formularioHijo, int numeroForm)
+        private void AbrirFormularioHijo(Form formularioHijo, int numeroForm)
         {
             if(!JugandoSorteo())
             {
@@ -81,39 +70,39 @@ namespace Proyecto
             }
         }
 
-        private void btSorteos_Click(object sender, EventArgs e)
+        private void BtSorteos_Click(object sender, EventArgs e)
         {
             if (formularioAbierto != 0)
             {
-                abrirFormularioHijo(new FormMantenimientoSorteos(sistemaLC), 0);
+                AbrirFormularioHijo(new FormMantenimientoSorteos(sistemaLC), 0);
             }
         }
 
-        private void btJugar_Click(object sender, EventArgs e)
+        private void BtJugar_Click(object sender, EventArgs e)
         {
             if (formularioAbierto != 1)
             {
-                abrirFormularioHijo(new FormJugar(sistemaLC), 1);
+                AbrirFormularioHijo(new FormJugar(sistemaLC), 1);
             }
         }
 
-        private void btResultados_Click(object sender, EventArgs e)
+        private void BtResultados_Click(object sender, EventArgs e)
         {
             if (formularioAbierto != 2)
             {
-                abrirFormularioHijo(new FormResultados(sistemaLC), 2);
+                AbrirFormularioHijo(new FormResultados(sistemaLC), 2);
             }
         }
 
-        private void btEstadisticasReportes_Click(object sender, EventArgs e)
+        private void BtEstadisticasReportes_Click(object sender, EventArgs e)
         {
             if (formularioAbierto != 3)
             {
-                abrirFormularioHijo(new FormEstadisticasReportes(sistemaLC), 3);
+                AbrirFormularioHijo(new FormEstadisticasReportes(sistemaLC), 3);
             }
         }
 
-        private void btIniciarSesion_Click(object sender, EventArgs e)
+        private void BtIniciarSesion_Click(object sender, EventArgs e)
         {
             Usuario usuario = sistemaLC.IniciarSesion(tbUsuario.Text,tbContrasenia.Text);
             if (usuario != null)
@@ -121,12 +110,12 @@ namespace Proyecto
                 int rol = 1;//usuario.obtenerRol();
                 if (rol != -1)
                 {
-                    establecerEstadoBotones(rol, true);
+                    EstablecerEstadoBotones(rol, true);
                     panelIniciarSesion.Visible = false;
                     panelCerrarSesion.Visible = true;
                     lbModo.Text = usuario.ObtenerNombre;
                     panelPrincipal.BackColor = Color.White;
-                    abrirFormularioHijo(new FormIniciar(sistemaLC), -1);
+                    AbrirFormularioHijo(new FormIniciar(sistemaLC), -1);
                 }
                 else
                 {
@@ -142,11 +131,11 @@ namespace Proyecto
         }
        
 
-        private void btCerrarSesion_Click(object sender, EventArgs e)
+        private void BtCerrarSesion_Click(object sender, EventArgs e)
         {
             if (!JugandoSorteo())
             {
-                establecerEstadoBotones(1, false);
+                EstablecerEstadoBotones(1, false);
                 panelIniciarSesion.Visible = true;
                 panelCerrarSesion.Visible = false;
                 tbContrasenia.Text = "";
@@ -180,11 +169,11 @@ namespace Proyecto
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void PictureBoxLogo_Click(object sender, EventArgs e)
         {
             if (formularioAbierto != -1)
             {
-                abrirFormularioHijo(new FormIniciar(sistemaLC), -1);
+                AbrirFormularioHijo(new FormIniciar(sistemaLC), -1);
             }
         }
 

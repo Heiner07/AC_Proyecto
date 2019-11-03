@@ -1,34 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proyecto
 {
     public class Usuario
     {
-        public String nombreUsuario { get; set; }
-        public int rol { get; set; }
+        public String NombreUsuario { get; set; }
+        public int Rol { get; set; }
 
         
         public Usuario(String nombreUsuario, int rol) {
-            this.nombreUsuario = nombreUsuario;
-            this.rol = rol;
+            this.NombreUsuario = nombreUsuario;
+            this.Rol = rol;
         
         }
 
         public void EstablecerNombreUsuario(String nombre) {
-            nombreUsuario = nombre;
+            NombreUsuario = nombre;
         
         }
 
         public void EstablecerRol(int rolEntrante) {
-            rol = rolEntrante;        
+            Rol = rolEntrante;        
         
         }
-        public String ObtenerNombre => nombreUsuario;
+        public String ObtenerNombre => NombreUsuario;
 
-        public int ObtenerRol => rol;
+        public int ObtenerRol => Rol;
     }
 }

@@ -205,7 +205,7 @@
             this.btConsultar.TabIndex = 42;
             this.btConsultar.Text = "Consultar";
             this.btConsultar.UseVisualStyleBackColor = true;
-            this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
+            this.btConsultar.Click += new System.EventHandler(this.BtConsultar_Click);
             // 
             // label6
             // 

@@ -1,26 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Proyecto
 {
     public class Premio
     {
-        public int montoPremio { get; set; }
-        public int cantidadPremio { get; set; }
+        public int MontoPremio { get; set; }
+        public int CantidadPremio { get; set; }
 
         public Premio(int montoPremio, int cantidadPremio) {
-            this.montoPremio = montoPremio;
-            this.cantidadPremio = cantidadPremio;
+            this.MontoPremio = montoPremio;
+            this.CantidadPremio = cantidadPremio;
         }
 
         /*
         * Establece la cantidad de premios
         */
         public void EstablecerCantidad(int cantidad) {
-            cantidadPremio = cantidad;
+            CantidadPremio = cantidad;
         
         }
 
@@ -29,18 +25,18 @@ namespace Proyecto
         * Establece el monto del premio a asignar 
         */
         public void EstablecerMonto(int monto) {
-            montoPremio = monto;        
+            MontoPremio = monto;        
         }
 
         /*
          *Obtiene la cantidad del premio asignado
          */
-        public int ObtenerCantidad => cantidadPremio;
+        public int ObtenerCantidad => CantidadPremio;
 
 
         /*
          *Obtiene el monto del premio asignado 
          */
-        public int ObtenerMonto => montoPremio;
+        public int ObtenerMonto => MontoPremio;
     }
 }

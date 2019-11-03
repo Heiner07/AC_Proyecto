@@ -117,7 +117,7 @@
             this.btCrearNuevoSorteo.TabIndex = 1;
             this.btCrearNuevoSorteo.Text = "Crear nuevo sorteo";
             this.btCrearNuevoSorteo.UseVisualStyleBackColor = true;
-            this.btCrearNuevoSorteo.Click += new System.EventHandler(this.btCrearNuevoSorteo_Click);
+            this.btCrearNuevoSorteo.Click += new System.EventHandler(this.BtCrearNuevoSorteo_Click);
             // 
             // dataGridViewSorteos
             // 
@@ -139,7 +139,7 @@
             this.dataGridViewSorteos.RowTemplate.Height = 24;
             this.dataGridViewSorteos.Size = new System.Drawing.Size(773, 150);
             this.dataGridViewSorteos.TabIndex = 2;
-            this.dataGridViewSorteos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSorteos_CellClick);
+            this.dataGridViewSorteos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewSorteos_CellClick);
             // 
             // label10
             // 
@@ -201,7 +201,7 @@
             this.btBorrarPlanPremios.TabIndex = 50;
             this.btBorrarPlanPremios.Text = "Borrar";
             this.btBorrarPlanPremios.UseVisualStyleBackColor = true;
-            this.btBorrarPlanPremios.Click += new System.EventHandler(this.btBorrarPlanPremios_Click_1);
+            this.btBorrarPlanPremios.Click += new System.EventHandler(this.BtBorrarPlanPremios_Click_1);
             // 
             // cbConPlan
             // 
@@ -280,8 +280,8 @@
             this.dataGridViewPremiosAdicionales.RowTemplate.Height = 24;
             this.dataGridViewPremiosAdicionales.Size = new System.Drawing.Size(255, 107);
             this.dataGridViewPremiosAdicionales.TabIndex = 45;
-            this.dataGridViewPremiosAdicionales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPremiosAdicionales_CellContentClick);
-            this.dataGridViewPremiosAdicionales.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dataGridViewPremiosAdicionales_CellParsing);
+            this.dataGridViewPremiosAdicionales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPremiosAdicionales_CellContentClick);
+            this.dataGridViewPremiosAdicionales.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.DataGridViewPremiosAdicionales_CellParsing);
             // 
             // btCancelar
             // 
@@ -293,7 +293,7 @@
             this.btCancelar.TabIndex = 44;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
-            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
+            this.btCancelar.Click += new System.EventHandler(this.BtCancelar_Click);
             // 
             // btGuardar
             // 
@@ -305,7 +305,7 @@
             this.btGuardar.TabIndex = 43;
             this.btGuardar.Text = "Guardar";
             this.btGuardar.UseVisualStyleBackColor = true;
-            this.btGuardar.Click += new System.EventHandler(this.btGuardar_Click);
+            this.btGuardar.Click += new System.EventHandler(this.BtGuardar_Click);
             // 
             // btBorrarAdicionales
             // 
@@ -317,7 +317,7 @@
             this.btBorrarAdicionales.TabIndex = 42;
             this.btBorrarAdicionales.Text = "Limpiar";
             this.btBorrarAdicionales.UseVisualStyleBackColor = true;
-            this.btBorrarAdicionales.Click += new System.EventHandler(this.btBorrarPlanPremios_Click);
+            this.btBorrarAdicionales.Click += new System.EventHandler(this.BtBorrarPlanPremios_Click);
             // 
             // btCrear
             // 
@@ -329,7 +329,7 @@
             this.btCrear.TabIndex = 41;
             this.btCrear.Text = "Crear";
             this.btCrear.UseVisualStyleBackColor = true;
-            this.btCrear.Click += new System.EventHandler(this.btCrear_Click);
+            this.btCrear.Click += new System.EventHandler(this.BtCrear_Click);
             // 
             // btAgregarPremioAdicional
             // 
@@ -341,7 +341,7 @@
             this.btAgregarPremioAdicional.TabIndex = 40;
             this.btAgregarPremioAdicional.Text = "Agregar";
             this.btAgregarPremioAdicional.UseVisualStyleBackColor = true;
-            this.btAgregarPremioAdicional.Click += new System.EventHandler(this.btAgregarPremioAdicional_Click);
+            this.btAgregarPremioAdicional.Click += new System.EventHandler(this.BtAgregarPremioAdicional_Click);
             // 
             // nudPremio3
             // 
@@ -526,7 +526,7 @@
             this.rbChances.TabIndex = 27;
             this.rbChances.Text = "Chances";
             this.rbChances.UseVisualStyleBackColor = true;
-            this.rbChances.CheckedChanged += new System.EventHandler(this.rbChances_CheckedChanged);
+            this.rbChances.CheckedChanged += new System.EventHandler(this.RbChances_CheckedChanged);
             // 
             // rbLoteria
             // 
@@ -540,7 +540,7 @@
             this.rbLoteria.TabStop = true;
             this.rbLoteria.Text = "Lotería";
             this.rbLoteria.UseVisualStyleBackColor = true;
-            this.rbLoteria.CheckedChanged += new System.EventHandler(this.rbLoteria_CheckedChanged);
+            this.rbLoteria.CheckedChanged += new System.EventHandler(this.RbLoteria_CheckedChanged);
             // 
             // label5
             // 
@@ -622,7 +622,7 @@
             this.rbFiltroTodos.TabStop = true;
             this.rbFiltroTodos.Text = "Todos";
             this.rbFiltroTodos.UseVisualStyleBackColor = true;
-            this.rbFiltroTodos.CheckedChanged += new System.EventHandler(this.rbFiltroTodos_CheckedChanged);
+            this.rbFiltroTodos.CheckedChanged += new System.EventHandler(this.RbFiltroTodos_CheckedChanged);
             // 
             // rbFiltroChances
             // 
@@ -634,7 +634,7 @@
             this.rbFiltroChances.TabIndex = 41;
             this.rbFiltroChances.Text = "Chances";
             this.rbFiltroChances.UseVisualStyleBackColor = true;
-            this.rbFiltroChances.CheckedChanged += new System.EventHandler(this.rbFiltroChances_CheckedChanged);
+            this.rbFiltroChances.CheckedChanged += new System.EventHandler(this.RbFiltroChances_CheckedChanged);
             // 
             // rbFiltroLoteria
             // 
@@ -646,7 +646,7 @@
             this.rbFiltroLoteria.TabIndex = 40;
             this.rbFiltroLoteria.Text = "Lotería";
             this.rbFiltroLoteria.UseVisualStyleBackColor = true;
-            this.rbFiltroLoteria.CheckedChanged += new System.EventHandler(this.rbFiltroLoteria_CheckedChanged);
+            this.rbFiltroLoteria.CheckedChanged += new System.EventHandler(this.RbFiltroLoteria_CheckedChanged);
             // 
             // label11
             // 
@@ -665,7 +665,7 @@
             this.tbBusqueda.Name = "tbBusqueda";
             this.tbBusqueda.Size = new System.Drawing.Size(103, 22);
             this.tbBusqueda.TabIndex = 4;
-            this.tbBusqueda.TextChanged += new System.EventHandler(this.tbBusqueda_TextChanged);
+            this.tbBusqueda.TextChanged += new System.EventHandler(this.TbBusqueda_TextChanged);
             // 
             // panel1
             // 

@@ -108,7 +108,7 @@
             this.rbFiltroTodos.TabStop = true;
             this.rbFiltroTodos.Text = "Todos";
             this.rbFiltroTodos.UseVisualStyleBackColor = true;
-            this.rbFiltroTodos.CheckedChanged += new System.EventHandler(this.rbFiltroTodos_CheckedChanged);
+            this.rbFiltroTodos.CheckedChanged += new System.EventHandler(this.RbFiltroTodos_CheckedChanged);
             // 
             // rbFiltroChances
             // 
@@ -120,7 +120,7 @@
             this.rbFiltroChances.TabIndex = 53;
             this.rbFiltroChances.Text = "Chances";
             this.rbFiltroChances.UseVisualStyleBackColor = true;
-            this.rbFiltroChances.CheckedChanged += new System.EventHandler(this.rbFiltroChances_CheckedChanged);
+            this.rbFiltroChances.CheckedChanged += new System.EventHandler(this.RbFiltroChances_CheckedChanged);
             // 
             // rbFiltroLoteria
             // 
@@ -132,7 +132,7 @@
             this.rbFiltroLoteria.TabIndex = 52;
             this.rbFiltroLoteria.Text = "Lotería";
             this.rbFiltroLoteria.UseVisualStyleBackColor = true;
-            this.rbFiltroLoteria.CheckedChanged += new System.EventHandler(this.rbFiltroLoteria_CheckedChanged);
+            this.rbFiltroLoteria.CheckedChanged += new System.EventHandler(this.RbFiltroLoteria_CheckedChanged);
             // 
             // label5
             // 
@@ -160,7 +160,7 @@
             this.tbBusqueda.Name = "tbBusqueda";
             this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
             this.tbBusqueda.TabIndex = 49;
-            this.tbBusqueda.TextChanged += new System.EventHandler(this.tbBusqueda_TextChanged);
+            this.tbBusqueda.TextChanged += new System.EventHandler(this.TbBusqueda_TextChanged);
             // 
             // label10
             // 
@@ -190,7 +190,7 @@
             this.dgvSorteos.RowTemplate.Height = 24;
             this.dgvSorteos.Size = new System.Drawing.Size(604, 196);
             this.dgvSorteos.TabIndex = 47;
-            this.dgvSorteos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSorteos_CellContentClick);
+            this.dgvSorteos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSorteos_CellContentClick);
             // 
             // dgvNumerosMasJugados
             // 

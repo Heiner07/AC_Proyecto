@@ -46,7 +46,7 @@
             this.btJugar = new System.Windows.Forms.Button();
             this.btSorteos = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -56,7 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelIniciarSesion.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -127,7 +127,7 @@
             this.btCerrarSesion.TabIndex = 11;
             this.btCerrarSesion.Text = "Cerrar Sesión";
             this.btCerrarSesion.UseVisualStyleBackColor = false;
-            this.btCerrarSesion.Click += new System.EventHandler(this.btCerrarSesion_Click);
+            this.btCerrarSesion.Click += new System.EventHandler(this.BtCerrarSesion_Click);
             // 
             // lbModo
             // 
@@ -167,7 +167,7 @@
             this.btIniciarSesion.TabIndex = 10;
             this.btIniciarSesion.Text = "Iniciar Sesión";
             this.btIniciarSesion.UseVisualStyleBackColor = false;
-            this.btIniciarSesion.Click += new System.EventHandler(this.btIniciarSesion_Click);
+            this.btIniciarSesion.Click += new System.EventHandler(this.BtIniciarSesion_Click);
             // 
             // tbContrasenia
             // 
@@ -220,7 +220,7 @@
             this.btEstadisticasReportes.Text = "Estadísticas y Reportes";
             this.btEstadisticasReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btEstadisticasReportes.UseVisualStyleBackColor = false;
-            this.btEstadisticasReportes.Click += new System.EventHandler(this.btEstadisticasReportes_Click);
+            this.btEstadisticasReportes.Click += new System.EventHandler(this.BtEstadisticasReportes_Click);
             // 
             // btResultados
             // 
@@ -239,7 +239,7 @@
             this.btResultados.Text = "Resultados";
             this.btResultados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btResultados.UseVisualStyleBackColor = false;
-            this.btResultados.Click += new System.EventHandler(this.btResultados_Click);
+            this.btResultados.Click += new System.EventHandler(this.BtResultados_Click);
             // 
             // btJugar
             // 
@@ -258,7 +258,7 @@
             this.btJugar.Text = "Jugar Sorteos";
             this.btJugar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btJugar.UseVisualStyleBackColor = false;
-            this.btJugar.Click += new System.EventHandler(this.btJugar_Click);
+            this.btJugar.Click += new System.EventHandler(this.BtJugar_Click);
             // 
             // btSorteos
             // 
@@ -277,28 +277,28 @@
             this.btSorteos.Text = "Mantenimiento Sorteos";
             this.btSorteos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btSorteos.UseVisualStyleBackColor = false;
-            this.btSorteos.Click += new System.EventHandler(this.btSorteos_Click);
+            this.btSorteos.Click += new System.EventHandler(this.BtSorteos_Click);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pictureBoxLogo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(282, 115);
             this.panel2.TabIndex = 5;
             // 
-            // pictureBox1
+            // pictureBoxLogo
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::Proyecto.Properties.Resources.LogoHorizontalJPS;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(282, 115);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBoxLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxLogo.Image = global::Proyecto.Properties.Resources.LogoHorizontalJPS;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(282, 115);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogo.TabIndex = 0;
+            this.pictureBoxLogo.TabStop = false;
+            this.pictureBoxLogo.Click += new System.EventHandler(this.PictureBoxLogo_Click);
             // 
             // panelPrincipal
             // 
@@ -355,7 +355,7 @@
             this.panelIniciarSesion.ResumeLayout(false);
             this.panelIniciarSesion.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panelPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -374,7 +374,7 @@
         private System.Windows.Forms.Button btJugar;
         private System.Windows.Forms.Button btSorteos;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxLogo;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panelIniciarSesion;
         private System.Windows.Forms.Button btIniciarSesion;

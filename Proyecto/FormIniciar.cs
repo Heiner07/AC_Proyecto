@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Proyecto
@@ -25,20 +18,20 @@ namespace Proyecto
             if (sorteoLoteria != null)
             {
                 Resultado[] resultados = ObtenerPremiosMayores(sorteoLoteria);
-                lbNumeroLoteria.Text = $"Sorteo {sorteoLoteria.numeroSorteo} - " +
-                    $"{sorteoLoteria.fecha.ToShortDateString()}";
+                lbNumeroLoteria.Text = $"Sorteo {sorteoLoteria.NumeroSorteo} - " +
+                    $"{sorteoLoteria.Fecha.ToShortDateString()}";
                 // Se establecen los valores del primer premio.
-                lbLP1Numero.Text = $"Número:{resultados[0].numeroGanador}";
-                lbLP1Serie.Text = $"Serie:{resultados[0].serieGanadora}";
-                lbLP1Monto.Text = $"Monto:{resultados[0].montoGanado}";
+                lbLP1Numero.Text = $"Número:{resultados[0].NumeroGanador}";
+                lbLP1Serie.Text = $"Serie:{resultados[0].SerieGanadora}";
+                lbLP1Monto.Text = $"Monto:{resultados[0].MontoGanado}";
                 // Se establecen los valores del segundo premio.
-                lbLP2Numero.Text = $"Número:{resultados[1].numeroGanador}";
-                lbLP2Serie.Text = $"Serie:{resultados[1].serieGanadora}";
-                lbLP2Monto.Text = $"Monto:{resultados[1].montoGanado}";
+                lbLP2Numero.Text = $"Número:{resultados[1].NumeroGanador}";
+                lbLP2Serie.Text = $"Serie:{resultados[1].SerieGanadora}";
+                lbLP2Monto.Text = $"Monto:{resultados[1].MontoGanado}";
                 // Se establecen los valores del tercer premio.
-                lbLP3Numero.Text = $"Número:{resultados[2].numeroGanador}";
-                lbLP3Serie.Text = $"Serie:{resultados[2].serieGanadora}";
-                lbLP3Monto.Text = $"Monto:{resultados[2].montoGanado}";
+                lbLP3Numero.Text = $"Número:{resultados[2].NumeroGanador}";
+                lbLP3Serie.Text = $"Serie:{resultados[2].SerieGanadora}";
+                lbLP3Monto.Text = $"Monto:{resultados[2].MontoGanado}";
             }
             else
             {
@@ -57,20 +50,20 @@ namespace Proyecto
             if (sorteoChances != null)
             {
                 Resultado[] resultados = ObtenerPremiosMayores(sorteoChances);
-                lbNumeroChances.Text = $"Sorteo {sorteoChances.numeroSorteo} - " +
-                    $"{sorteoChances.fecha.ToShortDateString()}";
+                lbNumeroChances.Text = $"Sorteo {sorteoChances.NumeroSorteo} - " +
+                    $"{sorteoChances.Fecha.ToShortDateString()}";
                 // Se establecen los valores del primer premio.
-                lbCP1Numero.Text = $"Número:{resultados[0].numeroGanador}";
-                lbCP1Serie.Text = $"Serie:{resultados[0].serieGanadora}";
-                lbCP1Monto.Text = $"Monto:{resultados[0].montoGanado}";
+                lbCP1Numero.Text = $"Número:{resultados[0].NumeroGanador}";
+                lbCP1Serie.Text = $"Serie:{resultados[0].SerieGanadora}";
+                lbCP1Monto.Text = $"Monto:{resultados[0].MontoGanado}";
                 // Se establecen los valores del segundo premio.
-                lbCP2Numero.Text = $"Número:{resultados[1].numeroGanador}";
-                lbCP2Serie.Text = $"Serie:{resultados[1].serieGanadora}";
-                lbCP2Monto.Text = $"Monto:{resultados[1].montoGanado}";
+                lbCP2Numero.Text = $"Número:{resultados[1].NumeroGanador}";
+                lbCP2Serie.Text = $"Serie:{resultados[1].SerieGanadora}";
+                lbCP2Monto.Text = $"Monto:{resultados[1].MontoGanado}";
                 // Se establecen los valores del tercer premio.
-                lbCP3Numero.Text = $"Número:{resultados[2].numeroGanador}";
-                lbCP3Serie.Text = $"Serie:{resultados[2].serieGanadora}";
-                lbCP3Monto.Text = $"Monto:{resultados[2].montoGanado}";
+                lbCP3Numero.Text = $"Número:{resultados[2].NumeroGanador}";
+                lbCP3Serie.Text = $"Serie:{resultados[2].SerieGanadora}";
+                lbCP3Monto.Text = $"Monto:{resultados[2].MontoGanado}";
             }
             else
             {
@@ -91,18 +84,18 @@ namespace Proyecto
         private Resultado[] ObtenerPremiosMayores(Sorteo sorteo)
         {
             Resultado[] premiosMayores = new Resultado[3];
-            List<Resultado> resultados = sorteo.planPremios.resultados;
+            List<Resultado> resultados = sorteo.PlanPremios.resultados;
             foreach(Resultado resultado in resultados)
             {
-                if(sorteo.planPremios.premios[0].montoPremio == resultado.montoGanado)
+                if(sorteo.PlanPremios.premios[0].MontoPremio == resultado.MontoGanado)
                 {
                     premiosMayores[0] = resultado;
                 }
-                if (sorteo.planPremios.premios[1].montoPremio == resultado.montoGanado)
+                if (sorteo.PlanPremios.premios[1].MontoPremio == resultado.MontoGanado)
                 {
                     premiosMayores[1] = resultado;
                 }
-                if (sorteo.planPremios.premios[2].montoPremio == resultado.montoGanado)
+                if (sorteo.PlanPremios.premios[2].MontoPremio == resultado.MontoGanado)
                 {
                     premiosMayores[2] = resultado;
                 }

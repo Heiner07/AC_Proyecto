@@ -73,7 +73,7 @@
             this.btAceptar.TabIndex = 45;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
-            this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
+            this.btAceptar.Click += new System.EventHandler(this.BtAceptar_Click);
             // 
             // btExportar
             // 
@@ -84,7 +84,7 @@
             this.btExportar.TabIndex = 46;
             this.btExportar.Text = "Exportar PDF";
             this.btExportar.UseVisualStyleBackColor = true;
-            this.btExportar.Click += new System.EventHandler(this.btExportar_Click);
+            this.btExportar.Click += new System.EventHandler(this.BtExportar_Click);
             // 
             // FormReporteResultados
             // 

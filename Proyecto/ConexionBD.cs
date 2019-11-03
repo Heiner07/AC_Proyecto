@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Proyecto
 {
     class ConexionBD
     {
-        private String cadenaConexion = "server=.\\SQLEXPRESS; database=JPS_Loteria_Chances;Trusted_Connection=True;";
+        private readonly String cadenaConexion = "server=.\\SQLEXPRESS; database=JPS_Loteria_Chances;Trusted_Connection=True;";
 
         /*
          * E: El nombre y la contrasenia del usuario/admin
@@ -185,17 +181,17 @@ namespace Proyecto
 
                     sorteo = new Sorteo()
                     {
-                        idSorteo = (int)lectorDatos[0],
-                        numeroSorteo = (int)lectorDatos[1],
-                        tipoSorteo = (String)lectorDatos[2],
-                        fecha = (DateTime)lectorDatos[3],
-                        cantidadFracciones = (int)lectorDatos[4],
-                        precioFraccion = (int)lectorDatos[5],
-                        leyendaBillete = (String)lectorDatos[6],
-                        estado = (Boolean)lectorDatos[7],
-                        planPremios = new PlanPremios()
+                        IdSorteo = (int)lectorDatos[0],
+                        NumeroSorteo = (int)lectorDatos[1],
+                        TipoSorteo = (String)lectorDatos[2],
+                        Fecha = (DateTime)lectorDatos[3],
+                        CantidadFracciones = (int)lectorDatos[4],
+                        PrecioFraccion = (int)lectorDatos[5],
+                        LeyendaBillete = (String)lectorDatos[6],
+                        Estado = (Boolean)lectorDatos[7],
+                        PlanPremios = new PlanPremios()
                         {
-                            idSorteo = (int)lectorDatos[0],
+                            IdSorteo = (int)lectorDatos[0],
                             premios = premiosDelPlan,
                             resultados = resultadosSorteo
                         }
@@ -297,7 +293,7 @@ namespace Proyecto
         public Boolean InsertarResultadosSorteos(Sorteo sorteo)
         {
             Boolean retorno = true;
-            List<Resultado> resultados = sorteo.planPremios.resultados;
+            List<Resultado> resultados = sorteo.PlanPremios.resultados;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             SqlCommand cmd = new SqlCommand("InsertarResultado", conexion)
             {
@@ -308,10 +304,10 @@ namespace Proyecto
                 conexion.Open();
                 foreach (Resultado resultado in resultados)
                 {
-                    cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = sorteo.idSorteo;
-                    cmd.Parameters.Add("@MontoGanado", SqlDbType.Int).Value = resultado.montoGanado;
-                    cmd.Parameters.Add("@NumeroGanador", SqlDbType.Int).Value = resultado.numeroGanador;
-                    cmd.Parameters.Add("@SerieGanadora", SqlDbType.Int).Value = resultado.serieGanadora;
+                    cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = sorteo.IdSorteo;
+                    cmd.Parameters.Add("@MontoGanado", SqlDbType.Int).Value = resultado.MontoGanado;
+                    cmd.Parameters.Add("@NumeroGanador", SqlDbType.Int).Value = resultado.NumeroGanador;
+                    cmd.Parameters.Add("@SerieGanadora", SqlDbType.Int).Value = resultado.SerieGanadora;
                     cmd.ExecuteNonQuery();
 
                     cmd.Parameters.Clear();
@@ -339,7 +335,7 @@ namespace Proyecto
             try
             {
                 conexion.Open();
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = sorteo.idSorteo;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = sorteo.IdSorteo;
                 cmd.ExecuteNonQuery();
             }
             catch (Exception)
@@ -380,8 +376,6 @@ namespace Proyecto
             }
             return resultados;
         }
-
-
 
         public List<Resultado> ObtenerTopNumerosMasDineroRepartido()
         {
@@ -438,15 +432,7 @@ namespace Proyecto
             {
                 conexion.Close();
             }
-
-
-
-
         }
-
-
-
-
 
         public List<Resultado> ObtenerTopNumerosMasJugados()
         {
@@ -476,8 +462,6 @@ namespace Proyecto
             return resultados;
         }
 
-
-
         public List<PorcentajeNumeros> ObtenerPorcentajeAparicionNumeros()
         {
             List<PorcentajeNumeros> resultados = new List<PorcentajeNumeros>();
@@ -490,11 +474,9 @@ namespace Proyecto
             {
                 conexion.Open();
                 SqlDataReader lectorDatos = cmd.ExecuteReader();
-                Console.WriteLine("ENTRA");
                 while (lectorDatos.Read())
                 {
-                    Console.WriteLine("numero: "+ lectorDatos.GetInt32(0)+"   "+ lectorDatos.GetDouble(1));
-                    resultados.Add(new PorcentajeNumeros() { numero = lectorDatos.GetInt32(0), porcentaje = lectorDatos.GetDouble(1) });
+                    resultados.Add(new PorcentajeNumeros() { Numero = lectorDatos.GetInt32(0), Porcentaje = lectorDatos.GetDouble(1) });
                 }
             }
             catch (Exception)
@@ -507,10 +489,5 @@ namespace Proyecto
             }
             return resultados;
         }
-
-
-
     }
-
-
 }

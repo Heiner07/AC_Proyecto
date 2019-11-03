@@ -1,26 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Proyecto
 {
     public class Resultado
     {
-        public int numeroGanador { get; set; }
-        public int serieGanadora { get; set; }
-        public int montoGanado { get; set; }
+        public int NumeroGanador { get; set; }
+        public int SerieGanadora { get; set; }
+        public int MontoGanado { get; set; }
 
 
         public Resultado(int numeroGanador,int serieGanadora, int montoGanado) {
-            this.numeroGanador = numeroGanador;
-            this.serieGanadora = serieGanadora;
-            this.montoGanado = montoGanado;
+            this.NumeroGanador = numeroGanador;
+            this.SerieGanadora = serieGanadora;
+            this.MontoGanado = montoGanado;
         
         }
         public int[] ObtenerResultado() {
-            return new int[3] { numeroGanador, serieGanadora, montoGanado};
+            return new int[3] { NumeroGanador, SerieGanadora, MontoGanado};
 
         }
     }

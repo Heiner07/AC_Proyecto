@@ -118,7 +118,7 @@
             this.btOmitirAnimacion.TabIndex = 46;
             this.btOmitirAnimacion.Text = "Omitir animación";
             this.btOmitirAnimacion.UseVisualStyleBackColor = true;
-            this.btOmitirAnimacion.Click += new System.EventHandler(this.btOmitirAnimacion_Click);
+            this.btOmitirAnimacion.Click += new System.EventHandler(this.BtOmitirAnimacion_Click);
             // 
             // tbPremio
             // 
@@ -238,7 +238,7 @@
             this.tbBusqueda.Name = "tbBusqueda";
             this.tbBusqueda.Size = new System.Drawing.Size(140, 22);
             this.tbBusqueda.TabIndex = 43;
-            this.tbBusqueda.TextChanged += new System.EventHandler(this.tbBusqueda_TextChanged);
+            this.tbBusqueda.TextChanged += new System.EventHandler(this.TbBusqueda_TextChanged);
             // 
             // label10
             // 
@@ -268,7 +268,7 @@
             this.dgvSorteos.RowTemplate.Height = 24;
             this.dgvSorteos.Size = new System.Drawing.Size(479, 179);
             this.dgvSorteos.TabIndex = 41;
-            this.dgvSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSorteos_CellClick);
+            this.dgvSorteos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvSorteos_CellClick);
             // 
             // rbFiltroTodos
             // 
@@ -282,7 +282,7 @@
             this.rbFiltroTodos.TabStop = true;
             this.rbFiltroTodos.Text = "Todos";
             this.rbFiltroTodos.UseVisualStyleBackColor = true;
-            this.rbFiltroTodos.CheckedChanged += new System.EventHandler(this.rbFiltroTodos_CheckedChanged);
+            this.rbFiltroTodos.CheckedChanged += new System.EventHandler(this.RbFiltroTodos_CheckedChanged);
             // 
             // rbFiltroChances
             // 
@@ -294,7 +294,7 @@
             this.rbFiltroChances.TabIndex = 38;
             this.rbFiltroChances.Text = "Chances";
             this.rbFiltroChances.UseVisualStyleBackColor = true;
-            this.rbFiltroChances.CheckedChanged += new System.EventHandler(this.rbFiltroChances_CheckedChanged);
+            this.rbFiltroChances.CheckedChanged += new System.EventHandler(this.RbFiltroChances_CheckedChanged);
             // 
             // rbFiltroLoteria
             // 
@@ -306,7 +306,7 @@
             this.rbFiltroLoteria.TabIndex = 37;
             this.rbFiltroLoteria.Text = "Lotería";
             this.rbFiltroLoteria.UseVisualStyleBackColor = true;
-            this.rbFiltroLoteria.CheckedChanged += new System.EventHandler(this.rbFiltroLoteria_CheckedChanged);
+            this.rbFiltroLoteria.CheckedChanged += new System.EventHandler(this.RbFiltroLoteria_CheckedChanged);
             // 
             // label1
             // 

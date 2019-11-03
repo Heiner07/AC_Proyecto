@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Proyecto
@@ -33,7 +27,7 @@ namespace Proyecto
             }
         }
 
-        private void btConsultar_Click(object sender, EventArgs e)
+        private void BtConsultar_Click(object sender, EventArgs e)
         {
             String tipo = (rbLoteria.Checked) ? "Lotería" : "Chances";
             int numeroSorteo = (int)nudNumeroSorteo.Value;
@@ -45,24 +39,24 @@ namespace Proyecto
             Boolean gano = false;
             if (sorteo != null)
             {
-                List<Resultado> resultados = sorteo.planPremios.resultados;
-                if (sorteo.estado)
+                List<Resultado> resultados = sorteo.PlanPremios.resultados;
+                if (sorteo.Estado)
                 {
                     foreach(Resultado resultado in resultados)
                     {
-                        if(resultado.numeroGanador == numeroFraccion &&
-                            resultado.serieGanadora == serieFraccion)
+                        if(resultado.NumeroGanador == numeroFraccion &&
+                            resultado.SerieGanadora == serieFraccion)
                         {
-                            if(cantidadFracciones <= sorteo.cantidadFracciones)
+                            if(cantidadFracciones <= sorteo.CantidadFracciones)
                             {
-                                montoGanado = resultado.montoGanado * ((double)cantidadFracciones / sorteo.cantidadFracciones);
+                                montoGanado = resultado.MontoGanado * ((double)cantidadFracciones / sorteo.CantidadFracciones);
                             }
                             else
                             {
-                                montoGanado = resultado.montoGanado;
+                                montoGanado = resultado.MontoGanado;
                             }
-                            lbMontoGanado.Text = Convert.ToString(montoGanado);
-                            MessageBox.Show("¡Felicidades! Ha ganado "+montoGanado,
+                            lbMontoGanado.Text = montoGanado.ToString("#,#", CultureInfo.InvariantCulture);
+                            MessageBox.Show("¡Felicidades! Ha ganado "+lbMontoGanado.Text,
                                 "Consultar resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             gano = true;
                         }

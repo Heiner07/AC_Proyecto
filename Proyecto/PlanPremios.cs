@@ -8,7 +8,7 @@ namespace Proyecto
 {
     public class PlanPremios
     {
-        public int idSorteo { get; set; }
+        public int IdSorteo { get; set; }
         public List<Resultado> resultados = new List<Resultado>();
         public List<Premio> premios = new List<Premio>();
 
@@ -36,10 +36,10 @@ namespace Proyecto
             List<int> montos = new List<int>();
             int cantidad = 0;
             foreach(Premio premio in premios){
-                cantidad = premio.cantidadPremio;
+                cantidad = premio.CantidadPremio;
                 while (cantidad > 0)
                 {
-                    montos.Add(premio.montoPremio);
+                    montos.Add(premio.MontoPremio);
                     cantidad--;
                 }
             }
@@ -47,10 +47,10 @@ namespace Proyecto
         }
 
         public void EstablecerIdSorteo(int id) {
-            idSorteo = id;
+            IdSorteo = id;
         
         }
-        public int ObtenerIdSorteo => idSorteo;
+        public int ObtenerIdSorteo => IdSorteo;
         public List<Resultado> ObtenerResultados => resultados;
 
         public List<Premio> ObtenerPremios => premios;

@@ -1,22 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proyecto
 {
     public class Sorteo
     {
-        public int idSorteo { get; set; }
-        public int numeroSorteo { get; set; }
-        public int cantidadFracciones { get; set; }
-        public int precioFraccion { get; set; }
-        public String tipoSorteo { get; set; }
-        public String leyendaBillete { get; set; }
-        public Boolean estado { get; set; }
-        public DateTime fecha { get; set; }
-        public PlanPremios planPremios {get;set;}
+        public int IdSorteo { get; set; }
+        public int NumeroSorteo { get; set; }
+        public int CantidadFracciones { get; set; }
+        public int PrecioFraccion { get; set; }
+        public String TipoSorteo { get; set; }
+        public String LeyendaBillete { get; set; }
+        public Boolean Estado { get; set; }
+        public DateTime Fecha { get; set; }
+        public PlanPremios PlanPremios {get;set;}
 
         public Sorteo()
         {
@@ -26,31 +22,23 @@ namespace Proyecto
         public Sorteo(int idSorteo, int numeroSorteo, String tipoSorteo, DateTime fecha, int cantidadFracciones,
             int precioFraccion, String leyendaBillete, Boolean estado,PlanPremios planPremios)
         {
-            this.idSorteo = idSorteo;
-            this.numeroSorteo = numeroSorteo;
-            this.tipoSorteo = tipoSorteo;
-            this.fecha = fecha;
-            this.cantidadFracciones = cantidadFracciones;
-            this.precioFraccion = precioFraccion;
-            this.leyendaBillete = leyendaBillete;
-            this.estado = estado;
-            this.planPremios = planPremios;
+            this.IdSorteo = idSorteo;
+            this.NumeroSorteo = numeroSorteo;
+            this.TipoSorteo = tipoSorteo;
+            this.Fecha = fecha;
+            this.CantidadFracciones = cantidadFracciones;
+            this.PrecioFraccion = precioFraccion;
+            this.LeyendaBillete = leyendaBillete;
+            this.Estado = estado;
+            this.PlanPremios = planPremios;
         }
-
-        /**
-         * Se encarga de efectuar el sorteo correspondiente.
-         */
-        public void JugarSorteo() { 
-        
-        }
-
 
         /*
         *Establece el tipo del sorteo correspondiente.
         */
         public void EstablecerNumeroSorteo(int numero)
         {
-            numeroSorteo = numero;
+            NumeroSorteo = numero;
 
         }
 
@@ -60,7 +48,7 @@ namespace Proyecto
         */
         public void EstablecerTipoSorteo(String tipo)
         {
-            tipoSorteo = tipo;
+            TipoSorteo = tipo;
 
         }
 
@@ -68,7 +56,7 @@ namespace Proyecto
          *Establece la fecha del sorteo correspondiente.
         */
         public void EstablecerFecha(DateTime fecha) {
-            this.fecha = fecha;
+            this.Fecha = fecha;
         
         }
 
@@ -77,7 +65,7 @@ namespace Proyecto
         */
         public void EstablecerCantidadFracciones(int n)
         {
-            cantidadFracciones = n;
+            CantidadFracciones = n;
         }
 
         /*
@@ -85,7 +73,7 @@ namespace Proyecto
         */
         public void EstablecerPrecioFraccion(int n)
         {
-            precioFraccion = n;
+            PrecioFraccion = n;
         }
 
         /*
@@ -93,7 +81,7 @@ namespace Proyecto
         */
         public void EstablecerLeyenda(String leyenda)
         {
-            leyendaBillete = leyenda;
+            LeyendaBillete = leyenda;
         }
 
 
@@ -102,39 +90,39 @@ namespace Proyecto
         /*
          *Retorna el precio por fracción del sorteo correspondiente.
         */
-        public int ObtenerPrecioFraccion => precioFraccion;
+        public int ObtenerPrecioFraccion => PrecioFraccion;
 
         /*
         *Retorna la leyenda del sorteo correspondiente.
        */
-        public String ObtenerLeyenda => leyendaBillete;
+        public String ObtenerLeyenda => LeyendaBillete;
 
         /*
          *Retorna la fecha del sorteo correspondiente.
         */
-        public DateTime ObtenerFecha => fecha;
+        public DateTime ObtenerFecha => Fecha;
 
         /*
          *Retorna la cantidad de fracciones del sorteo correspondiente.
         */
-        public int ObtenerCantidadFracciones => cantidadFracciones;
+        public int ObtenerCantidadFracciones => CantidadFracciones;
 
         /*
         *Retorna el numero de sorteo correspondiente.
        */
-        public int ObtenerNumeroSorteo => numeroSorteo;
+        public int ObtenerNumeroSorteo => NumeroSorteo;
 
         /*
          *Retorna el tipo de sorteo correspondiente.
         */
-        public String ObtenerTipoSorteo => tipoSorteo;
+        public String ObtenerTipoSorteo => TipoSorteo;
 
         /*
          *Retorna el estado del sorteo correspondiente.
         */
-        public Boolean ObtenerEstado => estado;
-        public int ObtenerIdSorteo => idSorteo;
-        public PlanPremios ObtenerPlanPremios => planPremios;
+        public Boolean ObtenerEstado => Estado;
+        public int ObtenerIdSorteo => IdSorteo;
+        public PlanPremios ObtenerPlanPremios => PlanPremios;
 
     }
 }

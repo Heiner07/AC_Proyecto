@@ -1,5 +1,4 @@
-﻿using iText.IO.Font;
-using iText.IO.Font.Constants;
+﻿using iText.IO.Font.Constants;
 using iText.IO.Image;
 using iText.Kernel.Font;
 using iText.Kernel.Pdf;
@@ -8,11 +7,7 @@ using iText.Layout.Element;
 using iText.Layout.Properties;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Proyecto
 {
@@ -46,7 +41,7 @@ namespace Proyecto
                 for (int i = cantidadSorteos-1; i > -1; i--)
                 {
                     sorteo = sorteos[i];
-                    if (sorteo.estado && sorteo.tipoSorteo.Equals(tipo))
+                    if (sorteo.Estado && sorteo.TipoSorteo.Equals(tipo))
                     {
                         return sorteo;
                     }
@@ -61,7 +56,7 @@ namespace Proyecto
             {
                 foreach (Sorteo sorteo in sorteos)
                 {
-                    if (sorteo.tipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
+                    if (sorteo.TipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
                     {
                         return sorteo;
                     }
@@ -96,13 +91,13 @@ namespace Proyecto
             Boolean retorno = true;
             // Se establecen las varibales y textos por utilizar en el PDF
             System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
-            List<Resultado> resultados = sorteo.planPremios.resultados;
-            List<Premio> premios = sorteo.planPremios.premios;
+            List<Resultado> resultados = sorteo.PlanPremios.resultados;
+            List<Premio> premios = sorteo.PlanPremios.premios;
             String tituloDocumento = "Reporte de resultados de sorteo";
             String datosSorteo =
-                $"Tipo: {sorteo.tipoSorteo}\n" +
-                $"Número: {sorteo.numeroSorteo}\n" +
-                $"Realizado: {sorteo.fecha.ToShortDateString()}";
+                $"Tipo: {sorteo.TipoSorteo}\n" +
+                $"Número: {sorteo.NumeroSorteo}\n" +
+                $"Realizado: {sorteo.Fecha.ToShortDateString()}";
             String tituloTabla = "Resultados:";
             String finalDocumento = $"\n--- Final del documento - " +
                 $"Junta de Protección Social - Reporte generado el {DateTime.Now.ToString()} ---";
@@ -111,7 +106,7 @@ namespace Proyecto
             {
                 // Se genera la ruta del archivo pdf: Escritorio + "Resultados - " + tipo + numero + ".pdf"
                 String rutaCreacionPDF = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
-                "\\Resultados - " + sorteo.tipoSorteo + sorteo.numeroSorteo + ".pdf";
+                "\\Resultados - " + sorteo.TipoSorteo + sorteo.NumeroSorteo + ".pdf";
 
                 // Se inicializan las variables para manipular el pdf.
                 PdfWriter writer = new PdfWriter(rutaCreacionPDF);
@@ -136,12 +131,12 @@ namespace Proyecto
                 // Se agregan los resutados a la tabla
                 foreach (Resultado resultado in resultados)
                 {
-                    parrafoSerie = new Paragraph(resultado.serieGanadora.ToString());
-                    parrafoNumero = new Paragraph(resultado.numeroGanador.ToString());
-                    parrafoMonto = new Paragraph(resultado.montoGanado.ToString());
-                    if (premios[0].montoPremio==resultado.montoGanado ||
-                        premios[1].montoPremio == resultado.montoGanado ||
-                        premios[2].montoPremio == resultado.montoGanado)
+                    parrafoSerie = new Paragraph(resultado.SerieGanadora.ToString("000"));
+                    parrafoNumero = new Paragraph(resultado.NumeroGanador.ToString("00"));
+                    parrafoMonto = new Paragraph(resultado.MontoGanado.ToString("#,#", CultureInfo.InvariantCulture));
+                    if (premios[0].MontoPremio==resultado.MontoGanado ||
+                        premios[1].MontoPremio == resultado.MontoGanado ||
+                        premios[2].MontoPremio == resultado.MontoGanado)
                     {
                         parrafoSerie.SetFont(font);
                         parrafoNumero.SetFont(font);
@@ -180,12 +175,12 @@ namespace Proyecto
             Boolean retorno = true;
             // Se establecen las varibales y textos por utilizar en el PDF
             System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
-            List<Premio> premios = sorteo.planPremios.premios;
+            List<Premio> premios = sorteo.PlanPremios.premios;
             String tituloDocumento = "Reporte de plan de premios de sorteo";
             String datosSorteo =
-                $"Tipo: {sorteo.tipoSorteo}\n" +
-                $"Número: {sorteo.numeroSorteo}\n" +
-                $"Realizado: {sorteo.fecha.ToShortDateString()}";
+                $"Tipo: {sorteo.TipoSorteo}\n" +
+                $"Número: {sorteo.NumeroSorteo}\n" +
+                $"Realizado: {sorteo.Fecha.ToShortDateString()}";
             String tituloTabla = "Plan de premios:";
             String finalDocumento = $"\n--- Final del documento - " +
                 $"Junta de Protección Social - Reporte generado el {DateTime.Now.ToString()} ---";
@@ -194,7 +189,7 @@ namespace Proyecto
             {
                 // Se genera la ruta del archivo pdf: Escritorio + "Resultados - " + tipo + numero + ".pdf"
                 String rutaCreacionPDF = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
-                "\\PlanDePremios - " + sorteo.tipoSorteo + sorteo.numeroSorteo + ".pdf";
+                "\\PlanDePremios - " + sorteo.TipoSorteo + sorteo.NumeroSorteo + ".pdf";
 
                 // Se inicializan las variables para manipular el pdf.
                 PdfWriter writer = new PdfWriter(rutaCreacionPDF);
@@ -219,8 +214,8 @@ namespace Proyecto
                 // Se agregan los resutados a la tabla
                 foreach (Premio premio in premios)
                 {
-                    parrafoPremio = new Paragraph(premio.montoPremio.ToString());
-                    parrafoCantidad = new Paragraph(premio.cantidadPremio.ToString());
+                    parrafoPremio = new Paragraph(premio.MontoPremio.ToString("#,#", CultureInfo.InvariantCulture));
+                    parrafoCantidad = new Paragraph(premio.CantidadPremio.ToString("#,#", CultureInfo.InvariantCulture));
                     if (indice < 3)
                     {
                         parrafoPremio.SetFont(font);
@@ -254,7 +249,6 @@ namespace Proyecto
             }
             return retorno;
         }
-
 
         public List<Resultado> ObtenerTopNumerosPrimerPremio(String filtro) {
             if (filtro.Equals(""))
@@ -290,7 +284,6 @@ namespace Proyecto
             }
 
         }
-
 
         public List<PorcentajeNumeros> ObtenerPorcentajeAparicionNumeros() {
             return conexionBD.ObtenerPorcentajeAparicionNumeros();
