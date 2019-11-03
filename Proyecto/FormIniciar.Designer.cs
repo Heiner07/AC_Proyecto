@@ -34,18 +34,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbNumeroLoteria = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbLP1Numero = new System.Windows.Forms.Label();
-            this.lbLP1Serie = new System.Windows.Forms.Label();
-            this.lbLP1Monto = new System.Windows.Forms.Label();
-            this.lbLP2Monto = new System.Windows.Forms.Label();
-            this.lbLP2Serie = new System.Windows.Forms.Label();
-            this.lbLP2Numero = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lbLP3Monto = new System.Windows.Forms.Label();
-            this.lbLP3Serie = new System.Windows.Forms.Label();
-            this.lbLP3Numero = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.lbCP3Monto = new System.Windows.Forms.Label();
             this.lbCP3Serie = new System.Windows.Forms.Label();
             this.lbCP3Numero = new System.Windows.Forms.Label();
@@ -59,6 +47,18 @@
             this.lbCP1Numero = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.lbNumeroChances = new System.Windows.Forms.Label();
+            this.lbLP3Monto = new System.Windows.Forms.Label();
+            this.lbLP3Serie = new System.Windows.Forms.Label();
+            this.lbLP3Numero = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbLP2Monto = new System.Windows.Forms.Label();
+            this.lbLP2Serie = new System.Windows.Forms.Label();
+            this.lbLP2Numero = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbLP1Monto = new System.Windows.Forms.Label();
+            this.lbLP1Serie = new System.Windows.Forms.Label();
+            this.lbLP1Numero = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -149,126 +149,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(792, 428);
             this.panel3.TabIndex = 53;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(242, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 23);
-            this.label1.TabIndex = 57;
-            this.label1.Text = "Primer premio";
-            // 
-            // lbLP1Numero
-            // 
-            this.lbLP1Numero.AutoSize = true;
-            this.lbLP1Numero.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLP1Numero.Location = new System.Drawing.Point(242, 40);
-            this.lbLP1Numero.Name = "lbLP1Numero";
-            this.lbLP1Numero.Size = new System.Drawing.Size(91, 23);
-            this.lbLP1Numero.TabIndex = 58;
-            this.lbLP1Numero.Text = "Número: ";
-            // 
-            // lbLP1Serie
-            // 
-            this.lbLP1Serie.AutoSize = true;
-            this.lbLP1Serie.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLP1Serie.Location = new System.Drawing.Point(242, 72);
-            this.lbLP1Serie.Name = "lbLP1Serie";
-            this.lbLP1Serie.Size = new System.Drawing.Size(62, 23);
-            this.lbLP1Serie.TabIndex = 59;
-            this.lbLP1Serie.Text = "Serie:";
-            // 
-            // lbLP1Monto
-            // 
-            this.lbLP1Monto.AutoSize = true;
-            this.lbLP1Monto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLP1Monto.Location = new System.Drawing.Point(242, 105);
-            this.lbLP1Monto.Name = "lbLP1Monto";
-            this.lbLP1Monto.Size = new System.Drawing.Size(71, 23);
-            this.lbLP1Monto.TabIndex = 60;
-            this.lbLP1Monto.Text = "Monto:";
-            // 
-            // lbLP2Monto
-            // 
-            this.lbLP2Monto.AutoSize = true;
-            this.lbLP2Monto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLP2Monto.Location = new System.Drawing.Point(417, 105);
-            this.lbLP2Monto.Name = "lbLP2Monto";
-            this.lbLP2Monto.Size = new System.Drawing.Size(71, 23);
-            this.lbLP2Monto.TabIndex = 64;
-            this.lbLP2Monto.Text = "Monto:";
-            // 
-            // lbLP2Serie
-            // 
-            this.lbLP2Serie.AutoSize = true;
-            this.lbLP2Serie.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLP2Serie.Location = new System.Drawing.Point(417, 72);
-            this.lbLP2Serie.Name = "lbLP2Serie";
-            this.lbLP2Serie.Size = new System.Drawing.Size(62, 23);
-            this.lbLP2Serie.TabIndex = 63;
-            this.lbLP2Serie.Text = "Serie:";
-            // 
-            // lbLP2Numero
-            // 
-            this.lbLP2Numero.AutoSize = true;
-            this.lbLP2Numero.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLP2Numero.Location = new System.Drawing.Point(417, 40);
-            this.lbLP2Numero.Name = "lbLP2Numero";
-            this.lbLP2Numero.Size = new System.Drawing.Size(91, 23);
-            this.lbLP2Numero.TabIndex = 62;
-            this.lbLP2Numero.Text = "Número: ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(417, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(153, 23);
-            this.label5.TabIndex = 61;
-            this.label5.Text = "Segundo premio";
-            // 
-            // lbLP3Monto
-            // 
-            this.lbLP3Monto.AutoSize = true;
-            this.lbLP3Monto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLP3Monto.Location = new System.Drawing.Point(623, 105);
-            this.lbLP3Monto.Name = "lbLP3Monto";
-            this.lbLP3Monto.Size = new System.Drawing.Size(71, 23);
-            this.lbLP3Monto.TabIndex = 68;
-            this.lbLP3Monto.Text = "Monto:";
-            // 
-            // lbLP3Serie
-            // 
-            this.lbLP3Serie.AutoSize = true;
-            this.lbLP3Serie.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLP3Serie.Location = new System.Drawing.Point(623, 72);
-            this.lbLP3Serie.Name = "lbLP3Serie";
-            this.lbLP3Serie.Size = new System.Drawing.Size(62, 23);
-            this.lbLP3Serie.TabIndex = 67;
-            this.lbLP3Serie.Text = "Serie:";
-            // 
-            // lbLP3Numero
-            // 
-            this.lbLP3Numero.AutoSize = true;
-            this.lbLP3Numero.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLP3Numero.Location = new System.Drawing.Point(623, 40);
-            this.lbLP3Numero.Name = "lbLP3Numero";
-            this.lbLP3Numero.Size = new System.Drawing.Size(91, 23);
-            this.lbLP3Numero.TabIndex = 66;
-            this.lbLP3Numero.Text = "Número: ";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(623, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(132, 23);
-            this.label6.TabIndex = 65;
-            this.label6.Text = "Tercer premio";
             // 
             // lbCP3Monto
             // 
@@ -399,6 +279,126 @@
             this.lbNumeroChances.Size = new System.Drawing.Size(69, 23);
             this.lbNumeroChances.TabIndex = 69;
             this.lbNumeroChances.Text = "Sorteo";
+            // 
+            // lbLP3Monto
+            // 
+            this.lbLP3Monto.AutoSize = true;
+            this.lbLP3Monto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLP3Monto.Location = new System.Drawing.Point(623, 105);
+            this.lbLP3Monto.Name = "lbLP3Monto";
+            this.lbLP3Monto.Size = new System.Drawing.Size(71, 23);
+            this.lbLP3Monto.TabIndex = 68;
+            this.lbLP3Monto.Text = "Monto:";
+            // 
+            // lbLP3Serie
+            // 
+            this.lbLP3Serie.AutoSize = true;
+            this.lbLP3Serie.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLP3Serie.Location = new System.Drawing.Point(623, 72);
+            this.lbLP3Serie.Name = "lbLP3Serie";
+            this.lbLP3Serie.Size = new System.Drawing.Size(62, 23);
+            this.lbLP3Serie.TabIndex = 67;
+            this.lbLP3Serie.Text = "Serie:";
+            // 
+            // lbLP3Numero
+            // 
+            this.lbLP3Numero.AutoSize = true;
+            this.lbLP3Numero.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLP3Numero.Location = new System.Drawing.Point(623, 40);
+            this.lbLP3Numero.Name = "lbLP3Numero";
+            this.lbLP3Numero.Size = new System.Drawing.Size(91, 23);
+            this.lbLP3Numero.TabIndex = 66;
+            this.lbLP3Numero.Text = "Número: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(623, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(132, 23);
+            this.label6.TabIndex = 65;
+            this.label6.Text = "Tercer premio";
+            // 
+            // lbLP2Monto
+            // 
+            this.lbLP2Monto.AutoSize = true;
+            this.lbLP2Monto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLP2Monto.Location = new System.Drawing.Point(417, 105);
+            this.lbLP2Monto.Name = "lbLP2Monto";
+            this.lbLP2Monto.Size = new System.Drawing.Size(71, 23);
+            this.lbLP2Monto.TabIndex = 64;
+            this.lbLP2Monto.Text = "Monto:";
+            // 
+            // lbLP2Serie
+            // 
+            this.lbLP2Serie.AutoSize = true;
+            this.lbLP2Serie.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLP2Serie.Location = new System.Drawing.Point(417, 72);
+            this.lbLP2Serie.Name = "lbLP2Serie";
+            this.lbLP2Serie.Size = new System.Drawing.Size(62, 23);
+            this.lbLP2Serie.TabIndex = 63;
+            this.lbLP2Serie.Text = "Serie:";
+            // 
+            // lbLP2Numero
+            // 
+            this.lbLP2Numero.AutoSize = true;
+            this.lbLP2Numero.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLP2Numero.Location = new System.Drawing.Point(417, 40);
+            this.lbLP2Numero.Name = "lbLP2Numero";
+            this.lbLP2Numero.Size = new System.Drawing.Size(91, 23);
+            this.lbLP2Numero.TabIndex = 62;
+            this.lbLP2Numero.Text = "Número: ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(417, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(153, 23);
+            this.label5.TabIndex = 61;
+            this.label5.Text = "Segundo premio";
+            // 
+            // lbLP1Monto
+            // 
+            this.lbLP1Monto.AutoSize = true;
+            this.lbLP1Monto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLP1Monto.Location = new System.Drawing.Point(239, 105);
+            this.lbLP1Monto.Name = "lbLP1Monto";
+            this.lbLP1Monto.Size = new System.Drawing.Size(71, 23);
+            this.lbLP1Monto.TabIndex = 60;
+            this.lbLP1Monto.Text = "Monto:";
+            // 
+            // lbLP1Serie
+            // 
+            this.lbLP1Serie.AutoSize = true;
+            this.lbLP1Serie.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLP1Serie.Location = new System.Drawing.Point(239, 72);
+            this.lbLP1Serie.Name = "lbLP1Serie";
+            this.lbLP1Serie.Size = new System.Drawing.Size(62, 23);
+            this.lbLP1Serie.TabIndex = 59;
+            this.lbLP1Serie.Text = "Serie:";
+            // 
+            // lbLP1Numero
+            // 
+            this.lbLP1Numero.AutoSize = true;
+            this.lbLP1Numero.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLP1Numero.Location = new System.Drawing.Point(239, 40);
+            this.lbLP1Numero.Name = "lbLP1Numero";
+            this.lbLP1Numero.Size = new System.Drawing.Size(91, 23);
+            this.lbLP1Numero.TabIndex = 58;
+            this.lbLP1Numero.Text = "Número: ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(242, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 23);
+            this.label1.TabIndex = 57;
+            this.label1.Text = "Primer premio";
             // 
             // FormIniciar
             // 

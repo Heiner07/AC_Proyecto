@@ -254,5 +254,46 @@ namespace Proyecto
             }
             return retorno;
         }
+
+
+        public List<Resultado> ObtenerTopNumerosPrimerPremio(String filtro) {
+            if (filtro.Equals(""))
+            {
+                return conexionBD.ObtenerTopNumerosPrimerPremio();
+            }
+            else
+            {
+                return conexionBD.ObtenerTopFiltros("Top5NumerosConPrimerPremioFiltro", filtro);
+            }
+        }
+
+        public List<Resultado> ObtenerTopNumerosMasDineroRepartido(String filtro)
+        {
+            if (filtro.Equals(""))
+            {
+                return conexionBD.ObtenerTopNumerosMasDineroRepartido();
+            }
+            else {
+                return conexionBD.ObtenerTopFiltros("Top5NumerosMasDineroRepartidoFiltro",filtro);
+            }
+            
+        }
+
+        public List<Resultado> ObtenerTopNumerosMasJugados(String filtro)
+        {
+            if (filtro.Equals(""))
+            {
+                return conexionBD.ObtenerTopNumerosMasJugados();
+            }
+            else {
+                return conexionBD.ObtenerTopFiltros("Top10NumerosMasJugadosFiltro", filtro);
+            }
+
+        }
+
+
+        public List<PorcentajeNumeros> ObtenerPorcentajeAparicionNumeros() {
+            return conexionBD.ObtenerPorcentajeAparicionNumeros();
+        }
     }
 }
