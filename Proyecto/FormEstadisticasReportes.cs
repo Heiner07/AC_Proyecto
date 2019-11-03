@@ -15,13 +15,16 @@ namespace Proyecto
         SistemaLoteriaChances sistemaLoteriaChances;
         DataTable dtSorteos;
         List<Sorteo> sorteos;
-        String filtroTipoSorteos;
+     
+        String filtroTipoSorteos, filtroEstadisticas;
 
         public FormEstadisticasReportes(SistemaLoteriaChances sistemaLoteriaChances)
         {
             InitializeComponent();
             this.sistemaLoteriaChances = sistemaLoteriaChances;
             this.filtroTipoSorteos = "";
+            this.filtroEstadisticas = "";
+           
             inicializarTablas();
             EstablecerValoresTablaSorteos();
         }
@@ -83,6 +86,7 @@ namespace Proyecto
 
         private void inicializarTablas()
         {
+            
             inicializarTablaNumerosMasJugados();
             inicializarTablaNumerosMasGanadoresPrimer();
             inicializarTablaNumerosConMayorDineroRepartido();
@@ -92,36 +96,52 @@ namespace Proyecto
         private void inicializarTablaNumerosMasJugados()
         {
             DataTable dtNumerosMasJugados = new DataTable();
-            dtNumerosMasJugados.Columns.Add("Posición", typeof(int));
             dtNumerosMasJugados.Columns.Add("Número", typeof(int));
-            for (int i = 0; i < 10; i++)
+            dtNumerosMasJugados.Columns.Add("Cantidad", typeof(int));
+            List<Resultado> numerosMasJugados = sistemaLoteriaChances.ObtenerTopNumerosMasJugados(filtroEstadisticas);
+            if (numerosMasJugados != null)
             {
-                dtNumerosMasJugados.Rows.Add(new object[] { i+1, i * i + i });
-            }dgvNumerosMasJugados.DataSource = dtNumerosMasJugados;
+                int largoNumerosMasJugados = numerosMasJugados.Count;
+                for (int i = 0; i < largoNumerosMasJugados; i++)
+                {
+                    dtNumerosMasJugados.Rows.Add(new object[] { numerosMasJugados[i].numeroGanador, numerosMasJugados[i].montoGanado });
+                }
+                dgvNumerosMasJugados.DataSource = dtNumerosMasJugados;
+            }
         }
 
         private void inicializarTablaNumerosMasGanadoresPrimer()
         {
             DataTable dtNumerosMasGanadores = new DataTable();
-            dtNumerosMasGanadores.Columns.Add("Posición", typeof(int));
             dtNumerosMasGanadores.Columns.Add("Número", typeof(int));
-            for (int i = 0; i < 5; i++)
+            dtNumerosMasGanadores.Columns.Add("Cantidad", typeof(int));
+            List<Resultado> numerosGanadores = sistemaLoteriaChances.ObtenerTopNumerosPrimerPremio(filtroEstadisticas);
+            if (numerosGanadores != null)
             {
-                dtNumerosMasGanadores.Rows.Add(new object[] { i + 1, i * i + i });
+                int largoNumerosGanadores = numerosGanadores.Count;
+                for (int i = 0; i < largoNumerosGanadores; i++)
+                {
+                    dtNumerosMasGanadores.Rows.Add(new object[] { numerosGanadores[i].numeroGanador, numerosGanadores[i].montoGanado});
+                }
+                dgvTop5GanadoresPrimer.DataSource = dtNumerosMasGanadores;
             }
-            dgvTop5GanadoresPrimer.DataSource = dtNumerosMasGanadores;
         }
 
         private void inicializarTablaNumerosConMayorDineroRepartido()
         {
             DataTable dtNumerosConMayorDineroRepartido = new DataTable();
-            dtNumerosConMayorDineroRepartido.Columns.Add("Posición", typeof(int));
             dtNumerosConMayorDineroRepartido.Columns.Add("Número", typeof(int));
-            for (int i = 0; i < 5; i++)
+            dtNumerosConMayorDineroRepartido.Columns.Add("Monto repartido", typeof(int));
+            List<Resultado> numerosMayorDinero = sistemaLoteriaChances.ObtenerTopNumerosMasDineroRepartido(filtroEstadisticas);
+            if (numerosMayorDinero != null)
             {
-                dtNumerosConMayorDineroRepartido.Rows.Add(new object[] { i + 1, i * i + i });
+                int largoNumerosMayorDinero = numerosMayorDinero.Count;
+                for (int i = 0; i < largoNumerosMayorDinero; i++)
+                {
+                    dtNumerosConMayorDineroRepartido.Rows.Add(new object[] { numerosMayorDinero[i].numeroGanador, numerosMayorDinero[i].montoGanado });
+                }
+                dgvTopNumeroDineroRepartido.DataSource = dtNumerosConMayorDineroRepartido;
             }
-            dgvTopNumeroDineroRepartido.DataSource = dtNumerosConMayorDineroRepartido;
         }
 
         private void inicializarTablaPorcentajeNumeros()
@@ -139,23 +159,30 @@ namespace Proyecto
         private void tbBusqueda_TextChanged(object sender, EventArgs e)
         {
             dtSorteos.DefaultView.RowFilter = $"{filtroTipoSorteos}Número LIKE '{tbBusqueda.Text}%'";
+            inicializarTablas();
         }
 
+
+
+     
         private void rbFiltroTodos_CheckedChanged(object sender, EventArgs e)
         {
             filtroTipoSorteos = "";
+            filtroEstadisticas = "";
             tbBusqueda_TextChanged(sender, e);
         }
 
         private void rbFiltroLoteria_CheckedChanged(object sender, EventArgs e)
         {
             filtroTipoSorteos = "Tipo = 'Lotería' AND ";
+            filtroEstadisticas = "Lotería";
             tbBusqueda_TextChanged(sender, e);
         }
 
         private void rbFiltroChances_CheckedChanged(object sender, EventArgs e)
         {
             filtroTipoSorteos = "Tipo = 'Chances' AND ";
+            filtroEstadisticas = "Chances";
             tbBusqueda_TextChanged(sender, e);
         }
 

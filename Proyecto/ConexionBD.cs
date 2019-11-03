@@ -18,13 +18,14 @@ namespace Proyecto
          * S: El objeto usuario con los datos correspondientes.
          * R: Debe recibir solo dos parámetros
          */
-        public Usuario IniciarSesion(String nombre, String contrasenia) {
+        public Usuario IniciarSesion(String nombre, String contrasenia)
+        {
             Usuario usuario = null;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             SqlDataReader obtenerDatos = null;
             SqlCommand cmd = null;
             int rol = -1;
-            String consultaUsuario= "select Rol from Usuarios where NombreUsuario=@nombre and Contrasenia=@contrasenia";
+            String consultaUsuario = "select Rol from Usuarios where NombreUsuario=@nombre and Contrasenia=@contrasenia";
             try
             {
                 conexion.Open();
@@ -67,10 +68,11 @@ namespace Proyecto
          * S: El objeto usuario con los datos correspondientes.
          * R: Debe recibir solo dos parámetros
          */
-        public Boolean InsertarSorteo(Sorteo nuevoSorteo) {
+        public Boolean InsertarSorteo(Sorteo nuevoSorteo)
+        {
             Boolean retorno = true;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
-            List <Premio> premios = new List<Premio>();
+            List<Premio> premios = new List<Premio>();
             premios = nuevoSorteo.ObtenerPlanPremios.ObtenerPremios;
             try
             {
@@ -100,7 +102,8 @@ namespace Proyecto
                     cmd = new SqlCommand("InsertarPlanDePremios", conexion);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Clear();
-                    foreach (Premio premio in premios) {
+                    foreach (Premio premio in premios)
+                    {
                         cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = idSorteo;
                         cmd.Parameters.Add("@Monto", SqlDbType.Int).Value = premio.ObtenerMonto;
                         cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = premio.ObtenerCantidad;
@@ -109,7 +112,7 @@ namespace Proyecto
                     }
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 retorno = false;
             }
@@ -214,10 +217,11 @@ namespace Proyecto
             return sorteos;
         }
 
-        public Boolean EliminarSorteo(Sorteo sorteo) {
+        public Boolean EliminarSorteo(Sorteo sorteo)
+        {
             Boolean retorno = true;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
-            SqlCommand cmd;   
+            SqlCommand cmd;
             try
             {
                 conexion.Open();
@@ -226,7 +230,7 @@ namespace Proyecto
                 cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = sorteo.ObtenerIdSorteo;
                 cmd.ExecuteNonQuery();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 retorno = false;
             }
@@ -246,7 +250,7 @@ namespace Proyecto
             try
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("ActualizarSorteo", conexion);               
+                SqlCommand cmd = new SqlCommand("ActualizarSorteo", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Tipo", SqlDbType.NVarChar).Value = sorteo.ObtenerTipoSorteo;
                 cmd.Parameters.Add("@Fecha", SqlDbType.DateTime).Value = sorteo.ObtenerFecha;
@@ -254,7 +258,7 @@ namespace Proyecto
                 cmd.Parameters.Add("@CantidadFracciones", SqlDbType.Int).Value = sorteo.ObtenerCantidadFracciones;
                 cmd.Parameters.Add("@PrecioFraccion", SqlDbType.Int).Value = sorteo.ObtenerPrecioFraccion;
                 cmd.Parameters.Add("@Leyenda", SqlDbType.NVarChar).Value = sorteo.ObtenerLeyenda;
-                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = sorteo.ObtenerIdSorteo;          
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = sorteo.ObtenerIdSorteo;
                 cmd.ExecuteNonQuery();
                 conexion.Close();
                 conexion.Open();
@@ -263,7 +267,7 @@ namespace Proyecto
                 cmd.Parameters.Add("@IdSorteo", SqlDbType.Int).Value = sorteo.ObtenerIdSorteo;
                 cmd.ExecuteNonQuery();
                 if (premios != null)
-                {                  
+                {
                     conexion.Close();
                     conexion.Open();
                     cmd = new SqlCommand("InsertarPlanDePremios", conexion);
@@ -348,6 +352,132 @@ namespace Proyecto
             }
             return retorno;
         }
+
+        public List<Resultado> ObtenerTopNumerosPrimerPremio()
+        {
+            List<Resultado> resultados = new List<Resultado>();
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Top5NumerosConPrimerPremio", conexion)
+            {
+                CommandType = CommandType.Text
+            };
+            try
+            {
+                conexion.Open();
+                SqlDataReader lectorDatos = cmd.ExecuteReader();
+                while (lectorDatos.Read())
+                {
+                    resultados.Add(new Resultado(lectorDatos.GetInt32(0), 100, lectorDatos.GetInt32(1)));
+                }
+            }
+            catch (Exception)
+            {
+                return resultados;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return resultados;
+        }
+
+
+
+        public List<Resultado> ObtenerTopNumerosMasDineroRepartido()
+        {
+            List<Resultado> resultados = new List<Resultado>();
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Top5NumerosMasDineroRepartido", conexion)
+            {
+                CommandType = CommandType.Text
+            };
+            try
+            {
+                conexion.Open();
+                SqlDataReader lectorDatos = cmd.ExecuteReader();
+                while (lectorDatos.Read())
+                {
+                    resultados.Add(new Resultado(lectorDatos.GetInt32(0), 100, lectorDatos.GetInt32(1)));
+                }
+            }
+            catch (Exception)
+            {
+                return resultados;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return resultados;
+        }
+        public List<Resultado> ObtenerTopFiltros(String procedimiento,String filtro)
+        {
+            List<Resultado> resultados = new List<Resultado>();
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            SqlCommand cmdResultados = new SqlCommand(procedimiento, conexion)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            try
+            {
+                conexion.Open();
+                cmdResultados.Parameters.Add("@Tipo", SqlDbType.NVarChar).Value = filtro;
+                SqlDataReader lectorResultados = cmdResultados.ExecuteReader();
+                while (lectorResultados.Read())
+                {
+                    resultados.Add(new Resultado((int)lectorResultados[0], 100, (int)lectorResultados[1]));
+                }
+                lectorResultados.Close();
+                return resultados;
+            }
+            catch (Exception)
+            {
+                return resultados;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
+
+
+
+        }
+
+
+
+
+
+        public List<Resultado> ObtenerTopNumerosMasJugados()
+        {
+            List<Resultado> resultados = new List<Resultado>();
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Top10NumerosMasJugados", conexion)
+            {
+                CommandType = CommandType.Text
+            };
+            try
+            {
+                conexion.Open();
+                SqlDataReader lectorDatos = cmd.ExecuteReader();
+                while (lectorDatos.Read())
+                {
+                    resultados.Add(new Resultado(lectorDatos.GetInt32(0), 100, lectorDatos.GetInt32(1)));
+                }
+            }
+            catch (Exception)
+            {
+                return resultados;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return resultados;
+        }
+
+
+
     }
 
 
