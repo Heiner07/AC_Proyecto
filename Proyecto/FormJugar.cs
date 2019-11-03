@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Speech.Synthesis;
 
 namespace Proyecto
 {
@@ -147,6 +148,8 @@ namespace Proyecto
         private void jugarSorteo()
         {
             // Se establecen los valores de los componentes de la interfaz para la acción de jugar
+            SpeechSynthesizer generadorVoz = new SpeechSynthesizer();
+            generadorVoz.SetOutputToDefaultAudioDevice();
             btOmitirAnimacion.Invoke((MethodInvoker)(() => btOmitirAnimacion.Enabled = true));
             dgvSorteos.Invoke((MethodInvoker)(() => dgvSorteos.Enabled = false));
             lbJugandoSorteo.Invoke((MethodInvoker)(() => lbJugandoSorteo.Text =
@@ -165,6 +168,7 @@ namespace Proyecto
                 if (!omitirAnimacion)
                 {
                     escribirTextBoxSerie(Convert.ToString(resultado.serieGanadora));
+                    generadorVoz.Speak($"Serie {resultado.serieGanadora}");
                     Thread.Sleep(2600);
                 }
 
@@ -172,6 +176,7 @@ namespace Proyecto
                 if (!omitirAnimacion)
                 {
                     escribirTextBoxNumero(Convert.ToString(resultado.numeroGanador));
+                    generadorVoz.Speak($"Número {resultado.numeroGanador}");
                     Thread.Sleep(2600);
                 }
 
@@ -179,6 +184,7 @@ namespace Proyecto
                 if (!omitirAnimacion)
                 {
                     escribirTextBoxPremio(Convert.ToString(resultado.montoGanado));
+                    generadorVoz.Speak($"Premio {resultado.montoGanado}");
                     Thread.Sleep(2000);
                 }
 
