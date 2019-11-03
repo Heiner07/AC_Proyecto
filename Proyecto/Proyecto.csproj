@@ -227,7 +227,6 @@
     <None Include="Resources\BomboLoteria.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\bola-icon.png" />
     <Content Include="Resources\bomboGif.gif" />
     <None Include="Resources\logoChances.png" />
     <None Include="Resources\LogoJPSNegro.png" />

@@ -148,17 +148,38 @@ namespace Proyecto
         {
             DataTable dtProcentajeNumeros = new DataTable();
             dtProcentajeNumeros.Columns.Add("Número", typeof(int));
-            dtProcentajeNumeros.Columns.Add("Porcentaje", typeof(float));
+            dtProcentajeNumeros.Columns.Add("Porcentaje", typeof(Double));
             List<PorcentajeNumeros> porcentajeNumeros = sistemaLoteriaChances.ObtenerPorcentajeAparicionNumeros();
             if (porcentajeNumeros != null)
             {
-                //QUEDE AQUI
-                for (int i = 0; i < 99; i++)
+                for (int i = 0; i < 100; i++)
                 {
-                    dtProcentajeNumeros.Rows.Add(new object[] { i + 1, 1.0 });
+                    Console.WriteLine(porcentajeNumeros.Count);
+                    PorcentajeNumeros resultado = porcentajeNumeros.Find(
+                    delegate (PorcentajeNumeros pn)
+                    {
+                        return pn.numero == i;
+                    }
+                    );
+                    if (resultado != null)
+                    {
+                        dtProcentajeNumeros.Rows.Add(new object[] { i, resultado.porcentaje });
+                    }
+                    else { dtProcentajeNumeros.Rows.Add(new object[] { i, 0}); }
+
                 }
-                dgvPorcentajeAparicion.DataSource = dtProcentajeNumeros;
+                
             }
+            else
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                     dtProcentajeNumeros.Rows.Add(new object[] { i, 0 }); 
+
+                }
+
+            }
+            dgvPorcentajeAparicion.DataSource = dtProcentajeNumeros;
         }
 
         private void tbBusqueda_TextChanged(object sender, EventArgs e)

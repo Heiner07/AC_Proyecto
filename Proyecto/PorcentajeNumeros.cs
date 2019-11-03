@@ -9,7 +9,7 @@ namespace Proyecto
     public class PorcentajeNumeros
     {
         public int numero { get; set; }
-        public float porcentaje { get; set; }
+        public Double porcentaje { get; set; }
 
 
     }
