@@ -4,8 +4,8 @@ namespace Proyecto
 {
     public class PorcentajeNumeros
     {
-        public int Numero { get; set; }
-        public Double Porcentaje { get; set; }
+        public int Numero;
+        public Double Porcentaje;
 
 
     }

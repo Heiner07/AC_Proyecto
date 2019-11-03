@@ -8,7 +8,7 @@ namespace Proyecto
 {
     public class PlanPremios
     {
-        public int IdSorteo { get; set; }
+        public int IdSorteo;
         public List<Resultado> resultados = new List<Resultado>();
         public List<Premio> premios = new List<Premio>();
 

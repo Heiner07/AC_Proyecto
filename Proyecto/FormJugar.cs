@@ -154,7 +154,7 @@ namespace Proyecto
 
             // Se le indica al sorteo que genere los resultados
             sorteoSeleccionado.PlanPremios.GenerarResultados(sorteoSeleccionado.TipoSorteo);
-
+            int cantidadMayor = sorteoSeleccionado.PlanPremios.premios[0].ObtenerMonto;
             // Se realiza la ejecución (animación) en la ventana, mostrando los resultados.
             Invoke((MethodInvoker)(() => dtResultados.Clear()));
             foreach (Resultado resultado in sorteoSeleccionado.PlanPremios.resultados)
@@ -168,7 +168,7 @@ namespace Proyecto
                 if (!omitirAnimacion)
                 {
                     EscribirTextBoxSerie(serie);
-                    generadorVoz.Speak($"Serie {resultado.SerieGanadora}");
+                    generadorVoz.Speak($"Serie {serie}");
                     Thread.Sleep(2600);
                 }
 
@@ -176,15 +176,23 @@ namespace Proyecto
                 if (!omitirAnimacion)
                 {
                     EscribirTextBoxNumero(numero);
-                    generadorVoz.Speak($"Número {resultado.NumeroGanador}");
+                    generadorVoz.Speak($"Número {numero}");
                     Thread.Sleep(2600);
                 }
 
                 pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
                 if (!omitirAnimacion)
                 {
-                    EscribirTextBoxPremio(monto);
-                    generadorVoz.Speak($"Premio {resultado.MontoGanado}");
+                    if (cantidadMayor == resultado.MontoGanado)
+                    {
+                        EscribirTextBoxPremio("PREMIO MAYOR");
+                        generadorVoz.Speak($"PREMIO MAYOR {monto}");
+                    }
+                    else {
+                        EscribirTextBoxPremio(monto);
+                        generadorVoz.Speak($"Premio {monto}");
+                        }
+                    
                     Thread.Sleep(2000);
                 }
 

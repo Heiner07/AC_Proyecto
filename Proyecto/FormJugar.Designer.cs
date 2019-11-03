@@ -31,8 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormJugar));
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbPremio = new System.Windows.Forms.Label();
+            this.lbSerie = new System.Windows.Forms.Label();
             this.lbNum = new System.Windows.Forms.Label();
-            this.lbJugandoSorteo = new System.Windows.Forms.Label();
             this.btOmitirAnimacion = new System.Windows.Forms.Button();
             this.dgvResultadosSorteo = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,10 +52,9 @@
             this.rbFiltroChances = new System.Windows.Forms.RadioButton();
             this.rbFiltroLoteria = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbJugandoSorteo = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.lbSerie = new System.Windows.Forms.Label();
-            this.lbPremio = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultadosSorteo)).BeginInit();
@@ -98,6 +98,33 @@
             this.panel2.Size = new System.Drawing.Size(518, 342);
             this.panel2.TabIndex = 3;
             // 
+            // lbPremio
+            // 
+            this.lbPremio.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lbPremio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbPremio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPremio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbPremio.Image = ((System.Drawing.Image)(resources.GetObject("lbPremio.Image")));
+            this.lbPremio.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbPremio.Location = new System.Drawing.Point(260, 87);
+            this.lbPremio.Name = "lbPremio";
+            this.lbPremio.Size = new System.Drawing.Size(76, 74);
+            this.lbPremio.TabIndex = 51;
+            this.lbPremio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbSerie
+            // 
+            this.lbSerie.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lbSerie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSerie.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbSerie.Image = ((System.Drawing.Image)(resources.GetObject("lbSerie.Image")));
+            this.lbSerie.Location = new System.Drawing.Point(39, 87);
+            this.lbSerie.Name = "lbSerie";
+            this.lbSerie.Size = new System.Drawing.Size(89, 74);
+            this.lbSerie.TabIndex = 50;
+            this.lbSerie.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lbNum
             // 
             this.lbNum.Cursor = System.Windows.Forms.Cursors.Default;
@@ -110,16 +137,6 @@
             this.lbNum.Size = new System.Drawing.Size(89, 74);
             this.lbNum.TabIndex = 49;
             this.lbNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbJugandoSorteo
-            // 
-            this.lbJugandoSorteo.AutoSize = true;
-            this.lbJugandoSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbJugandoSorteo.Location = new System.Drawing.Point(8, 269);
-            this.lbJugandoSorteo.Name = "lbJugandoSorteo";
-            this.lbJugandoSorteo.Size = new System.Drawing.Size(14, 19);
-            this.lbJugandoSorteo.TabIndex = 47;
-            this.lbJugandoSorteo.Text = " ";
             // 
             // btOmitirAnimacion
             // 
@@ -341,6 +358,16 @@
             this.label1.TabIndex = 36;
             this.label1.Text = "Tipo de sorteo";
             // 
+            // lbJugandoSorteo
+            // 
+            this.lbJugandoSorteo.AutoSize = true;
+            this.lbJugandoSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbJugandoSorteo.Location = new System.Drawing.Point(8, 269);
+            this.lbJugandoSorteo.Name = "lbJugandoSorteo";
+            this.lbJugandoSorteo.Size = new System.Drawing.Size(14, 19);
+            this.lbJugandoSorteo.TabIndex = 47;
+            this.lbJugandoSorteo.Text = " ";
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Brown;
@@ -358,33 +385,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(798, 115);
             this.panel5.TabIndex = 48;
-            // 
-            // lbSerie
-            // 
-            this.lbSerie.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lbSerie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSerie.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbSerie.Image = ((System.Drawing.Image)(resources.GetObject("lbSerie.Image")));
-            this.lbSerie.Location = new System.Drawing.Point(39, 87);
-            this.lbSerie.Name = "lbSerie";
-            this.lbSerie.Size = new System.Drawing.Size(89, 74);
-            this.lbSerie.TabIndex = 50;
-            this.lbSerie.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbPremio
-            // 
-            this.lbPremio.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lbPremio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbPremio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPremio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbPremio.Image = ((System.Drawing.Image)(resources.GetObject("lbPremio.Image")));
-            this.lbPremio.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lbPremio.Location = new System.Drawing.Point(248, 87);
-            this.lbPremio.Name = "lbPremio";
-            this.lbPremio.Size = new System.Drawing.Size(95, 74);
-            this.lbPremio.TabIndex = 51;
-            this.lbPremio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormJugar
             // 

@@ -21,15 +21,15 @@ namespace Proyecto
                 lbNumeroLoteria.Text = $"Sorteo {sorteoLoteria.NumeroSorteo} - " +
                     $"{sorteoLoteria.Fecha.ToShortDateString()}";
                 // Se establecen los valores del primer premio.
-                lbLP1Num.Text = $"Número:{resultados[0].NumeroGanador}";
+                lbLP1Num.Text = $"{resultados[0].NumeroGanador}";
                 lbLP1Serie.Text = $"Serie:{resultados[0].SerieGanadora}";
                 lbLP1Monto.Text = $"Monto:{resultados[0].MontoGanado}";
                 // Se establecen los valores del segundo premio.
-                lbLP2Num.Text = $"Número:{resultados[1].NumeroGanador}";
+                lbLP2Num.Text = $"{resultados[1].NumeroGanador}";
                 lbLP2Serie.Text = $"Serie:{resultados[1].SerieGanadora}";
                 lbLP2Monto.Text = $"Monto:{resultados[1].MontoGanado}";
                 // Se establecen los valores del tercer premio.
-                lbLP3Num.Text = $"Número:{resultados[2].NumeroGanador}";
+                lbLP3Num.Text = $"{resultados[2].NumeroGanador}";
                 lbLP3Serie.Text = $"Serie:{resultados[2].SerieGanadora}";
                 lbLP3Monto.Text = $"Monto:{resultados[2].MontoGanado}";
             }
@@ -53,15 +53,15 @@ namespace Proyecto
                 lbNumeroChances.Text = $"Sorteo {sorteoChances.NumeroSorteo} - " +
                     $"{sorteoChances.Fecha.ToShortDateString()}";
                 // Se establecen los valores del primer premio.
-                lbCP1Num.Text = $"Número:{resultados[0].NumeroGanador}";
+                lbCP1Num.Text = $"{resultados[0].NumeroGanador}";
                 lbCP1Serie.Text = $"Serie:{resultados[0].SerieGanadora}";
                 lbCP1Monto.Text = $"Monto:{resultados[0].MontoGanado}";
                 // Se establecen los valores del segundo premio.
-                lbCP2Num.Text = $"Número:{resultados[1].NumeroGanador}";
+                lbCP2Num.Text = $"{resultados[1].NumeroGanador}";
                 lbCP2Serie.Text = $"Serie:{resultados[1].SerieGanadora}";
                 lbCP2Monto.Text = $"Monto:{resultados[1].MontoGanado}";
                 // Se establecen los valores del tercer premio.
-                lbCP3Num.Text = $"Número:{resultados[2].NumeroGanador}";
+                lbCP3Num.Text = $"{resultados[2].NumeroGanador}";
                 lbCP3Serie.Text = $"Serie:{resultados[2].SerieGanadora}";
                 lbCP3Monto.Text = $"Monto:{resultados[2].MontoGanado}";
             }
