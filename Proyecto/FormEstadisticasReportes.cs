@@ -149,11 +149,16 @@ namespace Proyecto
             DataTable dtProcentajeNumeros = new DataTable();
             dtProcentajeNumeros.Columns.Add("Número", typeof(int));
             dtProcentajeNumeros.Columns.Add("Porcentaje", typeof(float));
-            for (int i = 0; i < 100; i++)
+            List<PorcentajeNumeros> porcentajeNumeros = sistemaLoteriaChances.ObtenerPorcentajeAparicionNumeros();
+            if (porcentajeNumeros != null)
             {
-                dtProcentajeNumeros.Rows.Add(new object[] { i + 1, 1.0 });
+                //QUEDE AQUI
+                for (int i = 0; i < 99; i++)
+                {
+                    dtProcentajeNumeros.Rows.Add(new object[] { i + 1, 1.0 });
+                }
+                dgvPorcentajeAparicion.DataSource = dtProcentajeNumeros;
             }
-            dgvPorcentajeAparicion.DataSource = dtProcentajeNumeros;
         }
 
         private void tbBusqueda_TextChanged(object sender, EventArgs e)

@@ -478,6 +478,36 @@ namespace Proyecto
 
 
 
+        public List<PorcentajeNumeros> ObtenerPorcentajeAparicionNumeros()
+        {
+            List<PorcentajeNumeros> resultados = new List<PorcentajeNumeros>();
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM PorcentajeAparicionNumeros", conexion)
+            {
+                CommandType = CommandType.Text
+            };
+            try
+            {
+                conexion.Open();
+                SqlDataReader lectorDatos = cmd.ExecuteReader();
+                while (lectorDatos.Read())
+                {
+                    resultados.Add(new PorcentajeNumeros() { numero = lectorDatos.GetInt32(0), porcentaje = lectorDatos.GetInt32(1) });
+                }
+            }
+            catch (Exception)
+            {
+                return resultados;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return resultados;
+        }
+
+
+
     }
 
 

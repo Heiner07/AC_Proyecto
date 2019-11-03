@@ -289,6 +289,11 @@ namespace Proyecto
                 return conexionBD.ObtenerTopFiltros("Top10NumerosMasJugadosFiltro", filtro);
             }
 
-}
+        }
+
+
+        public List<PorcentajeNumeros> ObtenerPorcentajeAparicionNumeros() {
+            return conexionBD.ObtenerPorcentajeAparicionNumeros();
+        }
     }
 }

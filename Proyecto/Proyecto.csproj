@@ -125,6 +125,7 @@
       <DependentUpon>FormResultados.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanPremios.cs" />
+    <Compile Include="PorcentajeNumeros.cs" />
     <Compile Include="Premio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
