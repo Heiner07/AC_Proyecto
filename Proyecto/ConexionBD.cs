@@ -490,10 +490,8 @@ namespace Proyecto
             {
                 conexion.Open();
                 SqlDataReader lectorDatos = cmd.ExecuteReader();
-                Console.WriteLine("ENTRA");
                 while (lectorDatos.Read())
                 {
-                    Console.WriteLine("numero: "+ lectorDatos.GetInt32(0)+"   "+ lectorDatos.GetDouble(1));
                     resultados.Add(new PorcentajeNumeros() { numero = lectorDatos.GetInt32(0), porcentaje = lectorDatos.GetDouble(1) });
                 }
             }
