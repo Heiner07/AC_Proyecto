@@ -4,8 +4,8 @@ namespace Proyecto
 {
     public class Usuario
     {
-        public String NombreUsuario { get; set; }
-        public int Rol { get; set; }
+        public String NombreUsuario;
+        public int Rol;
 
         
         public Usuario(String nombreUsuario, int rol) {
