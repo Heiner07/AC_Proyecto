@@ -107,8 +107,8 @@ namespace Proyecto
         private void EscribirTextBoxNumero(String numero) {
             if (InvokeRequired)
             {
-                tbNumero.Invoke((MethodInvoker)(() => tbNumero.Text = numero));
-               
+                lbNum.Invoke((MethodInvoker)(() => lbNum.Text = numero));
+                
             }
 
         }
@@ -117,7 +117,7 @@ namespace Proyecto
             if (InvokeRequired)
             {
                
-                tbSerie.Invoke((MethodInvoker)(() => tbSerie.Text = serie));
+                lbSerie.Invoke((MethodInvoker)(() => lbSerie.Text = serie));
             }
 
         }
@@ -126,7 +126,9 @@ namespace Proyecto
             if (InvokeRequired)
             {
                 
-                tbPremio.Invoke((MethodInvoker)(() => tbPremio.Text = premio));
+                lbPremio.Invoke((MethodInvoker)(() => lbPremio.Text = premio));
+
+
             }
 
         }

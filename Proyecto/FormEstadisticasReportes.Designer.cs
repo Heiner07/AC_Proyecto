@@ -49,6 +49,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSorteos)).BeginInit();
@@ -57,6 +59,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTop5GanadoresPrimer)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPorcentajeAparicion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -187,6 +191,7 @@
             this.dgvSorteos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvSorteos.Name = "dgvSorteos";
             this.dgvSorteos.ReadOnly = true;
+            this.dgvSorteos.RowHeadersWidth = 51;
             this.dgvSorteos.RowTemplate.Height = 24;
             this.dgvSorteos.Size = new System.Drawing.Size(604, 196);
             this.dgvSorteos.TabIndex = 47;
@@ -204,6 +209,7 @@
             this.dgvNumerosMasJugados.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvNumerosMasJugados.Name = "dgvNumerosMasJugados";
             this.dgvNumerosMasJugados.ReadOnly = true;
+            this.dgvNumerosMasJugados.RowHeadersWidth = 51;
             this.dgvNumerosMasJugados.RowTemplate.Height = 24;
             this.dgvNumerosMasJugados.Size = new System.Drawing.Size(245, 326);
             this.dgvNumerosMasJugados.TabIndex = 46;
@@ -230,6 +236,7 @@
             this.dgvTopNumeroDineroRepartido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTopNumeroDineroRepartido.Name = "dgvTopNumeroDineroRepartido";
             this.dgvTopNumeroDineroRepartido.ReadOnly = true;
+            this.dgvTopNumeroDineroRepartido.RowHeadersWidth = 51;
             this.dgvTopNumeroDineroRepartido.RowTemplate.Height = 24;
             this.dgvTopNumeroDineroRepartido.Size = new System.Drawing.Size(320, 150);
             this.dgvTopNumeroDineroRepartido.TabIndex = 44;
@@ -256,6 +263,7 @@
             this.dgvTop5GanadoresPrimer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTop5GanadoresPrimer.Name = "dgvTop5GanadoresPrimer";
             this.dgvTop5GanadoresPrimer.ReadOnly = true;
+            this.dgvTop5GanadoresPrimer.RowHeadersWidth = 51;
             this.dgvTop5GanadoresPrimer.RowTemplate.Height = 24;
             this.dgvTop5GanadoresPrimer.Size = new System.Drawing.Size(320, 150);
             this.dgvTop5GanadoresPrimer.TabIndex = 42;
@@ -272,6 +280,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.pictureBox2);
+            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.dgvPorcentajeAparicion);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
@@ -293,10 +303,11 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvPorcentajeAparicion.BackgroundColor = System.Drawing.Color.White;
             this.dgvPorcentajeAparicion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPorcentajeAparicion.Location = new System.Drawing.Point(272, 35);
+            this.dgvPorcentajeAparicion.Location = new System.Drawing.Point(260, 36);
             this.dgvPorcentajeAparicion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvPorcentajeAparicion.Name = "dgvPorcentajeAparicion";
             this.dgvPorcentajeAparicion.ReadOnly = true;
+            this.dgvPorcentajeAparicion.RowHeadersWidth = 51;
             this.dgvPorcentajeAparicion.RowTemplate.Height = 24;
             this.dgvPorcentajeAparicion.Size = new System.Drawing.Size(268, 575);
             this.dgvPorcentajeAparicion.TabIndex = 48;
@@ -329,6 +340,28 @@
             this.panel2.Size = new System.Drawing.Size(798, 115);
             this.panel2.TabIndex = 48;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox2.Image = global::Proyecto.Properties.Resources.logoChances;
+            this.pictureBox2.Location = new System.Drawing.Point(550, 231);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(216, 154);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 51;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::Proyecto.Properties.Resources.logoLoteria;
+            this.pictureBox1.Location = new System.Drawing.Point(20, 231);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(216, 154);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 50;
+            this.pictureBox1.TabStop = false;
+            // 
             // FormEstadisticasReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -352,6 +385,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPorcentajeAparicion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -379,5 +414,7 @@
         private System.Windows.Forms.RadioButton rbFiltroLoteria;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

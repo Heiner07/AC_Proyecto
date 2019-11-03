@@ -90,6 +90,7 @@ namespace Proyecto
             dataGridViewSorteos.Columns[4].Width = 70;
             dataGridViewSorteos.Columns[6].Width = 60;
             CargarSorteos();
+            
         }
 
         private void CargarSorteos()
