@@ -334,15 +334,71 @@ IF object_id(N'dbo.PorcentajeAparicionNumeros',N'VIEW') IS NOT NULL
     DROP VIEW PorcentajeAparicionNumeros;
 GO
 CREATE VIEW PorcentajeAparicionNumeros
-AS
-    SELECT R.NumeroGanador, COUNT(R.NumeroGanador) / CAST(COUNT(*) AS FLOAT) AS Porcentaje
-    FROM Resultados AS R
-    GROUP BY R.NumeroGanador
-    ORDER BY Porcentaje DESC OFFSET 0 ROWS
+AS 
+	SELECT NumeroGanador, FORMAT(COUNT(NumeroGanador)*100/CAST((SELECT count(*)  FROM Resultados) as float),'N1') AS Porcentaje
+    FROM Resultados   
+	GROUP BY NumeroGanador
 GO
+
+
 
 -------------------------------------------SE INSERTAN LOS DATOS POR DEFECTO-------------------------------------------------
 
 -------------------SE INSERTA LOS USUARIOS POR DEFECTO-----------------
 INSERT INTO Usuarios(NombreUsuario, Contrasenia, Rol) VALUES('admin', 'admin', 1)
 INSERT INTO Usuarios(NombreUsuario, Contrasenia, Rol) VALUES('usuario', 'usuario', 0)
+
+
+
+
+
+
+--ESTO NO
+
+ INSERT INTO Sorteos(Numero, Tipo, Fecha, CantidadFracciones, PrecioFraccion, Leyenda, Estado)
+    VALUES(1,'Chances','10/29/2019',30,2500,'Sin leyenda',0)
+
+	
+
+	-- Loteria #1
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(1, 1000000, 10, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(1, 500000, 10, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(1, 250000, 10, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(1, 100000, 10, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(1, 100000, 20, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(1, 100000, 30, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(1, 50000, 20, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(1, 50000, 20, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(1, 50000, 20, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(1, 50000, 20, 100)
+
+	--Loteria #2
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 2000000, 10, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 1500000, 10, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 1000000, 20, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 500000, 30, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 500000, 40, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 500000, 50, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 500000, 50, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 500000, 50, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 250000, 30, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 250000, 30, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 250000, 30, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 250000, 40, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 250000, 40, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 100000, 40, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(2, 100000, 50, 100)
+
+	--Chances #1
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(3, 5000000, 10, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(3, 2500000, 20, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(3, 1000000, 30, 100)
+
+	--Chances #2
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(4, 10000000, 50, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(4, 5000000, 50, 100)
+	INSERT INTO Resultados(IdSorteo, MontoGanado, NumeroGanador, SerieGanadora) VALUES(4, 2500000, 50, 100)
+
+
+
+
