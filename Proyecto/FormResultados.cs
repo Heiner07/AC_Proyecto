@@ -39,7 +39,7 @@ namespace Proyecto
             Boolean gano = false;
             if (sorteo != null)
             {
-                List<Resultado> resultados = sorteo.PlanPremios.resultados;
+                List<Resultado> resultados = sorteo.PlanPremios.Resultados;
                 if (sorteo.Estado)
                 {
                     foreach(Resultado resultado in resultados)

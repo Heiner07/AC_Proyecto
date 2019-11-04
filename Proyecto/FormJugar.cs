@@ -59,7 +59,7 @@ namespace Proyecto
                 for (int i = 0; i < cantidadSorteos; i++)
                 {
                     sorteo = sorteos[i];
-                    if (!sorteo.Estado && sorteo.PlanPremios.premios.Count > 0)
+                    if (!sorteo.Estado && sorteo.PlanPremios.Premios.Count > 0)
                     {
                         dtSorteos.Rows.Add(new object[] { sorteo.TipoSorteo, sorteo.NumeroSorteo,
                         sorteo.Fecha.ToShortDateString() });
@@ -154,10 +154,10 @@ namespace Proyecto
 
             // Se le indica al sorteo que genere los resultados
             sorteoSeleccionado.PlanPremios.GenerarResultados(sorteoSeleccionado.TipoSorteo);
-            int cantidadMayor = sorteoSeleccionado.PlanPremios.premios[0].ObtenerMonto;
+            int cantidadMayor = sorteoSeleccionado.PlanPremios.Premios[0].MontoPremio;
             // Se realiza la ejecución (animación) en la ventana, mostrando los resultados.
             Invoke((MethodInvoker)(() => dtResultados.Clear()));
-            foreach (Resultado resultado in sorteoSeleccionado.PlanPremios.resultados)
+            foreach (Resultado resultado in sorteoSeleccionado.PlanPremios.Resultados)
             {
                 serie = resultado.SerieGanadora.ToString("000");
                 numero = resultado.NumeroGanador.ToString("00");
@@ -186,12 +186,13 @@ namespace Proyecto
                     if (cantidadMayor == resultado.MontoGanado)
                     {
                         EscribirTextBoxPremio("PREMIO MAYOR");
-                        generadorVoz.Speak($"PREMIO MAYOR {monto}");
+                        generadorVoz.Speak($"Premio mayor {resultado.MontoGanado}");
                     }
-                    else {
+                    else
+                    {
                         EscribirTextBoxPremio(monto);
-                        generadorVoz.Speak($"Premio {monto}");
-                        }
+                        generadorVoz.Speak($"Premio {resultado.MontoGanado}");
+                    }
                     
                     Thread.Sleep(2000);
                 }
@@ -222,6 +223,7 @@ namespace Proyecto
             btOmitirAnimacion.Invoke((MethodInvoker)(() => btOmitirAnimacion.Enabled = false));
             dgvSorteos.Invoke((MethodInvoker)(() => dgvSorteos.Enabled = true));
             Invoke((MethodInvoker)(() => CargarSorteos()));
+            generadorVoz.Dispose();
         }
 
         private void TbBusqueda_TextChanged(object sender, EventArgs e)

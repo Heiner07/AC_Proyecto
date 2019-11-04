@@ -56,7 +56,7 @@ namespace Proyecto
             {
                 foreach (Sorteo sorteo in sorteos)
                 {
-                    if (sorteo.TipoSorteo.Equals(tipoSorteo) && sorteo.ObtenerNumeroSorteo.Equals(numeroSorteo))
+                    if (sorteo.TipoSorteo.Equals(tipoSorteo) && sorteo.NumeroSorteo.Equals(numeroSorteo))
                     {
                         return sorteo;
                     }
@@ -91,8 +91,8 @@ namespace Proyecto
             Boolean retorno = true;
             // Se establecen las varibales y textos por utilizar en el PDF
             System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
-            List<Resultado> resultados = sorteo.PlanPremios.resultados;
-            List<Premio> premios = sorteo.PlanPremios.premios;
+            List<Resultado> resultados = sorteo.PlanPremios.Resultados;
+            List<Premio> premios = sorteo.PlanPremios.Premios;
             String tituloDocumento = "Reporte de resultados de sorteo";
             String datosSorteo =
                 $"Tipo: {sorteo.TipoSorteo}\n" +
@@ -175,7 +175,7 @@ namespace Proyecto
             Boolean retorno = true;
             // Se establecen las varibales y textos por utilizar en el PDF
             System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
-            List<Premio> premios = sorteo.PlanPremios.premios;
+            List<Premio> premios = sorteo.PlanPremios.Premios;
             String tituloDocumento = "Reporte de plan de premios de sorteo";
             String datosSorteo =
                 $"Tipo: {sorteo.TipoSorteo}\n" +

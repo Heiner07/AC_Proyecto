@@ -32,7 +32,7 @@ namespace Proyecto
 
         private void CargarPlanPremios()
         {
-            List<Premio> premios = sorteo.PlanPremios.premios;
+            List<Premio> premios = sorteo.PlanPremios.Premios;
             foreach (Premio premio in premios)
             {
                 dtPlanPremios.Rows.Add(new object[] {

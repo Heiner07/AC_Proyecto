@@ -52,7 +52,7 @@ namespace Proyecto
             dataGridViewPremiosAdicionales.Columns[1].Width = 80;
             dataGridViewPremiosAdicionales.Columns[2].Width = 70;
 
-           // dataGridViewPremiosAdicionales.Columns[0].ReadOnly = true;
+            dataGridViewPremiosAdicionales.Columns[0].ReadOnly = true;
         }
 
         private void EstablecerValoresTablaSorteos()
@@ -189,10 +189,10 @@ namespace Proyecto
             {
                 if (cbConPlan.Checked)
                 {
-                    planPremios.premios = ObtenerPlanPremios(sorteoEditando.ObtenerTipoSorteo);
-                    if (planPremios.premios != null)
+                    planPremios.Premios = ObtenerPlanPremios(sorteoEditando.TipoSorteo);
+                    if (planPremios.Premios != null)
                     {
-                        Sorteo sorteo = new Sorteo(sorteoEditando.ObtenerIdSorteo, sorteoEditando.ObtenerNumeroSorteo, sorteoEditando.ObtenerTipoSorteo, sorteoEditando.ObtenerFecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
+                        Sorteo sorteo = new Sorteo(sorteoEditando.IdSorteo, sorteoEditando.NumeroSorteo, sorteoEditando.TipoSorteo, sorteoEditando.Fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
                         tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
                         sorteoEditando = sorteo;
                         ModificarSorteo(sorteoEditando);
@@ -201,7 +201,7 @@ namespace Proyecto
                 }
                 else
                 {
-                    Sorteo sorteo = new Sorteo(sorteoEditando.ObtenerIdSorteo, sorteoEditando.ObtenerNumeroSorteo, sorteoEditando.ObtenerTipoSorteo, sorteoEditando.ObtenerFecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
+                    Sorteo sorteo = new Sorteo(sorteoEditando.IdSorteo, sorteoEditando.NumeroSorteo, sorteoEditando.TipoSorteo, sorteoEditando.Fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
                     tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
                     sorteoEditando = sorteo;
                     ModificarSorteo(sorteoEditando);
@@ -233,7 +233,7 @@ namespace Proyecto
             List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
             foreach (Sorteo sorteo in sorteos)
             {
-                if (sorteo.ObtenerFecha.Date >= fecha.Date)
+                if (sorteo.Fecha.Date >= fecha.Date)
                 {
                     return false;
                 }
@@ -258,8 +258,8 @@ namespace Proyecto
             int numeroRetornado = 0;
             foreach(Sorteo sorteo in sorteos)
             {
-                if (sorteo.ObtenerTipoSorteo.Equals(tipoSorteo)) {
-                    numeroRetornado = sorteo.ObtenerNumeroSorteo;
+                if (sorteo.TipoSorteo.Equals(tipoSorteo)) {
+                    numeroRetornado = sorteo.NumeroSorteo;
                     
                 }
             }
@@ -301,7 +301,7 @@ namespace Proyecto
                             Boolean noAgregado = true;
                             foreach (Premio premio in premios)
                             {
-                                if (premio.ObtenerCantidad == cantidad && premio.ObtenerMonto == montoPremio)
+                                if (premio.CantidadPremio == cantidad && premio.MontoPremio == montoPremio)
                                     noAgregado = false;
                             }
                             //Si no está agregado, los agregamos a la lista
@@ -381,8 +381,8 @@ namespace Proyecto
                     int numeroSorteo = ObtenerNumeroSorteo(tipoSorteo);
                     if (cbConPlan.Checked)
                     {
-                        planPremios.premios = ObtenerPlanPremios(tipoSorteo);
-                        if (planPremios.premios != null)
+                        planPremios.Premios = ObtenerPlanPremios(tipoSorteo);
+                        if (planPremios.Premios != null)
                         {
                             Sorteo sorteo = new Sorteo(1, numeroSorteo, tipoSorteo, fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
                             tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
@@ -491,36 +491,36 @@ namespace Proyecto
 
         private void CargarDatosEdicion(Sorteo sorteo)
         {
-            String tipoSorteo = sorteo.ObtenerTipoSorteo;
-            List<Premio> premios = sorteo.ObtenerPlanPremios.ObtenerPremios;
+            String tipoSorteo = sorteo.TipoSorteo;
+            List<Premio> premios = sorteo.PlanPremios.Premios;
             rbChances.Enabled = false;
             rbLoteria.Enabled = false;
             dtFecha.Enabled = false;
-            dtFecha.Value = sorteo.ObtenerFecha;
+            dtFecha.Value = sorteo.Fecha;
             if (tipoSorteo.Equals("Lotería"))
             {
                 rbLoteria.Checked = true;
             }
             else { rbChances.Checked = true; btAgregarPremioAdicional.Visible = false; }
-            nudCostoFraccion.Value = sorteo.ObtenerPrecioFraccion;
-            nudFracciones.Value = sorteo.ObtenerCantidadFracciones;
-            tbLeyenda.Text = sorteo.ObtenerLeyenda;
+            nudCostoFraccion.Value = sorteo.PrecioFraccion;
+            nudFracciones.Value = sorteo.CantidadFracciones;
+            tbLeyenda.Text = sorteo.LeyendaBillete;
             int largoPremios = premios.Count;
             //Por si es null,no va a tener plan de premios
             if (largoPremios != 0)
             {
                 
-                nudPremio1.Value = premios[0].ObtenerMonto;
-                nudPremio2.Value = premios[1].ObtenerMonto;
-                nudPremio3.Value = premios[2].ObtenerMonto;
+                nudPremio1.Value = premios[0].MontoPremio;
+                nudPremio2.Value = premios[1].MontoPremio;
+                nudPremio3.Value = premios[2].MontoPremio;
                 //obtengo el resto de los premios adicionales y limpio los dt y datagridview
                 cbConPlan.Checked = true;
                 dtPremiosAdicionales.Clear();
               
                 for (int i=3;i<largoPremios;i++)
                 {              
-                    int montoPremio = premios[i].ObtenerMonto;
-                    int cantidadPremio = premios[i].ObtenerCantidad;
+                    int montoPremio = premios[i].MontoPremio;
+                    int cantidadPremio = premios[i].CantidadPremio;
                     dtPremiosAdicionales.Rows.Add(new object[] { montoPremio, cantidadPremio });
 
                 }
@@ -531,7 +531,7 @@ namespace Proyecto
         {
             if (sistemaLoteriaChances.EliminarSorteo(sorteo))
             {
-                if (enEdicion && sorteo.ObtenerIdSorteo.Equals(sorteoEditando.ObtenerIdSorteo))
+                if (enEdicion && sorteo.IdSorteo.Equals(sorteoEditando.IdSorteo))
                 {
                     rbChances.Enabled = true;
                     rbLoteria.Enabled = true;
@@ -566,9 +566,9 @@ namespace Proyecto
                     if (dr == DialogResult.Yes)
                     {
                         Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
-                        if (!sorteo.ObtenerEstado)
+                        if (!sorteo.Estado)
                         {
-                            if (enEdicion && sorteoEditando.IdSorteo.Equals(sorteo.ObtenerIdSorteo))
+                            if (enEdicion && sorteoEditando.IdSorteo.Equals(sorteo.IdSorteo))
                             {
                                 DialogResult drEliminar = MessageBox.Show("Es el mismo sorteo que está editando, ¿desea eliminarlo?", "Eliminar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                                 if (drEliminar == DialogResult.Yes)
@@ -600,7 +600,7 @@ namespace Proyecto
                         String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
                         int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
                         Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
-                        if (!sorteo.ObtenerEstado)
+                        if (!sorteo.Estado)
                         {
                             enEdicion = true;
                             sorteoEditando = sorteo;

@@ -106,7 +106,7 @@
             this.lbPremio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbPremio.Image = ((System.Drawing.Image)(resources.GetObject("lbPremio.Image")));
             this.lbPremio.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lbPremio.Location = new System.Drawing.Point(260, 87);
+            this.lbPremio.Location = new System.Drawing.Point(269, 87);
             this.lbPremio.Name = "lbPremio";
             this.lbPremio.Size = new System.Drawing.Size(76, 74);
             this.lbPremio.TabIndex = 51;
@@ -160,20 +160,20 @@
             this.dgvResultadosSorteo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dgvResultadosSorteo.BackgroundColor = System.Drawing.Color.White;
             this.dgvResultadosSorteo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResultadosSorteo.Location = new System.Drawing.Point(20, 177);
+            this.dgvResultadosSorteo.Location = new System.Drawing.Point(20, 182);
             this.dgvResultadosSorteo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvResultadosSorteo.Name = "dgvResultadosSorteo";
             this.dgvResultadosSorteo.ReadOnly = true;
             this.dgvResultadosSorteo.RowHeadersWidth = 51;
             this.dgvResultadosSorteo.RowTemplate.Height = 24;
-            this.dgvResultadosSorteo.Size = new System.Drawing.Size(479, 154);
+            this.dgvResultadosSorteo.Size = new System.Drawing.Size(479, 149);
             this.dgvResultadosSorteo.TabIndex = 42;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(16, 156);
+            this.label5.Location = new System.Drawing.Point(16, 161);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(164, 19);
             this.label5.TabIndex = 40;

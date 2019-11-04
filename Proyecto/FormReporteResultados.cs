@@ -33,7 +33,7 @@ namespace Proyecto
 
         private void CargarResultados()
         {
-            List<Resultado> resultados = sorteo.PlanPremios.resultados;
+            List<Resultado> resultados = sorteo.PlanPremios.Resultados;
             foreach(Resultado resultado in resultados)
             {
                 dtResultados.Rows.Add(new object[] {
