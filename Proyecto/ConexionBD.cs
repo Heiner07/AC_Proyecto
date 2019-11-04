@@ -476,7 +476,9 @@ namespace Proyecto
                 SqlDataReader lectorDatos = cmd.ExecuteReader();
                 while (lectorDatos.Read())
                 {
-                    resultados.Add(new PorcentajeNumeros() { Numero = lectorDatos.GetInt32(0), Porcentaje = lectorDatos.GetDouble(1) });
+                    
+                    String porcentaje = lectorDatos.GetString(1);
+                    resultados.Add(new PorcentajeNumeros() { Numero = lectorDatos.GetInt32(0), Porcentaje = porcentaje});
                 }
             }
             catch (Exception)

@@ -5,7 +5,7 @@ namespace Proyecto
     public class PorcentajeNumeros
     {
         public int Numero;
-        public Double Porcentaje;
+        public String Porcentaje;
 
 
     }

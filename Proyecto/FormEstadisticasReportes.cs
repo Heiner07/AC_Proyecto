@@ -151,7 +151,7 @@ namespace Proyecto
         {
             DataTable dtProcentajeNumeros = new DataTable();
             dtProcentajeNumeros.Columns.Add("Número", typeof(string));
-            dtProcentajeNumeros.Columns.Add("Porcentaje", typeof(Double));
+            dtProcentajeNumeros.Columns.Add("Porcentaje", typeof(String));
             List<PorcentajeNumeros> porcentajeNumeros = sistemaLoteriaChances.ObtenerPorcentajeAparicionNumeros();
             if (porcentajeNumeros != null)
             {
