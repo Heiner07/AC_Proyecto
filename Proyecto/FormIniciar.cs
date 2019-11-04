@@ -84,18 +84,18 @@ namespace Proyecto
         private Resultado[] ObtenerPremiosMayores(Sorteo sorteo)
         {
             Resultado[] premiosMayores = new Resultado[3];
-            List<Resultado> resultados = sorteo.PlanPremios.resultados;
+            List<Resultado> resultados = sorteo.PlanPremios.Resultados;
             foreach(Resultado resultado in resultados)
             {
-                if(sorteo.PlanPremios.premios[0].MontoPremio == resultado.MontoGanado)
+                if(sorteo.PlanPremios.Premios[0].MontoPremio == resultado.MontoGanado)
                 {
                     premiosMayores[0] = resultado;
                 }
-                if (sorteo.PlanPremios.premios[1].MontoPremio == resultado.MontoGanado)
+                if (sorteo.PlanPremios.Premios[1].MontoPremio == resultado.MontoGanado)
                 {
                     premiosMayores[1] = resultado;
                 }
-                if (sorteo.PlanPremios.premios[2].MontoPremio == resultado.MontoGanado)
+                if (sorteo.PlanPremios.Premios[2].MontoPremio == resultado.MontoGanado)
                 {
                     premiosMayores[2] = resultado;
                 }

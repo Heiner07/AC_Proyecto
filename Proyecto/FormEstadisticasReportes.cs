@@ -238,7 +238,7 @@ namespace Proyecto
                     String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
                     int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
                     Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
-                    if (sorteo.PlanPremios.premios.Count > 0)
+                    if (sorteo.PlanPremios.Premios.Count > 0)
                     {
                         FormReportePlanPremios reportePlanPremios = new FormReportePlanPremios(sistemaLoteriaChances, sorteo);
                         reportePlanPremios.ShowDialog();

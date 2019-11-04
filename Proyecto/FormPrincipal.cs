@@ -113,7 +113,7 @@ namespace Proyecto
                     EstablecerEstadoBotones(rol, true);
                     panelIniciarSesion.Visible = false;
                     panelCerrarSesion.Visible = true;
-                    lbModo.Text = usuario.ObtenerNombre;
+                    lbModo.Text = usuario.NombreUsuario;
                     panelPrincipal.BackColor = Color.White;
                     AbrirFormularioHijo(new FormIniciar(sistemaLC), -1);
                 }
