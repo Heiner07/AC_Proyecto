@@ -13,6 +13,7 @@ namespace Proyecto
         public FormResultados(SistemaLoteriaChances sistemaLoteriaChances)
         {
             InitializeComponent();
+            lbFelicidades.Visible = false;
             this.sistemaLoteriaChances = sistemaLoteriaChances;
             CargarSorteos();
         }
@@ -35,8 +36,12 @@ namespace Proyecto
             int serieFraccion = (int)nudSerieFraccion.Value;
             int cantidadFracciones = (int)nudCantidadFracciones.Value;
             double montoGanado = 0;
+            int premios = 0;
             Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipo, numeroSorteo);
             Boolean gano = false;
+            lbFelicidades.Visible = false;
+            lbMontoGanado.Text = "0";
+            lbPremiosGanados.Text = "0";
             if (sorteo != null)
             {
                 List<Resultado> resultados = sorteo.PlanPremios.Resultados;
@@ -49,15 +54,13 @@ namespace Proyecto
                         {
                             if(cantidadFracciones <= sorteo.CantidadFracciones)
                             {
-                                montoGanado = resultado.MontoGanado * ((double)cantidadFracciones / sorteo.CantidadFracciones);
+                                montoGanado += resultado.MontoGanado * ((double)cantidadFracciones / sorteo.CantidadFracciones);
                             }
                             else
                             {
-                                montoGanado = resultado.MontoGanado;
+                                montoGanado += resultado.MontoGanado;
                             }
-                            lbMontoGanado.Text = montoGanado.ToString("#,#", CultureInfo.InvariantCulture);
-                            MessageBox.Show("¡Felicidades! Ha ganado "+lbMontoGanado.Text,
-                                "Consultar resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            premios++;
                             gano = true;
                         }
                     }
@@ -65,7 +68,12 @@ namespace Proyecto
                     {
                         MessageBox.Show("Lástima, la fracción ingresada no fue premiada en el sorteo.",
                                 "Consultar resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        lbMontoGanado.Text = "0";
+                    }
+                    else
+                    {
+                        lbFelicidades.Visible = true;
+                        lbMontoGanado.Text = montoGanado.ToString("#,#", CultureInfo.InvariantCulture);
+                        lbPremiosGanados.Text = premios.ToString();
                     }
                 }
                 else

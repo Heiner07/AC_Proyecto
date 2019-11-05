@@ -47,6 +47,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lbPremiosGanados = new System.Windows.Forms.Label();
+            this.lbFelicidades = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudSerieFraccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumeroFraccion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumeroSorteo)).BeginInit();
@@ -199,7 +202,7 @@
             // btConsultar
             // 
             this.btConsultar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btConsultar.Location = new System.Drawing.Point(26, 323);
+            this.btConsultar.Location = new System.Drawing.Point(26, 316);
             this.btConsultar.Name = "btConsultar";
             this.btConsultar.Size = new System.Drawing.Size(108, 30);
             this.btConsultar.TabIndex = 42;
@@ -211,7 +214,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(22, 397);
+            this.label6.Location = new System.Drawing.Point(22, 376);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 19);
             this.label6.TabIndex = 43;
@@ -221,6 +224,9 @@
             // 
             this.panelResultados.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelResultados.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelResultados.Controls.Add(this.lbFelicidades);
+            this.panelResultados.Controls.Add(this.lbPremiosGanados);
+            this.panelResultados.Controls.Add(this.label7);
             this.panelResultados.Controls.Add(this.lbMontoGanado);
             this.panelResultados.Controls.Add(this.label1);
             this.panelResultados.Controls.Add(this.label3);
@@ -243,7 +249,7 @@
             // lbMontoGanado
             // 
             this.lbMontoGanado.AutoSize = true;
-            this.lbMontoGanado.Location = new System.Drawing.Point(26, 420);
+            this.lbMontoGanado.Location = new System.Drawing.Point(26, 399);
             this.lbMontoGanado.Name = "lbMontoGanado";
             this.lbMontoGanado.Size = new System.Drawing.Size(16, 17);
             this.lbMontoGanado.TabIndex = 44;
@@ -288,6 +294,36 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 49;
             this.pictureBox2.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(25, 424);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(136, 19);
+            this.label7.TabIndex = 45;
+            this.label7.Text = "Premios ganados";
+            // 
+            // lbPremiosGanados
+            // 
+            this.lbPremiosGanados.AutoSize = true;
+            this.lbPremiosGanados.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.lbPremiosGanados.Location = new System.Drawing.Point(25, 446);
+            this.lbPremiosGanados.Name = "lbPremiosGanados";
+            this.lbPremiosGanados.Size = new System.Drawing.Size(16, 17);
+            this.lbPremiosGanados.TabIndex = 46;
+            this.lbPremiosGanados.Text = "0";
+            // 
+            // lbFelicidades
+            // 
+            this.lbFelicidades.AutoSize = true;
+            this.lbFelicidades.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFelicidades.Location = new System.Drawing.Point(22, 355);
+            this.lbFelicidades.Name = "lbFelicidades";
+            this.lbFelicidades.Size = new System.Drawing.Size(102, 19);
+            this.lbFelicidades.TabIndex = 47;
+            this.lbFelicidades.Text = "¡Felicidades!";
             // 
             // FormResultados
             // 
@@ -335,5 +371,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lbPremiosGanados;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbFelicidades;
     }
 }
