@@ -63,7 +63,7 @@ namespace Proyecto
                     }
                     if (!gano)
                     {
-                        MessageBox.Show("Lastima, la fracción ingresado no fue premiada en el sorteo.",
+                        MessageBox.Show("Lástima, la fracción ingresada no fue premiada en el sorteo.",
                                 "Consultar resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         lbMontoGanado.Text = "0";
                     }
