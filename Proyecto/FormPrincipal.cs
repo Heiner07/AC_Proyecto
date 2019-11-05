@@ -107,7 +107,7 @@ namespace Proyecto
             Usuario usuario = sistemaLC.IniciarSesion(tbUsuario.Text,tbContrasenia.Text);
             if (usuario != null)
             {
-                int rol = 1;//usuario.obtenerRol();
+                int rol = usuario.Rol;
                 if (rol != -1)
                 {
                     EstablecerEstadoBotones(rol, true);
