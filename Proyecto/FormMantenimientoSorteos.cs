@@ -497,9 +497,7 @@ namespace Proyecto
             rbLoteria.Enabled = false;
             dtFecha.Enabled = false;
             dtFecha.Value = sorteo.Fecha;
-            nudPremio1.Value = 1;
-            nudPremio2.Value = 1;
-            nudPremio3.Value = 1;
+            
             if (tipoSorteo.Equals("Lotería"))
             {
                 rbLoteria.Checked = true;
@@ -511,6 +509,9 @@ namespace Proyecto
             int largoPremios = premios.Count;
             PlanPremiosEstado(cbConPlan.Checked);
             //Por si es null,no va a tener plan de premios
+            nudPremio1.Value = 1;
+            nudPremio2.Value = 1;
+            nudPremio3.Value = 1;
             if (largoPremios != 0)
             {
 
