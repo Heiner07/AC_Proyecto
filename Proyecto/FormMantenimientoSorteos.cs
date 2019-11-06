@@ -540,12 +540,10 @@ namespace Proyecto
             btBorrarAdicionales.Enabled = estado;
             btBorrarPlanPremios.Enabled = estado;
             btAgregarPremioAdicional.Enabled = estado;
-
+            dataGridViewPremiosAdicionales.Enabled = estado;
         }
 
-        
-
-        private void cbConPlan_CheckedChanged(object sender, EventArgs e)
+        private void CbConPlan_CheckedChanged(object sender, EventArgs e)
         {
             PlanPremiosEstado(cbConPlan.Checked);
             
