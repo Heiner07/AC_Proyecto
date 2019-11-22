@@ -235,6 +235,8 @@ namespace Proyecto
             {
                 if (sorteo.Fecha.Date >= fecha.Date)
                 {
+                    MessageBox.Show("La fecha seleccionada no es válida", "Crear sorteo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }
@@ -249,8 +251,9 @@ namespace Proyecto
                 return true;
 
             }
+            MessageBox.Show("La fecha seleccionada no es válida", "Crear sorteo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
-
         }
 
         private int ObtenerNumeroSorteo(String tipoSorteo) {
@@ -266,6 +269,42 @@ namespace Proyecto
             numeroRetornado++;
             return numeroRetornado;
 
+        }
+
+        private List<Premio> ObtenerPremiosAdicionales(List<Premio> premios, int tercerPremio)
+        {
+            DataTable dt = this.dataGridViewPremiosAdicionales.DataSource as DataTable;
+            int largoPremiosAdicionales = this.dataGridViewPremiosAdicionales.Rows.Count;
+            for (int i = 0; i < largoPremiosAdicionales; i++)
+            {
+                int montoPremio = Convert.ToInt32(dt.Rows[i]["Monto"].ToString());
+                int cantidad = Convert.ToInt32(dt.Rows[i]["Cantidad"].ToString());
+                if (montoPremio > 0 && cantidad > 0)
+                {
+                    if (montoPremio < tercerPremio)
+                    {
+                        //Buscamos si existe uno igual
+                        Boolean noAgregado = true;
+                        foreach (Premio premio in premios)
+                        {
+                            if (premio.CantidadPremio == cantidad && premio.MontoPremio == montoPremio)
+                                noAgregado = false;
+                        }
+                        //Si no está agregado, los agregamos a la lista
+                        if (noAgregado)
+                        {
+                            premios.Add(new Premio(montoPremio, cantidad));
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El premio adicional debe ser mayor al tercer premio", "Sorteo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return null;
+                    }
+
+                }
+            }return premios;
         }
 
         private List<Premio> ObtenerPlanPremios(String tipoSorteo) {
@@ -287,37 +326,7 @@ namespace Proyecto
 
             if (tipoSorteo.Equals("Lotería"))
             {
-                DataTable dt = this.dataGridViewPremiosAdicionales.DataSource as DataTable;
-                int largoPremiosAdicionales = this.dataGridViewPremiosAdicionales.Rows.Count;
-                for (int i = 0; i < largoPremiosAdicionales; i++)
-                {
-                    int montoPremio = Convert.ToInt32(dt.Rows[i]["Monto"].ToString());
-                    int cantidad = Convert.ToInt32(dt.Rows[i]["Cantidad"].ToString());
-                    if (montoPremio > 0 && cantidad > 0)
-                    {
-                        if (montoPremio < tercerPremio)
-                        {
-                            //Buscamos si existe uno igual
-                            Boolean noAgregado = true;
-                            foreach (Premio premio in premios)
-                            {
-                                if (premio.CantidadPremio == cantidad && premio.MontoPremio == montoPremio)
-                                    noAgregado = false;
-                            }
-                            //Si no está agregado, los agregamos a la lista
-                            if (noAgregado)
-                            {
-                                premios.Add(new Premio(montoPremio, cantidad));
-                            }
-                        }
-                        else {
-                            MessageBox.Show("El premio adicional debe ser mayor al tercer premio", "Sorteo",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return null;
-                        }
-
-                    }
-                }
+                return ObtenerPremiosAdicionales(premios, tercerPremio);
             }
             return premios;
         }
@@ -358,39 +367,35 @@ namespace Proyecto
             }
         }
 
+        private Boolean FraccionesCostoValido(Decimal cantidadFracciones, Decimal costoFracciones)
+        {
+            if(nudFracciones.Value > 0 && nudCostoFraccion.Value > 0)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("La cantidad de fracciones y el costo deben ser mayor a 0", "Crear sorteo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+        }
+
         private void BtCrear_Click(object sender, EventArgs e)
         {
             DateTime fecha = dtFecha.Value;
             PlanPremios planPremios = new PlanPremios();
-            string tipoSorteo;
-
-            if (rbChances.Checked)
+            string tipoSorteo = (rbChances.Checked)? "Chances" : "Lotería";
+            
+            if (ValidarFecha(tipoSorteo, fecha) &&
+                FraccionesCostoValido(nudFracciones.Value, nudCostoFraccion.Value))
             {
-                tipoSorteo = "Chances";
-            }
-            else
-            {
-                tipoSorteo = "Lotería";
-
-            }
-            Boolean fechaValida = ValidarFecha(tipoSorteo, fecha);
-            if (fechaValida)
-            {
-                if (nudFracciones.Value > 0 && nudCostoFraccion.Value > 0)
+                int numeroSorteo = ObtenerNumeroSorteo(tipoSorteo);
+                if (cbConPlan.Checked)
                 {
-                    int numeroSorteo = ObtenerNumeroSorteo(tipoSorteo);
-                    if (cbConPlan.Checked)
+                    planPremios.Premios = ObtenerPlanPremios(tipoSorteo);
+                    if (planPremios.Premios != null)
                     {
-                        planPremios.Premios = ObtenerPlanPremios(tipoSorteo);
-                        if (planPremios.Premios != null)
-                        {
-                            Sorteo sorteo = new Sorteo(1, numeroSorteo, tipoSorteo, fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
-                            tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
-                            CrearSorteo(sorteo);
-                        }
-
-                    }
-                    else {
                         Sorteo sorteo = new Sorteo(1, numeroSorteo, tipoSorteo, fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
                         tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
                         CrearSorteo(sorteo);
@@ -398,14 +403,10 @@ namespace Proyecto
                 }
                 else
                 {
-                    MessageBox.Show("La cantidad de fracciones y el costo deben ser mayor a 0", "Crear sorteo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Sorteo sorteo = new Sorteo(1, numeroSorteo, tipoSorteo, fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
+                    tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
+                    CrearSorteo(sorteo);
                 }
-            }
-            else
-            {
-                MessageBox.Show("La fecha seleccionada no es válida", "Crear sorteo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -574,89 +575,97 @@ namespace Proyecto
             }
         }
 
+        private void ManejarEventoEliminarSorteo(DataGridViewCellEventArgs e)
+        {
+            String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
+            int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
+            DialogResult dr = MessageBox.Show($"¿Desea eliminar el sorteo {numeroSorteo} de {tipoSorteo}?",
+                "Eliminar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
+                if (!sorteo.Estado)
+                {
+                    if (enEdicion && sorteoEditando.IdSorteo.Equals(sorteo.IdSorteo))
+                    {
+                        DialogResult drEliminar = MessageBox.Show("Es el mismo sorteo que está editando, ¿desea eliminarlo?", "Eliminar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        if (drEliminar == DialogResult.Yes)
+                        {
+                            EliminarSorteo(sorteo);
+                        }
+
+
+                    }
+                    else
+                    {
+                        EliminarSorteo(sorteo);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("El sorteo no se puede eliminar, ya se jugó",
+                        "Eliminar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void ManejarEventoEditarSorteo(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!enEdicion)
+            {
+                String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
+                int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
+                Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
+                if (!sorteo.Estado)
+                {
+                    enEdicion = true;
+                    sorteoEditando = sorteo;
+                    EstablecerInterfazEditando();
+                    if (!panelCrearSorteo.Visible)
+                    {
+                        AjustarPanelSorteo();
+                    }
+                    panelCrearSorteo.Visible = true;
+                    CargarDatosEdicion(sorteo);
+
+                }
+                else
+                {
+                    MessageBox.Show("El sorteo no se puede editar, ya se jugó",
+                        "Editar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                DialogResult dr = MessageBox.Show("¿Desea guardar el sorteo que está editando?", "Editar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    BtGuardar_Click(sender, e);
+                    enEdicion = false;
+                    DataGridViewSorteos_CellClick(sender, e);
+                }
+                else if (dr == DialogResult.No)
+                {
+                    enEdicion = false;
+                    DataGridViewSorteos_CellClick(sender, e);
+                }
+                //Está editando uno, aqui pregunto si desea guardarlo antes de editar otro
+            }
+        }
+
         private void DataGridViewSorteos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex >= 0 && e.RowIndex>=0)
             {
                 if (e.ColumnIndex == 0)
                 {
-                    String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
-                    int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
-                    DialogResult dr = MessageBox.Show($"¿Desea eliminar el sorteo {numeroSorteo} de {tipoSorteo}?",
-                        "Eliminar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-
-                    if (dr == DialogResult.Yes)
-                    {
-                        Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
-                        if (!sorteo.Estado)
-                        {
-                            if (enEdicion && sorteoEditando.IdSorteo.Equals(sorteo.IdSorteo))
-                            {
-                                DialogResult drEliminar = MessageBox.Show("Es el mismo sorteo que está editando, ¿desea eliminarlo?", "Eliminar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                                if (drEliminar == DialogResult.Yes)
-                                {
-                                    EliminarSorteo(sorteo);
-                                }
-                                        
-
-                            }
-                            else
-                            {
-                                EliminarSorteo(sorteo);
-                            }
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("El sorteo no se puede eliminar, ya se jugó",
-                                "Eliminar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-
+                    ManejarEventoEliminarSorteo(e);
                 }
                 else if (e.ColumnIndex == 1)
                 {
-                    if (!enEdicion)
-                    {
-                        
-                        String tipoSorteo = dtSorteos.DefaultView[e.RowIndex]["Tipo"].ToString();
-                        int numeroSorteo = Convert.ToInt32(dtSorteos.DefaultView[e.RowIndex]["Número"].ToString());
-                        Sorteo sorteo = sistemaLoteriaChances.ObtenerSorteoSeleccionado(tipoSorteo, numeroSorteo);
-                        if (!sorteo.Estado)
-                        {
-                            enEdicion = true;
-                            sorteoEditando = sorteo;
-                            EstablecerInterfazEditando();
-                            if (!panelCrearSorteo.Visible)
-                            {
-                                AjustarPanelSorteo();
-                            }
-                            panelCrearSorteo.Visible = true;
-                            CargarDatosEdicion(sorteo);
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("El sorteo no se puede editar, ya se jugó",
-                                "Editar sorteo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                    else
-                    {
-                        DialogResult dr = MessageBox.Show("¿Desea guardar el sorteo que está editando?", "Editar sorteo", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                        if (dr == DialogResult.Yes)
-                        {
-                            BtGuardar_Click(sender, e);
-                            enEdicion = false;
-                            DataGridViewSorteos_CellClick(sender, e);
-                        }
-                        else if(dr == DialogResult.No)
-                        {
-                            enEdicion = false;
-                            DataGridViewSorteos_CellClick(sender, e);
-                        }
-                        //Está editando uno, aqui pregunto si desea guardarlo antes de editar otro
-                    }
+                    ManejarEventoEditarSorteo(sender, e);
                 }
             }
         }

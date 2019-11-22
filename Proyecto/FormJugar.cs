@@ -140,16 +140,65 @@ namespace Proyecto
             pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = estado));
         }
 
+        private void InicializarValoresComponentesJugar()
+        {
+            btOmitirAnimacion.Invoke((MethodInvoker)(() => btOmitirAnimacion.Enabled = true));
+            dgvSorteos.Invoke((MethodInvoker)(() => dgvSorteos.Enabled = false));
+            lbJugandoSorteo.Invoke((MethodInvoker)(() => lbJugandoSorteo.Text =
+            $"Jugando sorteo {sorteoSeleccionado.NumeroSorteo} de {sorteoSeleccionado.TipoSorteo}"));
+        }
+
+        private void ManejarAnimacionJugar(SpeechSynthesizer generadorVoz, String numero,
+            String serie, String monto, int cantidadMayor)
+        {
+            if (!omitirAnimacion) Thread.Sleep(2500);
+
+            pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = false));
+            if (!omitirAnimacion)
+            {
+                EscribirTextBoxSerie(serie);
+                generadorVoz.Speak($"Serie {serie}");
+                Thread.Sleep(2600);
+            }
+
+            pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = false));
+            if (!omitirAnimacion)
+            {
+                EscribirTextBoxNumero(numero);
+                generadorVoz.Speak($"Número {numero}");
+                Thread.Sleep(2600);
+            }
+
+            pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
+            if (!omitirAnimacion)
+            {
+                if (cantidadMayor == Convert.ToInt32(monto))
+                {
+                    EscribirTextBoxPremio("PREMIO MAYOR");
+                    generadorVoz.Speak($"Premio mayor {monto}");
+                }
+                else
+                {
+                    EscribirTextBoxPremio(monto);
+                    generadorVoz.Speak($"Premio {monto}");
+                }
+
+                Thread.Sleep(2000);
+            }
+
+            EscribirTextBoxNumero("");
+            EscribirTextBoxSerie("");
+            EscribirTextBoxPremio("");
+
+            if (!omitirAnimacion) CambiarEstadoGifs(true);
+        }
 
         private void JugarSorteo()
         {
             // Se establecen los valores de los componentes de la interfaz para la acción de jugar
             SpeechSynthesizer generadorVoz = new SpeechSynthesizer();
             generadorVoz.SetOutputToDefaultAudioDevice();
-            btOmitirAnimacion.Invoke((MethodInvoker)(() => btOmitirAnimacion.Enabled = true));
-            dgvSorteos.Invoke((MethodInvoker)(() => dgvSorteos.Enabled = false));
-            lbJugandoSorteo.Invoke((MethodInvoker)(() => lbJugandoSorteo.Text =
-            $"Jugando sorteo {sorteoSeleccionado.NumeroSorteo} de {sorteoSeleccionado.TipoSorteo}"));
+            InicializarValoresComponentesJugar();
             String serie, numero, monto;
 
             // Se le indica al sorteo que genere los resultados
@@ -162,46 +211,9 @@ namespace Proyecto
                 serie = resultado.SerieGanadora.ToString("000");
                 numero = resultado.NumeroGanador.ToString("00");
                 monto = resultado.MontoGanado.ToString("#,#", CultureInfo.InvariantCulture);
-                if (!omitirAnimacion) Thread.Sleep(2500);
 
-                pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.Enabled = false));
-                if (!omitirAnimacion)
-                {
-                    EscribirTextBoxSerie(serie);
-                    generadorVoz.Speak($"Serie {serie}");
-                    Thread.Sleep(2600);
-                }
+                ManejarAnimacionJugar(generadorVoz, numero, serie, monto, cantidadMayor);
 
-                pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Enabled = false));
-                if (!omitirAnimacion)
-                {
-                    EscribirTextBoxNumero(numero);
-                    generadorVoz.Speak($"Número {numero}");
-                    Thread.Sleep(2600);
-                }
-
-                pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
-                if (!omitirAnimacion)
-                {
-                    if (cantidadMayor == resultado.MontoGanado)
-                    {
-                        EscribirTextBoxPremio("PREMIO MAYOR");
-                        generadorVoz.Speak($"Premio mayor {resultado.MontoGanado}");
-                    }
-                    else
-                    {
-                        EscribirTextBoxPremio(monto);
-                        generadorVoz.Speak($"Premio {resultado.MontoGanado}");
-                    }
-                    
-                    Thread.Sleep(2000);
-                }
-
-                EscribirTextBoxNumero("");
-                EscribirTextBoxSerie("");
-                EscribirTextBoxPremio("");
-
-                if (!omitirAnimacion) CambiarEstadoGifs(true);
                 // Se agregan los resultados al data table del gridview
                 Invoke((MethodInvoker)(() => dtResultados.Rows.Add(new object[] { serie, numero, monto })));
             }
