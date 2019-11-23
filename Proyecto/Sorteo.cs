@@ -4,15 +4,15 @@ namespace Proyecto
 {
     public class Sorteo
     {
-        public int IdSorteo;
-        public int NumeroSorteo;
-        public int CantidadFracciones;
-        public int PrecioFraccion;
-        public String TipoSorteo;
-        public String LeyendaBillete;
-        public Boolean Estado;
-        public DateTime Fecha;
-        public PlanPremios PlanPremios;
+        public int IdSorteo { get; set; }
+        public int NumeroSorteo { get; set; }
+        public int CantidadFracciones { get; set; }
+        public int PrecioFraccion { get; set; }
+        public String TipoSorteo { get; set; }
+        public String LeyendaBillete { get; set; }
+        public Boolean Estado { get; set; }
+        public DateTime Fecha { get; set; }
+        public PlanPremios PlanPremios { get; set; }
 
         public Sorteo()
         {

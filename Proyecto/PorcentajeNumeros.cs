@@ -4,9 +4,7 @@ namespace Proyecto
 {
     public class PorcentajeNumeros
     {
-        public int Numero;
-        public String Porcentaje;
-
-
+        public int Numero { get; set; }
+        public String Porcentaje { get; set; }
     }
 }

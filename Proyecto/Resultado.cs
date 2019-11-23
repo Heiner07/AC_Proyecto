@@ -4,9 +4,9 @@ namespace Proyecto
 {
     public class Resultado
     {
-        public int NumeroGanador;
-        public int SerieGanadora;
-        public int MontoGanado;
+        public int NumeroGanador { get; set; }
+        public int SerieGanadora { get; set; }
+        public int MontoGanado { get; set; }
 
 
         public Resultado(int numeroGanador,int serieGanadora, int montoGanado) {

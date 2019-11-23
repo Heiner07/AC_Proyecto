@@ -4,8 +4,8 @@ namespace Proyecto
 {
     public class Premio
     {
-        public int MontoPremio;
-        public int CantidadPremio;
+        public int MontoPremio { get; set; }
+        public int CantidadPremio { get; set; }
 
         public Premio(int montoPremio, int cantidadPremio)
         {
