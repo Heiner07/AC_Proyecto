@@ -68,7 +68,7 @@ namespace Proyecto
         {
             Boolean retorno = true;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
-            List<Premio> premios = new List<Premio>();
+            List<Premio> premios;
             
             try
             {
@@ -242,7 +242,7 @@ namespace Proyecto
         {
             Boolean retorno = true;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
-            List<Premio> premios = new List<Premio>();
+            List<Premio> premios;
             premios = sorteo.PlanPremios.Premios;
             try
             {

@@ -183,7 +183,7 @@ namespace Proyecto
         }
 
 
-        private void GuardarSorteoConPlan(PlanPremios planPremios) {
+        private void GuardarSorteo(PlanPremios planPremios) {
             Sorteo sorteo = new Sorteo(sorteoEditando.IdSorteo, sorteoEditando.NumeroSorteo, sorteoEditando.TipoSorteo, sorteoEditando.Fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
                        tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
             sorteoEditando = sorteo;
@@ -191,13 +191,9 @@ namespace Proyecto
 
         }
 
-        private void GuardarSorteoSinPlan(PlanPremios planPremios) {
-            Sorteo sorteo = new Sorteo(sorteoEditando.IdSorteo, sorteoEditando.NumeroSorteo, sorteoEditando.TipoSorteo, sorteoEditando.Fecha, Convert.ToInt32(nudFracciones.Value), Convert.ToInt32(nudCostoFraccion.Value),
-                    tbLeyenda.Text.Equals("") ? "Sin leyenda" : tbLeyenda.Text, false, planPremios);
-            sorteoEditando = sorteo;
-            ModificarSorteo(sorteoEditando);
+      
 
-        }
+        
         private void BtGuardar_Click(object sender, EventArgs e)
         {
             if (nudFracciones.Value > 0 && nudCostoFraccion.Value > 0)
@@ -208,13 +204,13 @@ namespace Proyecto
                     planPremios.Premios = ObtenerPlanPremios(sorteoEditando.TipoSorteo);
                     if (planPremios.Premios != null)
                     {
-                        GuardarSorteoConPlan(planPremios);
+                        GuardarSorteo(planPremios);
                     }
 
                 }
                 else
                 {
-                    GuardarSorteoSinPlan(planPremios);
+                    GuardarSorteo(planPremios);
                 }
             }
             else
@@ -247,8 +243,8 @@ namespace Proyecto
             return true;
         }
         private Boolean ValidarFecha(String tipoSorteo, DateTime fecha) {
-            List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
-            if (!ValidarFechaAux(sorteos,fecha)) {
+            List<Sorteo> sorteosVf = sistemaLoteriaChances.ObtenerSorteos();
+            if (!ValidarFechaAux(sorteosVf, fecha)) {
                 MessageBox.Show("La fecha seleccionada no es válida", "Crear sorteo",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -270,9 +266,9 @@ namespace Proyecto
         }
 
         private int ObtenerNumeroSorteo(String tipoSorteo) {
-            List<Sorteo> sorteos = sistemaLoteriaChances.ObtenerSorteos();
+            List<Sorteo> sorteosNs = sistemaLoteriaChances.ObtenerSorteos();
             int numeroRetornado = 0;
-            foreach (Sorteo sorteo in sorteos)
+            foreach (Sorteo sorteo in sorteosNs)
             {
                 if (sorteo.TipoSorteo.Equals(tipoSorteo)) {
                     numeroRetornado = sorteo.NumeroSorteo;
@@ -384,7 +380,7 @@ namespace Proyecto
             }
         }
 
-        private Boolean FraccionesCostoValido(Decimal cantidadFracciones, Decimal costoFracciones)
+        private Boolean FraccionesCostoValido()
         {
             if(nudFracciones.Value > 0 && nudCostoFraccion.Value > 0)
             {
@@ -419,7 +415,7 @@ namespace Proyecto
             string tipoSorteo = (rbChances.Checked)? "Chances" : "Lotería";
             
             if (ValidarFecha(tipoSorteo, fecha) &&
-                FraccionesCostoValido(nudFracciones.Value, nudCostoFraccion.Value))
+                FraccionesCostoValido())
             {
                 PlanPremios planPremios = new PlanPremios();
                 if (cbConPlan.Checked)
