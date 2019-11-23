@@ -13,13 +13,11 @@ namespace Proyecto
 {
     public class SistemaLoteriaChances
     {
-        ConexionBD conexionBD = new ConexionBD();
-        Usuario usuario;
-        List<Sorteo> sorteos = null;
+        private ConexionBD conexionBD = new ConexionBD();
+        private List<Sorteo> sorteos = null;
 
         public Usuario IniciarSesion(String nombre, String contrasenia) {
-            this.usuario = conexionBD.IniciarSesion(nombre, contrasenia);
-            return usuario;
+            return conexionBD.IniciarSesion(nombre, contrasenia);
         }
 
         public List<Sorteo> ObtenerSorteos()

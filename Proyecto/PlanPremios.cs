@@ -5,9 +5,9 @@ namespace Proyecto
 {
     public class PlanPremios
     {
-        public int IdSorteo;
-        public List<Resultado> Resultados = new List<Resultado>();
-        public List<Premio> Premios = new List<Premio>();
+        public int IdSorteo { get; set; }
+        public List<Resultado> Resultados { get; set; }
+        public List<Premio> Premios { get; set; }
 
         public void GenerarResultados(String tipo)
         {
