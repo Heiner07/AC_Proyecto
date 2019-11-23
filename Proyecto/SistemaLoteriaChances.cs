@@ -13,7 +13,7 @@ namespace Proyecto
 {
     public class SistemaLoteriaChances
     {
-        private ConexionBD conexionBD = new ConexionBD();
+        readonly ConexionBD conexionBD = new ConexionBD();
         private List<Sorteo> sorteos = null;
 
         public Usuario IniciarSesion(String nombre, String contrasenia) {
@@ -255,7 +255,7 @@ namespace Proyecto
         }
 
         public List<Resultado> ObtenerTopNumerosPrimerPremio(String filtro) {
-            if (filtro.Equals(""))
+            if (string.IsNullOrEmpty(filtro))
             {
                 return conexionBD.ObtenerTopNumerosPrimerPremio();
             }
@@ -267,7 +267,7 @@ namespace Proyecto
 
         public List<Resultado> ObtenerTopNumerosMasDineroRepartido(String filtro)
         {
-            if (filtro.Equals(""))
+            if (string.IsNullOrEmpty(filtro))
             {
                 return conexionBD.ObtenerTopNumerosMasDineroRepartido();
             }
@@ -279,7 +279,7 @@ namespace Proyecto
 
         public List<Resultado> ObtenerTopNumerosMasJugados(String filtro)
         {
-            if (filtro.Equals(""))
+            if (string.IsNullOrEmpty(filtro))
             {
                 return conexionBD.ObtenerTopNumerosMasJugados();
             }

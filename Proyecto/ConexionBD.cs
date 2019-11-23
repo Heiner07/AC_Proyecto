@@ -352,116 +352,116 @@ namespace Proyecto
 
         public List<Resultado> ObtenerTopNumerosPrimerPremio()
         {
-            List<Resultado> resultados = new List<Resultado>();
-            SqlConnection conexion = new SqlConnection(cadenaConexion);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Top5NumerosConPrimerPremio", conexion)
+            List<Resultado> resultados1 = new List<Resultado>();
+            SqlConnection conexion1 = new SqlConnection(cadenaConexion);
+            SqlCommand cmd1 = new SqlCommand("SELECT * FROM Top5NumerosConPrimerPremio", conexion1)
             {
                 CommandType = CommandType.Text
             };
             try
             {
-                conexion.Open();
-                SqlDataReader lectorDatos = cmd.ExecuteReader();
-                while (lectorDatos.Read())
+                conexion1.Open();
+                SqlDataReader lectorDatos1 = cmd1.ExecuteReader();
+                while (lectorDatos1.Read())
                 {
-                    resultados.Add(new Resultado(lectorDatos.GetInt32(0), 100, lectorDatos.GetInt32(1)));
+                    resultados1.Add(new Resultado(lectorDatos1.GetInt32(0), 100, lectorDatos1.GetInt32(1)));
                 }
             }
             catch (Exception)
             {
-                return resultados;
+                return resultados1;
             }
             finally
             {
-                conexion.Close();
+                conexion1.Close();
             }
-            return resultados;
+            return resultados1;
         }
 
         public List<Resultado> ObtenerTopNumerosMasDineroRepartido()
         {
-            List<Resultado> resultados = new List<Resultado>();
-            SqlConnection conexion = new SqlConnection(cadenaConexion);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Top5NumerosMasDineroRepartido", conexion)
+            List<Resultado> resultados2 = new List<Resultado>();
+            SqlConnection conexion2 = new SqlConnection(cadenaConexion);
+            SqlCommand cmd2 = new SqlCommand("SELECT * FROM Top5NumerosMasDineroRepartido", conexion2)
             {
                 CommandType = CommandType.Text
             };
             try
             {
-                conexion.Open();
-                SqlDataReader lectorDatos = cmd.ExecuteReader();
-                while (lectorDatos.Read())
+                conexion2.Open();
+                SqlDataReader lectorDatos2 = cmd2.ExecuteReader();
+                while (lectorDatos2.Read())
                 {
-                    resultados.Add(new Resultado(lectorDatos.GetInt32(0), 100, lectorDatos.GetInt32(1)));
+                    resultados2.Add(new Resultado(lectorDatos2.GetInt32(0), 100, lectorDatos2.GetInt32(1)));
                 }
             }
             catch (Exception)
             {
-                return resultados;
+                return resultados2;
             }
             finally
             {
-                conexion.Close();
+                conexion2.Close();
             }
-            return resultados;
+            return resultados2;
         }
 
         public List<Resultado> ObtenerTopFiltros(String procedimiento,String filtro)
         {
-            List<Resultado> resultados = new List<Resultado>();
-            SqlConnection conexion = new SqlConnection(cadenaConexion);
-            SqlCommand cmdResultados = new SqlCommand(procedimiento, conexion)
+            List<Resultado> resultados3 = new List<Resultado>();
+            SqlConnection conexion3 = new SqlConnection(cadenaConexion);
+            SqlCommand cmdResultados3 = new SqlCommand(procedimiento, conexion3)
             {
                 CommandType = CommandType.StoredProcedure
             };
             try
             {
-                conexion.Open();
-                cmdResultados.Parameters.Add("@Tipo", SqlDbType.NVarChar).Value = filtro;
-                SqlDataReader lectorResultados = cmdResultados.ExecuteReader();
-                while (lectorResultados.Read())
+                conexion3.Open();
+                cmdResultados3.Parameters.Add("@Tipo", SqlDbType.NVarChar).Value = filtro;
+                SqlDataReader lectorResultados3 = cmdResultados3.ExecuteReader();
+                while (lectorResultados3.Read())
                 {
-                    resultados.Add(new Resultado((int)lectorResultados[0], 100, (int)lectorResultados[1]));
+                    resultados3.Add(new Resultado((int)lectorResultados3[0], 100, (int)lectorResultados3[1]));
                 }
-                lectorResultados.Close();
-                return resultados;
+                lectorResultados3.Close();
+                return resultados3;
             }
             catch (Exception)
             {
-                return resultados;
+                return resultados3;
             }
             finally
             {
-                conexion.Close();
+                conexion3.Close();
             }
         }
 
         public List<Resultado> ObtenerTopNumerosMasJugados()
         {
-            List<Resultado> resultados = new List<Resultado>();
-            SqlConnection conexion = new SqlConnection(cadenaConexion);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Top10NumerosMasJugados", conexion)
+            List<Resultado> resultados4 = new List<Resultado>();
+            SqlConnection conexion4 = new SqlConnection(cadenaConexion);
+            SqlCommand cmd4 = new SqlCommand("SELECT * FROM Top10NumerosMasJugados", conexion4)
             {
                 CommandType = CommandType.Text
             };
             try
             {
-                conexion.Open();
-                SqlDataReader lectorDatos = cmd.ExecuteReader();
-                while (lectorDatos.Read())
+                conexion4.Open();
+                SqlDataReader lectorDatos4 = cmd4.ExecuteReader();
+                while (lectorDatos4.Read())
                 {
-                    resultados.Add(new Resultado(lectorDatos.GetInt32(0), 100, lectorDatos.GetInt32(1)));
+                    resultados4.Add(new Resultado(lectorDatos4.GetInt32(0), 100, lectorDatos4.GetInt32(1)));
                 }
             }
             catch (Exception)
             {
-                return resultados;
+                return resultados4;
             }
             finally
             {
-                conexion.Close();
+                conexion4.Close();
             }
-            return resultados;
+            return resultados4;
         }
 
         public List<PorcentajeNumeros> ObtenerPorcentajeAparicionNumeros()

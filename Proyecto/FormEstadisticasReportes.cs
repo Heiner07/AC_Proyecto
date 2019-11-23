@@ -147,6 +147,20 @@ namespace Proyecto
             dgvTopNumeroDineroRepartido.Columns[1].Width = 150;
         }
 
+
+        private PorcentajeNumeros ObtenerNumeroPorcentaje(int i, List<PorcentajeNumeros> porcentajeNumeros) {
+            for (int k = 0; k < porcentajeNumeros.Count; k++)
+            {
+                if (porcentajeNumeros[k].Numero == i)
+                {
+                    return porcentajeNumeros[k];
+                    
+                }
+
+            }
+            return null;
+
+        }
         private void InicializarTablaPorcentajeNumeros()
         {
             DataTable dtProcentajeNumeros = new DataTable();
@@ -157,12 +171,7 @@ namespace Proyecto
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    PorcentajeNumeros resultado = porcentajeNumeros.Find(
-                    delegate (PorcentajeNumeros pn)
-                    {
-                        return pn.Numero == i;
-                    }
-                    );
+                    PorcentajeNumeros resultado = ObtenerNumeroPorcentaje(i,porcentajeNumeros);
                     if (resultado != null)
                     {
                         dtProcentajeNumeros.Rows.Add(new object[] { i.ToString("00"), resultado.Porcentaje });
