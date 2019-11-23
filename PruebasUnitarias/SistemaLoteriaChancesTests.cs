@@ -36,43 +36,63 @@ namespace Proyecto.Tests
         [TestMethod()]
         public void CrearSorteoTest()
         {
-
+            //Error
+            SistemaLoteriaChances sistemaLoteriaChances = new SistemaLoteriaChances();
+            Boolean verificar = sistemaLoteriaChances.CrearSorteo(new Sorteo());
+            Assert.AreEqual(false, verificar);
         }
 
         [TestMethod()]
         public void GenerarReporteResultadosSorteoTest()
         {
-
+            //Error
+            SistemaLoteriaChances sistemaLoteriaChances = new SistemaLoteriaChances();
+            Boolean verificar = sistemaLoteriaChances.GenerarReporteResultadosSorteo(new Sorteo());
+            Assert.AreEqual(false, verificar);
         }
 
         [TestMethod()]
         public void GenerarReportePlanPremiosSorteoTest()
         {
-
+            //Error
+            SistemaLoteriaChances sistemaLoteriaChances = new SistemaLoteriaChances();
+            Boolean verificar = sistemaLoteriaChances.GenerarReportePlanPremiosSorteo(new Sorteo());
+            Assert.AreEqual(false, verificar);
         }
 
         [TestMethod()]
         public void ObtenerTopNumerosPrimerPremioTest()
         {
-
+            //Error
+            SistemaLoteriaChances sistemaLoteriaChances = new SistemaLoteriaChances();
+            List<Resultado> verificar = sistemaLoteriaChances.ObtenerTopNumerosPrimerPremio("");
+            Assert.AreNotEqual(verificar, null);
         }
 
         [TestMethod()]
         public void ObtenerTopNumerosMasDineroRepartidoTest()
         {
-
+            //Error
+            SistemaLoteriaChances sistemaLoteriaChances = new SistemaLoteriaChances();
+            List<Resultado> verificar = sistemaLoteriaChances.ObtenerTopNumerosMasDineroRepartido("");
+            Assert.AreNotEqual(verificar, null);
         }
 
         [TestMethod()]
         public void ObtenerTopNumerosMasJugadosTest()
         {
-
+            //Error
+            SistemaLoteriaChances sistemaLoteriaChances = new SistemaLoteriaChances();
+            List<Resultado> verificar = sistemaLoteriaChances.ObtenerTopNumerosMasJugados("");
+            Assert.AreNotEqual(verificar, null);
         }
 
         [TestMethod()]
         public void ObtenerPorcentajeAparicionNumerosTest()
         {
-
+            SistemaLoteriaChances sistemaLoteriaChances = new SistemaLoteriaChances();
+            List<PorcentajeNumeros> verificar = sistemaLoteriaChances.ObtenerPorcentajeAparicionNumeros();
+            Assert.AreNotEqual(null, verificar);
         }
     }
 }

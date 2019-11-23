@@ -89,6 +89,10 @@ namespace Proyecto
         public Boolean GenerarReporteResultadosSorteo(Sorteo sorteo)
         {
             Boolean retorno = true;
+            Document document = null;
+            try
+            {
+                
             // Se establecen las varibales y textos por utilizar en el PDF
             System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
             List<Resultado> resultados = sorteo.PlanPremios.Resultados;
@@ -101,9 +105,8 @@ namespace Proyecto
             String tituloTabla = "Resultados:";
             String finalDocumento = $"\n--- Final del documento - " +
                 $"Junta de Protección Social - Reporte generado el {DateTime.Now.ToString()} ---";
-            Document document = null;
-            try
-            {
+            
+            
                 // Se genera la ruta del archivo pdf: Escritorio + "Resultados - " + tipo + numero + ".pdf"
                 String rutaCreacionPDF = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
                 "\\Resultados - " + sorteo.TipoSorteo + sorteo.NumeroSorteo + ".pdf";
@@ -173,23 +176,26 @@ namespace Proyecto
         public Boolean GenerarReportePlanPremiosSorteo(Sorteo sorteo)
         {
             Boolean retorno = true;
-            // Se establecen las varibales y textos por utilizar en el PDF
-            System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
-            List<Premio> premios = sorteo.PlanPremios.Premios;
-            String tituloDocumento = "Reporte de plan de premios de sorteo";
-            String datosSorteo =
-                $"Tipo: {sorteo.TipoSorteo}\n" +
-                $"Número: {sorteo.NumeroSorteo}\n" +
-                $"Realizado: {sorteo.Fecha.ToShortDateString()}";
-            String tituloTabla = "Plan de premios:";
-            String finalDocumento = $"\n--- Final del documento - " +
-                $"Junta de Protección Social - Reporte generado el {DateTime.Now.ToString()} ---";
             Document document = null;
             try
             {
-                // Se genera la ruta del archivo pdf: Escritorio + "Resultados - " + tipo + numero + ".pdf"
-                String rutaCreacionPDF = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
-                "\\PlanDePremios - " + sorteo.TipoSorteo + sorteo.NumeroSorteo + ".pdf";
+                
+            // Se establecen las varibales y textos por utilizar en el PDF
+                System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
+                List<Premio> premios = sorteo.PlanPremios.Premios;
+                String tituloDocumento = "Reporte de plan de premios de sorteo";
+                String datosSorteo =
+                    $"Tipo: {sorteo.TipoSorteo}\n" +
+                    $"Número: {sorteo.NumeroSorteo}\n" +
+                    $"Realizado: {sorteo.Fecha.ToShortDateString()}";
+                String tituloTabla = "Plan de premios:";
+                String finalDocumento = $"\n--- Final del documento - " +
+                    $"Junta de Protección Social - Reporte generado el {DateTime.Now.ToString()} ---";
+                
+           
+                    // Se genera la ruta del archivo pdf: Escritorio + "Resultados - " + tipo + numero + ".pdf"
+                    String rutaCreacionPDF = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
+                    "\\PlanDePremios - " + sorteo.TipoSorteo + sorteo.NumeroSorteo + ".pdf";
 
                 // Se inicializan las variables para manipular el pdf.
                 PdfWriter writer = new PdfWriter(rutaCreacionPDF);

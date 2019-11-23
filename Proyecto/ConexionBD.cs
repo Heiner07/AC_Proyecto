@@ -69,9 +69,10 @@ namespace Proyecto
             Boolean retorno = true;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             List<Premio> premios = new List<Premio>();
-            premios = nuevoSorteo.PlanPremios.Premios;
+            
             try
             {
+                premios = nuevoSorteo.PlanPremios.Premios;
                 conexion.Open();
                 SqlCommand cmd = new SqlCommand("InsertarSorteo", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
