@@ -51,13 +51,13 @@ namespace Proyecto
             if (sistemaLoteriaChances.GenerarReportePlanPremiosSorteo(sorteo))
             {
                 MessageBox.Show("¡El reporte se generó correctamente! " +
-                    $"Se generó el archivo \"PlanDePremios - {sorteo.TipoSorteo}{sorteo.NumeroSorteo}.pdf\" en el escritorio.",
+                    $"Se generó el archivo \"Plan de premios - {sorteo.TipoSorteo}{sorteo.NumeroSorteo}.pdf\" en el escritorio.",
                         "Reporte plan de premios", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("Error generando el reporte. " +
-                    $"Se intentó crear con el nombre: \"PlanDePremios - {sorteo.TipoSorteo}{sorteo.NumeroSorteo}.pdf\"\n" +
+                    $"Se intentó crear con el nombre: \"Plan de premios - {sorteo.TipoSorteo}{sorteo.NumeroSorteo}.pdf\"\n" +
                     "El error puede suceder por alguna de las siguientes causas:\n" +
                     "* Existe un archivo con el mismo nombre y no se puede modificar.\n" +
                     "* Existe un archivo con el mismo nombre y está siendo utilizado.\n" +

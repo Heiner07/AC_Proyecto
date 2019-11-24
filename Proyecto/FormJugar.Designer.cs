@@ -362,7 +362,7 @@
             // 
             this.lbJugandoSorteo.AutoSize = true;
             this.lbJugandoSorteo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbJugandoSorteo.Location = new System.Drawing.Point(8, 269);
+            this.lbJugandoSorteo.Location = new System.Drawing.Point(21, 269);
             this.lbJugandoSorteo.Name = "lbJugandoSorteo";
             this.lbJugandoSorteo.Size = new System.Drawing.Size(14, 19);
             this.lbJugandoSorteo.TabIndex = 47;

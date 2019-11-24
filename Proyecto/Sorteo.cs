@@ -13,24 +13,6 @@ namespace Proyecto
         public Boolean Estado { get; set; }
         public DateTime Fecha { get; set; }
         public PlanPremios PlanPremios { get; set; }
-
-        public Sorteo()
-        {
-
-        }
-
-        public Sorteo(int idSorteo, int numeroSorteo, String tipoSorteo, DateTime fecha, int cantidadFracciones,
-            int precioFraccion, String leyendaBillete, Boolean estado,PlanPremios planPremios)
-        {
-            this.IdSorteo = idSorteo;
-            this.NumeroSorteo = numeroSorteo;
-            this.TipoSorteo = tipoSorteo;
-            this.Fecha = fecha;
-            this.CantidadFracciones = cantidadFracciones;
-            this.PrecioFraccion = precioFraccion;
-            this.LeyendaBillete = leyendaBillete;
-            this.Estado = estado;
-            this.PlanPremios = planPremios;
-        }
+        
     }
 }

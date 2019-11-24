@@ -149,7 +149,7 @@ namespace Proyecto
         }
 
         private void ManejarAnimacionJugar(SpeechSynthesizer generadorVoz, String numero,
-            String serie, String monto, int cantidadMayor)
+            String serie, String monto, int montoEntero, int cantidadMayor)
         {
             if (!omitirAnimacion) Thread.Sleep(2500);
 
@@ -172,15 +172,15 @@ namespace Proyecto
             pictureBox3.Invoke((MethodInvoker)(() => pictureBox3.Enabled = false));
             if (!omitirAnimacion)
             {
-                if (cantidadMayor == Convert.ToInt32(monto))
+                if (cantidadMayor == montoEntero)
                 {
                     EscribirTextBoxPremio("PREMIO MAYOR");
-                    generadorVoz.Speak($"Premio mayor {monto}");
+                    generadorVoz.Speak($"Premio mayor {montoEntero}");
                 }
                 else
                 {
                     EscribirTextBoxPremio(monto);
-                    generadorVoz.Speak($"Premio {monto}");
+                    generadorVoz.Speak($"Premio {montoEntero}");
                 }
 
                 Thread.Sleep(2000);
@@ -212,7 +212,7 @@ namespace Proyecto
                 numero = resultado.NumeroGanador.ToString("00");
                 monto = resultado.MontoGanado.ToString("#,#", CultureInfo.InvariantCulture);
 
-                ManejarAnimacionJugar(generadorVoz, numero, serie, monto, cantidadMayor);
+                ManejarAnimacionJugar(generadorVoz, numero, serie, monto, resultado.MontoGanado, cantidadMayor);
 
                 // Se agregan los resultados al data table del gridview
                 Invoke((MethodInvoker)(() => dtResultados.Rows.Add(new object[] { serie, numero, monto })));

@@ -179,7 +179,7 @@ namespace Proyecto
 
         private Boolean JugandoSorteo()
         {
-            return ((formularioAbierto == 1 && ((FormJugar)formularioActivo).RealizandoSorteo()));
+            return (formularioAbierto == 1 && ((FormJugar)formularioActivo).RealizandoSorteo());
         }
     }
 }

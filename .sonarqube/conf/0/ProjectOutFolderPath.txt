@@ -1,1 +1,1 @@
-C:\Users\home\source\repos\AC_Proyecto\.sonarqube\out\0
+C:\Users\Heine\Documents\1.TEC\Aseguramiento de la Calidad del Software\Proyecto\.sonarqube\out\0

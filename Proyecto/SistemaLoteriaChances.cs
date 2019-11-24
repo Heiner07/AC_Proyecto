@@ -84,36 +84,90 @@ namespace Proyecto
                 conexionBD.EstablecerSorteoJugado(sorteo);
         }
 
-        public Boolean GenerarReporteResultadosSorteo(Sorteo sorteo)
+        private Table GenerarTablaResultados(List<Premio> premios, List<Resultado> resultados, PdfFont font)
+        {
+            // Se crea la tabla que contiene los resultados del sorteo.
+            Table table = new Table(new float[] { 1, 1, 1 });
+            table.SetWidth(UnitValue.CreatePercentValue(100));
+            table.AddHeaderCell(new Cell().Add(new Paragraph("Serie").SetFont(font)));
+            table.AddHeaderCell(new Cell().Add(new Paragraph("Número").SetFont(font)));
+            table.AddHeaderCell(new Cell().Add(new Paragraph("Monto").SetFont(font)));
+            Paragraph parrafoSerie, parrafoNumero, parrafoMonto;
+            // Se agregan los resutados a la tabla
+            foreach (Resultado resultado in resultados)
+            {
+                parrafoSerie = new Paragraph(resultado.SerieGanadora.ToString("000"));
+                parrafoNumero = new Paragraph(resultado.NumeroGanador.ToString("00"));
+                parrafoMonto = new Paragraph(resultado.MontoGanado.ToString("#,#", CultureInfo.InvariantCulture));
+                if (premios[0].MontoPremio == resultado.MontoGanado ||
+                    premios[1].MontoPremio == resultado.MontoGanado ||
+                    premios[2].MontoPremio == resultado.MontoGanado)
+                {
+                    parrafoSerie.SetFont(font);
+                    parrafoNumero.SetFont(font);
+                    parrafoMonto.SetFont(font);
+                }
+                table.AddCell(new Cell().Add(parrafoSerie));
+                table.AddCell(new Cell().Add(parrafoNumero));
+                table.AddCell(new Cell().Add(parrafoMonto));
+            }
+            return table;
+        }
+
+        private Table GenerarTablaPlanPremios(List<Premio> premios, PdfFont font)
+        {
+            // Se crea la tabla que contiene los resultados del sorteo.
+            Table table = new Table(new float[] { 1, 1 });
+            table.SetWidth(UnitValue.CreatePercentValue(100));
+            table.AddHeaderCell(new Cell().Add(new Paragraph("Premio").SetFont(font)));
+            table.AddHeaderCell(new Cell().Add(new Paragraph("Cantidad").SetFont(font)));
+            Paragraph parrafoPremio, parrafoCantidad;
+            int indice = 0;
+            // Se agregan los premios a la tabla
+            foreach (Premio premio in premios)
+            {
+                parrafoPremio = new Paragraph(premio.MontoPremio.ToString("#,#", CultureInfo.InvariantCulture));
+                parrafoCantidad = new Paragraph(premio.CantidadPremio.ToString("#,#", CultureInfo.InvariantCulture));
+                if (indice < 3)
+                {
+                    parrafoPremio.SetFont(font);
+                    parrafoCantidad.SetFont(font);
+                }
+                table.AddCell(new Cell().Add(parrafoPremio));
+                table.AddCell(new Cell().Add(parrafoCantidad));
+
+                indice++;
+            }
+            return table;
+        }
+
+        private Boolean GenerarReporteCorrespondiente(Sorteo sorteo, String tituloDocumento,
+            String tituloTabla, Boolean reporteResultado)
         {
             Boolean retorno = true;
             Document document = null;
             try
             {
-                
-            // Se establecen las varibales y textos por utilizar en el PDF
-            System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
-            List<Resultado> resultados = sorteo.PlanPremios.Resultados;
-            List<Premio> premios = sorteo.PlanPremios.Premios;
-            String tituloDocumento = "Reporte de resultados de sorteo";
-            String datosSorteo =
-                $"Tipo: {sorteo.TipoSorteo}\n" +
-                $"Número: {sorteo.NumeroSorteo}\n" +
-                $"Realizado: {sorteo.Fecha.ToShortDateString()}";
-            String tituloTabla = "Resultados:";
-            String finalDocumento = $"\n--- Final del documento - " +
-                $"Junta de Protección Social - Reporte generado el {DateTime.Now.ToString()} ---";
-            
-            
+                // Se establecen las varibales y textos por utilizar en el PDF
+                System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
+                List<Resultado> resultados = sorteo.PlanPremios.Resultados;
+                List<Premio> premios = sorteo.PlanPremios.Premios;
+                String datosSorteo =
+                    $"Tipo: {sorteo.TipoSorteo}\n" +
+                    $"Número: {sorteo.NumeroSorteo}\n" +
+                    $"Realizado: {sorteo.Fecha.ToShortDateString()}";
+                String finalDocumento = $"\n--- Final del documento - " +
+                    $"Junta de Protección Social - Reporte generado el {DateTime.Now.ToString()} ---";
+
                 // Se genera la ruta del archivo pdf: Escritorio + "Resultados - " + tipo + numero + ".pdf"
                 String rutaCreacionPDF = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
-                "\\Resultados - " + sorteo.TipoSorteo + sorteo.NumeroSorteo + ".pdf";
+                    $"\\{tituloTabla} - " + sorteo.TipoSorteo + sorteo.NumeroSorteo + ".pdf";
 
                 // Se inicializan las variables para manipular el pdf.
                 PdfWriter writer = new PdfWriter(rutaCreacionPDF);
                 PdfDocument pdf = new PdfDocument(writer);
                 document = new Document(pdf);
-                
+
                 PdfFont font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);// Fuente en negrita(bold)
                 // Se crea el logo del documento.
                 Image logo = new Image(ImageDataFactory.Create(
@@ -122,37 +176,22 @@ namespace Proyecto
                 logo.SetHeight(80);
                 logo.SetFixedPosition(400, 730);// Se establece la posición fija dentro de la página.
 
-                // Se crea la tabla que contiene los resultados del sorteo.
-                Table table = new Table(new float[] { 1, 1, 1 });
-                table.SetWidth(UnitValue.CreatePercentValue(100));
-                table.AddHeaderCell(new Cell().Add(new Paragraph("Serie").SetFont(font)));
-                table.AddHeaderCell(new Cell().Add(new Paragraph("Número").SetFont(font)));
-                table.AddHeaderCell(new Cell().Add(new Paragraph("Monto").SetFont(font)));
-                Paragraph parrafoSerie, parrafoNumero, parrafoMonto;
-                // Se agregan los resutados a la tabla
-                foreach (Resultado resultado in resultados)
+                // Se crea la tabla correspondiente con el reporte de sorteo.
+                Table table;
+                if (reporteResultado)
                 {
-                    parrafoSerie = new Paragraph(resultado.SerieGanadora.ToString("000"));
-                    parrafoNumero = new Paragraph(resultado.NumeroGanador.ToString("00"));
-                    parrafoMonto = new Paragraph(resultado.MontoGanado.ToString("#,#", CultureInfo.InvariantCulture));
-                    if (premios[0].MontoPremio==resultado.MontoGanado ||
-                        premios[1].MontoPremio == resultado.MontoGanado ||
-                        premios[2].MontoPremio == resultado.MontoGanado)
-                    {
-                        parrafoSerie.SetFont(font);
-                        parrafoNumero.SetFont(font);
-                        parrafoMonto.SetFont(font);
-                    }
-                    table.AddCell(new Cell().Add(parrafoSerie));
-                    table.AddCell(new Cell().Add(parrafoNumero));
-                    table.AddCell(new Cell().Add(parrafoMonto));
+                    table = GenerarTablaResultados(premios, resultados, font);
+                }
+                else
+                {
+                    table = GenerarTablaPlanPremios(premios, font);
                 }
 
                 // Se agregan todos los componentes del archivo pdf
                 document.Add(logo);
                 document.Add(new Paragraph(tituloDocumento).SetFont(font).SetFontSize(14));
                 document.Add(new Paragraph(datosSorteo));
-                document.Add(new Paragraph(tituloTabla).SetFont(font));
+                document.Add(new Paragraph(tituloTabla+":").SetFont(font));
                 document.Add(table);
                 document.Add(new Paragraph(finalDocumento).SetFontSize(10).SetTextAlignment(TextAlignment.CENTER));
             }
@@ -171,87 +210,14 @@ namespace Proyecto
             return retorno;
         }
 
+        public Boolean GenerarReporteResultadosSorteo(Sorteo sorteo)
+        {
+            return GenerarReporteCorrespondiente(sorteo, "Reporte de resultados de sorteo", "Resultados", true);
+        }
+
         public Boolean GenerarReportePlanPremiosSorteo(Sorteo sorteo)
         {
-            Boolean retorno = true;
-            Document document = null;
-            try
-            {
-                
-            // Se establecen las varibales y textos por utilizar en el PDF
-                System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
-                List<Premio> premios = sorteo.PlanPremios.Premios;
-                String tituloDocumento = "Reporte de plan de premios de sorteo";
-                String datosSorteo =
-                    $"Tipo: {sorteo.TipoSorteo}\n" +
-                    $"Número: {sorteo.NumeroSorteo}\n" +
-                    $"Realizado: {sorteo.Fecha.ToShortDateString()}";
-                String tituloTabla = "Plan de premios:";
-                String finalDocumento = $"\n--- Final del documento - " +
-                    $"Junta de Protección Social - Reporte generado el {DateTime.Now.ToString()} ---";
-                
-           
-                    // Se genera la ruta del archivo pdf: Escritorio + "Resultados - " + tipo + numero + ".pdf"
-                    String rutaCreacionPDF = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
-                    "\\PlanDePremios - " + sorteo.TipoSorteo + sorteo.NumeroSorteo + ".pdf";
-
-                // Se inicializan las variables para manipular el pdf.
-                PdfWriter writer = new PdfWriter(rutaCreacionPDF);
-                PdfDocument pdf = new PdfDocument(writer);
-                document = new Document(pdf);
-
-                PdfFont font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);// Fuente en negrita(bold)
-                // Se crea el logo del documento.
-                Image logo = new Image(ImageDataFactory.Create(
-                    (byte[])converter.ConvertTo(Properties.Resources.LogoHorizontalJPS, typeof(byte[]))));
-                logo.SetWidth(170);
-                logo.SetHeight(80);
-                logo.SetFixedPosition(400, 730);// Se establece la posición fija dentro de la página.
-
-                // Se crea la tabla que contiene los resultados del sorteo.
-                Table table = new Table(new float[] { 1, 1 });
-                table.SetWidth(UnitValue.CreatePercentValue(100));
-                table.AddHeaderCell(new Cell().Add(new Paragraph("Premio").SetFont(font)));
-                table.AddHeaderCell(new Cell().Add(new Paragraph("Cantidad").SetFont(font)));
-                Paragraph parrafoPremio, parrafoCantidad;
-                int indice = 0;
-                // Se agregan los resutados a la tabla
-                foreach (Premio premio in premios)
-                {
-                    parrafoPremio = new Paragraph(premio.MontoPremio.ToString("#,#", CultureInfo.InvariantCulture));
-                    parrafoCantidad = new Paragraph(premio.CantidadPremio.ToString("#,#", CultureInfo.InvariantCulture));
-                    if (indice < 3)
-                    {
-                        parrafoPremio.SetFont(font);
-                        parrafoCantidad.SetFont(font);
-                    }
-                    table.AddCell(new Cell().Add(parrafoPremio));
-                    table.AddCell(new Cell().Add(parrafoCantidad));
-
-                    indice++;
-                }
-
-                // Se agregan todos los componentes del archivo pdf
-                document.Add(logo);
-                document.Add(new Paragraph(tituloDocumento).SetFont(font).SetFontSize(14));
-                document.Add(new Paragraph(datosSorteo));
-                document.Add(new Paragraph(tituloTabla).SetFont(font));
-                document.Add(table);
-                document.Add(new Paragraph(finalDocumento).SetFontSize(10).SetTextAlignment(TextAlignment.CENTER));
-            }
-            catch (Exception)
-            {
-                retorno = false;
-            }
-            finally
-            {
-                // Se cierra el archivo
-                if (document != null)
-                {
-                    document.Close();
-                }
-            }
-            return retorno;
+            return GenerarReporteCorrespondiente(sorteo, "Reporte de plan de premios de sorteo", "Plan de premios", false);
         }
 
         public List<Resultado> ObtenerTopNumerosPrimerPremio(String filtro) {
