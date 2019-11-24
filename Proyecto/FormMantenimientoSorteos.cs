@@ -344,16 +344,14 @@ namespace Proyecto
                 {
                     return ObtenerPremiosAdicionales(premios, tercerPremio);
                 }
-                else
-                {
-                    return premios;
-                }
             }
-            else {
+            else
+            {
                 MessageBox.Show("Error en los 3 premios principales", "Crear sorteo",
                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return premios;// Estaría vacío, sin premios.
+                //Los premios estarían vacíos, sin premios.
             }
+            return premios;
         }
 
         private void CrearSorteo(Sorteo sorteo) {
